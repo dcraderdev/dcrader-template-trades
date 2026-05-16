@@ -1,0 +1,164 @@
+---
+import { business } from '../data/business';
+---
+
+<section id="quote" class="relative bg-navy-800 py-20 lg:py-28" aria-labelledby="quote-heading">
+  <!-- Top accent -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-orange-500" aria-hidden="true"></div>
+
+  <!-- Background texture -->
+  <div class="absolute inset-0 quote-bg pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+      <!-- Left: pitch copy -->
+      <div class="text-white">
+        <span class="inline-block text-orange-400 font-body font-semibold text-sm uppercase tracking-widest mb-4">
+          Free Estimate
+        </span>
+        <h2
+          id="quote-heading"
+          class="font-display font-black uppercase mb-4 leading-tight"
+          style="font-size: clamp(2.5rem, 6vw, 4.5rem);"
+        >
+          {business.form.headline}
+        </h2>
+        <p class="text-2xl text-orange-400 font-display font-bold uppercase mb-6">
+          {business.form.subheadline}
+        </p>
+        <p class="text-slate-300 font-body text-lg mb-10 leading-relaxed">
+          {business.form.note}
+        </p>
+
+        <!-- Social proof stat -->
+        <div class="flex items-center gap-5 p-6 bg-white/5 border border-white/10 rounded-2xl mb-8">
+          <div class="font-display font-black text-orange-500 leading-none flex-shrink-0"
+            style="font-size: 3rem;">{business.form.calloutStat}</div>
+          <div class="text-slate-300 font-body">{business.form.calloutLabel}</div>
+        </div>
+
+        <!-- Phone as alternative -->
+        <div class="flex flex-col gap-2">
+          <p class="text-slate-400 font-body text-sm uppercase tracking-widest">Prefer to call?</p>
+          <a
+            href={business.phoneHref}
+            class="inline-flex items-center gap-3 text-white hover:text-orange-400 transition-colors"
+            aria-label={`Call us at ${business.phone}`}
+          >
+            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+              </svg>
+            </div>
+            <span class="font-display font-black text-3xl">{business.phone}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="bg-white rounded-2xl p-8 shadow-[0_32px_80px_rgba(0,0,0,0.5)]">
+        <form
+          name="quote-request"
+          method="POST"
+          class="space-y-5"
+          aria-label="Request a service quote"
+          novalidate
+        >
+          <!-- Name -->
+          <div>
+            <label for="form-name" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
+              Full Name <span class="text-orange-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="form-name"
+              name="name"
+              required
+              autocomplete="name"
+              placeholder="Jane Smith"
+              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+              aria-required="true"
+            />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="form-phone" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
+              Best Phone Number <span class="text-orange-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="form-phone"
+              name="phone"
+              required
+              autocomplete="tel"
+              placeholder="(619) 555-0000"
+              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+              aria-required="true"
+            />
+          </div>
+
+          <!-- Address -->
+          <div>
+            <label for="form-address" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
+              Service Address
+            </label>
+            <input
+              type="text"
+              id="form-address"
+              name="address"
+              autocomplete="street-address"
+              placeholder="123 Main St, San Diego, CA"
+              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+            />
+          </div>
+
+          <!-- Problem description -->
+          <div>
+            <label for="form-problem" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
+              Describe the Problem <span class="text-orange-500" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="form-problem"
+              name="problem"
+              required
+              rows="4"
+              placeholder="e.g. Kitchen drain is completely clogged, water backing up in sink..."
+              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-body font-bold text-lg py-4 px-6 rounded-xl transition-all hover:scale-[1.01] active:scale-100 shadow-[0_8px_24px_rgba(249,115,22,0.4)] flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+            </svg>
+            {business.form.submitLabel}
+          </button>
+
+          <p class="text-center text-slate-500 font-body text-xs">
+            By submitting, you agree to receive a call back from our team. We'll never spam you.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote-bg {
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(249, 115, 22, 0.02) 40px,
+        rgba(249, 115, 22, 0.02) 80px
+      );
+  }
+</style>

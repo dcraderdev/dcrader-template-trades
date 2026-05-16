@@ -4,20 +4,21 @@
 
 > Outreach hooks for first clients. One codebase, five distinct aesthetics, one file to white-label each.
 
-**Live site →** [dcrader-template-trades.vercel.app](https://dcrader-template-trades.vercel.app)
+**Gallery →** [dcrader-template-trades.vercel.app](https://dcrader-template-trades.vercel.app)
 
 ---
 
-## The 5 Templates
+## The 5 Templates — Live Standalone URLs
 
-| Route | Variant | Company | Palette | Font Pairing | Best For |
+| Standalone URL | Variant | Company | Palette | Font Pairing | Best For |
 |---|---|---|---|---|---|
-| `/` | Gallery index | — | — | Inter | Browse all 5 |
-| `/v1-classic-trust` | Classic Trust | Crader Plumbing & Drain | Navy + Orange | Barlow Condensed + DM Sans | Established trades, BBB-type credibility |
-| `/v2-modern-tech` | Modern Tech | BrightWatt Electric | Near-black + Teal | Sora + JetBrains Mono | EV charging, smart home, tech-forward |
-| `/v3-family-warm` | Family Warm | Three Generations Heating | Cream + Forest Green | Playfair Display + Nunito Sans | Multi-generational family businesses |
-| `/v4-emergency-bold` | Emergency Bold | Rapid Response Plumbing | Black + Red | Anton + DM Sans | 24/7 emergency-only operations |
-| `/v5-luxury-trade` | Luxury Trade | Cedar Hill Custom Electric | Cream + Sage + Gold | Cormorant Garamond + Outfit | Premium custom/estate work |
+| [dcrader-v1-classic-trust.vercel.app](https://dcrader-v1-classic-trust.vercel.app) | Classic Trust | Crader Plumbing & Drain | Navy + Orange | Barlow Condensed + DM Sans | Established trades, BBB-type credibility |
+| [dcrader-v2-modern-tech.vercel.app](https://dcrader-v2-modern-tech.vercel.app) | Modern Tech | BrightWatt Electric | Near-black + Teal | Sora + JetBrains Mono | EV charging, smart home, tech-forward |
+| [dcrader-v3-family-warm.vercel.app](https://dcrader-v3-family-warm.vercel.app) | Family Warm | Three Generations Heating | Cream + Forest Green | Playfair Display + Nunito Sans | Multi-generational family businesses |
+| [dcrader-v4-emergency-bold.vercel.app](https://dcrader-v4-emergency-bold.vercel.app) | Emergency Bold | Rapid Response Plumbing | Black + Red | Anton + DM Sans | 24/7 emergency-only operations |
+| [dcrader-v5-luxury-trade.vercel.app](https://dcrader-v5-luxury-trade.vercel.app) | Luxury Trade | Cedar Hill Custom Electric | Cream + Sage + Gold | Cormorant Garamond + Outfit | Premium custom/estate work |
+
+**Gallery index** (all 5 previews) → [dcrader-template-trades.vercel.app](https://dcrader-template-trades.vercel.app)
 
 ---
 

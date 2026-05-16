@@ -1,160 +1,154 @@
 ---
 import { business } from '../../data/v5';
+
+// Gallery images with luxury seeds and editorial captions
+const galleryItems = [
+  {
+    src: "https://picsum.photos/seed/luxury-kitchen-estate/800/600",
+    alt: "Custom estate kitchen — Paradise Valley",
+    caption: "Paradise Valley Estate · 2024 · $285,000 project",
+    size: "tall", // spans 2 rows in masonry
+  },
+  {
+    src: "https://picsum.photos/seed/luxury-living-room-v5/800/500",
+    alt: "Grand living room lighting — Silverleaf",
+    caption: "Silverleaf Residence · 2024 · $195,000 project",
+    size: "normal",
+  },
+  {
+    src: "https://picsum.photos/seed/estate-exterior-night/800/500",
+    alt: "Exterior architectural lighting — Desert Mountain",
+    caption: "Desert Mountain Estate · 2023 · $165,000 project",
+    size: "normal",
+  },
+  {
+    src: "https://picsum.photos/seed/luxury-primary-suite/800/600",
+    alt: "Primary suite lighting design — DC Ranch",
+    caption: "DC Ranch Villa · 2024 · $145,000 project",
+    size: "tall",
+  },
+  {
+    src: "https://picsum.photos/seed/outdoor-pool-estate-v5/800/500",
+    alt: "Pool and casita outdoor system — Gainey Ranch",
+    caption: "Gainey Ranch Estate · 2023 · $220,000 project",
+    size: "normal",
+  },
+  {
+    src: "https://picsum.photos/seed/luxury-wine-cellar-v5/800/500",
+    alt: "Wine cellar and gallery lighting — Old Town Scottsdale",
+    caption: "Old Town Residence · 2024 · $110,000 project",
+    size: "normal",
+  },
+];
 ---
 
 <section
   id="portfolio"
-  class="bg-luxury-parchment py-24 lg:py-36"
+  class="bg-luxury-dark py-28 lg:py-44"
   aria-labelledby="portfolio-heading"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-    <!-- Section header -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-      <div class="lg:col-span-5">
-        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
-          05 / Our Work
+  <!-- Section header -->
+  <div class="max-w-5xl mx-auto px-8 lg:px-12 mb-16 lg:mb-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+      <div>
+        <p
+          class="font-outfit font-light text-luxury-gold/50 uppercase tracking-[0.25em] mb-8"
+          style="font-size: 0.65rem;"
+        >
+          Portfolio
         </p>
         <h2
           id="portfolio-heading"
-          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95]"
-          style="font-size: clamp(2.75rem, 5vw, 4rem);"
+          class="font-cormorant italic text-luxury-cream leading-none"
+          style="font-size: clamp(2.5rem, 4.5vw, 3.75rem);"
         >
-          Selected<br/>
-          <span class="italic">Projects</span>
+          Selected Work
         </h2>
       </div>
-      <div class="lg:col-span-7 flex items-end">
-        <p class="font-outfit font-light text-luxury-charcoal/55 text-base leading-relaxed max-w-lg">
-          A small selection from our portfolio. Each project is unique to its home, its architect, and its owners.
-        </p>
-      </div>
+      <p
+        class="font-outfit font-light text-luxury-cream/30 max-w-xs leading-relaxed"
+        style="font-size: 0.8rem;"
+      >
+        A curated selection. Full portfolio available during consultation.
+      </p>
     </div>
 
-    <hr class="border-luxury-gold/30 mb-16" />
+    <!-- Gold hairline -->
+    <div class="mt-14 h-px" style="background: rgba(201,169,110,0.20);"></div>
+  </div>
 
-    <!-- Projects: editorial portfolio spreads -->
-    <div class="flex flex-col gap-24 lg:gap-32" role="list" aria-label="Portfolio projects">
-      {business.projects.map((project, index) => (
+  <!-- Masonry-style gallery grid -->
+  <div class="px-6 lg:px-10">
+    <div
+      class="columns-1 sm:columns-2 lg:columns-3 gap-4 lg:gap-5"
+      role="list"
+      aria-label="Portfolio gallery"
+    >
+      {galleryItems.map((item, index) => (
         <article
-          class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center ${index % 2 !== 0 ? 'lg:grid-flow-dense' : ''}`}
+          class="relative overflow-hidden mb-4 lg:mb-5 break-inside-avoid group"
           role="listitem"
-          aria-labelledby={`project-title-${index}`}
+          style={item.size === 'tall' ? 'aspect-ratio: 3/4;' : 'aspect-ratio: 4/3;'}
         >
-          <!-- Images: Before/After editorial spread -->
-          <div class={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:col-start-6' : ''}`}>
-            <div class="relative">
-              <!-- Before/After toggle labels -->
-              <div class="grid grid-cols-2 gap-3">
-                <!-- Before -->
-                <div class="relative overflow-hidden group">
-                  <div class="relative overflow-hidden" style="aspect-ratio: 4/3;">
-                    <!-- Gold frame offset -->
-                    <div
-                      class="absolute inset-0 border border-luxury-gold/20 translate-x-2 translate-y-2 z-0"
-                      aria-hidden="true"
-                    ></div>
-                    <img
-                      src={project.beforeImg}
-                      alt={`${project.title} — before`}
-                      class="relative z-10 w-full h-full object-cover"
-                      loading="lazy"
-                      width="400"
-                      height="300"
-                    />
-                    <div class="absolute inset-0 z-20 bg-luxury-dark/40 flex items-end p-4">
-                      <span class="font-outfit font-light text-[9px] tracking-[0.2em] uppercase text-luxury-cream/60 bg-luxury-dark/60 px-2 py-1">
-                        Before
-                      </span>
-                    </div>
-                  </div>
-                </div>
+          <img
+            src={item.src}
+            alt={item.alt}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading={index < 2 ? 'eager' : 'lazy'}
+            width="800"
+            height={item.size === 'tall' ? '1067' : '600'}
+            style="display: block;"
+          />
 
-                <!-- After -->
-                <div class="relative overflow-hidden group">
-                  <div class="relative overflow-hidden" style="aspect-ratio: 4/3;">
-                    <img
-                      src={project.afterImg}
-                      alt={`${project.title} — after`}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="400"
-                      height="300"
-                    />
-                    <div class="absolute inset-0 bg-luxury-sage/20 flex items-end p-4">
-                      <span class="font-outfit font-light text-[9px] tracking-[0.2em] uppercase text-luxury-cream/90 bg-luxury-sage/70 px-2 py-1">
-                        After
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <!-- Gradient overlay always present, darkens on hover -->
+          <div
+            class="absolute inset-0 transition-opacity duration-500"
+            style="background: linear-gradient(to top, rgba(28,37,34,0.80) 0%, rgba(28,37,34,0.15) 45%, transparent 70%); opacity: 0.7;"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style="background: rgba(28,37,34,0.25);"
+            aria-hidden="true"
+          ></div>
 
-              <!-- Project number watermark -->
-              <div
-                class="absolute -bottom-4 -right-4 w-16 h-16 bg-luxury-gold/10 border border-luxury-gold/20 flex items-center justify-center"
-                aria-hidden="true"
-              >
-                <span class="font-cormorant font-bold text-luxury-gold/50" style="font-size: 1.5rem;">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              </div>
-            </div>
+          <!-- Caption overlay at bottom -->
+          <div class="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+            <p
+              class="font-outfit font-light text-luxury-cream/60 leading-snug"
+              style="font-size: 0.68rem; letter-spacing: 0.1em;"
+            >
+              {item.caption}
+            </p>
           </div>
 
-          <!-- Project info -->
-          <div class={`lg:col-span-5 ${index % 2 !== 0 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-6 h-px bg-luxury-gold/50" aria-hidden="true"></div>
-              <p class="font-outfit font-light text-[10px] tracking-[0.18em] uppercase text-luxury-sage">
-                {project.location}
-              </p>
-            </div>
-
-            <h3
-              id={`project-title-${index}`}
-              class="font-cormorant font-bold text-luxury-charcoal leading-tight mb-6"
-              style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
-            >
-              {project.title}
-            </h3>
-
-            <div class="w-10 h-px bg-luxury-gold/50 mb-6" aria-hidden="true"></div>
-
-            <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed mb-8">
-              {project.description}
-            </p>
-
-            <a
-              href="#quote"
-              class="inline-flex items-center gap-3 font-outfit font-light text-xs tracking-[0.15em] uppercase text-luxury-sage hover:text-luxury-sage-dark transition-colors group"
-            >
-              Discuss a Similar Project
-              <svg
-                class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"
-                fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-              </svg>
-            </a>
+          <!-- Index -->
+          <div
+            class="absolute top-5 right-5 font-outfit font-light text-luxury-cream/20 tabular-nums"
+            style="font-size: 0.65rem; letter-spacing: 0.1em;"
+            aria-hidden="true"
+          >
+            {String(index + 1).padStart(2, '0')}
           </div>
         </article>
       ))}
     </div>
+  </div>
 
-    <!-- Portfolio footer note -->
-    <div class="mt-24 pt-12 border-t border-luxury-gold/20 text-center">
-      <p class="font-cormorant italic text-luxury-charcoal/40 text-xl mb-6">
-        Additional work available upon request during consultation.
+  <!-- Footer: editorial note + discreet inquiry link -->
+  <div class="max-w-5xl mx-auto px-8 lg:px-12 mt-16 lg:mt-20">
+    <div class="h-px mb-14" style="background: rgba(201,169,110,0.15);"></div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+      <p class="font-cormorant italic text-luxury-cream/30" style="font-size: 1.2rem;">
+        Trusted by architects and designers across the Valley.
       </p>
       <a
         href="#quote"
-        class="inline-flex items-center gap-3 font-outfit font-light text-sm tracking-[0.12em] uppercase text-luxury-dark bg-luxury-gold hover:bg-luxury-gold-light transition-colors px-8 py-4"
+        class="font-outfit font-light text-luxury-gold/60 hover:text-luxury-gold transition-colors duration-300 border-b border-luxury-gold/30 hover:border-luxury-gold/60 pb-px flex-shrink-0"
+        style="font-size: 0.78rem; letter-spacing: 0.1em;"
       >
-        Schedule a Consultation
+        Request a consultation
       </a>
     </div>
-
   </div>
 </section>

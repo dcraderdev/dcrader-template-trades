@@ -2,79 +2,62 @@
 import { business } from '../../data/v3';
 ---
 
-<section id="quote" class="py-20 lg:py-28 relative" style="background:#fef8f0;" aria-labelledby="quote-heading">
-  <!-- Subtle diagonal texture -->
-  <div class="absolute inset-0 quote-texture pointer-events-none" aria-hidden="true"></div>
+<section id="quote" class="py-20 lg:py-28 relative" style="background:#f5ead8;" aria-labelledby="quote-heading">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
 
-  <!-- Green top accent line -->
-  <div class="absolute top-0 left-0 right-0 h-1" style="background:#2d5a27;" aria-hidden="true"></div>
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-
-      <!-- Left: warm pitch copy -->
-      <div>
-        <span class="inline-block font-nunito font-semibold text-sm uppercase tracking-widest mb-4" style="color:#c4622d;">
-          No Pressure. Just Honest Help.
-        </span>
+      <!-- Left: editorial copy -->
+      <div class="lg:sticky lg:top-8">
+        <p class="font-nunito text-xs mb-6" style="color:#a08060; letter-spacing:0.12em;">— no pressure, just honest help —</p>
         <h2
           id="quote-heading"
-          class="font-playfair font-bold leading-tight mb-4"
-          style="font-size: clamp(2.25rem, 5vw, 3.75rem); color:#2d5a27;"
+          class="font-playfair italic leading-tight mb-6"
+          style="font-size:clamp(2.25rem, 5vw, 3.75rem); color:#2c2318;"
         >
           {business.form.headline}
         </h2>
-        <p class="font-playfair italic font-semibold mb-6" style="font-size:1.25rem; color:#c4622d;">
+        <p class="font-playfair italic mb-8" style="font-size:1.2rem; color:#c4622d;">
           {business.form.subheadline}
         </p>
-        <p class="font-nunito text-lg mb-10 leading-relaxed" style="color:#8b7355;">
+        <p class="font-nunito leading-relaxed mb-10" style="color:#7a6552; font-size:1.05rem;">
           {business.form.note}
         </p>
 
-        <!-- Years stat callout -->
-        <div class="flex items-center gap-5 p-6 rounded-2xl mb-8 border" style="background:#f5ead8; border-color:#e8d5b8;">
-          <div class="font-playfair font-bold leading-none flex-shrink-0" style="font-size:3rem; color:#2d5a27;">
+        <!-- Big stat callout -->
+        <div class="mb-10 flex items-end gap-4">
+          <span
+            class="font-playfair italic font-bold leading-none"
+            style="font-size:5rem; color:#2d5a27; opacity:0.6;"
+          >
             {business.form.calloutStat}
-          </div>
-          <div>
-            <p class="font-nunito font-semibold" style="color:#2c2318;">{business.form.calloutLabel}</p>
-            <p class="font-nunito text-sm" style="color:#8b7355;">Three generations, same promise.</p>
-          </div>
+          </span>
+          <span class="font-nunito pb-3" style="color:#7a6552; font-size:1rem; max-width:10rem; line-height:1.4;">
+            {business.form.calloutLabel}
+          </span>
         </div>
 
-        <!-- Phone alternative -->
-        <div class="flex flex-col gap-2">
-          <p class="font-nunito text-sm uppercase tracking-widest" style="color:#8b7355;">Prefer to call directly?</p>
+        <!-- Phone -->
+        <div class="mb-8">
+          <p class="font-nunito text-xs mb-2" style="color:#a08060; letter-spacing:0.08em;">or call directly</p>
           <a
             href={business.phoneHref}
-            class="inline-flex items-center gap-3 group transition-opacity hover:opacity-75"
+            class="inline-flex items-center gap-3 font-nunito font-bold transition-opacity hover:opacity-70"
+            style="font-size:clamp(1.5rem, 3vw, 2rem); color:#2c2318; text-decoration:none;"
             aria-label={`Call us at ${business.phone}`}
           >
-            <div
-              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-              style="background:#2d5a27;"
-              aria-hidden="true"
-            >
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-              </svg>
-            </div>
-            <span class="font-nunito font-bold leading-none" style="font-size:2rem; color:#2c2318;">
-              {business.phone}
-            </span>
+            {business.phone}
           </a>
-          <p class="font-nunito text-sm font-semibold ml-15" style="color:#c4622d; padding-left:3.75rem;">
-            {business.emergencyNote}
-          </p>
+          <p class="font-nunito text-sm mt-1" style="color:#c4622d;">{business.emergencyNote}</p>
         </div>
 
-        <!-- Hours summary -->
-        <div class="mt-8 rounded-2xl p-5 border" style="background:#f5ead8; border-color:#e8d5b8;">
-          <p class="font-playfair font-bold mb-3" style="color:#2d5a27;">Service Hours</p>
+        <!-- Hours -->
+        <div class="rounded-xl p-5" style="background:#ecdcc8; border: 1px solid #d4b896;">
+          <p class="font-playfair italic font-semibold mb-3" style="color:#2d5a27;">Service hours</p>
           <ul class="space-y-2 list-none m-0 p-0">
             {business.hours.map((h) => (
               <li class="flex justify-between gap-4">
-                <span class="font-nunito text-sm" style="color:#8b7355;">{h.day}</span>
+                <span class="font-nunito text-sm" style="color:#7a6552;">{h.day}</span>
                 <span class="font-nunito font-semibold text-sm" style="color:#2c2318;">{h.hours}</span>
               </li>
             ))}
@@ -82,136 +65,160 @@ import { business } from '../../data/v3';
         </div>
       </div>
 
-      <!-- Right: form — warm white card -->
-      <div
-        class="rounded-2xl p-8 border"
-        style="background:#fff; border-color:#e8d5b8; box-shadow: 0 16px 48px rgba(44,35,24,0.10);"
-      >
-        <!-- Form header -->
-        <div class="mb-6">
-          <p class="font-playfair font-bold text-2xl" style="color:#2d5a27;">Tell Us About Your Home</p>
-          <p class="font-nunito text-sm mt-1" style="color:#8b7355;">We'll call back within the hour during business hours.</p>
-        </div>
-
-        <form
-          name="v3-quote-request"
-          method="POST"
-          class="space-y-5"
-          aria-label="Schedule a service visit"
-          novalidate
+      <!-- Right: notepad paper form -->
+      <div class="relative">
+        <!-- Notepad wrapper -->
+        <div
+          class="rounded-lg overflow-hidden shadow-2xl relative"
+          style="background:#fffff5; box-shadow: 2px 4px 24px rgba(44,35,24,0.18), 0 1px 4px rgba(44,35,24,0.1);"
         >
-          <!-- Name -->
-          <div>
-            <label for="v3-form-name" class="block font-nunito font-semibold text-sm mb-1.5" style="color:#2c2318;">
-              Your Name <span style="color:#c4622d;" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="v3-form-name"
-              name="name"
-              required
-              autocomplete="name"
-              placeholder="Jane & Bob Smith"
-              class="w-full rounded-xl px-4 py-3 font-nunito text-sm border transition-all focus:outline-none"
-              style="border-color:#d4b896; color:#2c2318; background:#fef8f0;"
-              aria-required="true"
-              onfocus="this.style.borderColor='#2d5a27'; this.style.boxShadow='0 0 0 3px rgba(45,90,39,0.12)';"
-              onblur="this.style.borderColor='#d4b896'; this.style.boxShadow='none';"
-            />
-          </div>
-
-          <!-- Phone -->
-          <div>
-            <label for="v3-form-phone" class="block font-nunito font-semibold text-sm mb-1.5" style="color:#2c2318;">
-              Best Phone Number <span style="color:#c4622d;" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="tel"
-              id="v3-form-phone"
-              name="phone"
-              required
-              autocomplete="tel"
-              placeholder="(614) 555-0000"
-              class="w-full rounded-xl px-4 py-3 font-nunito text-sm border transition-all focus:outline-none"
-              style="border-color:#d4b896; color:#2c2318; background:#fef8f0;"
-              aria-required="true"
-              onfocus="this.style.borderColor='#2d5a27'; this.style.boxShadow='0 0 0 3px rgba(45,90,39,0.12)';"
-              onblur="this.style.borderColor='#d4b896'; this.style.boxShadow='none';"
-            />
-          </div>
-
-          <!-- Address -->
-          <div>
-            <label for="v3-form-address" class="block font-nunito font-semibold text-sm mb-1.5" style="color:#2c2318;">
-              Service Address
-            </label>
-            <input
-              type="text"
-              id="v3-form-address"
-              name="address"
-              autocomplete="street-address"
-              placeholder="123 Oak St, Columbus, OH"
-              class="w-full rounded-xl px-4 py-3 font-nunito text-sm border transition-all focus:outline-none"
-              style="border-color:#d4b896; color:#2c2318; background:#fef8f0;"
-              onfocus="this.style.borderColor='#2d5a27'; this.style.boxShadow='0 0 0 3px rgba(45,90,39,0.12)';"
-              onblur="this.style.borderColor='#d4b896'; this.style.boxShadow='none';"
-            />
-          </div>
-
-          <!-- Service type select -->
-          <div>
-            <label for="v3-form-service" class="block font-nunito font-semibold text-sm mb-1.5" style="color:#2c2318;">
-              What Do You Need Help With?
-            </label>
-            <select
-              id="v3-form-service"
-              name="service"
-              class="w-full rounded-xl px-4 py-3 font-nunito text-sm border transition-all focus:outline-none appearance-none"
-              style="border-color:#d4b896; color:#2c2318; background:#fef8f0;"
-              onfocus="this.style.borderColor='#2d5a27'; this.style.boxShadow='0 0 0 3px rgba(45,90,39,0.12)';"
-              onblur="this.style.borderColor='#d4b896'; this.style.boxShadow='none';"
-            >
-              <option value="">— Select a service —</option>
-              {business.services.map((s) => (
-                <option value={s.slug}>{s.title}</option>
-              ))}
-              <option value="other">Other / Not Sure</option>
-            </select>
-          </div>
-
-          <!-- Notes -->
-          <div>
-            <label for="v3-form-notes" class="block font-nunito font-semibold text-sm mb-1.5" style="color:#2c2318;">
-              Anything Else We Should Know? <span style="color:#8b7355;" class="font-normal">(optional)</span>
-            </label>
-            <textarea
-              id="v3-form-notes"
-              name="notes"
-              rows="3"
-              placeholder="e.g. Furnace won't start, it's getting cold in here..."
-              class="w-full rounded-xl px-4 py-3 font-nunito text-sm border transition-all focus:outline-none resize-none"
-              style="border-color:#d4b896; color:#2c2318; background:#fef8f0;"
-              onfocus="this.style.borderColor='#2d5a27'; this.style.boxShadow='0 0 0 3px rgba(45,90,39,0.12)';"
-              onblur="this.style.borderColor='#d4b896'; this.style.boxShadow='none';"
-            ></textarea>
-          </div>
-
-          <!-- Submit -->
-          <button
-            type="submit"
-            class="w-full text-white font-nunito font-bold text-lg py-4 px-6 rounded-xl transition-all hover:opacity-90 flex items-center justify-center gap-2"
-            style="background:#c4622d; box-shadow: 0 6px 24px rgba(196,98,45,0.3);"
+          <!-- Notepad top binding bar -->
+          <div
+            class="px-8 py-5"
+            style="background:#c4622d;"
           >
-            {business.form.submitLabel}
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-            </svg>
-          </button>
+            <p class="font-playfair italic text-white font-semibold" style="font-size:1.25rem;">Tell us about your home</p>
+            <p class="font-nunito text-sm mt-0.5" style="color:rgba(255,255,255,0.75);">We'll call back within the hour</p>
+          </div>
 
-          <p class="text-center font-nunito text-xs" style="color:#8b7355;">
-            We'll call within the hour. We never share your information.
-          </p>
-        </form>
+          <!-- Red left margin line + faint lines -->
+          <div class="relative" style="background:#fffff5;">
+            <!-- Faint horizontal lines background -->
+            <div class="absolute inset-0 pointer-events-none notepad-lines" aria-hidden="true"></div>
+            <!-- Red left margin -->
+            <div class="absolute top-0 bottom-0 left-14 w-0.5 pointer-events-none" style="background:rgba(196,98,45,0.2);" aria-hidden="true"></div>
+
+            <!-- Form content -->
+            <form
+              name="v3-quote-request"
+              method="POST"
+              class="relative z-10 px-8 pt-6 pb-8 space-y-6"
+              aria-label="Schedule a service visit"
+              novalidate
+            >
+              <!-- Spiral holes left decoration -->
+              <div class="absolute left-5 top-6 bottom-6 flex flex-col justify-around" aria-hidden="true">
+                {[0,1,2,3,4,5,6,7].map(() => (
+                  <div class="w-3 h-3 rounded-full" style="background:#e8d5b8; border: 1px solid #c4b090;"></div>
+                ))}
+              </div>
+
+              <!-- Name -->
+              <div class="ml-6">
+                <label for="v3n-name" class="block font-nunito font-semibold text-sm mb-1" style="color:#5a4a38;">
+                  Your name <span style="color:#c4622d;" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="v3n-name"
+                  name="name"
+                  required
+                  autocomplete="name"
+                  placeholder="Jane & Bob Smith"
+                  class="w-full py-2 px-0 font-nunito text-sm border-0 border-b focus:outline-none focus:ring-0 bg-transparent transition-colors"
+                  style="border-bottom: 1.5px solid #c4b090; color:#2c2318;"
+                  aria-required="true"
+                  onfocus="this.style.borderColor='#2d5a27';"
+                  onblur="this.style.borderColor='#c4b090';"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="ml-6">
+                <label for="v3n-phone" class="block font-nunito font-semibold text-sm mb-1" style="color:#5a4a38;">
+                  Best phone number <span style="color:#c4622d;" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="v3n-phone"
+                  name="phone"
+                  required
+                  autocomplete="tel"
+                  placeholder="(614) 555-0000"
+                  class="w-full py-2 px-0 font-nunito text-sm border-0 border-b focus:outline-none focus:ring-0 bg-transparent transition-colors"
+                  style="border-bottom: 1.5px solid #c4b090; color:#2c2318;"
+                  aria-required="true"
+                  onfocus="this.style.borderColor='#2d5a27';"
+                  onblur="this.style.borderColor='#c4b090';"
+                />
+              </div>
+
+              <!-- Address -->
+              <div class="ml-6">
+                <label for="v3n-address" class="block font-nunito font-semibold text-sm mb-1" style="color:#5a4a38;">
+                  Service address
+                </label>
+                <input
+                  type="text"
+                  id="v3n-address"
+                  name="address"
+                  autocomplete="street-address"
+                  placeholder="123 Oak St, Columbus, OH"
+                  class="w-full py-2 px-0 font-nunito text-sm border-0 border-b focus:outline-none focus:ring-0 bg-transparent transition-colors"
+                  style="border-bottom: 1.5px solid #c4b090; color:#2c2318;"
+                  onfocus="this.style.borderColor='#2d5a27';"
+                  onblur="this.style.borderColor='#c4b090';"
+                />
+              </div>
+
+              <!-- Service type -->
+              <div class="ml-6">
+                <label for="v3n-service" class="block font-nunito font-semibold text-sm mb-1" style="color:#5a4a38;">
+                  What do you need help with?
+                </label>
+                <select
+                  id="v3n-service"
+                  name="service"
+                  class="w-full py-2 px-0 font-nunito text-sm border-0 border-b focus:outline-none focus:ring-0 bg-transparent appearance-none transition-colors"
+                  style="border-bottom: 1.5px solid #c4b090; color:#2c2318;"
+                  onfocus="this.style.borderColor='#2d5a27';"
+                  onblur="this.style.borderColor='#c4b090';"
+                >
+                  <option value="">— pick a service —</option>
+                  {business.services.map((s) => (
+                    <option value={s.slug}>{s.title}</option>
+                  ))}
+                  <option value="other">Other / not sure</option>
+                </select>
+              </div>
+
+              <!-- Notes -->
+              <div class="ml-6">
+                <label for="v3n-notes" class="block font-nunito font-semibold text-sm mb-1" style="color:#5a4a38;">
+                  Anything else? <span class="font-normal" style="color:#a08060;">(optional)</span>
+                </label>
+                <textarea
+                  id="v3n-notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="e.g. Furnace won't start, getting cold in here..."
+                  class="w-full py-2 px-0 font-nunito text-sm border-0 border-b focus:outline-none focus:ring-0 bg-transparent resize-none transition-colors"
+                  style="border-bottom: 1.5px solid #c4b090; color:#2c2318;"
+                  onfocus="this.style.borderColor='#2d5a27';"
+                  onblur="this.style.borderColor='#c4b090';"
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div class="ml-6 pt-2">
+                <button
+                  type="submit"
+                  class="w-full font-nunito font-bold text-white py-4 px-6 rounded-lg transition-opacity hover:opacity-90 flex items-center justify-center gap-3"
+                  style="background:#2d5a27; font-size:1rem;"
+                >
+                  {business.form.submitLabel}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                  </svg>
+                </button>
+                <p class="text-center font-nunito text-xs mt-3" style="color:#a08060;">
+                  We'll call within the hour. Your information stays private.
+                </p>
+              </div>
+
+            </form>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -219,13 +226,13 @@ import { business } from '../../data/v3';
 </section>
 
 <style>
-  .quote-texture {
+  .notepad-lines {
     background-image: repeating-linear-gradient(
-      -45deg,
       transparent,
-      transparent 50px,
-      rgba(45, 90, 39, 0.015) 50px,
-      rgba(45, 90, 39, 0.015) 100px
+      transparent 31px,
+      rgba(196,176,144,0.3) 31px,
+      rgba(196,176,144,0.3) 32px
     );
+    background-size: 100% 32px;
   }
 </style>

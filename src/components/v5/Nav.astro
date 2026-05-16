@@ -4,130 +4,131 @@ import { business } from '../../data/v5';
 
 <header
   id="site-nav"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-700"
   role="banner"
   aria-label="Site header"
 >
+  <!-- Desktop nav -->
   <nav
-    class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between gap-8"
+    class="hidden lg:grid nav-grid max-w-none px-12 h-20 items-center"
+    style="grid-template-columns: 1fr auto 1fr;"
     aria-label="Main navigation"
   >
-    <!-- Logo: wordmark only, small caps Outfit -->
+    <!-- Left: thin gold lines flanking wordmark (left side) -->
+    <div class="flex items-center gap-0" aria-hidden="true">
+      <div class="flex-1 h-px nav-rule"></div>
+    </div>
+
+    <!-- Center: Logotype -->
     <a
       href="/"
-      class="flex-shrink-0 group"
+      class="flex flex-col items-center gap-0.5 px-10 group"
       aria-label={`${business.name} — return to top`}
     >
-      <div class="flex flex-col leading-none">
-        <span
-          class="font-outfit font-semibold tracking-[0.18em] uppercase text-luxury-cream text-sm transition-colors group-hover:text-luxury-gold"
-          style="letter-spacing: 0.18em;"
-        >
-          Cedar Hill
-        </span>
-        <span
-          class="font-outfit font-light tracking-[0.08em] uppercase text-luxury-gold/70 text-[10px] mt-0.5"
-          style="letter-spacing: 0.12em;"
-        >
-          Custom Electric
-        </span>
-      </div>
+      <span
+        class="font-cormorant italic text-luxury-cream tracking-wide leading-none transition-colors duration-300 group-hover:text-luxury-gold"
+        style="font-size: 1.5rem;"
+      >
+        Cedar Hill
+      </span>
+      <span
+        class="font-outfit font-light text-luxury-gold/60 tracking-[0.22em] uppercase leading-none transition-colors duration-300 group-hover:text-luxury-gold/90"
+        style="font-size: 0.6rem;"
+      >
+        Custom Electric
+      </span>
     </a>
 
-    <!-- Desktop nav links — minimal, refined -->
-    <ul
-      class="hidden lg:flex items-center gap-8 list-none m-0 p-0"
-      role="list"
-    >
-      {[
-        { label: 'Services', href: '#services' },
-        { label: 'Where We Work', href: '#service-area' },
-        { label: 'Our Approach', href: '#why-us' },
-        { label: 'Portfolio', href: '#portfolio' },
-      ].map(link => (
-        <li>
-          <a
-            href={link.href}
-            class="font-outfit font-light text-sm tracking-wide text-luxury-cream/70 hover:text-luxury-cream transition-colors duration-200"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <!-- Right side: phone (discreet) + consultation link -->
-    <div class="flex items-center gap-6 flex-shrink-0">
-      <a
-        href={business.phoneHref}
-        class="hidden md:block font-outfit font-medium text-sm text-luxury-cream/60 hover:text-luxury-gold transition-colors duration-200 tabular-nums"
-        aria-label={`Call Cedar Hill at ${business.phone}`}
-      >
-        {business.phone}
-      </a>
-      <div class="hidden md:block w-px h-4 bg-luxury-cream/20" aria-hidden="true"></div>
-      <a
-        href="#quote"
-        class="font-outfit font-light text-sm tracking-wide text-luxury-gold hover:text-luxury-gold-light transition-colors duration-200 border-b border-luxury-gold/40 hover:border-luxury-gold pb-px"
-      >
-        Schedule Consultation
-      </a>
-
-      <!-- Mobile menu button -->
-      <button
-        id="mobile-menu-btn"
-        type="button"
-        class="lg:hidden flex flex-col gap-1.5 p-1 group"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="block w-5 h-px bg-luxury-cream/70 transition-all group-hover:bg-luxury-gold"></span>
-        <span class="block w-3.5 h-px bg-luxury-cream/70 transition-all group-hover:bg-luxury-gold"></span>
-        <span class="block w-5 h-px bg-luxury-cream/70 transition-all group-hover:bg-luxury-gold"></span>
-      </button>
+    <!-- Right: gold line + two discreet links -->
+    <div class="flex items-center gap-0">
+      <div class="flex-1 h-px nav-rule"></div>
+      <div class="flex items-center gap-8 pl-10">
+        <a
+          href="#portfolio"
+          class="font-outfit font-light text-luxury-cream/50 hover:text-luxury-cream transition-colors duration-300"
+          style="font-size: 0.75rem; letter-spacing: 0.1em;"
+        >
+          Portfolio
+        </a>
+        <a
+          href="#quote"
+          class="font-outfit font-light text-luxury-gold/70 hover:text-luxury-gold transition-colors duration-300 border-b border-luxury-gold/30 hover:border-luxury-gold/70 pb-px"
+          style="font-size: 0.75rem; letter-spacing: 0.1em;"
+        >
+          Inquire
+        </a>
+      </div>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
+  <!-- Mobile nav -->
+  <div class="lg:hidden flex items-center justify-between px-6 h-16">
+    <a
+      href="/"
+      class="flex flex-col gap-0.5"
+      aria-label={`${business.name} — return to top`}
+    >
+      <span class="font-cormorant italic text-luxury-cream leading-none" style="font-size: 1.125rem;">
+        Cedar Hill
+      </span>
+      <span class="font-outfit font-light text-luxury-gold/50 tracking-[0.2em] uppercase leading-none" style="font-size: 0.55rem;">
+        Custom Electric
+      </span>
+    </a>
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      class="flex flex-col gap-[5px] p-2 group"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="block w-5 h-px bg-luxury-cream/60 transition-all group-hover:bg-luxury-gold"></span>
+      <span class="block w-3 h-px bg-luxury-cream/60 transition-all group-hover:bg-luxury-gold ml-auto"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu overlay -->
   <div
     id="mobile-menu"
-    class="lg:hidden hidden border-t border-luxury-cream/10"
-    style="background: rgba(28,37,34,0.97); backdrop-filter: blur(16px);"
+    class="lg:hidden hidden"
+    style="background: rgba(28,37,34,0.98); backdrop-filter: blur(20px);"
     role="dialog"
     aria-label="Mobile navigation"
   >
-    <nav class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
+    <div class="px-6 pt-4 pb-10 flex flex-col gap-8">
+      <div class="w-full h-px bg-luxury-gold/20"></div>
       {[
         { label: 'Services', href: '#services' },
-        { label: 'Where We Work', href: '#service-area' },
+        { label: 'Selected Work', href: '#portfolio' },
         { label: 'Our Approach', href: '#why-us' },
-        { label: 'Portfolio', href: '#portfolio' },
-        { label: 'Testimonials', href: '#reviews' },
+        { label: 'Where We Work', href: '#service-area' },
+        { label: 'Inquire', href: '#quote' },
       ].map(link => (
         <a
           href={link.href}
-          class="font-outfit font-light text-lg text-luxury-cream/80 hover:text-luxury-cream transition-colors mobile-nav-link"
+          class="font-cormorant italic text-luxury-cream/80 hover:text-luxury-gold transition-colors mobile-nav-link"
+          style="font-size: 1.75rem;"
         >
           {link.label}
         </a>
       ))}
-      <hr class="border-luxury-cream/10 my-2" />
+      <div class="w-full h-px bg-luxury-gold/20"></div>
       <a
         href={business.phoneHref}
-        class="font-outfit font-medium text-luxury-gold text-base"
+        class="font-outfit font-light text-luxury-gold/60 text-sm tracking-wide"
       >
         {business.phone}
       </a>
-      <a
-        href="#quote"
-        class="inline-block font-outfit font-light text-sm tracking-widest uppercase text-luxury-dark bg-luxury-gold hover:bg-luxury-gold-light transition-colors px-6 py-3 text-center"
-      >
-        Schedule Consultation
-      </a>
-    </nav>
+    </div>
   </div>
 </header>
+
+<style>
+  .nav-rule {
+    background: linear-gradient(to right, transparent, rgba(201,169,110,0.25));
+  }
+</style>
 
 <script>
   const nav = document.getElementById('site-nav');
@@ -135,30 +136,27 @@ import { business } from '../../data/v5';
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-  // Scroll: transition from transparent to dark
   function updateNav() {
     if (!nav) return;
-    if (window.scrollY > 60) {
-      nav.style.background = 'rgba(28,37,34,0.97)';
-      nav.style.boxShadow = '0 1px 0 rgba(201,169,110,0.15)';
-      nav.style.backdropFilter = 'blur(16px)';
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(28,37,34,0.94)';
+      nav.style.backdropFilter = 'blur(20px)';
+      nav.style.borderBottom = '1px solid rgba(201,169,110,0.12)';
     } else {
       nav.style.background = 'transparent';
-      nav.style.boxShadow = 'none';
       nav.style.backdropFilter = 'none';
+      nav.style.borderBottom = 'none';
     }
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  // Mobile menu toggle
   mobileMenuBtn?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.contains('hidden') === false;
+    const isOpen = !mobileMenu?.classList.contains('hidden');
     mobileMenu?.classList.toggle('hidden');
     mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
   });
 
-  // Close mobile menu on link click
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden');

@@ -1,117 +1,183 @@
 ---
 import { business } from '../../data/v3';
 
-const promiseIcons = [
-  // Handshake / honesty
-  `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
-  // Calendar / years of experience
-  `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>`,
-  // Shield check / guarantee
-  `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`,
-  // Home / neighbors
-  `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+const timeline = [
+  { year: '1981', label: 'Founded', detail: 'Earl Kowalczyk starts the business with one truck and a handshake promise.' },
+  { year: '1998', label: 'Mike joins', detail: "Earl's son Mike joins the crew — second generation begins." },
+  { year: '2014', label: 'Tyler joins', detail: "Mike's son Tyler comes on board, completing the three-generation circle." },
+  { year: '2023', label: 'Today', detail: 'Three generations, one standard. Still the same promise Earl made in 1981.' },
 ];
 ---
 
+<!-- OUR HISTORY TIMELINE -->
+<section class="py-20 lg:py-28 overflow-hidden" style="background:#fef8f0;" aria-labelledby="timeline-heading">
+  <div class="max-w-5xl mx-auto px-6 sm:px-8">
+
+    <div class="text-center mb-16">
+      <p class="font-nunito text-xs mb-4" style="color:#a08060; letter-spacing:0.12em;">— our history —</p>
+      <h2
+        id="timeline-heading"
+        class="font-playfair italic leading-tight"
+        style="font-size:clamp(2rem, 4.5vw, 3.25rem); color:#2c2318;"
+      >
+        A family story, four decades long.
+      </h2>
+    </div>
+
+    <!-- Horizontal timeline — desktop -->
+    <div class="hidden md:block relative pt-8 pb-16" aria-label="Our history timeline">
+      <!-- Green line -->
+      <div
+        class="absolute left-0 right-0 h-0.5 top-8"
+        style="background:#2d5a27; margin: 0 4%;"
+        aria-hidden="true"
+      ></div>
+
+      <div class="grid grid-cols-4 gap-4">
+        {timeline.map((item, i) => (
+          <div class="relative flex flex-col items-center text-center px-2">
+            <!-- Terra-cotta dot -->
+            <div
+              class="w-5 h-5 rounded-full flex-shrink-0 mb-6 relative z-10"
+              style="background:#c4622d; box-shadow: 0 0 0 5px #fef8f0, 0 0 0 7px #c4622d;"
+              aria-hidden="true"
+            ></div>
+            <!-- Year -->
+            <p
+              class="font-playfair italic font-bold mb-1"
+              style="font-size:1.4rem; color:#2d5a27;"
+            >
+              {item.year}
+            </p>
+            <!-- Label -->
+            <p class="font-nunito font-semibold text-sm mb-2" style="color:#2c2318;">{item.label}</p>
+            <!-- Detail -->
+            <p class="font-nunito text-xs leading-relaxed" style="color:#a08060;">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile timeline — vertical -->
+    <div class="md:hidden relative pl-8" aria-label="Our history timeline">
+      <!-- Vertical green line -->
+      <div
+        class="absolute left-3 top-0 bottom-0 w-0.5"
+        style="background:#2d5a27;"
+        aria-hidden="true"
+      ></div>
+
+      <div class="space-y-10">
+        {timeline.map((item) => (
+          <div class="relative">
+            <!-- Dot -->
+            <div
+              class="absolute -left-8 mt-1 w-4 h-4 rounded-full"
+              style="background:#c4622d; box-shadow: 0 0 0 4px #fef8f0, 0 0 0 6px #c4622d;"
+              aria-hidden="true"
+            ></div>
+            <p class="font-playfair italic font-bold text-xl mb-0.5" style="color:#2d5a27;">{item.year} — {item.label}</p>
+            <p class="font-nunito text-sm leading-relaxed" style="color:#7a6552;">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY CHOOSE US — numbered list -->
 <section id="why-us" class="py-20 lg:py-28" style="background:#f5ead8;" aria-labelledby="why-us-heading">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
 
-    <!-- Two-column layout: story on left, checklist on right -->
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+    <!-- Two-column layout -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-      <!-- Left: Owner story / quote (editorial, italic serif) -->
-      <div class="lg:sticky lg:top-24">
-        <span class="inline-block font-nunito font-semibold text-sm uppercase tracking-widest mb-5" style="color:#c4622d;">
-          Our Promise
-        </span>
+      <!-- Left: editorial headline + story -->
+      <div>
+        <p class="font-nunito text-xs mb-6" style="color:#a08060; letter-spacing:0.12em;">— our promise —</p>
         <h2
           id="why-us-heading"
-          class="font-playfair font-bold leading-tight mb-6"
-          style="font-size: clamp(2rem, 4.5vw, 3.25rem); color:#2d5a27;"
+          class="font-playfair italic leading-tight mb-10"
+          style="font-size:clamp(2.25rem, 5vw, 3.75rem); color:#2c2318;"
         >
-          Three Generations.<br/>One Standard.
+          Three generations.<br/>
+          <span style="color:#2d5a27;">One standard.</span>
         </h2>
 
-        <!-- Large italic story quote -->
-        <blockquote class="mb-8">
+        <!-- Story quote -->
+        <blockquote class="mb-10">
           <p
-            class="font-playfair italic leading-[1.65]"
-            style="font-size: clamp(1.1rem, 2vw, 1.35rem); color:#2c2318;"
+            class="font-playfair italic leading-[1.7]"
+            style="font-size:1.15rem; color:#5a4a38;"
           >
             "{business.story}"
           </p>
-          <footer class="mt-4 flex items-center gap-3">
-            <!-- Initials avatar -->
-            <div
-              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-playfair font-bold text-white text-lg"
-              style="background:#2d5a27;"
-              aria-hidden="true"
+          <footer class="mt-5">
+            <span
+              class="font-playfair"
+              style="font-style:italic; font-size:1.1rem; color:#c4622d; transform:rotate(-1deg) skewX(-4deg); display:inline-block;"
             >
-              DK
-            </div>
-            <div>
-              <cite class="not-italic font-nunito font-bold block" style="color:#2d5a27; font-size:0.95rem;">{business.ownerName}</cite>
-              <span class="font-nunito text-xs" style="color:#8b7355;">3rd Generation · Est. {business.founded}</span>
-            </div>
+              — {business.ownerName}
+            </span>
           </footer>
         </blockquote>
 
-        <!-- Stat bar -->
-        <div class="grid grid-cols-3 gap-4 rounded-2xl p-5 border" style="background:#fef8f0; border-color:#e8d5b8;">
-          {[
-            { num: "44", label: "Years Serving Columbus" },
-            { num: "3rd", label: "Generation Owner" },
-            { num: "A+", label: "BBB Rating" },
-          ].map((s) => (
-            <div class="text-center">
-              <div class="font-playfair font-bold leading-none mb-1" style="font-size:1.75rem; color:#c4622d;">{s.num}</div>
-              <div class="font-nunito text-xs leading-tight" style="color:#8b7355;">{s.label}</div>
-            </div>
-          ))}
+        <!-- Stat strip -->
+        <div class="flex items-center gap-8 pt-8" style="border-top: 1px solid #d4b896;">
+          <div class="text-center">
+            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">44</p>
+            <p class="font-nunito text-xs" style="color:#a08060;">years serving Columbus</p>
+          </div>
+          <div class="w-px h-12" style="background:#d4b896;"></div>
+          <div class="text-center">
+            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">3rd</p>
+            <p class="font-nunito text-xs" style="color:#a08060;">generation family</p>
+          </div>
+          <div class="w-px h-12" style="background:#d4b896;"></div>
+          <div class="text-center">
+            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">A+</p>
+            <p class="font-nunito text-xs" style="color:#a08060;">BBB rating</p>
+          </div>
         </div>
       </div>
 
-      <!-- Right: 4 promise items as warm checklist -->
-      <div class="space-y-5" role="list" aria-label="Our promises to you">
-        {business.whyUs.map((item, i) => (
-          <div
-            class="group rounded-2xl p-6 border transition-all duration-300"
-            style="background:#fef8f0; border-color:#e8d5b8;"
-            role="listitem"
-          >
-            <div class="flex items-start gap-4">
-              <!-- Green circle icon -->
-              <div
-                class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors"
-                style="background:#2d5a27; color:white;"
+      <!-- Right: big numbered list -->
+      <div>
+        <ol class="list-none m-0 p-0 space-y-12" aria-label="Why choose us">
+          {business.whyUs.map((item, i) => (
+            <li class="flex gap-6 items-start">
+              <!-- Big terra-cotta number -->
+              <span
+                class="font-playfair font-bold flex-shrink-0 leading-none"
+                style="font-size:4rem; color:#c4622d; opacity:0.35; line-height:1; margin-top:-0.5rem; font-style:italic; min-width:3rem; text-align:right;"
                 aria-hidden="true"
               >
-                <span set:html={promiseIcons[i]} />
-              </div>
-              <div class="flex-1">
-                <h3 class="font-playfair font-bold text-xl leading-tight mb-1" style="color:#2c2318;">
+                {i + 1}
+              </span>
+              <div class="flex-1 pt-1">
+                <h3
+                  class="font-playfair italic font-semibold mb-2 leading-tight"
+                  style="font-size:1.4rem; color:#2c2318;"
+                >
                   {item.title}
                 </h3>
-                <p class="font-playfair italic font-semibold text-sm mb-2" style="color:#c4622d;">
-                  {item.subtitle}
-                </p>
-                <p class="font-nunito text-sm leading-relaxed" style="color:#8b7355;">
-                  {item.description}
-                </p>
+                <p class="font-nunito text-sm font-semibold mb-2" style="color:#c4622d;">{item.subtitle}</p>
+                <p class="font-nunito leading-relaxed" style="color:#7a6552;">{item.description}</p>
               </div>
-            </div>
-          </div>
-        ))}
+            </li>
+          ))}
+        </ol>
 
-        <!-- Schedule CTA at bottom of checklist -->
-        <div class="pt-2">
+        <!-- CTA -->
+        <div class="mt-12">
           <a
             href="#quote"
-            class="flex items-center justify-center gap-2 w-full font-nunito font-bold text-white py-4 px-6 rounded-xl transition-all hover:opacity-90"
-            style="background:#2d5a27; box-shadow: 0 4px 20px rgba(45,90,39,0.25);"
+            class="inline-flex items-center gap-3 font-nunito font-bold text-white px-8 py-4 rounded-lg transition-opacity hover:opacity-90"
+            style="background:#c4622d; font-size:1rem;"
           >
-            Experience the Difference — Schedule a Visit
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            Experience the difference
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
             </svg>
           </a>
@@ -121,11 +187,3 @@ const promiseIcons = [
     </div>
   </div>
 </section>
-
-<style>
-  section [role="listitem"]:hover {
-    box-shadow: 0 6px 24px rgba(44, 35, 24, 0.08);
-    transform: translateY(-1px);
-    border-color: #c4622d;
-  }
-</style>

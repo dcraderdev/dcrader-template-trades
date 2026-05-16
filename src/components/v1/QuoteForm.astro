@@ -2,163 +2,271 @@
 import { business } from '../../data/v1';
 ---
 
-<section id="quote" class="relative bg-navy-800 py-20 lg:py-28" aria-labelledby="quote-heading">
-  <!-- Top accent -->
-  <div class="absolute top-0 left-0 right-0 h-1 bg-orange-500" aria-hidden="true"></div>
+<section
+  id="quote"
+  class="relative py-20 lg:py-28"
+  style="background:#0c1d38;"
+  aria-labelledby="quote-heading"
+>
+  <!-- Top orange stripe -->
+  <div class="absolute top-0 left-0 right-0 h-1" style="background:#f97316;" aria-hidden="true"></div>
 
-  <!-- Background texture -->
-  <div class="absolute inset-0 quote-bg pointer-events-none" aria-hidden="true"></div>
+  <!-- Diagonal stripe texture -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+    style="
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 32px,
+        rgba(249,115,22,0.025) 32px,
+        rgba(249,115,22,0.025) 64px
+      );
+    "
+  ></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-      <!-- Left: pitch copy -->
+      <!-- LEFT: Pitch copy -->
       <div class="text-white">
-        <span class="inline-block text-orange-400 font-body font-semibold text-sm uppercase tracking-widest mb-4">
-          Free Estimate
-        </span>
+        <div class="flex items-center gap-3 mb-4" aria-hidden="true">
+          <div class="h-px w-12" style="background:#f97316;"></div>
+          <span class="font-body font-bold text-xs uppercase tracking-widest" style="color:#f97316;">
+            Free Estimate
+          </span>
+        </div>
+
         <h2
           id="quote-heading"
-          class="font-display font-black uppercase mb-4 leading-tight"
-          style="font-size: clamp(2.5rem, 6vw, 4.5rem);"
+          class="font-display font-black uppercase leading-none mb-4"
+          style="font-size: clamp(2.75rem, 7vw, 5rem); letter-spacing:-0.02em;"
         >
           {business.form.headline}
         </h2>
-        <p class="text-2xl text-orange-400 font-display font-bold uppercase mb-6">
+
+        <p
+          class="font-display font-black uppercase mb-6"
+          style="font-size:1.5rem; color:#f97316; letter-spacing:0.04em;"
+        >
           {business.form.subheadline}
         </p>
-        <p class="text-slate-300 font-body text-lg mb-10 leading-relaxed">
+
+        <p class="font-body text-lg mb-10 leading-relaxed" style="color:rgba(255,255,255,0.6);">
           {business.form.note}
         </p>
 
-        <!-- Social proof stat -->
-        <div class="flex items-center gap-5 p-6 bg-white/5 border border-white/10 rounded-2xl mb-8">
-          <div class="font-display font-black text-orange-500 leading-none flex-shrink-0"
-            style="font-size: 3rem;">{business.form.calloutStat}</div>
-          <div class="text-slate-300 font-body">{business.form.calloutLabel}</div>
+        <!-- Social proof callout block — left-border accent, no rounded corners -->
+        <div
+          class="flex items-center gap-5 p-6 mb-8"
+          style="background:rgba(255,255,255,0.05); border-left:4px solid #f97316;"
+        >
+          <div
+            class="font-display font-black leading-none flex-shrink-0"
+            style="font-size:3.5rem; color:#f97316;"
+          >{business.form.calloutStat}</div>
+          <div class="font-body text-base" style="color:rgba(255,255,255,0.7);">
+            {business.form.calloutLabel}
+          </div>
         </div>
 
-        <!-- Phone as alternative -->
-        <div class="flex flex-col gap-2">
-          <p class="text-slate-400 font-body text-sm uppercase tracking-widest">Prefer to call?</p>
+        <!-- Alternative: call us -->
+        <div>
+          <p class="font-body font-bold text-xs uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.4);">
+            Prefer to call?
+          </p>
           <a
             href={business.phoneHref}
-            class="inline-flex items-center gap-3 text-white hover:text-orange-400 transition-colors"
+            class="inline-flex items-center gap-3 group"
             aria-label={`Call us at ${business.phone}`}
           >
-            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div
+              class="w-11 h-11 flex items-center justify-center flex-shrink-0"
+              style="background:#f97316;"
+              aria-hidden="true"
+            >
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
               </svg>
             </div>
-            <span class="font-display font-black text-3xl">{business.phone}</span>
+            <span
+              class="font-display font-black text-white group-hover:text-orange-400 transition-colors"
+              style="font-size:2rem;"
+            >{business.phone}</span>
           </a>
         </div>
       </div>
 
-      <!-- Right: form -->
-      <div class="bg-white rounded-2xl p-8 shadow-[0_32px_80px_rgba(0,0,0,0.5)]">
-        <form
-          name="quote-request"
-          method="POST"
-          class="space-y-5"
-          aria-label="Request a service quote"
-          novalidate
+      <!-- RIGHT: "Clipboard Ticket" form card -->
+      <div class="shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+        <!-- Clipboard header bar — solid orange -->
+        <div
+          class="px-6 py-4 flex items-center justify-between"
+          style="background:#f97316;"
         >
-          <!-- Name -->
-          <div>
-            <label for="form-name" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
-              Full Name <span class="text-orange-500" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="form-name"
-              name="name"
-              required
-              autocomplete="name"
-              placeholder="Jane Smith"
-              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-              aria-required="true"
-            />
-          </div>
-
-          <!-- Phone -->
-          <div>
-            <label for="form-phone" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
-              Best Phone Number <span class="text-orange-500" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="tel"
-              id="form-phone"
-              name="phone"
-              required
-              autocomplete="tel"
-              placeholder="(619) 555-0000"
-              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-              aria-required="true"
-            />
-          </div>
-
-          <!-- Address -->
-          <div>
-            <label for="form-address" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
-              Service Address
-            </label>
-            <input
-              type="text"
-              id="form-address"
-              name="address"
-              autocomplete="street-address"
-              placeholder="123 Main St, San Diego, CA"
-              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-            />
-          </div>
-
-          <!-- Problem description -->
-          <div>
-            <label for="form-problem" class="block text-navy-700 font-body font-semibold text-sm mb-1.5">
-              Describe the Problem <span class="text-orange-500" aria-hidden="true">*</span>
-            </label>
-            <textarea
-              id="form-problem"
-              name="problem"
-              required
-              rows="4"
-              placeholder="e.g. Kitchen drain is completely clogged, water backing up in sink..."
-              class="w-full border border-slate-300 rounded-xl px-4 py-3 text-navy-700 font-body placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
-              aria-required="true"
-            ></textarea>
-          </div>
-
-          <!-- Submit -->
-          <button
-            type="submit"
-            class="w-full bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-body font-bold text-lg py-4 px-6 rounded-xl transition-all hover:scale-[1.01] active:scale-100 shadow-[0_8px_24px_rgba(249,115,22,0.4)] flex items-center justify-center gap-2"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+          <div class="flex items-center gap-3">
+            <!-- Clipboard icon -->
+            <svg class="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
             </svg>
-            {business.form.submitLabel}
-          </button>
+            <span class="font-display font-black uppercase text-white text-lg tracking-widest">
+              SERVICE REQUEST TICKET
+            </span>
+          </div>
+          <!-- Ticket number badge -->
+          <span class="font-body font-bold text-white/60 text-xs uppercase tracking-widest">
+            #SD-{new Date().getFullYear()}
+          </span>
+        </div>
 
-          <p class="text-center text-slate-500 font-body text-xs">
-            By submitting, you agree to receive a call back from our team. We'll never spam you.
-          </p>
-        </form>
+        <!-- Clipboard hole punch detail -->
+        <div
+          class="flex justify-center py-3"
+          style="background:#fff; border-bottom:2px dashed #e2e8f0;"
+          aria-hidden="true"
+        >
+          <div class="w-8 h-8 flex items-center justify-center">
+            <div class="w-5 h-5 rounded-full" style="background:#f1f5f9; border:2px solid #e2e8f0;"></div>
+          </div>
+        </div>
+
+        <!-- Form body -->
+        <div class="bg-white px-6 py-6">
+          <form
+            name="quote-request"
+            method="POST"
+            class="space-y-0"
+            aria-label="Request a service quote"
+            novalidate
+          >
+            <!-- Full Name -->
+            <div class="pb-5" style="border-bottom:1px dashed #e2e8f0;">
+              <label
+                for="form-name"
+                class="block font-body font-bold text-xs uppercase tracking-widest mb-2"
+                style="color:#64748b;"
+              >
+                Full Name <span style="color:#f97316;" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="form-name"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Jane Smith"
+                class="w-full font-body text-base bg-transparent placeholder:text-slate-300 focus:outline-none transition-colors"
+                style="color:#0f172a; border:none; border-bottom:2px solid #e2e8f0; padding:0.5rem 0; border-radius:0;"
+                onfocus="this.style.borderBottomColor='#f97316'"
+                onblur="this.style.borderBottomColor='#e2e8f0'"
+                aria-required="true"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div class="py-5" style="border-bottom:1px dashed #e2e8f0;">
+              <label
+                for="form-phone"
+                class="block font-body font-bold text-xs uppercase tracking-widest mb-2"
+                style="color:#64748b;"
+              >
+                Best Phone Number <span style="color:#f97316;" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="tel"
+                id="form-phone"
+                name="phone"
+                required
+                autocomplete="tel"
+                placeholder="(619) 555-0000"
+                class="w-full font-body text-base bg-transparent placeholder:text-slate-300 focus:outline-none transition-colors"
+                style="color:#0f172a; border:none; border-bottom:2px solid #e2e8f0; padding:0.5rem 0; border-radius:0;"
+                onfocus="this.style.borderBottomColor='#f97316'"
+                onblur="this.style.borderBottomColor='#e2e8f0'"
+                aria-required="true"
+              />
+            </div>
+
+            <!-- Service Address -->
+            <div class="py-5" style="border-bottom:1px dashed #e2e8f0;">
+              <label
+                for="form-address"
+                class="block font-body font-bold text-xs uppercase tracking-widest mb-2"
+                style="color:#64748b;"
+              >
+                Service Address
+              </label>
+              <input
+                type="text"
+                id="form-address"
+                name="address"
+                autocomplete="street-address"
+                placeholder="123 Main St, San Diego, CA"
+                class="w-full font-body text-base bg-transparent placeholder:text-slate-300 focus:outline-none transition-colors"
+                style="color:#0f172a; border:none; border-bottom:2px solid #e2e8f0; padding:0.5rem 0; border-radius:0;"
+                onfocus="this.style.borderBottomColor='#f97316'"
+                onblur="this.style.borderBottomColor='#e2e8f0'"
+              />
+            </div>
+
+            <!-- Problem description -->
+            <div class="pt-5 pb-6">
+              <label
+                for="form-problem"
+                class="block font-body font-bold text-xs uppercase tracking-widest mb-2"
+                style="color:#64748b;"
+              >
+                Describe the Problem <span style="color:#f97316;" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="form-problem"
+                name="problem"
+                required
+                rows="4"
+                placeholder="e.g. Kitchen drain is completely clogged, water backing up in sink..."
+                class="w-full font-body text-base bg-transparent placeholder:text-slate-300 focus:outline-none resize-none transition-colors"
+                style="color:#0f172a; border:none; border-bottom:2px solid #e2e8f0; padding:0.5rem 0; border-radius:0;"
+                onfocus="this.style.borderBottomColor='#f97316'"
+                onblur="this.style.borderBottomColor='#e2e8f0'"
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <!-- Submit — full width, sharp, orange, all caps -->
+            <button
+              type="submit"
+              class="w-full font-display font-black uppercase text-white text-lg tracking-widest py-4 px-6 transition-opacity hover:opacity-90 flex items-center justify-center gap-3"
+              style="background:#f97316; border-radius:0;"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+              </svg>
+              {business.form.submitLabel}
+            </button>
+
+            <!-- Fine print -->
+            <p class="text-center font-body text-xs mt-4" style="color:#94a3b8;">
+              We'll call back within 15 minutes. No spam, ever.
+            </p>
+          </form>
+        </div>
+
+        <!-- Bottom clipboard edge -->
+        <div
+          class="py-3 flex items-center justify-center gap-2"
+          style="background:#f8fafc; border-top:2px dashed #e2e8f0; border:1px solid #e2e8f0;"
+          aria-hidden="true"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#94a3b8;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/>
+          </svg>
+          <span class="font-body text-xs font-semibold uppercase tracking-widest" style="color:#94a3b8;">
+            Licensed · Bonded · Insured · {business.license}
+          </span>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
-
-<style>
-  .quote-bg {
-    background-image:
-      repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 40px,
-        rgba(249, 115, 22, 0.02) 40px,
-        rgba(249, 115, 22, 0.02) 80px
-      );
-  }
-</style>

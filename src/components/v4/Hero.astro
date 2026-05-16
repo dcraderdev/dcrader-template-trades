@@ -3,120 +3,145 @@ import { business } from '../../data/v4';
 ---
 
 <section
-  class="emergency-hero-bg relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
-  aria-labelledby="hero-heading"
+  class="hero-dispatch-bg relative min-h-screen flex flex-col justify-center overflow-hidden"
+  aria-labelledby="v4-hero-heading"
 >
-  <!-- Red top stripe -->
-  <div class="absolute top-0 left-0 right-0 h-1 bg-emergency-red z-10" aria-hidden="true"></div>
 
-  <!-- Faint diagonal watermark text -->
+  <!-- Diagonal hazard stripe accent — top left -->
+  <div class="absolute top-0 left-0 w-full h-2 bg-emergency-red z-10" aria-hidden="true"></div>
+
+  <!-- Giant watermark 911 -->
   <div
-    class="absolute right-[-5%] bottom-10 font-anton text-[22vw] leading-none text-white/[0.02] select-none pointer-events-none uppercase tracking-widest"
+    class="absolute right-[-8%] bottom-[-5%] font-anton leading-none text-white/[0.025] select-none pointer-events-none uppercase"
+    style="font-size: clamp(10rem, 40vw, 28rem);"
     aria-hidden="true"
   >
     911
   </div>
 
-  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 w-full pt-32 pb-28 text-center lg:text-left">
+  <!-- Red corner accent -->
+  <div class="absolute top-0 right-0 w-0 h-0" aria-hidden="true"
+    style="border-top: 120px solid #ef4444; border-left: 120px solid transparent; opacity: 0.15;">
+  </div>
 
-    <!-- Live dispatch badge -->
-    <div class="inline-flex items-center gap-3 mb-8">
-      <span class="relative flex h-3 w-3 flex-shrink-0" aria-hidden="true">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emergency-red opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-emergency-red"></span>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full py-20 text-center">
+
+    <!-- LIVE DISPATCH badge -->
+    <div class="inline-flex items-center gap-3 border border-emergency-red/50 bg-emergency-red/10 px-5 py-2.5 mb-10">
+      <span class="relative flex h-2.5 w-2.5 flex-shrink-0" aria-hidden="true">
+        <span class="animate-ping absolute inline-flex h-full w-full bg-emergency-red opacity-75"></span>
+        <span class="relative inline-flex h-2.5 w-2.5 bg-emergency-red"></span>
       </span>
-      <span class="font-body font-bold text-white text-sm tracking-widest uppercase">
-        {business.hero.eyebrow}
+      <span class="font-body font-black text-white text-xs uppercase tracking-[0.3em]">
+        LIVE DISPATCH · 24/7 · 365 DAYS
       </span>
     </div>
 
-    <!-- Main headline -->
-    <h1 id="hero-heading" class="font-anton uppercase leading-none tracking-wider mb-4">
-      <span class="block text-white" style="font-size: clamp(3rem, 10vw, 7.5rem);">
-        {business.hero.headlineTop}
+    <!-- Main question -->
+    <h1 id="v4-hero-heading" class="font-anton uppercase leading-none tracking-wider mb-0">
+      <span class="block text-white" style="font-size: clamp(3.5rem, 10vw, 8rem);">
+        PLUMBING
       </span>
-      <span class="block text-white" style="font-size: clamp(3rem, 10vw, 7.5rem);">
-        {business.hero.headlineBottom}
+      <span class="block text-white" style="font-size: clamp(3.5rem, 10vw, 8rem);">
+        EMERGENCY?
       </span>
     </h1>
 
-    <!-- Phone number — the hero -->
-    <div class="my-8 lg:my-10">
+    <!-- THE phone number — hero element -->
+    <div class="my-6 md:my-8">
       <a
         href={business.phoneHref}
-        class="inline-block font-anton text-emergency-red animate-ring-pulse rounded-lg px-4 py-2 hover:text-red-400 transition-colors leading-none"
-        style="font-size: clamp(3.5rem, 12vw, 8.75rem);"
-        aria-label="Call us now at (404) 555-0911"
+        class="inline-block font-anton text-emergency-red hover:text-red-400 transition-colors leading-none tracking-wider"
+        style="font-size: clamp(3rem, 14vw, 11rem); text-shadow: 0 0 80px rgba(239,68,68,0.3);"
+        aria-label={`Call us now: ${business.phone}`}
       >
         {business.phone}
       </a>
     </div>
 
-    <!-- Urgency line -->
-    <p class="font-body font-bold text-white uppercase tracking-widest mb-6" style="font-size: clamp(0.85rem, 2vw, 1.125rem);">
-      {business.hero.urgencyLine}
-    </p>
-
-    <!-- Response guarantee badge -->
-    <div class="inline-flex items-center gap-3 border border-emergency-red/60 px-5 py-2.5 mb-10">
-      <svg class="w-5 h-5 text-emergency-red flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-      </svg>
-      <span class="font-body font-bold text-white text-sm uppercase tracking-widest">
-        {business.hero.responseGuarantee}
-      </span>
+    <!-- Response stat bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-0 mb-10 border border-white/10">
+      <div class="flex-1 flex flex-col items-center py-5 px-6 border-b sm:border-b-0 sm:border-r border-white/10">
+        <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+          47 MIN
+        </span>
+        <span class="font-body font-bold text-gray-400 text-xs uppercase tracking-[0.2em] mt-1.5">
+          AVG RESPONSE TIME
+        </span>
+      </div>
+      <div class="flex-1 flex flex-col items-center py-5 px-6 border-b sm:border-b-0 sm:border-r border-white/10">
+        <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+          3 RINGS
+        </span>
+        <span class="font-body font-bold text-gray-400 text-xs uppercase tracking-[0.2em] mt-1.5">
+          WE ANSWER EVERY CALL
+        </span>
+      </div>
+      <div class="flex-1 flex flex-col items-center py-5 px-6">
+        <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+          24/7
+        </span>
+        <span class="font-body font-bold text-gray-400 text-xs uppercase tracking-[0.2em] mt-1.5">
+          NO VOICEMAIL EVER
+        </span>
+      </div>
     </div>
 
     <!-- CTA buttons -->
-    <div class="flex flex-col sm:flex-row gap-4 mb-14 justify-center lg:justify-start">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
       <a
         href={business.phoneHref}
-        class="flex items-center justify-center gap-3 bg-emergency-red hover:bg-emergency-red-dark text-white font-anton text-2xl tracking-wider uppercase px-10 py-5 transition-colors shadow-[0_8px_32px_rgba(239,68,68,0.4)]"
+        class="flex items-center justify-center gap-3 bg-emergency-red hover:bg-red-700 text-white font-anton tracking-widest uppercase px-12 py-5 transition-colors w-full sm:w-auto"
+        style="font-size: clamp(1.1rem, 2.5vw, 1.5rem); box-shadow: 0 8px 40px rgba(239,68,68,0.45);"
         aria-label={`Call now at ${business.phone}`}
       >
         <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
         </svg>
-        {business.hero.cta}
+        CALL NOW
       </a>
       <a
         href={`sms:${business.phone.replace(/\D/g, '')}`}
-        class="flex items-center justify-center gap-3 border-2 border-white/20 hover:border-emergency-red/60 text-gray-400 hover:text-white font-body font-semibold text-base uppercase tracking-widest px-8 py-5 transition-colors"
+        class="flex items-center justify-center gap-3 border-2 border-emergency-red text-white hover:bg-emergency-red/10 font-anton tracking-widest uppercase px-12 py-5 transition-colors w-full sm:w-auto"
+        style="font-size: clamp(1.1rem, 2.5vw, 1.5rem);"
       >
-        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/>
         </svg>
-        {business.hero.ctaSecondary}
+        TEXT US
       </a>
     </div>
 
     <!-- Trust badges -->
-    <div class="flex flex-wrap gap-3 justify-center lg:justify-start" role="list" aria-label="Trust certifications">
+    <div class="flex flex-wrap gap-3 justify-center" role="list" aria-label="Service guarantees">
       {business.badges.map(badge => (
         <div
-          class="flex flex-col items-center border border-white/10 hover:border-emergency-red/40 transition-colors px-5 py-3 min-w-[90px]"
+          class="border border-white/15 hover:border-emergency-red/60 px-5 py-3 transition-colors"
           role="listitem"
         >
-          <span class="font-anton text-emergency-red text-xl tracking-wider uppercase leading-none">{badge.label}</span>
-          <span class="font-body text-gray-500 text-xs uppercase tracking-wider mt-1 leading-none">{badge.sublabel}</span>
+          <span class="block font-anton text-emergency-red text-lg tracking-wider uppercase leading-none">{badge.label}</span>
+          <span class="block font-body text-gray-500 text-xs uppercase tracking-wider mt-1 leading-none">{badge.sublabel}</span>
         </div>
       ))}
     </div>
+
   </div>
 
-  <!-- Bottom separator line -->
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-emergency-red/30" aria-hidden="true"></div>
+  <!-- Bottom red rule -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-emergency-red/40" aria-hidden="true"></div>
+
 </section>
 
 <style>
-  .emergency-hero-bg {
+  .hero-dispatch-bg {
     background-color: #080808;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent 0px,
-      transparent 20px,
-      rgba(239, 68, 68, 0.04) 20px,
-      rgba(239, 68, 68, 0.04) 40px
-    );
+    background-image:
+      repeating-linear-gradient(
+        -55deg,
+        transparent 0px,
+        transparent 18px,
+        rgba(239, 68, 68, 0.035) 18px,
+        rgba(239, 68, 68, 0.035) 36px
+      );
   }
 </style>

@@ -4,103 +4,60 @@ import { business } from '../../data/v5';
 
 <section
   id="quote"
-  class="bg-luxury-cream py-24 lg:py-36"
+  class="bg-luxury-dark py-28 lg:py-44"
   aria-labelledby="quote-heading"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+  <div class="max-w-6xl mx-auto px-8 lg:px-12">
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+    <!-- Section header -->
+    <div class="mb-16 lg:mb-20">
+      <p
+        class="font-outfit font-light text-luxury-gold/50 uppercase tracking-[0.25em] mb-8"
+        style="font-size: 0.65rem;"
+      >
+        Contact
+      </p>
+      <h2
+        id="quote-heading"
+        class="font-cormorant italic text-luxury-cream leading-none"
+        style="font-size: clamp(2.5rem, 4.5vw, 3.75rem);"
+      >
+        Request a Consultation
+      </h2>
+    </div>
 
-      <!-- LEFT: Context / editorial callout -->
-      <div class="lg:col-span-4">
-        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
-          06 / Begin Here
-        </p>
-        <h2
-          id="quote-heading"
-          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95] mb-8"
-          style="font-size: clamp(2.5rem, 4vw, 3.5rem);"
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-0">
+
+      <!-- LEFT: Cream consultation panel with form -->
+      <div
+        class="lg:col-span-7 bg-luxury-cream p-10 lg:p-14"
+      >
+        <!-- Top hairline: gold -->
+        <div class="w-full h-px bg-luxury-gold/30 mb-12" aria-hidden="true"></div>
+
+        <p
+          class="font-outfit font-light text-luxury-dark/50 leading-relaxed mb-12"
+          style="font-size: 0.85rem;"
         >
-          {business.form.headline}
-        </h2>
-
-        <div class="w-10 h-px bg-luxury-gold/60 mb-8" aria-hidden="true"></div>
-
-        <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed mb-10">
-          {business.form.subheadline}. {business.form.note}
+          {business.form.note}
         </p>
 
-        <!-- Callout stat: editorial treatment -->
-        <div class="border border-luxury-gold/30 p-8 mb-10 relative">
-          <!-- Corner accent -->
-          <div class="absolute top-0 right-0 w-8 h-8 border-t border-r border-luxury-gold/30" aria-hidden="true"></div>
-
-          <p
-            class="font-cormorant font-bold text-luxury-sage leading-none mb-2"
-            style="font-size: 3.5rem;"
-          >
-            {business.form.calloutStat}
-          </p>
-          <p class="font-outfit font-light text-luxury-charcoal/60 text-sm">
-            {business.form.calloutLabel}
-          </p>
-        </div>
-
-        <!-- Contact info, discreet -->
-        <div class="flex flex-col gap-5">
-          <div class="flex items-start gap-3">
-            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
-            <div>
-              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Phone</p>
-              <a href={business.phoneHref} class="font-outfit font-medium text-luxury-charcoal/70 hover:text-luxury-sage transition-colors text-sm">
-                {business.phone}
-              </a>
-            </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
-            <div>
-              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Email</p>
-              <a href={business.emailHref} class="font-outfit font-medium text-luxury-charcoal/70 hover:text-luxury-sage transition-colors text-sm">
-                {business.email}
-              </a>
-            </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
-            <div>
-              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Office Hours</p>
-              {business.hours.map(h => (
-                <p class="font-outfit font-light text-luxury-charcoal/60 text-xs leading-relaxed">
-                  {h.day}: {h.hours}
-                </p>
-              ))}
-              <p class="font-outfit font-light text-luxury-sage text-xs mt-1">{business.emergencyNote}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: Form -->
-      <div class="lg:col-span-8">
         <form
           action="#"
           method="post"
-          class="bg-luxury-parchment p-10 lg:p-14"
           novalidate
           aria-labelledby="quote-heading"
+          class="flex flex-col gap-10"
         >
-          <!-- Top border accent -->
-          <div class="w-full h-px bg-gradient-to-r from-luxury-gold/60 via-luxury-gold/20 to-transparent mb-10" aria-hidden="true"></div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-            <!-- Name -->
+          <!-- Name + Email row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div class="form-field">
               <label
                 for="v5-name"
-                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+                class="font-outfit font-light text-luxury-dark/40 uppercase tracking-[0.2em] block mb-3"
+                style="font-size: 0.62rem;"
               >
-                Full Name <span class="text-luxury-sage" aria-label="required">*</span>
+                Name <span class="text-luxury-sage" aria-label="required">*</span>
               </label>
               <input
                 id="v5-name"
@@ -108,37 +65,19 @@ import { business } from '../../data/v5';
                 name="name"
                 required
                 autocomplete="name"
-                placeholder="Your name"
-                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+                placeholder="Your full name"
+                class="w-full bg-transparent border-0 border-b border-luxury-dark/20 focus:border-luxury-sage pb-3 text-luxury-dark font-outfit font-light placeholder:text-luxury-dark/20 outline-none transition-colors"
+                style="font-size: 0.875rem;"
               />
             </div>
 
-            <!-- Phone -->
-            <div class="form-field">
-              <label
-                for="v5-phone"
-                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
-              >
-                Phone <span class="text-luxury-sage" aria-label="required">*</span>
-              </label>
-              <input
-                id="v5-phone"
-                type="tel"
-                name="phone"
-                required
-                autocomplete="tel"
-                placeholder="(___) ___-____"
-                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
-              />
-            </div>
-
-            <!-- Email -->
             <div class="form-field">
               <label
                 for="v5-email"
-                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+                class="font-outfit font-light text-luxury-dark/40 uppercase tracking-[0.2em] block mb-3"
+                style="font-size: 0.62rem;"
               >
-                Email Address <span class="text-luxury-sage" aria-label="required">*</span>
+                Email <span class="text-luxury-sage" aria-label="required">*</span>
               </label>
               <input
                 id="v5-email"
@@ -147,106 +86,195 @@ import { business } from '../../data/v5';
                 required
                 autocomplete="email"
                 placeholder="your@email.com"
-                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+                class="w-full bg-transparent border-0 border-b border-luxury-dark/20 focus:border-luxury-sage pb-3 text-luxury-dark font-outfit font-light placeholder:text-luxury-dark/20 outline-none transition-colors"
+                style="font-size: 0.875rem;"
               />
             </div>
-
-            <!-- Location / Property -->
-            <div class="form-field">
-              <label
-                for="v5-location"
-                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
-              >
-                Property Location
-              </label>
-              <input
-                id="v5-location"
-                type="text"
-                name="location"
-                autocomplete="address-level2"
-                placeholder="Neighborhood or city"
-                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
-              />
-            </div>
-
-            <!-- Extra field: Project Type -->
-            {business.form.extraFields.map(field => (
-              <div class="form-field">
-                <label
-                  for={`v5-${field.id}`}
-                  class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
-                >
-                  {field.label}
-                </label>
-                <div class="relative">
-                  <select
-                    id={`v5-${field.id}`}
-                    name={field.id}
-                    class="w-full appearance-none bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm outline-none transition-colors cursor-pointer pr-6"
-                  >
-                    <option value="" class="bg-luxury-parchment text-luxury-charcoal/50">Select…</option>
-                    {field.options.map(opt => (
-                      <option value={opt} class="bg-luxury-parchment text-luxury-charcoal">{opt}</option>
-                    ))}
-                  </select>
-                  <svg
-                    class="absolute right-0 top-1 w-3.5 h-3.5 text-luxury-charcoal/30 pointer-events-none"
-                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
-                  </svg>
-                </div>
-              </div>
-            ))}
           </div>
 
-          <!-- Project description -->
-          <div class="form-field mb-10">
+          <!-- Project Type + Timeline row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div class="form-field">
+              <label
+                for="v5-project-type"
+                class="font-outfit font-light text-luxury-dark/40 uppercase tracking-[0.2em] block mb-3"
+                style="font-size: 0.62rem;"
+              >
+                Project Type
+              </label>
+              <div class="relative">
+                <select
+                  id="v5-project-type"
+                  name="project-type"
+                  class="w-full appearance-none bg-transparent border-0 border-b border-luxury-dark/20 focus:border-luxury-sage pb-3 text-luxury-dark font-outfit font-light outline-none transition-colors cursor-pointer pr-5"
+                  style="font-size: 0.875rem;"
+                >
+                  <option value="" class="bg-luxury-cream text-luxury-dark/40">Select…</option>
+                  <option value="new-construction" class="bg-luxury-cream text-luxury-dark">New Construction</option>
+                  <option value="major-renovation" class="bg-luxury-cream text-luxury-dark">Major Renovation</option>
+                  <option value="smart-home" class="bg-luxury-cream text-luxury-dark">Smart Home Integration</option>
+                  <option value="outdoor" class="bg-luxury-cream text-luxury-dark">Outdoor / Landscape</option>
+                  <option value="other" class="bg-luxury-cream text-luxury-dark">Other</option>
+                </select>
+                <svg
+                  class="absolute right-0 top-0.5 w-3 h-3 text-luxury-dark/30 pointer-events-none"
+                  fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label
+                for="v5-timeline"
+                class="font-outfit font-light text-luxury-dark/40 uppercase tracking-[0.2em] block mb-3"
+                style="font-size: 0.62rem;"
+              >
+                Timeline
+              </label>
+              <div class="relative">
+                <select
+                  id="v5-timeline"
+                  name="timeline"
+                  class="w-full appearance-none bg-transparent border-0 border-b border-luxury-dark/20 focus:border-luxury-sage pb-3 text-luxury-dark font-outfit font-light outline-none transition-colors cursor-pointer pr-5"
+                  style="font-size: 0.875rem;"
+                >
+                  <option value="" class="bg-luxury-cream text-luxury-dark/40">Select…</option>
+                  <option value="immediate" class="bg-luxury-cream text-luxury-dark">Immediately</option>
+                  <option value="1-3mo" class="bg-luxury-cream text-luxury-dark">1–3 months</option>
+                  <option value="3-6mo" class="bg-luxury-cream text-luxury-dark">3–6 months</option>
+                  <option value="6-12mo" class="bg-luxury-cream text-luxury-dark">6–12 months</option>
+                  <option value="planning" class="bg-luxury-cream text-luxury-dark">Planning stage</option>
+                </select>
+                <svg
+                  class="absolute right-0 top-0.5 w-3 h-3 text-luxury-dark/30 pointer-events-none"
+                  fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vision textarea: optional -->
+          <div class="form-field">
             <label
-              for="v5-message"
-              class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+              for="v5-vision"
+              class="font-outfit font-light text-luxury-dark/40 uppercase tracking-[0.2em] block mb-3"
+              style="font-size: 0.62rem;"
             >
-              Project Description <span class="text-luxury-sage" aria-label="required">*</span>
+              Tell us about your vision <span class="text-luxury-dark/25 normal-case tracking-normal" style="font-size: 0.62rem;">(optional)</span>
             </label>
             <textarea
-              id="v5-message"
-              name="message"
-              required
-              rows="5"
-              placeholder="Please describe your project, home size, and any architect or designer involvement…"
-              class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors resize-none leading-relaxed"
+              id="v5-vision"
+              name="vision"
+              rows="4"
+              placeholder="Describe your project, home size, architect or designer involvement, or anything else we should know…"
+              class="w-full bg-transparent border-0 border-b border-luxury-dark/20 focus:border-luxury-sage pb-3 text-luxury-dark font-outfit font-light placeholder:text-luxury-dark/20 outline-none transition-colors resize-none leading-relaxed"
+              style="font-size: 0.875rem;"
             ></textarea>
           </div>
 
-          <!-- Submit -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <!-- Submit: ghost outline, no fill, square, Outfit light -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-6">
             <button
               type="submit"
-              class="inline-flex items-center gap-4 font-outfit font-light text-sm tracking-[0.12em] uppercase text-luxury-dark bg-luxury-gold hover:bg-luxury-gold-light transition-colors duration-300 px-10 py-4 group"
+              class="inline-flex items-center gap-4 font-outfit font-light text-luxury-dark border border-luxury-dark/30 hover:border-luxury-sage hover:text-luxury-sage transition-all duration-300 px-10 py-4 group"
+              style="font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;"
             >
-              {business.form.submitLabel}
+              Send Inquiry
               <svg
-                class="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0"
+                class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform flex-shrink-0"
                 fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                 aria-hidden="true"
               >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
               </svg>
             </button>
-            <p class="font-outfit font-light text-luxury-charcoal/35 text-xs max-w-[200px]">
-              We respond within one business day.
+            <p
+              class="font-outfit font-light text-luxury-dark/30"
+              style="font-size: 0.75rem;"
+            >
+              We reply within one business day.
             </p>
           </div>
 
           <!-- License note -->
-          <div class="mt-8 pt-8 border-t border-luxury-gold/20">
-            <p class="font-outfit font-light text-luxury-charcoal/30 text-[10px] tracking-wide uppercase">
-              {business.license} · Licensed, bonded &amp; insured in Arizona
-            </p>
-          </div>
+          <p
+            class="font-outfit font-light text-luxury-dark/25 uppercase tracking-wide"
+            style="font-size: 0.6rem;"
+          >
+            {business.license} · Licensed, bonded &amp; insured in Arizona
+          </p>
         </form>
       </div>
+
+      <!-- RIGHT: Editorial image panel -->
+      <div class="lg:col-span-5 relative hidden lg:block">
+        <img
+          src="https://picsum.photos/seed/luxury-consult-interior/700/900"
+          alt="Luxury estate interior — Cedar Hill project"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          width="700"
+          height="900"
+          style="display: block; min-height: 560px;"
+        />
+        <!-- Overlay with contact details -->
+        <div
+          class="absolute bottom-0 left-0 right-0 p-10"
+          style="background: linear-gradient(to top, rgba(28,37,34,0.92) 0%, rgba(28,37,34,0.50) 50%, transparent 100%);"
+        >
+          <p
+            class="font-outfit font-light text-luxury-cream/30 uppercase tracking-[0.2em] mb-6"
+            style="font-size: 0.6rem;"
+          >
+            Prefer to speak directly?
+          </p>
+          <a
+            href={business.phoneHref}
+            class="font-cormorant italic text-luxury-cream/70 hover:text-luxury-gold transition-colors block mb-2"
+            style="font-size: 1.375rem;"
+          >
+            {business.phone}
+          </a>
+          <a
+            href={business.emailHref}
+            class="font-outfit font-light text-luxury-gold/50 hover:text-luxury-gold transition-colors block"
+            style="font-size: 0.78rem;"
+          >
+            {business.email}
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile contact details (below form on small screens) -->
+    <div class="lg:hidden mt-12 pt-10 border-t border-luxury-gold/15 flex flex-col gap-4">
+      <p
+        class="font-outfit font-light text-luxury-cream/30 uppercase tracking-[0.2em]"
+        style="font-size: 0.6rem;"
+      >
+        Or reach us directly
+      </p>
+      <a
+        href={business.phoneHref}
+        class="font-cormorant italic text-luxury-cream/60 hover:text-luxury-gold transition-colors"
+        style="font-size: 1.375rem;"
+      >
+        {business.phone}
+      </a>
+      <a
+        href={business.emailHref}
+        class="font-outfit font-light text-luxury-gold/50 hover:text-luxury-gold transition-colors"
+        style="font-size: 0.85rem;"
+      >
+        {business.email}
+      </a>
     </div>
 
   </div>

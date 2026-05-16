@@ -1,131 +1,315 @@
 ---
 import { business } from '../../data/v1';
-
-const shieldIcon = `<svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`;
-const starIcon = `<svg class="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
-const checkIcon = `<svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>`;
-
-const badgeIcons = [shieldIcon, starIcon, checkIcon, shieldIcon];
 ---
 
 <section
-  class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
+  class="relative overflow-hidden"
   aria-labelledby="hero-heading"
+  style="background:#0f2855; min-height: calc(100vh - 104px);"
 >
-  <!-- Background: navy + dot-grid texture + orange radial glow -->
-  <div class="absolute inset-0 hero-bg" aria-hidden="true"></div>
-
-  <!-- Orange accent stripe at very top -->
-  <div class="absolute top-0 left-0 right-0 h-1 bg-orange-500" aria-hidden="true"></div>
-
-  <!-- Decorative large text watermark -->
+  <!-- Diagonal orange slash — pure industrial stripe -->
   <div
-    class="absolute right-0 bottom-0 font-display font-black text-[20vw] leading-none text-white/[0.03] select-none pointer-events-none uppercase tracking-tighter"
+    class="absolute inset-0 pointer-events-none"
     aria-hidden="true"
-  >
-    24/7
+    style="
+      background: linear-gradient(
+        105deg,
+        #0f2855 0%,
+        #0f2855 58%,
+        rgba(249,115,22,0.08) 58%,
+        rgba(249,115,22,0.08) 100%
+      );
+    "
+  ></div>
+
+  <!-- Grid dot texture overlay -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+    style="
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 28px 28px;
+    "
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <div class="grid lg:grid-cols-[60%_40%] gap-0 items-center" style="min-height:calc(100vh - 104px);">
+
+      <!-- LEFT: Content -->
+      <div class="py-16 lg:py-20 lg:pr-12">
+
+        <!-- Eyebrow — industrial label tape style -->
+        <div class="inline-flex items-center gap-2 mb-8">
+          <span
+            class="w-2 h-2 flex-shrink-0 animate-pulse"
+            style="background:#f97316;"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="font-body font-bold text-xs uppercase tracking-widest px-3 py-1"
+            style="background:rgba(249,115,22,0.12); color:#f97316; border:1px solid rgba(249,115,22,0.3);"
+          >
+            {business.hero.eyebrow}
+          </span>
+        </div>
+
+        <!-- HEADLINE: massive condensed -->
+        <h1 id="hero-heading" class="font-display font-black uppercase leading-none mb-6">
+          <span
+            class="block text-white"
+            style="font-size: clamp(3.75rem, 10vw, 8rem); letter-spacing:-0.02em;"
+          >
+            {business.hero.headlineLine1}
+          </span>
+          <span
+            class="block"
+            style="font-size: clamp(3.75rem, 10vw, 8rem); letter-spacing:-0.02em; color:#f97316;"
+          >
+            {business.hero.headlineLine2}
+          </span>
+        </h1>
+
+        <!-- Sub-headline: bold line -->
+        <div
+          class="mb-4 flex items-center gap-4"
+        >
+          <div class="h-px flex-shrink-0 w-8" style="background:#f97316;"></div>
+          <p
+            class="font-display font-black uppercase text-white"
+            style="font-size:clamp(1.25rem, 2.5vw, 1.75rem); letter-spacing:0.04em;"
+          >
+            {business.hero.subheadline}
+          </p>
+        </div>
+
+        <p class="font-body text-base mb-10 max-w-lg leading-relaxed" style="color:rgba(255,255,255,0.65);">
+          {business.hero.description}
+        </p>
+
+        <!-- Phone — the dominant element -->
+        <a
+          href={business.phoneHref}
+          class="group inline-flex items-center gap-4 mb-10"
+          aria-label={`Call us at ${business.phone}`}
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center flex-shrink-0"
+            style="background:#f97316;"
+            aria-hidden="true"
+          >
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+            </svg>
+          </div>
+          <span
+            class="font-display font-black text-white group-hover:text-orange-400 transition-colors leading-none"
+            style="font-size: clamp(2.25rem, 6vw, 4.5rem);"
+          >
+            {business.phone}
+          </span>
+        </a>
+
+        <!-- CTA buttons — SHARP CORNERS, ALL CAPS -->
+        <div class="flex flex-wrap gap-3 mb-12">
+          <a
+            href="#quote"
+            class="inline-flex items-center gap-2 font-display font-black uppercase text-white transition-all hover:opacity-90"
+            style="
+              background:#f97316;
+              font-size:clamp(0.9rem, 1.5vw, 1.05rem);
+              padding: 1rem 2.25rem;
+              letter-spacing:0.06em;
+              border-radius:0;
+            "
+          >
+            {business.hero.cta}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <a
+            href="#services"
+            class="inline-flex items-center gap-2 font-display font-black uppercase text-white transition-all"
+            style="
+              border: 2px solid rgba(255,255,255,0.3);
+              font-size:clamp(0.9rem, 1.5vw, 1.05rem);
+              padding: 1rem 2.25rem;
+              letter-spacing:0.06em;
+              border-radius:0;
+            "
+            onmouseover="this.style.borderColor='#f97316'; this.style.color='#f97316';"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.color='white';"
+          >
+            {business.hero.ctaSecondary}
+          </a>
+        </div>
+
+        <!-- Trust badge strip — flat rectangular pills -->
+        <div class="flex flex-wrap gap-2" role="list" aria-label="Trust certifications">
+          {business.badges.map((badge) => (
+            <div
+              class="flex items-center gap-2 px-3 py-2"
+              style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);"
+              role="listitem"
+            >
+              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color:#f97316;" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <div class="text-white font-body font-bold text-xs leading-none uppercase tracking-wide">{badge.label}</div>
+                <div class="font-body text-xs leading-none mt-0.5" style="color:rgba(255,255,255,0.45);">{badge.sublabel}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- RIGHT: Decorative SVG — abstract pipes/wrench industrial graphic -->
+      <div
+        class="hidden lg:flex items-center justify-center relative py-20"
+        aria-hidden="true"
+      >
+        <!-- Large ghost text watermark -->
+        <div
+          class="absolute font-display font-black uppercase leading-none select-none pointer-events-none"
+          style="
+            font-size: 18vw;
+            color: rgba(255,255,255,0.025);
+            right: -2vw;
+            top: 50%;
+            transform: translateY(-50%);
+            letter-spacing: -0.05em;
+          "
+        >
+          24/7
+        </div>
+
+        <!-- Industrial pipe SVG illustration -->
+        <svg
+          viewBox="0 0 400 480"
+          class="w-full max-w-sm relative z-10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Abstract industrial plumbing pipes illustration"
+        >
+          <!-- Background panel -->
+          <rect x="20" y="20" width="360" height="440" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.15)" stroke-width="1.5"/>
+
+          <!-- Corner marks -->
+          <path d="M20 50 L20 20 L50 20" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+          <path d="M350 20 L380 20 L380 50" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+          <path d="M20 430 L20 460 L50 460" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+          <path d="M380 430 L380 460 L350 460" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+
+          <!-- Main vertical pipe -->
+          <rect x="158" y="60" width="36" height="280" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="2"/>
+          <!-- Pipe sheen -->
+          <rect x="163" y="60" width="8" height="280" fill="rgba(249,115,22,0.12)"/>
+
+          <!-- Horizontal pipe left -->
+          <rect x="60" y="192" width="98" height="36" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="2"/>
+          <rect x="60" y="197" width="98" height="8" fill="rgba(249,115,22,0.12)"/>
+
+          <!-- Horizontal pipe right -->
+          <rect x="194" y="192" width="120" height="36" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="2"/>
+          <rect x="194" y="197" width="120" height="8" fill="rgba(249,115,22,0.12)"/>
+
+          <!-- Elbow joint top-right -->
+          <rect x="314" y="130" width="36" height="98" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="2"/>
+          <!-- Elbow cap -->
+          <circle cx="332" cy="130" r="18" fill="rgba(249,115,22,0.25)" stroke="#f97316" stroke-width="2"/>
+          <circle cx="332" cy="130" r="8" fill="#f97316" opacity="0.7"/>
+
+          <!-- Elbow joint bottom-left -->
+          <rect x="50" y="228" width="10" height="100" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="1.5"/>
+          <circle cx="60" cy="228" r="14" fill="rgba(249,115,22,0.25)" stroke="#f97316" stroke-width="1.5"/>
+          <circle cx="60" cy="228" r="5" fill="#f97316" opacity="0.6"/>
+
+          <!-- Pipe flanges / collars -->
+          <rect x="150" y="148" width="52" height="12" fill="rgba(249,115,22,0.3)" stroke="#f97316" stroke-width="1.5"/>
+          <rect x="150" y="264" width="52" height="12" fill="rgba(249,115,22,0.3)" stroke="#f97316" stroke-width="1.5"/>
+
+          <!-- Bolt holes on flange -->
+          <circle cx="158" cy="154" r="3" fill="#f97316" opacity="0.8"/>
+          <circle cx="194" cy="154" r="3" fill="#f97316" opacity="0.8"/>
+          <circle cx="158" cy="270" r="3" fill="#f97316" opacity="0.8"/>
+          <circle cx="194" cy="270" r="3" fill="#f97316" opacity="0.8"/>
+
+          <!-- Wrench overlay -->
+          <g transform="translate(90, 300) rotate(-20)" opacity="0.85">
+            <!-- Wrench handle -->
+            <rect x="-8" y="-80" width="16" height="100" rx="3" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="2"/>
+            <!-- Wrench head -->
+            <path d="M-20,-80 Q0,-100 20,-80 L14,-60 L-14,-60 Z" fill="rgba(249,115,22,0.3)" stroke="#f97316" stroke-width="2"/>
+            <!-- Wrench opening -->
+            <path d="M-12,-85 Q0,-96 12,-85" stroke="#0f2855" stroke-width="5" fill="none"/>
+            <!-- Jaw notch -->
+            <rect x="-6" y="-68" width="12" height="8" fill="#0f2855"/>
+          </g>
+
+          <!-- Drip drops -->
+          <ellipse cx="176" cy="355" rx="7" ry="10" fill="#f97316" opacity="0.6"/>
+          <ellipse cx="176" cy="375" rx="5" ry="7" fill="#f97316" opacity="0.35"/>
+          <ellipse cx="176" cy="390" rx="3" ry="4" fill="#f97316" opacity="0.2"/>
+
+          <!-- "24/7" text label -->
+          <text
+            x="332" y="250"
+            text-anchor="middle"
+            font-family="'Barlow Condensed', sans-serif"
+            font-weight="900"
+            font-size="32"
+            fill="#f97316"
+            opacity="0.9"
+            letter-spacing="-1"
+          >24/7</text>
+          <text
+            x="332" y="272"
+            text-anchor="middle"
+            font-family="'DM Sans', sans-serif"
+            font-weight="700"
+            font-size="10"
+            fill="rgba(249,115,22,0.6)"
+            letter-spacing="2"
+          >EMERGENCY</text>
+
+          <!-- Grid cross-hairs at center -->
+          <line x1="176" y1="25" x2="176" y2="55" stroke="rgba(249,115,22,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="136" y1="210" x2="156" y2="210" stroke="rgba(249,115,22,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="196" y1="210" x2="216" y2="210" stroke="rgba(249,115,22,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <!-- Data readout labels -->
+          <text x="35" y="185" font-family="'DM Sans', sans-serif" font-size="8" fill="rgba(249,115,22,0.5)" letter-spacing="1" font-weight="700">PRESSURE: OK</text>
+          <text x="35" y="310" font-family="'DM Sans', sans-serif" font-size="8" fill="rgba(249,115,22,0.5)" letter-spacing="1" font-weight="700">FLOW: ACTIVE</text>
+        </svg>
+      </div>
+    </div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 pb-24">
-    <div class="max-w-3xl">
-      <!-- Eyebrow badge -->
-      <div class="inline-flex items-center gap-2.5 bg-orange-500/15 border border-orange-500/30 rounded-full px-4 py-1.5 mb-8">
-        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse flex-shrink-0" aria-hidden="true"></span>
-        <span class="text-orange-300 text-sm font-body font-semibold">{business.hero.eyebrow}</span>
-      </div>
-
-      <!-- Main headline -->
-      <h1 id="hero-heading" class="font-display font-black uppercase leading-[0.88] mb-6">
-        <span class="block text-white" style="font-size: clamp(3.5rem, 9vw, 7.5rem);">
-          {business.hero.headlineLine1}
-        </span>
-        <span class="block text-orange-500" style="font-size: clamp(3.5rem, 9vw, 7.5rem);">
-          {business.hero.headlineLine2}
-        </span>
-      </h1>
-
-      <p class="text-slate-300 font-body font-medium mb-10" style="font-size: clamp(1.15rem, 2.5vw, 1.5rem);">
-        {business.hero.subheadline}
-        <span class="block mt-1 text-slate-400 text-base">{business.hero.description}</span>
-      </p>
-
-      <!-- Phone number — THE HERO ELEMENT -->
-      <a
-        href={business.phoneHref}
-        class="group inline-flex items-center gap-4 mb-10 -mx-1 px-1 rounded-xl hover:bg-white/5 transition-colors"
-        aria-label={`Call us now at ${business.phone}`}
-      >
-        <div
-          class="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-[0_0_0_6px_rgba(249,115,22,0.15)] group-hover:shadow-[0_0_0_10px_rgba(249,115,22,0.2)] transition-all animate-pulse-slow"
-          aria-hidden="true"
-        >
-          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-          </svg>
-        </div>
-        <span
-          class="font-display font-black text-white group-hover:text-orange-400 transition-colors leading-none"
-          style="font-size: clamp(2.25rem, 6.5vw, 5rem);"
-        >
-          {business.phone}
-        </span>
-      </a>
-
-      <!-- CTA buttons -->
-      <div class="flex flex-wrap gap-4 mb-16">
-        <a
-          href="#quote"
-          class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-body font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-100 shadow-[0_8px_32px_rgba(249,115,22,0.35)]"
-          style="font-size: clamp(1rem, 1.5vw, 1.125rem); padding: 1rem 2rem;"
-        >
-          {business.hero.cta}
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-          </svg>
-        </a>
-        <a
-          href="#services"
-          class="inline-flex items-center gap-2 border-2 border-white/25 hover:border-orange-500/60 text-white hover:text-orange-300 font-body font-semibold rounded-xl transition-all"
-          style="font-size: clamp(1rem, 1.5vw, 1.125rem); padding: 1rem 2rem;"
-        >
-          {business.hero.ctaSecondary}
-        </a>
-      </div>
-
-      <!-- Trust badges -->
-      <div class="flex flex-wrap gap-4" role="list" aria-label="Trust certifications">
-        {business.badges.map((badge, i) => (
-          <div
-            class="flex items-center gap-2.5 bg-white/8 border border-white/12 rounded-xl px-4 py-3"
-            role="listitem"
-          >
-            <span set:html={badgeIcons[i]} />
-            <div>
-              <div class="text-white font-body font-semibold text-sm leading-none">{badge.label}</div>
-              <div class="text-slate-400 text-xs leading-none mt-1">{badge.sublabel}</div>
-            </div>
+  <!-- Full-width badge strip pinned to bottom -->
+  <div
+    class="absolute bottom-0 left-0 right-0"
+    style="background:rgba(255,255,255,0.05); border-top:2px solid rgba(249,115,22,0.4);"
+    aria-label="Key stats"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 divide-x" style="divide-color:rgba(255,255,255,0.08);">
+        {[
+          { stat: '4,200+', label: 'JOBS COMPLETED' },
+          { stat: '17 YRS', label: 'FAMILY OWNED' },
+          { stat: '100%', label: 'SATISFACTION GUARANTEE' },
+          { stat: '<60 MIN', label: 'RESPONSE TIME' },
+        ].map(item => (
+          <div class="text-center py-4 px-4">
+            <div
+              class="font-display font-black leading-none mb-0.5"
+              style="color:#f97316; font-size:clamp(1.5rem,3vw,2.25rem);"
+            >{item.stat}</div>
+            <div class="font-body font-bold uppercase tracking-widest text-xs" style="color:rgba(255,255,255,0.45);">{item.label}</div>
           </div>
         ))}
       </div>
     </div>
   </div>
-
-  <!-- Bottom wave divider -->
-  <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full h-[60px]">
-      <path d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,10 L1440,60 Z" fill="#0c1d38"/>
-    </svg>
-  </div>
 </section>
-
-<style>
-  .hero-bg {
-    background-color: #0f2855;
-    background-image:
-      radial-gradient(ellipse 80% 60% at 100% 0%, rgba(249,115,22,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(249,115,22,0.05) 0%, transparent 60%),
-      radial-gradient(circle at 50px 50px, rgba(249,115,22,0.04) 1px, transparent 0),
-      radial-gradient(circle at 50px 50px, rgba(255,255,255,0.03) 1px, transparent 0);
-    background-size: 100% 100%, 100% 100%, 60px 60px, 30px 30px;
-  }
-</style>

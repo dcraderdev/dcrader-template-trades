@@ -3,7 +3,7 @@ import { business } from '../../data/v1';
 
 const serviceIcons: Record<string, string> = {
   'drain-cleaning': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/><path d="M12 12v-2" stroke-width="2.5"/></svg>`,
-  'water-heater': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="16" rx="3"/><path d="M8 21h8M12 21v-2M8 7h8M8 11h8M8 15h4"/><circle cx="17" cy="15" r="1" fill="currentColor"/></svg>`,
+  'water-heater': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="16" rx="0"/><path d="M8 21h8M12 21v-2M8 7h8M8 11h8M8 15h4"/><circle cx="17" cy="15" r="1" fill="currentColor"/></svg>`,
   'pipe-repair': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h4v6H3zM17 9h4v6h-4zM7 12h10M12 3v6M12 15v6"/></svg>`,
   'sewer-line': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12c0-2.5 4-5 10-5s10 2.5 10 5M2 12c0 2.5 4 5 10 5s10-2.5 10-5"/><path d="M12 7v10M6 8.5v7M18 8.5v7"/></svg>`,
   'toilet-faucet': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h3v3H7zM10 4h7a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1v2H7V7"/><path d="M7 11c0 4 2 7 5 8s5-4 5-8"/><path d="M9 19h6"/></svg>`,
@@ -11,57 +11,124 @@ const serviceIcons: Record<string, string> = {
   'emergency': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg>`,
   'camera-inspection': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>`,
 };
+
+const padNum = (n: number) => String(n + 1).padStart(2, '0');
 ---
 
-<section id="services" class="relative bg-navy-800 py-20 lg:py-28" aria-labelledby="services-heading">
+<section
+  id="services"
+  class="relative py-20 lg:py-28"
+  style="background:#0c1d38;"
+  aria-labelledby="services-heading"
+>
+  <!-- Left edge orange accent bar -->
+  <div
+    class="absolute left-0 top-0 bottom-0 w-1"
+    style="background:#f97316;"
+    aria-hidden="true"
+  ></div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <!-- Section header -->
-    <div class="text-center mb-14">
-      <span class="inline-block text-orange-500 font-body font-semibold text-sm uppercase tracking-widest mb-3">
-        What We Do
-      </span>
-      <h2 id="services-heading" class="font-display font-black uppercase text-white mb-4"
-        style="font-size: clamp(2.25rem, 5vw, 3.75rem);">
-        Our Services
-      </h2>
-      <p class="text-slate-400 font-body max-w-xl mx-auto text-lg">
-        From a dripping faucet to a burst main — we handle every plumbing challenge in San Diego County.
+    <!-- Section header — left-aligned, NOT centered -->
+    <div class="mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-3 mb-3" aria-hidden="true">
+          <div class="h-px w-12" style="background:#f97316;"></div>
+          <span class="font-body font-bold text-xs uppercase tracking-widest" style="color:#f97316;">
+            What We Do
+          </span>
+        </div>
+        <h2
+          id="services-heading"
+          class="font-display font-black uppercase text-white leading-none"
+          style="font-size: clamp(2.75rem, 6vw, 5rem); letter-spacing:-0.02em;"
+        >
+          Our Services
+        </h2>
+      </div>
+      <p class="font-body text-base max-w-sm leading-relaxed pb-1" style="color:rgba(255,255,255,0.5);">
+        Every plumbing challenge in San Diego County — we handle it all. Fast, fixed-price, guaranteed.
       </p>
     </div>
 
-    <!-- Services grid -->
+    <!-- Services grid — 4 columns, SHARP EDGES, numbered -->
     <ul
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t"
+      style="border-color:rgba(255,255,255,0.08);"
       role="list"
       aria-label="Plumbing services"
     >
-      {business.services.map((service) => (
-        <li>
-          <div class="service-card group h-full bg-navy-900 border border-white/8 rounded-2xl p-6 hover:border-orange-500/40 hover:bg-navy-700 transition-all duration-300 cursor-default">
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center mb-4 group-hover:bg-orange-500/25 transition-colors text-orange-400">
-              <span class="w-6 h-6" set:html={serviceIcons[service.slug]} aria-hidden="true" />
-            </div>
-            <!-- Content -->
-            <h3 class="font-display font-bold uppercase text-white text-xl mb-1.5 leading-tight tracking-wide">
+      {business.services.map((service, i) => (
+        <li
+          class="relative group border-r border-b p-6 flex flex-col gap-4 transition-colors duration-200"
+          style="border-color:rgba(255,255,255,0.08);"
+          onmouseover="this.style.background='rgba(249,115,22,0.06)'"
+          onmouseout="this.style.background='transparent'"
+        >
+          <!-- Big orange number -->
+          <div
+            class="font-display font-black leading-none select-none"
+            style="font-size:3.5rem; color:#f97316; letter-spacing:-0.02em; line-height:1;"
+            aria-hidden="true"
+          >
+            {padNum(i)}
+          </div>
+
+          <!-- Service icon — in a square box, NOT rounded -->
+          <div
+            class="w-10 h-10 flex items-center justify-center flex-shrink-0 text-white transition-colors"
+            style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.25);"
+          >
+            <span class="w-5 h-5" set:html={serviceIcons[service.slug]} aria-hidden="true" />
+          </div>
+
+          <!-- Content -->
+          <div class="flex-1">
+            <h3
+              class="font-display font-black uppercase text-white leading-tight mb-1.5"
+              style="font-size:1.2rem; letter-spacing:0.02em;"
+            >
               {service.title}
             </h3>
-            <p class="text-slate-400 font-body text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+            <p class="font-body text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
               {service.description}
             </p>
+          </div>
+
+          <!-- Bottom right arrow indicator -->
+          <div
+            class="absolute bottom-4 right-4 text-white transition-colors"
+            style="color:rgba(249,115,22,0.3);"
+            aria-hidden="true"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
           </div>
         </li>
       ))}
     </ul>
 
-    <!-- Bottom CTA -->
-    <div class="text-center mt-12">
+    <!-- Bottom CTA bar — full width, flush -->
+    <div
+      class="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-5"
+      style="background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.2);"
+    >
+      <div>
+        <p class="font-display font-black uppercase text-white text-xl">
+          DON'T SEE YOUR PROBLEM?
+        </p>
+        <p class="font-body text-sm" style="color:rgba(255,255,255,0.5);">
+          We handle every plumbing situation. Call or request a quote and we'll figure it out.
+        </p>
+      </div>
       <a
         href="#quote"
-        class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-body font-bold text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-[0_8px_32px_rgba(249,115,22,0.3)]"
+        class="inline-flex items-center gap-2 font-display font-black uppercase text-white text-sm tracking-widest px-8 py-4 flex-shrink-0 transition-opacity hover:opacity-90"
+        style="background:#f97316; border-radius:0;"
       >
-        Schedule Any Service
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        SCHEDULE SERVICE
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
         </svg>
       </a>

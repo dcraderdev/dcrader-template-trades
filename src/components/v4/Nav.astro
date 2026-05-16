@@ -2,73 +2,89 @@
 import { business } from '../../data/v4';
 ---
 
-<!-- Mobile sticky call bar -->
+<!-- PERMANENT RED PHONE BAR — always on top, always visible -->
 <div
-  class="fixed bottom-0 left-0 right-0 z-50 md:hidden"
+  id="v4-phone-bar"
+  class="fixed top-0 left-0 right-0 z-[999] bg-emergency-red"
   role="banner"
-  aria-label="Emergency call bar"
+  aria-label="Emergency dispatch line"
 >
   <a
     href={business.phoneHref}
-    class="flex items-center justify-center gap-3 py-4 bg-emergency-red hover:bg-emergency-red-dark transition-colors font-anton text-white text-2xl tracking-wider uppercase"
-    aria-label={`Call us now at ${business.phone}`}
+    class="flex items-center justify-center gap-4 py-2.5 px-4 group"
+    aria-label={`Emergency line: ${business.phone} — Call now, 24/7 live dispatch`}
   >
-    <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <!-- Pulsing dot -->
+    <span class="relative flex h-3 w-3 flex-shrink-0" aria-hidden="true">
+      <span class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
+      <span class="relative inline-flex h-3 w-3 bg-white"></span>
+    </span>
+
+    <span class="font-anton text-white uppercase tracking-widest text-sm sm:text-base md:text-xl leading-none whitespace-nowrap">
+      {business.phone}
+    </span>
+
+    <span class="hidden sm:block font-anton text-white/80 text-sm md:text-base uppercase tracking-widest leading-none" aria-hidden="true">·</span>
+
+    <span class="hidden sm:block font-anton text-white uppercase tracking-widest text-sm md:text-base leading-none whitespace-nowrap">
+      CALL NOW
+    </span>
+
+    <span class="hidden md:block font-anton text-white/80 text-sm md:text-base uppercase tracking-widest leading-none" aria-hidden="true">·</span>
+
+    <span class="hidden md:block font-anton text-white uppercase tracking-widest text-sm md:text-base leading-none whitespace-nowrap">
+      24/7 LIVE DISPATCH
+    </span>
+
+    <!-- Arrow indicator -->
+    <svg class="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
     </svg>
-    CALL NOW — {business.phone}
   </a>
 </div>
 
-<!-- Main nav -->
+<!-- MAIN NAV — black, under the phone bar -->
 <header
   id="v4-nav"
-  class="fixed top-0 left-0 right-0 z-40 transition-all duration-200"
-  style="background: #080808; border-bottom: 1px solid #1a1a1a;"
+  class="fixed left-0 right-0 z-[998] bg-[#080808] border-b border-white/10"
+  style="top: 44px;"
+  aria-label="Main navigation"
 >
-  <!-- Top red stripe -->
-  <div class="h-1 bg-emergency-red w-full" aria-hidden="true"></div>
-
   <nav
-    class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4"
-    aria-label="Main navigation"
+    class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4"
+    aria-label="Site navigation"
   >
     <!-- Logo -->
     <a
       href="/"
-      class="flex items-center gap-3 flex-shrink-0 group"
-      aria-label={`${business.name} home`}
+      class="flex items-center gap-3 flex-shrink-0"
+      aria-label={`${business.name} — Home`}
     >
       <div
-        class="w-8 h-8 bg-emergency-red flex items-center justify-center flex-shrink-0"
+        class="w-7 h-7 bg-emergency-red flex items-center justify-center flex-shrink-0"
         aria-hidden="true"
       >
-        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
         </svg>
       </div>
-      <div>
-        <span class="block font-anton text-white text-lg tracking-wider uppercase leading-none">
-          {business.shortName}
-        </span>
-        <span class="block text-gray-500 text-xs font-body leading-none mt-0.5">
-          {business.tagline}
-        </span>
-      </div>
+      <span class="font-anton text-white text-base tracking-widest uppercase leading-none">
+        {business.shortName}
+      </span>
     </a>
 
-    <!-- Desktop nav links -->
-    <ul class="hidden lg:flex items-center gap-1 list-none m-0 p-0" role="list">
+    <!-- Desktop nav -->
+    <ul class="hidden lg:flex items-center gap-0 list-none m-0 p-0" role="list">
       {[
-        { label: 'Services', href: '#services' },
-        { label: 'Coverage', href: '#service-area' },
-        { label: 'Guarantees', href: '#why-us' },
-        { label: 'Reviews', href: '#reviews' },
+        { label: 'SERVICES', href: '#services' },
+        { label: 'COVERAGE', href: '#service-area' },
+        { label: 'GUARANTEES', href: '#why-us' },
+        { label: 'REVIEWS', href: '#reviews' },
       ].map(link => (
         <li>
           <a
             href={link.href}
-            class="px-4 py-2 text-gray-400 hover:text-white font-body font-medium text-sm uppercase tracking-wide transition-colors hover:bg-white/5 rounded"
+            class="block px-5 py-4 font-body font-bold text-gray-500 hover:text-white text-xs uppercase tracking-[0.15em] transition-colors hover:bg-white/5"
           >
             {link.label}
           </a>
@@ -76,41 +92,98 @@ import { business } from '../../data/v4';
       ))}
     </ul>
 
-    <!-- Phone on right -->
-    <div class="flex items-center gap-4 flex-shrink-0">
-      <a
-        href={business.phoneHref}
-        class="hidden md:flex items-center gap-2 font-anton text-emergency-red hover:text-red-400 transition-colors text-xl tracking-wider uppercase"
-        aria-label={`Call ${business.phone}`}
-      >
-        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-        </svg>
-        {business.phone}
-      </a>
-      <a
-        href={business.phoneHref}
-        class="hidden sm:inline-flex bg-emergency-red hover:bg-emergency-red-dark text-white font-body font-bold text-sm px-5 py-2.5 uppercase tracking-wider transition-colors"
-        aria-label={`Call now at ${business.phone}`}
-      >
-        CALL NOW
-      </a>
-    </div>
+    <!-- Right: desktop call CTA -->
+    <a
+      href={business.phoneHref}
+      class="hidden sm:flex items-center gap-2 bg-emergency-red hover:bg-red-700 text-white font-anton text-sm tracking-widest uppercase px-5 py-2.5 transition-colors flex-shrink-0"
+      aria-label={`Call ${business.phone}`}
+    >
+      <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+      </svg>
+      CALL NOW
+    </a>
+
+    <!-- Mobile hamburger placeholder -->
+    <button
+      type="button"
+      class="sm:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Open navigation menu"
+      id="v4-menu-btn"
+    >
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-4 h-0.5 bg-emergency-red"></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="v4-mobile-menu"
+    class="hidden sm:hidden border-t border-white/10 bg-[#080808]"
+    aria-label="Mobile navigation"
+  >
+    <ul class="list-none p-0 m-0" role="list">
+      {[
+        { label: 'SERVICES', href: '#services' },
+        { label: 'COVERAGE', href: '#service-area' },
+        { label: 'GUARANTEES', href: '#why-us' },
+        { label: 'REVIEWS', href: '#reviews' },
+      ].map(link => (
+        <li class="border-b border-white/5">
+          <a
+            href={link.href}
+            class="block px-6 py-4 font-anton text-white text-lg tracking-widest uppercase"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href={business.phoneHref}
+          class="flex items-center justify-center gap-3 px-6 py-5 bg-emergency-red font-anton text-white text-xl tracking-widest uppercase"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          CALL {business.phone}
+        </a>
+      </li>
+    </ul>
+  </div>
 </header>
 
-<script>
-  const nav = document.getElementById('v4-nav');
+<!-- Spacer so content isn't hidden behind bars -->
+<div class="h-[102px]" aria-hidden="true"></div>
 
-  function updateNav() {
-    if (!nav) return;
-    if (window.scrollY > 40) {
-      nav.style.setProperty('box-shadow', '0 2px 24px rgba(0,0,0,0.8)');
-    } else {
-      nav.style.setProperty('box-shadow', 'none');
-    }
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById('v4-menu-btn');
+  const menu = document.getElementById('v4-mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', open);
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    // Close on nav link click
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
+  // Adjust nav top on resize in case phone bar height changes
+  function syncNavTop() {
+    const bar = document.getElementById('v4-phone-bar');
+    const nav = document.getElementById('v4-nav');
+    if (bar && nav) {
+      nav.style.top = bar.offsetHeight + 'px';
+    }
+  }
+  window.addEventListener('resize', syncNavTop, { passive: true });
+  syncNavTop();
 </script>

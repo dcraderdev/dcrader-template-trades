@@ -2,42 +2,50 @@
 import { business } from '../../data/v2';
 ---
 
-<section id="projects" class="relative py-24 lg:py-32" style="background: #0d1527;" aria-labelledby="projects-heading">
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/20 to-transparent" aria-hidden="true"></div>
+<section id="projects" class="relative py-24 lg:py-32" style="background: #06101a;" aria-labelledby="projects-heading">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/15 to-transparent" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
     <!-- Header -->
-    <div class="max-w-2xl mb-16">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="font-mono text-[#2dd4bf] text-xs tracking-[0.2em] uppercase">// project_log</span>
-        <div class="flex-1 h-px bg-[#2dd4bf]/15"></div>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-14">
+      <div>
+        <p class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase mb-3">// project_log --sort recent --limit {business.projects.length}</p>
+        <h2 id="projects-heading" class="font-sora font-black text-white mb-2" style="font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1;">
+          Recent Installs
+        </h2>
+        <p class="font-sora text-slate-500 text-base">Real jobs. Drag the divider to reveal before and after.</p>
       </div>
-      <h2
-        id="projects-heading"
-        class="font-sora font-extrabold text-white mb-4"
-        style="font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1;"
+
+      <!-- Index chip -->
+      <div
+        class="flex-shrink-0 flex items-center gap-3 font-mono text-[10px] text-slate-600 tracking-widest px-4 py-2.5 rounded-xl"
+        style="background: rgba(45,212,191,0.04); border: 1px solid rgba(45,212,191,0.1);"
+        aria-hidden="true"
       >
-        Recent Installs
-      </h2>
-      <p class="font-sora text-slate-400 text-lg leading-relaxed">
-        Real jobs, real results. Drag the slider to reveal before and after.
-      </p>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0"></span>
+        {business.projects.length} records · all verified
+      </div>
     </div>
 
     <!-- Carousel -->
-    <div class="relative" aria-roledescription="carousel" aria-label="Recent projects before and after">
-      <div id="v2-carousel" class="overflow-hidden rounded-2xl" style="border: 1px solid rgba(45,212,191,0.12);">
-        <div id="v2-track" class="flex transition-transform duration-500 ease-out" style="width: 300%;">
+    <div class="relative" aria-roledescription="carousel" aria-label="Recent project before and after photos">
+      <div id="v2-carousel" class="overflow-hidden rounded-2xl" style="border: 1px solid rgba(45,212,191,0.14);">
+        <div
+          id="v2-track"
+          class="flex transition-transform duration-500 ease-out"
+          style={`width: ${business.projects.length * 100}%;`}
+        >
           {business.projects.map((project, i) => (
             <div
-              class="w-full flex-shrink-0"
-              style="width: 33.333%;"
+              class="flex-shrink-0"
+              style={`width: ${100 / business.projects.length}%;`}
               role="group"
               aria-roledescription="slide"
               aria-label={`Project ${i + 1} of ${business.projects.length}: ${project.title}`}
             >
-              <!-- Before/After image slider -->
-              <div class="relative overflow-hidden" style="aspect-ratio: 16/9; background: #080e1a;">
+              <!-- Image BA slot -->
+              <div class="relative overflow-hidden" style="aspect-ratio: 16/9; background: #08111f;">
                 <img
                   src={project.beforeImg}
                   alt={`Before: ${project.title} in ${project.location}`}
@@ -52,49 +60,57 @@ import { business } from '../../data/v2';
                   loading="lazy"
                 />
 
-                <!-- Range slider overlay -->
+                <!-- Invisible range overlay -->
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value="50"
                   class="v2-ba-slider absolute inset-0 w-full h-full opacity-0 cursor-col-resize z-10"
-                  aria-label={`Before and after slider for ${project.title}`}
+                  aria-label={`Before and after comparison slider for ${project.title}`}
                 />
 
-                <!-- Divider handle — teal themed -->
-                <div class="v2-ba-divider absolute top-0 bottom-0 left-1/2 pointer-events-none z-20 -translate-x-1/2" style="width: 2px; background: #2dd4bf;">
-                  <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center"
-                    style="background: #2dd4bf; box-shadow: 0 0 20px rgba(45,212,191,0.5);">
-                    <svg class="w-4 h-4 text-[#080e1a]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <!-- Divider handle — teal tech style -->
+                <div class="v2-ba-divider absolute top-0 bottom-0 left-1/2 pointer-events-none z-20" style="width: 2px; background: #2dd4bf; filter: drop-shadow(0 0 6px #2dd4bf); transform: translateX(-50%);">
+                  <div
+                    class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full flex items-center justify-center"
+                    style="background: #080e1a; border: 2px solid #2dd4bf; box-shadow: 0 0 20px rgba(45,212,191,0.5);"
+                  >
+                    <svg class="w-4 h-4 text-[#2dd4bf]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/>
                     </svg>
                   </div>
                 </div>
 
                 <!-- Labels -->
-                <div class="absolute top-4 left-4 font-mono text-[11px] font-bold tracking-widest uppercase px-3 py-1.5 rounded pointer-events-none z-20"
-                  style="background: rgba(8,14,26,0.7); color: #94a3b8;" aria-hidden="true">Before</div>
-                <div class="absolute top-4 right-4 font-mono text-[11px] font-bold tracking-widest uppercase px-3 py-1.5 rounded pointer-events-none z-20"
-                  style="background: rgba(45,212,191,0.85); color: #080e1a;" aria-hidden="true">After</div>
+                <div class="absolute top-4 left-4 font-mono text-[9px] font-bold tracking-widest uppercase px-2.5 py-1.5 rounded pointer-events-none z-20"
+                  style="background: rgba(8,14,26,0.75); color: #64748b; border: 1px solid rgba(255,255,255,0.08);" aria-hidden="true">
+                  BEFORE
+                </div>
+                <div class="absolute top-4 right-4 font-mono text-[9px] font-bold tracking-widest uppercase px-2.5 py-1.5 rounded pointer-events-none z-20"
+                  style="background: rgba(45,212,191,0.9); color: #080e1a;" aria-hidden="true">
+                  AFTER
+                </div>
+
+                <!-- Index badge overlay -->
+                <div class="absolute bottom-4 left-4 font-mono text-[10px] text-[#2dd4bf]/60 tracking-widest pointer-events-none z-20" aria-hidden="true">
+                  JOB.{String(i + 1).padStart(2,'0')}
+                </div>
               </div>
 
-              <!-- Project info bar -->
-              <div class="p-6" style="background: #080e1a;">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 class="font-sora font-bold text-white text-xl leading-tight mb-1">
-                      {project.title}
-                    </h3>
-                    <p class="font-sora text-slate-400 text-sm leading-relaxed">{project.description}</p>
-                  </div>
-                  <div class="flex-shrink-0 text-right">
-                    <span class="flex items-center gap-1.5 font-mono text-[11px] text-[#2dd4bf]/70 tracking-wider whitespace-nowrap">
-                      <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/>
-                      </svg>
-                      {project.location}, AZ
-                    </span>
+              <!-- Info bar -->
+              <div class="p-6 flex items-start justify-between gap-4" style="background: #08111f;">
+                <div>
+                  <h3 class="font-sora font-black text-white text-xl leading-tight mb-1">{project.title}</h3>
+                  <p class="font-sora text-slate-500 text-sm leading-relaxed">{project.description}</p>
+                </div>
+                <div class="flex-shrink-0 text-right mt-0.5">
+                  <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-[#2dd4bf]/60 tracking-wide px-3 py-1.5 rounded-lg"
+                    style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.12);">
+                    <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/>
+                    </svg>
+                    {project.location}, AZ
                   </div>
                 </div>
               </div>
@@ -103,37 +119,40 @@ import { business } from '../../data/v2';
         </div>
       </div>
 
-      <!-- Controls -->
-      <div class="flex items-center justify-between mt-6">
-        <div class="flex gap-3">
+      <!-- Controls row -->
+      <div class="flex items-center justify-between mt-5">
+        <!-- Arrows -->
+        <div class="flex gap-2">
           <button
             id="v2-prev"
-            class="w-11 h-11 rounded-full flex items-center justify-center text-slate-400 hover:text-[#2dd4bf] transition-all hover:shadow-[0_0_12px_rgba(45,212,191,0.3)]"
-            style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.2);"
+            class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-[#2dd4bf] transition-all hover:shadow-[0_0_14px_rgba(45,212,191,0.3)]"
+            style="background: #08111f; border: 1px solid rgba(45,212,191,0.18);"
             aria-label="Previous project"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
             </svg>
           </button>
           <button
             id="v2-next"
-            class="w-11 h-11 rounded-full flex items-center justify-center text-slate-400 hover:text-[#2dd4bf] transition-all hover:shadow-[0_0_12px_rgba(45,212,191,0.3)]"
-            style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.2);"
+            class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-[#2dd4bf] transition-all hover:shadow-[0_0_14px_rgba(45,212,191,0.3)]"
+            style="background: #08111f; border: 1px solid rgba(45,212,191,0.18);"
             aria-label="Next project"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
             </svg>
           </button>
         </div>
 
-        <!-- Teal dot indicators -->
-        <div class="flex gap-2" role="tablist" aria-label="Project slides">
+        <!-- Dot indicators -->
+        <div class="flex gap-2 items-center" role="tablist" aria-label="Project slides">
           {business.projects.map((_, i) => (
             <button
-              class={`v2-dot transition-all rounded-full ${i === 0 ? 'w-6 h-2.5' : 'w-2.5 h-2.5'}`}
-              style={i === 0 ? 'background: #2dd4bf;' : 'background: rgba(45,212,191,0.2);'}
+              class="v2-dot rounded-full transition-all duration-300"
+              style={i === 0
+                ? 'width: 1.5rem; height: 0.5rem; background: #2dd4bf;'
+                : 'width: 0.5rem; height: 0.5rem; background: rgba(45,212,191,0.2);'}
               role="tab"
               aria-selected={i === 0 ? 'true' : 'false'}
               aria-label={`Go to project ${i + 1}`}
@@ -141,6 +160,15 @@ import { business } from '../../data/v2';
             />
           ))}
         </div>
+
+        <!-- CTA -->
+        <a
+          href="#quote"
+          class="hidden sm:inline-flex items-center gap-2 font-mono font-bold text-[9px] tracking-widest uppercase text-[#060c17] px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_14px_rgba(45,212,191,0.4)]"
+          style="background: #2dd4bf;"
+        >
+          Book Your Install
+        </a>
       </div>
     </div>
   </div>
@@ -176,7 +204,7 @@ import { business } from '../../data/v2';
     dots.forEach((dot, i) => {
       const active = i === current;
       dot.style.background = active ? '#2dd4bf' : 'rgba(45,212,191,0.2)';
-      dot.style.width = active ? '1.5rem' : '0.625rem';
+      dot.style.width = active ? '1.5rem' : '0.5rem';
       dot.setAttribute('aria-selected', active ? 'true' : 'false');
     });
   }
@@ -187,5 +215,11 @@ import { business } from '../../data/v2';
     dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
   });
 
-  setInterval(() => goTo(current + 1), 6000);
+  let autoplay = setInterval(() => goTo(current + 1), 6500);
+  [prevBtn, nextBtn, ...Array.from(dots)].forEach(el => {
+    el?.addEventListener('click', () => {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => goTo(current + 1), 6500);
+    });
+  });
 </script>

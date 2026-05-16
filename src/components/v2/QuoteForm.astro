@@ -2,103 +2,125 @@
 import { business } from '../../data/v2';
 ---
 
-<section id="quote" class="relative py-24 lg:py-32" style="background: #080e1a;" aria-labelledby="quote-heading">
+<section id="quote" class="relative py-24 lg:py-32" style="background: #06101a;" aria-labelledby="quote-heading">
   <!-- Top teal stripe -->
-  <div class="absolute top-0 left-0 right-0 h-[2px]" style="background: linear-gradient(90deg, transparent, #2dd4bf, transparent);" aria-hidden="true"></div>
+  <div class="absolute top-0 left-0 right-0 h-[2px]" style="background: linear-gradient(90deg, transparent, #2dd4bf 40%, #3b82f6 60%, transparent);" aria-hidden="true"></div>
 
-  <!-- Subtle teal glow behind the form -->
+  <!-- Ambient glow -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-    style="background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(45,212,191,0.04) 0%, transparent 70%);">
+    style="background: radial-gradient(ellipse 65% 55% at 65% 50%, rgba(45,212,191,0.05) 0%, transparent 70%);">
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+    <div class="grid lg:grid-cols-[1fr_520px] gap-12 lg:gap-16 items-start">
 
-      <!-- ── Left: pitch copy ───────────────────────────────────────────── -->
+      <!-- ── Left: pitch ─────────────────────────────────────────────────── -->
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[#2dd4bf] text-xs tracking-[0.2em] uppercase">// schedule</span>
-          <div class="h-px w-16 bg-[#2dd4bf]/15"></div>
-        </div>
+        <p class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase mb-3">// schedule --client new</p>
         <h2
           id="quote-heading"
-          class="font-sora font-extrabold text-white mb-3"
-          style="font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.05;"
+          class="font-sora font-black text-white mb-3"
+          style="font-size: clamp(2.5rem, 6.5vw, 4.25rem); line-height: 1.0;"
         >
           {business.form.headline}
         </h2>
-        <p class="font-mono text-[#2dd4bf] text-base mb-6 tracking-wide">
+        <p class="font-mono text-[#2dd4bf]/60 text-sm mb-6 tracking-wide">
           &gt;_ {business.form.subheadline}
         </p>
-        <p class="font-sora text-slate-400 text-lg leading-relaxed mb-10">
+        <p class="font-sora text-slate-400 text-lg leading-relaxed mb-10 max-w-sm">
           {business.form.note}
         </p>
 
-        <!-- Social proof stat -->
-        <div class="flex items-center gap-5 p-5 rounded-xl mb-8"
-          style="background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.2);">
-          <div class="font-mono font-bold text-[#2dd4bf] leading-none flex-shrink-0"
-            style="font-size: 3rem;">{business.form.calloutStat}</div>
+        <!-- Big stat -->
+        <div
+          class="flex items-center gap-5 p-5 rounded-2xl mb-10"
+          style="background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.18);"
+          aria-label={`${business.form.calloutStat} ${business.form.calloutLabel}`}
+        >
+          <div class="font-mono font-black text-[#2dd4bf] leading-none flex-shrink-0" style="font-size: 3.25rem;">
+            {business.form.calloutStat}
+          </div>
           <div>
-            <p class="font-sora font-semibold text-white text-base mb-0.5">{business.form.calloutLabel}</p>
-            <p class="font-mono text-[11px] text-slate-500 tracking-widest uppercase">No return trips needed</p>
+            <p class="font-sora font-bold text-white text-base mb-1">{business.form.calloutLabel}</p>
+            <p class="font-mono text-[10px] text-slate-600 tracking-widest uppercase">No return trips. First visit finishes the job.</p>
           </div>
         </div>
 
-        <!-- Phone alternative -->
-        <div class="mb-8">
-          <p class="font-mono text-[11px] text-slate-600 tracking-[0.2em] uppercase mb-3">Prefer to call?</p>
+        <!-- Phone -->
+        <div class="mb-10">
+          <p class="font-mono text-[9px] text-slate-700 tracking-[0.2em] uppercase mb-3">// prefer_to_call</p>
           <a
             href={business.phoneHref}
             class="group inline-flex items-center gap-3 hover:opacity-90 transition-opacity"
             aria-label={`Call us at ${business.phone}`}
           >
             <div
-              class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-              style="background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.3);"
+              class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3);"
               aria-hidden="true"
             >
-              <svg class="w-5 h-5 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4.5 h-4.5 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
               </svg>
             </div>
-            <span class="font-mono font-bold text-[#2dd4bf]" style="font-size: clamp(1.5rem, 3vw, 2rem);">
+            <span class="font-mono font-black text-[#2dd4bf] group-hover:text-white transition-colors" style="font-size: clamp(1.5rem, 3.5vw, 2.25rem);">
               {business.phone}
             </span>
           </a>
         </div>
 
-        <!-- Hours snippet -->
-        <ul class="space-y-2 list-none m-0 p-0">
-          {business.hours.map((h) => (
-            <li class="flex justify-between gap-6 py-2 border-b border-[#111e3a]">
-              <span class="font-sora text-slate-500 text-sm">{h.day}</span>
-              <span class="font-mono text-[#2dd4bf]/80 text-sm font-medium">{h.hours}</span>
-            </li>
-          ))}
-        </ul>
+        <!-- Hours -->
+        <div>
+          <p class="font-mono text-[9px] text-slate-700 tracking-[0.2em] uppercase mb-3">// hours</p>
+          <ul class="space-y-0 list-none m-0 p-0" aria-label="Business hours">
+            {business.hours.map((h) => (
+              <li class="flex justify-between gap-6 py-2.5 border-b border-[#111e3a] last:border-b-0">
+                <span class="font-sora text-slate-500 text-sm">{h.day}</span>
+                <span class="font-mono text-[#2dd4bf]/70 text-sm font-medium">{h.hours}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <!-- ── Right: dark card form ────────────────────────────────────── -->
-      <div class="rounded-2xl p-8" style="background: #0d1527; border: 1px solid rgba(45,212,191,0.2); box-shadow: 0 32px 80px rgba(0,0,0,0.5);">
-        <!-- Form header -->
-        <div class="flex items-center gap-3 mb-6 pb-5" style="border-bottom: 1px solid rgba(45,212,191,0.1);">
-          <div class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></div>
-          <span class="font-mono text-[#2dd4bf]/60 text-xs tracking-widest uppercase">New installation request</span>
+      <!-- ── Right: terminal form card ──────────────────────────────────── -->
+      <div
+        class="rounded-2xl overflow-hidden"
+        style="background: #060c17; border: 1px solid rgba(45,212,191,0.2); box-shadow: 0 40px 100px rgba(0,0,0,0.6);"
+      >
+        <!-- Terminal header -->
+        <div
+          class="px-6 py-4 flex items-center justify-between"
+          style="background: rgba(45,212,191,0.05); border-bottom: 1px solid rgba(45,212,191,0.12);"
+          aria-hidden="true"
+        >
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+            <span class="w-3 h-3 rounded-full bg-[#2dd4bf]/60"></span>
+          </div>
+          <span class="font-mono text-[10px] text-slate-600 tracking-widest">connect --client new --priority HIGH</span>
+          <span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0"></span>
+        </div>
+
+        <!-- Prompt line -->
+        <div class="px-6 pt-5 pb-2" aria-hidden="true">
+          <p class="font-mono text-[#2dd4bf] text-xs tracking-widest">&gt; connect --client new</p>
+          <p class="font-mono text-slate-600 text-[10px] tracking-wide mt-0.5">Initializing quote request form...</p>
         </div>
 
         <form
           name="v2-quote-request"
           method="POST"
-          class="space-y-5"
-          aria-label="Schedule an electrical installation"
+          class="px-6 pb-6 space-y-4 mt-2"
+          aria-label="Request a free quote for electrical work"
           novalidate
         >
-          <!-- Name + Phone row -->
-          <div class="grid sm:grid-cols-2 gap-4">
+          <!-- Name + Phone -->
+          <div class="grid sm:grid-cols-2 gap-3">
             <div>
-              <label for="v2-name" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-                Full Name <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
+              <label for="v2-name" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+                --name <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
               </label>
               <input
                 type="text"
@@ -107,13 +129,13 @@ import { business } from '../../data/v2';
                 required
                 autocomplete="name"
                 placeholder="Alex Johnson"
-                class="v2-input w-full rounded-xl px-4 py-3 font-sora text-white text-sm placeholder:text-slate-600 outline-none transition-all duration-200"
+                class="tf-input w-full rounded-lg px-3.5 py-2.5 font-sora text-white text-sm placeholder:text-slate-700 outline-none transition-all duration-200"
                 aria-required="true"
               />
             </div>
             <div>
-              <label for="v2-phone" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-                Phone <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
+              <label for="v2-phone" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+                --phone <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
               </label>
               <input
                 type="tel"
@@ -122,7 +144,7 @@ import { business } from '../../data/v2';
                 required
                 autocomplete="tel"
                 placeholder="(480) 555-0000"
-                class="v2-input w-full rounded-xl px-4 py-3 font-mono text-[#2dd4bf] text-sm placeholder:text-slate-600 outline-none transition-all duration-200"
+                class="tf-input tf-mono w-full rounded-lg px-3.5 py-2.5 font-mono text-[#2dd4bf] text-sm placeholder:text-slate-700 outline-none transition-all duration-200"
                 aria-required="true"
               />
             </div>
@@ -130,8 +152,8 @@ import { business } from '../../data/v2';
 
           <!-- Email -->
           <div>
-            <label for="v2-email" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-              Email Address
+            <label for="v2-email" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+              --email
             </label>
             <input
               type="email"
@@ -139,23 +161,23 @@ import { business } from '../../data/v2';
               name="email"
               autocomplete="email"
               placeholder="you@example.com"
-              class="v2-input w-full rounded-xl px-4 py-3 font-sora text-white text-sm placeholder:text-slate-600 outline-none transition-all duration-200"
+              class="tf-input w-full rounded-lg px-3.5 py-2.5 font-sora text-white text-sm placeholder:text-slate-700 outline-none transition-all duration-200"
             />
           </div>
 
-          <!-- Service type select -->
+          <!-- Service select -->
           <div>
-            <label for="v2-service" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-              Service Needed <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
+            <label for="v2-service" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+              --service_type <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
             </label>
             <select
               id="v2-service"
               name="service"
               required
-              class="v2-input v2-select w-full rounded-xl px-4 py-3 font-sora text-slate-300 text-sm outline-none transition-all duration-200"
+              class="tf-input tf-select w-full rounded-lg px-3.5 py-2.5 font-mono text-slate-300 text-xs outline-none transition-all duration-200"
               aria-required="true"
             >
-              <option value="" disabled selected>Select a service...</option>
+              <option value="" disabled selected>-- select service type --</option>
               {business.services.map(s => (
                 <option value={s.slug}>{s.title}</option>
               ))}
@@ -165,8 +187,8 @@ import { business } from '../../data/v2';
 
           <!-- Address -->
           <div>
-            <label for="v2-address" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-              Property Address
+            <label for="v2-address" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+              --property_address
             </label>
             <input
               type="text"
@@ -174,22 +196,22 @@ import { business } from '../../data/v2';
               name="address"
               autocomplete="street-address"
               placeholder="123 Main St, Scottsdale, AZ"
-              class="v2-input w-full rounded-xl px-4 py-3 font-sora text-white text-sm placeholder:text-slate-600 outline-none transition-all duration-200"
+              class="tf-input w-full rounded-lg px-3.5 py-2.5 font-sora text-white text-sm placeholder:text-slate-700 outline-none transition-all duration-200"
             />
           </div>
 
           <!-- Project details -->
           <div>
-            <label for="v2-details" class="block font-sora font-semibold text-slate-300 text-sm mb-1.5">
-              Project Details <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
+            <label for="v2-details" class="block font-mono text-[9px] text-[#2dd4bf]/55 tracking-[0.18em] uppercase mb-1.5">
+              --project_details <span class="text-[#2dd4bf]" aria-hidden="true">*</span>
             </label>
             <textarea
               id="v2-details"
               name="details"
               required
               rows="4"
-              placeholder="e.g. Installing a Tesla Wall Connector in 2-car garage, need panel assessment first..."
-              class="v2-input w-full rounded-xl px-4 py-3 font-sora text-white text-sm placeholder:text-slate-600 outline-none transition-all duration-200 resize-none"
+              placeholder="// e.g. Installing a Tesla Wall Connector in 2-car garage, need panel assessment first..."
+              class="tf-input w-full rounded-lg px-3.5 py-2.5 font-mono text-white text-xs placeholder:text-slate-700 outline-none transition-all duration-200 resize-none leading-relaxed"
               aria-required="true"
             ></textarea>
           </div>
@@ -197,44 +219,47 @@ import { business } from '../../data/v2';
           <!-- Submit -->
           <button
             type="submit"
-            class="w-full font-sora font-bold text-[#080e1a] text-base py-4 px-6 rounded-xl transition-all hover:scale-[1.01] active:scale-100 flex items-center justify-center gap-2"
-            style="background: #2dd4bf; box-shadow: 0 8px 24px rgba(45,212,191,0.3);"
+            class="w-full font-mono font-black text-[#060c17] text-xs tracking-[0.18em] uppercase py-4 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-100 flex items-center justify-center gap-2"
+            style="background: #2dd4bf; box-shadow: 0 8px 32px rgba(45,212,191,0.3);"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
             </svg>
             {business.form.submitLabel}
           </button>
 
-          <p class="text-center font-mono text-[10px] text-slate-600 tracking-wider">
-            No spam. We'll reply by phone or email within 2 business hours.
+          <p class="text-center font-mono text-[9px] text-slate-700 tracking-wider leading-relaxed">
+            // No spam. We'll reply within 2 business hours.<br/>
+            // Final price confirmed before any work begins.
           </p>
         </form>
       </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .v2-input {
+  .tf-input {
     background: #080e1a;
-    border: 1px solid #1e3a5f;
+    border: 1px solid rgba(45,212,191,0.15);
     color: #e2e8f0;
   }
-  .v2-input:focus {
+  .tf-input:focus {
     border-color: #2dd4bf;
-    box-shadow: 0 0 0 3px rgba(45,212,191,0.12);
+    box-shadow: 0 0 0 3px rgba(45,212,191,0.1);
+    background: #08131f;
   }
-  .v2-select {
+  .tf-select {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1rem;
-    padding-right: 2.5rem;
+    background-position: right 0.75rem center;
+    background-size: 0.9rem;
+    padding-right: 2.25rem;
   }
-  .v2-select option {
-    background: #0d1527;
+  .tf-select option {
+    background: #0a1222;
     color: #e2e8f0;
   }
 </style>

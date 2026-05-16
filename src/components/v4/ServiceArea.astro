@@ -1,63 +1,155 @@
 ---
 import { business } from '../../data/v4';
+
+// Assign fake zone codes for dispatch-style look
+const zoneMap: Record<string, string> = {
+  "Atlanta": "Z-01",
+  "Marietta": "Z-02",
+  "Smyrna": "Z-03",
+  "Decatur": "Z-04",
+  "Sandy Springs": "Z-05",
+  "Roswell": "Z-06",
+  "Alpharetta": "Z-07",
+  "Dunwoody": "Z-08",
+  "Brookhaven": "Z-09",
+  "College Park": "Z-10",
+  "East Point": "Z-11",
+  "Forest Park": "Z-12",
+  "Tucker": "Z-13",
+  "Clarkston": "Z-14",
+  "Stone Mountain": "Z-15",
+  "Chamblee": "Z-16",
+};
 ---
 
 <section
   id="service-area"
-  class="py-20 bg-emergency-gray-dark border-t border-white/5"
+  class="bg-[#080808] border-t border-white/10"
   aria-labelledby="service-area-heading"
 >
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
-    <!-- Header -->
-    <div class="mb-12 text-center">
+  <!-- Header -->
+  <div class="border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <p class="font-body font-black text-emergency-red text-xs uppercase tracking-[0.3em] mb-2">
+        ACTIVE COVERAGE ZONES — ALL UNITS DEPLOYED
+      </p>
       <h2
         id="service-area-heading"
-        class="font-anton text-white uppercase tracking-wider"
-        style="font-size: clamp(2rem, 6vw, 4rem);"
+        class="font-anton text-white uppercase tracking-wider leading-none"
+        style="font-size: clamp(2.5rem, 7vw, 5rem);"
       >
         {business.serviceArea.headline}
       </h2>
-      <div class="h-1 w-24 bg-emergency-red mx-auto mt-4 mb-5" aria-hidden="true"></div>
-      <p class="font-body text-gray-400 text-sm uppercase tracking-widest max-w-xl mx-auto">
+      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mt-4 max-w-xl">
         {business.serviceArea.subheadline}
       </p>
     </div>
+  </div>
 
-    <!-- City grid -->
-    <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-12"
-      role="list"
-      aria-label="Cities we serve"
-    >
-      {business.serviceArea.cities.map(city => (
-        <div
-          class="group flex items-center gap-2 border border-emergency-red/25 hover:border-emergency-red hover:bg-emergency-red/5 px-4 py-3 transition-all cursor-default"
-          role="listitem"
-        >
-          <span class="w-1.5 h-1.5 bg-emergency-red flex-shrink-0" aria-hidden="true"></span>
-          <span class="font-body font-semibold text-white text-sm group-hover:text-emergency-red transition-colors">
-            {city}
-          </span>
-        </div>
-      ))}
+  <!-- Zone table -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- Table header -->
+    <div class="grid gap-0 border-b border-white/10 mb-0" style="grid-template-columns: 80px 1fr 100px;">
+      <span class="font-body font-black text-gray-600 text-xs uppercase tracking-[0.15em] pb-3">ZONE</span>
+      <span class="font-body font-black text-gray-600 text-xs uppercase tracking-[0.15em] pb-3">CITY / DISTRICT</span>
+      <span class="font-body font-black text-gray-600 text-xs uppercase tracking-[0.15em] pb-3 text-right">STATUS</span>
     </div>
 
-    <!-- Stat bar -->
-    <div class="border border-white/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-      <div class="flex flex-col items-center py-8 px-6">
-        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">&lt; 60</span>
-        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Minutes — Our Guarantee</span>
-      </div>
-      <div class="flex flex-col items-center py-8 px-6">
-        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">24/7</span>
-        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Live Dispatch, Always</span>
-      </div>
-      <div class="flex flex-col items-center py-8 px-6">
-        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">16+</span>
-        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Cities Covered</span>
-      </div>
+    <!-- City rows -->
+    <div
+      class="divide-y divide-white/5"
+      role="list"
+      aria-label="Service coverage zones"
+    >
+      {business.serviceArea.cities.map(city => {
+        const zone = zoneMap[city] ?? "Z-XX";
+        return (
+          <div
+            class="group grid items-center py-4 hover:bg-emergency-red/5 transition-colors -mx-4 sm:-mx-6 px-4 sm:px-6"
+            style="grid-template-columns: 80px 1fr 100px;"
+            role="listitem"
+          >
+            <!-- Zone code -->
+            <span class="font-body font-black text-emergency-red text-xs uppercase tracking-widest">
+              {zone}
+            </span>
+
+            <!-- City name -->
+            <span class="font-anton text-white group-hover:text-emergency-red transition-colors uppercase tracking-wider" style="font-size: clamp(1rem, 2vw, 1.25rem);">
+              {city}
+            </span>
+
+            <!-- Status indicator -->
+            <div class="flex items-center justify-end gap-2">
+              <span class="relative flex h-2 w-2 flex-shrink-0" aria-hidden="true">
+                <span class="animate-ping absolute inline-flex h-full w-full bg-emergency-red opacity-60"></span>
+                <span class="relative inline-flex h-2 w-2 bg-emergency-red"></span>
+              </span>
+              <span class="font-body font-black text-emergency-red text-xs uppercase tracking-widest">LIVE</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
 
   </div>
+
+  <!-- Stats band -->
+  <div class="border-t-2 border-emergency-red bg-[#0a0a0a]">
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10"
+        role="list"
+        aria-label="Coverage statistics"
+      >
+        <div class="flex flex-col items-center justify-center py-10 px-6" role="listitem">
+          <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(3rem, 6vw, 4.5rem);">
+            &lt; 60
+          </span>
+          <span class="font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mt-3">
+            MINUTE GUARANTEE
+          </span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-10 px-6" role="listitem">
+          <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(3rem, 6vw, 4.5rem);">
+            24/7
+          </span>
+          <span class="font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mt-3">
+            LIVE DISPATCH, ALWAYS
+          </span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-10 px-6" role="listitem">
+          <span class="font-anton text-emergency-red leading-none tracking-wider" style="font-size: clamp(3rem, 6vw, 4.5rem);">
+            {business.serviceArea.cities.length}+
+          </span>
+          <span class="font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mt-3">
+            ACTIVE ZONES COVERED
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Not in list CTA -->
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-body text-gray-500 text-sm uppercase tracking-wider">
+        Don't see your city? Call us — we likely cover it.
+      </p>
+      <a
+        href={business.phoneHref}
+        class="flex items-center gap-2 bg-emergency-red hover:bg-red-700 text-white font-anton tracking-widest uppercase px-8 py-4 transition-colors flex-shrink-0"
+        style="font-size: clamp(0.9rem, 1.5vw, 1rem);"
+        aria-label={`Call to check coverage: ${business.phone}`}
+      >
+        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+        CHECK YOUR ZONE
+      </a>
+    </div>
+  </div>
+
 </section>

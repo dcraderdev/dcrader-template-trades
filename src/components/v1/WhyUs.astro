@@ -1,90 +1,150 @@
 ---
 import { business } from '../../data/v1';
 
+const stats = [
+  { stat: '4,200+', label: 'JOBS COMPLETED', sub: 'Since 2008' },
+  { stat: '17 YRS', label: 'IN BUSINESS', sub: 'Family owned' },
+  { stat: '100%', label: 'GUARANTEE', sub: 'We make it right' },
+  { stat: '<60 MIN', label: 'RESPONSE TIME', sub: 'Emergency calls' },
+];
+
 const pillarIcons = [
-  // Dollar / upfront pricing
-  `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v2M12 16v2M9 9.5A2.5 2.5 0 0 1 12 7a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 1-3-2.5"/></svg>`,
-  // License / badge
-  `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
-  // Guarantee / shield-check
-  `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`,
-  // Clock / same-day
-  `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v2M12 16v2M9 9.5A2.5 2.5 0 0 1 12 7a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 1-3-2.5"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
 ];
 ---
 
-<section id="why-us" class="relative bg-navy-700 py-20 lg:py-28" aria-labelledby="why-us-heading">
-  <!-- Top accent line -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" aria-hidden="true"></div>
+<section
+  id="why-us"
+  class="relative py-20 lg:py-28"
+  style="background:#0f2855;"
+  aria-labelledby="why-us-heading"
+>
+  <!-- Top rule -->
+  <div class="absolute top-0 left-0 right-0 h-1" style="background:#f97316;" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <!-- Section header -->
-    <div class="text-center mb-14">
-      <span class="inline-block text-orange-500 font-body font-semibold text-sm uppercase tracking-widest mb-3">
+
+    <!-- Section label -->
+    <div class="mb-4 flex items-center gap-3" aria-hidden="true">
+      <div class="h-px w-12" style="background:#f97316;"></div>
+      <span class="font-body font-bold text-xs uppercase tracking-widest" style="color:#f97316;">
         Our Promise
       </span>
-      <h2
-        id="why-us-heading"
-        class="font-display font-black uppercase text-white mb-4"
-        style="font-size: clamp(2.25rem, 5vw, 3.75rem);"
-      >
-        Why San Diego Chooses Us
-      </h2>
-      <p class="text-slate-400 font-body max-w-xl mx-auto text-lg">
-        Every plumber will fix your pipe. We fix it, explain it, price it fairly, and stand behind it.
-      </p>
     </div>
 
-    <!-- 4 pillars grid -->
-    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list" aria-label="Why choose us">
-      {business.whyUs.map((pillar, i) => (
-        <li class="pillar-card group relative bg-navy-800 border border-white/8 rounded-2xl p-7 hover:border-orange-500/30 transition-all duration-300 overflow-hidden">
-          <!-- Orange top border accent -->
-          <div class="absolute top-0 left-6 right-6 h-0.5 bg-orange-500 rounded-full" aria-hidden="true"></div>
+    <h2
+      id="why-us-heading"
+      class="font-display font-black uppercase text-white leading-none mb-16"
+      style="font-size: clamp(2.75rem, 7vw, 5.5rem); letter-spacing:-0.02em;"
+    >
+      WHY SAN DIEGO<br/>
+      <span style="color:#f97316;">CHOOSES US</span>
+    </h2>
 
-          <!-- Icon -->
-          <div class="w-16 h-16 rounded-2xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center mb-5 text-orange-400 group-hover:bg-orange-500/25 group-hover:text-orange-300 transition-all">
+    <!-- GIANT STAT BLOCKS — 4 in a row, full-bleed -->
+    <div
+      class="grid grid-cols-2 lg:grid-cols-4 mb-16"
+      style="border:1px solid rgba(249,115,22,0.25);"
+      role="list"
+      aria-label="Key statistics"
+    >
+      {stats.map((item, i) => (
+        <div
+          class="relative py-10 px-6 text-center"
+          style={`border-right: ${i < 3 ? '1px solid rgba(249,115,22,0.25)' : 'none'}; border-bottom: ${i < 2 ? '1px solid rgba(249,115,22,0.25)' : 'none'};`}
+          role="listitem"
+        >
+          <!-- Stat number — enormous -->
+          <div
+            class="font-display font-black leading-none mb-1 uppercase"
+            style="font-size: clamp(2.75rem, 5vw, 4rem); color:#f97316; letter-spacing:-0.03em;"
+          >
+            {item.stat}
+          </div>
+          <div
+            class="font-display font-black uppercase text-white text-sm tracking-widest leading-tight mb-0.5"
+          >
+            {item.label}
+          </div>
+          <div class="font-body text-xs" style="color:rgba(255,255,255,0.4);">
+            {item.sub}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 4 Pillars — left-aligned horizontal layout, each with a left orange border -->
+    <ul
+      class="grid grid-cols-1 lg:grid-cols-2 gap-0"
+      style="border:1px solid rgba(255,255,255,0.08);"
+      role="list"
+      aria-label="Why choose us"
+    >
+      {business.whyUs.map((pillar, i) => (
+        <li
+          class="relative flex gap-5 p-7 transition-colors"
+          style={`
+            border-right: ${i % 2 === 0 ? '1px solid rgba(255,255,255,0.08)' : 'none'};
+            border-bottom: ${i < 2 ? '1px solid rgba(255,255,255,0.08)' : 'none'};
+            border-left: 4px solid #f97316;
+          `}
+          onmouseover="this.style.background='rgba(249,115,22,0.04)'"
+          onmouseout="this.style.background='transparent'"
+        >
+          <!-- Icon box -->
+          <div
+            class="w-12 h-12 flex items-center justify-center flex-shrink-0 text-orange-400"
+            style="background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25);"
+          >
             <span set:html={pillarIcons[i]} aria-hidden="true" />
           </div>
 
           <!-- Content -->
-          <h3 class="font-display font-black uppercase text-white text-2xl leading-tight mb-1">
-            {pillar.title}
-          </h3>
-          <p class="text-orange-400 font-body font-semibold text-sm mb-3">{pillar.subtitle}</p>
-          <p class="text-slate-400 font-body text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
-            {pillar.description}
-          </p>
-
-          <!-- Subtle number watermark -->
-          <div class="absolute bottom-4 right-5 font-display font-black text-6xl text-white/[0.04] select-none leading-none" aria-hidden="true">
-            {i + 1}
+          <div class="flex-1 min-w-0">
+            <h3
+              class="font-display font-black uppercase text-white leading-tight mb-0.5"
+              style="font-size:1.35rem; letter-spacing:0.02em;"
+            >
+              {pillar.title}
+            </h3>
+            <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#f97316;">
+              {pillar.subtitle}
+            </p>
+            <p class="font-body text-sm leading-relaxed" style="color:rgba(255,255,255,0.55);">
+              {pillar.description}
+            </p>
           </div>
         </li>
       ))}
     </ul>
 
-    <!-- Stat strip -->
-    <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
-      {[
-        { stat: '4,200+', label: 'Jobs Completed' },
-        { stat: '17 yrs', label: 'In Business' },
-        { stat: '4.9★', label: 'Average Rating' },
-        { stat: '< 60 min', label: 'Response Time' },
-      ].map(item => (
-        <div class="text-center bg-white/5 border border-white/8 rounded-xl py-5 px-3">
-          <div class="font-display font-black text-orange-500 leading-none mb-1"
-            style="font-size: clamp(1.75rem, 3vw, 2.5rem);">{item.stat}</div>
-          <div class="text-slate-400 font-body text-sm">{item.label}</div>
-        </div>
-      ))}
+    <!-- Emergency CTA strip -->
+    <div
+      class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 px-7 py-5"
+      style="background:#f97316;"
+    >
+      <div>
+        <p class="font-display font-black uppercase text-white text-2xl leading-none">
+          PLUMBING EMERGENCY? DON'T WAIT.
+        </p>
+        <p class="font-body text-sm text-white/80 mt-0.5">
+          We answer 24 hours a day, every day of the year.
+        </p>
+      </div>
+      <a
+        href={business.phoneHref}
+        class="inline-flex items-center gap-3 font-display font-black uppercase text-white text-xl tracking-wide flex-shrink-0 px-6 py-3 transition-opacity hover:opacity-90"
+        style="background:#0f2855; border-radius:0;"
+        aria-label={`Call us at ${business.phone}`}
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+        {business.phone}
+      </a>
     </div>
-  </div>
-
-  <!-- Bottom wave -->
-  <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none" aria-hidden="true">
-    <svg viewBox="0 0 1440 50" preserveAspectRatio="none" class="w-full h-[50px]">
-      <path d="M0,50 L0,25 Q360,0 720,25 Q1080,50 1440,15 L1440,50 Z" fill="#f8fafc"/>
-    </svg>
   </div>
 </section>

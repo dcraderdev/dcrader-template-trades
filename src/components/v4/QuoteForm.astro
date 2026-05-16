@@ -4,83 +4,103 @@ import { business } from '../../data/v4';
 
 <section
   id="quote"
-  class="py-20 bg-emergency-gray-dark border-t border-white/5"
+  class="bg-[#080808] border-t border-white/10"
   aria-labelledby="quote-heading"
 >
-  <div class="max-w-3xl mx-auto px-4 sm:px-6">
 
-    <!-- Emergency warning callout -->
-    <div
-      class="border-2 border-emergency-red bg-emergency-red/10 px-6 py-5 mb-10 flex gap-4 items-start"
-      role="alert"
-      aria-live="polite"
-    >
-      <svg class="w-6 h-6 text-emergency-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
-      </svg>
-      <div>
-        <p class="font-anton text-emergency-red text-lg uppercase tracking-wider leading-tight">
-          FOR EMERGENCIES — CALL FIRST
-        </p>
-        <p class="font-body text-white text-sm mt-1 leading-relaxed">
-          {business.form.note}
-        </p>
-        <a
-          href={business.phoneHref}
-          class="inline-flex items-center gap-2 mt-3 font-anton text-emergency-red hover:text-red-400 transition-colors text-2xl tracking-wider"
-          aria-label={`Call now at ${business.phone}`}
-        >
-          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+  <!-- Emergency redirect banner — very top of section, full red -->
+  <div
+    class="bg-emergency-red"
+    role="alert"
+    aria-live="assertive"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <!-- Pulsing alert icon -->
+        <div class="relative flex-shrink-0">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
           </svg>
-          {business.phone}
-        </a>
+        </div>
+        <div>
+          <p class="font-anton text-white uppercase tracking-widest leading-none" style="font-size: clamp(0.9rem, 2vw, 1.1rem);">
+            EMERGENCY? DO NOT USE THIS FORM.
+          </p>
+          <p class="font-body text-white/80 text-xs uppercase tracking-wider mt-1">
+            Water flooding · Gas smell · Burst pipe — CALL IMMEDIATELY
+          </p>
+        </div>
       </div>
+      <a
+        href={business.phoneHref}
+        class="flex-shrink-0 flex items-center gap-2 bg-white hover:bg-gray-100 text-emergency-red font-anton tracking-widest uppercase px-8 py-3.5 transition-colors"
+        style="font-size: clamp(1rem, 1.5vw, 1.15rem);"
+        aria-label={`Emergency call: ${business.phone}`}
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+        CALL NOW
+      </a>
     </div>
+  </div>
 
-    <!-- Form header -->
-    <div class="mb-8">
+  <!-- Form body -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+
+    <!-- Section heading -->
+    <div class="mb-10">
+      <p class="font-body font-black text-gray-600 text-xs uppercase tracking-[0.3em] mb-3">
+        NON-EMERGENCY REQUESTS ONLY
+      </p>
       <h2
         id="quote-heading"
-        class="font-anton text-white uppercase tracking-wider"
-        style="font-size: clamp(1.75rem, 5vw, 3rem);"
+        class="font-anton text-white uppercase tracking-wider leading-none"
+        style="font-size: clamp(2rem, 6vw, 4rem);"
       >
-        {business.form.headline}
+        REQUEST<br/>SERVICE
       </h2>
-      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mt-2">
-        {business.form.subheadline}
+      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mt-4">
+        Non-emergency requests responded to within 2 hours during business hours.
       </p>
     </div>
 
     <!-- Stat callout -->
-    <div class="flex items-center gap-5 border border-white/10 bg-emergency-black px-6 py-4 mb-8">
-      <div class="text-center">
-        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">
-          {business.form.calloutStat}
+    <div class="flex items-center gap-5 border border-emergency-red/30 bg-emergency-red/5 px-6 py-5 mb-10">
+      <div class="flex-shrink-0">
+        <span class="block font-anton text-emergency-red tracking-wider leading-none" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">
+          {business.form.calloutStat.toUpperCase()}
         </span>
-        <span class="block font-body text-gray-500 text-xs uppercase tracking-widest mt-0.5">
+        <span class="block font-body text-gray-500 text-xs uppercase tracking-widest mt-1">
           {business.form.calloutLabel}
         </span>
       </div>
-      <div class="h-12 w-px bg-white/10" aria-hidden="true"></div>
+      <div class="w-px h-12 bg-emergency-red/30 flex-shrink-0" aria-hidden="true"></div>
       <p class="font-body text-gray-400 text-sm leading-relaxed">
-        Non-emergency requests are responded to within 2 hours during business hours.
+        {business.form.note}
       </p>
     </div>
 
-    <!-- Form -->
+    <!-- The form — dark, red-bordered -->
     <form
       method="POST"
       action="#"
       novalidate
-      class="space-y-5"
-      aria-label="Non-emergency service request form"
+      class="border border-emergency-red/40 bg-[#0a0a0a] p-8 space-y-6"
+      aria-label="Non-emergency service request"
     >
+      <!-- Form header inside -->
+      <div class="border-b border-white/10 pb-5 mb-6">
+        <p class="font-body font-black text-emergency-red text-xs uppercase tracking-[0.25em]">
+          REQUEST FORM — DISPATCH WILL CONTACT YOU WITHIN 2 HOURS
+        </p>
+      </div>
+
       <!-- Name + Phone -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label for="q4-name" class="block font-body text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-            Full Name <span class="text-emergency-red" aria-hidden="true">*</span>
+          <label for="q4-name" class="block font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mb-2">
+            FULL NAME <span class="text-emergency-red" aria-hidden="true">*</span>
           </label>
           <input
             type="text"
@@ -88,13 +108,13 @@ import { business } from '../../data/v4';
             name="name"
             required
             autocomplete="name"
-            class="w-full bg-emergency-black border border-white/15 focus:border-emergency-red text-white font-body text-sm px-4 py-3 outline-none transition-colors placeholder:text-gray-700"
+            class="w-full bg-[#080808] border border-white/15 hover:border-white/30 focus:border-emergency-red text-white font-body text-sm px-4 py-3.5 outline-none transition-colors placeholder:text-gray-700"
             placeholder="Jane Smith"
           />
         </div>
         <div>
-          <label for="q4-phone" class="block font-body text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-            Phone Number <span class="text-emergency-red" aria-hidden="true">*</span>
+          <label for="q4-phone" class="block font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mb-2">
+            PHONE NUMBER <span class="text-emergency-red" aria-hidden="true">*</span>
           </label>
           <input
             type="tel"
@@ -102,7 +122,7 @@ import { business } from '../../data/v4';
             name="phone"
             required
             autocomplete="tel"
-            class="w-full bg-emergency-black border border-white/15 focus:border-emergency-red text-white font-body text-sm px-4 py-3 outline-none transition-colors placeholder:text-gray-700"
+            class="w-full bg-[#080808] border border-white/15 hover:border-white/30 focus:border-emergency-red text-white font-body text-sm px-4 py-3.5 outline-none transition-colors placeholder:text-gray-700"
             placeholder="(404) 555-0000"
           />
         </div>
@@ -110,8 +130,8 @@ import { business } from '../../data/v4';
 
       <!-- Address -->
       <div>
-        <label for="q4-address" class="block font-body text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-          Service Address <span class="text-emergency-red" aria-hidden="true">*</span>
+        <label for="q4-address" class="block font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mb-2">
+          SERVICE ADDRESS <span class="text-emergency-red" aria-hidden="true">*</span>
         </label>
         <input
           type="text"
@@ -119,21 +139,21 @@ import { business } from '../../data/v4';
           name="address"
           required
           autocomplete="street-address"
-          class="w-full bg-emergency-black border border-white/15 focus:border-emergency-red text-white font-body text-sm px-4 py-3 outline-none transition-colors placeholder:text-gray-700"
+          class="w-full bg-[#080808] border border-white/15 hover:border-white/30 focus:border-emergency-red text-white font-body text-sm px-4 py-3.5 outline-none transition-colors placeholder:text-gray-700"
           placeholder="123 Main St, Atlanta, GA"
         />
       </div>
 
       <!-- Issue type -->
       <div>
-        <label for="q4-issue" class="block font-body text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-          Type of Issue <span class="text-emergency-red" aria-hidden="true">*</span>
+        <label for="q4-issue" class="block font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mb-2">
+          TYPE OF ISSUE <span class="text-emergency-red" aria-hidden="true">*</span>
         </label>
         <select
           id="q4-issue"
           name="issue"
           required
-          class="w-full bg-emergency-black border border-white/15 focus:border-emergency-red text-white font-body text-sm px-4 py-3 outline-none transition-colors appearance-none"
+          class="w-full bg-[#080808] border border-white/15 hover:border-white/30 focus:border-emergency-red text-white font-body text-sm px-4 py-3.5 outline-none transition-colors appearance-none cursor-pointer"
         >
           <option value="" disabled selected>Select issue type…</option>
           {business.services.map(s => (
@@ -145,36 +165,46 @@ import { business } from '../../data/v4';
 
       <!-- Message -->
       <div>
-        <label for="q4-message" class="block font-body text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-          Describe the Problem
+        <label for="q4-message" class="block font-body font-black text-gray-400 text-xs uppercase tracking-[0.2em] mb-2">
+          DESCRIBE THE PROBLEM
         </label>
         <textarea
           id="q4-message"
           name="message"
           rows="4"
-          class="w-full bg-emergency-black border border-white/15 focus:border-emergency-red text-white font-body text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-gray-700"
-          placeholder="Briefly describe what's happening…"
+          class="w-full bg-[#080808] border border-white/15 hover:border-white/30 focus:border-emergency-red text-white font-body text-sm px-4 py-3.5 outline-none transition-colors resize-none placeholder:text-gray-700"
+          placeholder="Briefly describe what's happening. For emergencies, call instead."
         ></textarea>
       </div>
 
-      <!-- Submit -->
+      <!-- Submit dispatch button -->
       <button
         type="submit"
-        class="w-full bg-emergency-red hover:bg-emergency-red-dark text-white font-anton text-xl tracking-wider uppercase px-6 py-4 transition-colors mt-2"
+        class="w-full bg-emergency-red hover:bg-red-700 text-white font-anton tracking-widest uppercase px-6 py-5 transition-colors flex items-center justify-center gap-3"
+        style="font-size: clamp(1rem, 2vw, 1.25rem);"
       >
-        {business.form.submitLabel}
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/>
+        </svg>
+        SUBMIT REQUEST TO DISPATCH
       </button>
 
-      <p class="font-body text-gray-600 text-xs text-center">
-        For immediate help, call <a href={business.phoneHref} class="text-emergency-red hover:text-red-400 transition-colors">{business.phone}</a>
+      <p class="font-body text-gray-700 text-xs text-center">
+        For immediate emergencies — call&nbsp;
+        <a href={business.phoneHref} class="text-emergency-red hover:text-red-400 transition-colors font-bold">
+          {business.phone}
+        </a>
+        &nbsp;instead
       </p>
     </form>
+
   </div>
+
 </section>
 
 <style>
   select option {
-    background-color: #111111;
+    background-color: #080808;
     color: #ffffff;
   }
 </style>

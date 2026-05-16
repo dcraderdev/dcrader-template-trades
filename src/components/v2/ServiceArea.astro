@@ -2,9 +2,14 @@
 import { business } from '../../data/v2';
 
 const cities = business.serviceArea.cities;
-const half = Math.ceil(cities.length / 2);
-const col1 = cities.slice(0, half);
-const col2 = cities.slice(half);
+
+// Lay cities out in a 4-column responsive tag cloud grid
+const coverageStats = [
+  { value: String(cities.length), label: 'Cities Covered', unit: 'nodes' },
+  { value: '~50mi', label: 'Service Radius', unit: 'range' },
+  { value: '< 24h', label: 'First Dispatch', unit: 'response' },
+  { value: '7 days', label: 'Scheduling', unit: 'window' },
+];
 ---
 
 <section
@@ -13,123 +18,136 @@ const col2 = cities.slice(half);
   style="background: #080e1a;"
   aria-labelledby="service-area-heading"
 >
-  <!-- Top accent -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/20 to-transparent" aria-hidden="true"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/15 to-transparent" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
 
-      <!-- ── Left: headline + city grid ────────────────────────────────── -->
+    <!-- Header -->
+    <div class="max-w-2xl mb-14">
+      <p class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase mb-3">// coverage --query "Phoenix Metro" --status active</p>
+      <h2 id="service-area-heading" class="font-sora font-black text-white mb-3" style="font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1;">
+        {business.serviceArea.headline}
+      </h2>
+      <p class="font-sora text-slate-500 text-base">
+        {business.serviceArea.subheadline}. Crews positioned across the Valley for fast dispatch.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+      <!-- LEFT: Coverage node grid -->
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[#2dd4bf] text-xs tracking-[0.2em] uppercase">// coverage</span>
-          <div class="flex-1 h-px bg-[#2dd4bf]/15"></div>
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6" role="list" aria-label="Coverage statistics">
+          {coverageStats.map(s => (
+            <div
+              class="text-center py-3 px-2 rounded-xl"
+              style="background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.12);"
+              role="listitem"
+            >
+              <div class="font-mono font-black text-[#2dd4bf] text-lg leading-none mb-0.5">{s.value}</div>
+              <div class="font-sora text-slate-500 text-[10px] leading-tight">{s.label}</div>
+            </div>
+          ))}
         </div>
 
-        <h2
-          id="service-area-heading"
-          class="font-sora font-extrabold text-white mb-3"
-          style="font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1;"
+        <!-- City tags -->
+        <div
+          class="rounded-2xl overflow-hidden"
+          style="border: 1px solid rgba(45,212,191,0.12);"
+          aria-label="Cities we serve"
         >
-          {business.serviceArea.headline}
-        </h2>
-        <p class="font-sora text-slate-400 text-lg mb-10">
-          {business.serviceArea.subheadline}. Our crews are positioned across the Valley for fast dispatch.
-        </p>
-
-        <!-- City list: tech-grid style -->
-        <div class="grid grid-cols-2 gap-0" role="list" aria-label="Cities we serve">
-          <!-- Column 1 -->
-          <ul class="list-none m-0 p-0 border-r border-[#111e3a]">
-            {col1.map((city, i) => (
-              <li
-                class="flex items-center gap-3 py-3 px-4 border-b border-[#111e3a] group hover:bg-[#2dd4bf]/5 transition-colors"
-                role="listitem"
-              >
-                <span class="font-mono text-[#2dd4bf]/30 text-[10px] w-4 flex-shrink-0 select-none" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <svg class="w-3 h-3 text-[#2dd4bf]/50 flex-shrink-0 group-hover:text-[#2dd4bf] transition-colors" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/>
-                </svg>
-                <span class="font-sora text-slate-300 text-sm group-hover:text-white transition-colors">{city}</span>
-              </li>
-            ))}
-          </ul>
-          <!-- Column 2 -->
-          <ul class="list-none m-0 p-0">
-            {col2.map((city, i) => (
-              <li
-                class="flex items-center gap-3 py-3 px-4 border-b border-[#111e3a] group hover:bg-[#2dd4bf]/5 transition-colors"
-                role="listitem"
-              >
-                <span class="font-mono text-[#2dd4bf]/30 text-[10px] w-4 flex-shrink-0 select-none" aria-hidden="true">
-                  {String(i + half + 1).padStart(2, '0')}
-                </span>
-                <svg class="w-3 h-3 text-[#2dd4bf]/50 flex-shrink-0 group-hover:text-[#2dd4bf] transition-colors" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/>
-                </svg>
-                <span class="font-sora text-slate-300 text-sm group-hover:text-white transition-colors">{city}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <p class="font-mono text-[10px] text-slate-600 tracking-widest mt-4 uppercase">
-          {cities.length} cities · growing
-        </p>
-      </div>
-
-      <!-- ── Right: tech-themed coverage display ──────────────────────── -->
-      <div class="flex flex-col gap-6">
-        <!-- Terminal-style header -->
-        <div class="rounded-2xl overflow-hidden" style="border: 1px solid rgba(45,212,191,0.2); background: #0d1527;">
-          <!-- Terminal title bar -->
-          <div class="flex items-center gap-2 px-4 py-3 border-b border-[#111e3a]" aria-hidden="true">
-            <span class="w-3 h-3 rounded-full bg-red-500/60"></span>
-            <span class="w-3 h-3 rounded-full bg-yellow-500/60"></span>
-            <span class="w-3 h-3 rounded-full bg-[#2dd4bf]/60"></span>
-            <span class="font-mono text-[11px] text-slate-600 ml-3 tracking-wider">coverage-map.sys</span>
+          <!-- Terminal bar -->
+          <div
+            class="flex items-center gap-2 px-4 py-2.5 font-mono text-[9px] text-slate-600 tracking-widest"
+            style="background: rgba(45,212,191,0.04); border-bottom: 1px solid rgba(45,212,191,0.08);"
+            aria-hidden="true"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0"></span>
+            &gt; list --region "Phoenix Metro" --format grid
           </div>
 
-          <!-- Terminal content -->
-          <div class="p-6 font-mono text-sm">
-            <div class="text-[#2dd4bf] mb-1">&gt; query --region "Phoenix Metro" --status active</div>
-            <div class="text-slate-500 mb-4 text-xs">Scanning coverage nodes...</div>
+          <div class="p-5" style="background: #06101a;">
+            <ul
+              class="flex flex-wrap gap-2 list-none m-0 p-0"
+              role="list"
+              aria-label={`${cities.length} cities in our service area`}
+            >
+              {cities.map((city, i) => (
+                <li role="listitem">
+                  <div
+                    class="city-tag inline-flex items-center gap-1.5 rounded-lg px-3 py-2 cursor-default transition-all duration-200"
+                    style="background: #08111f; border: 1px solid rgba(45,212,191,0.12);"
+                    aria-label={`${city}, AZ`}
+                  >
+                    <span class="font-mono text-[9px] text-[#2dd4bf]/30 select-none" aria-hidden="true">
+                      {String(i + 1).padStart(2,'0')}
+                    </span>
+                    <svg class="w-2.5 h-2.5 text-[#2dd4bf]/40 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-sora text-slate-300 text-xs font-medium">{city}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p class="font-mono text-[9px] text-slate-700 tracking-widest mt-4 uppercase">
+              // {cities.length} active coverage zones · growing
+            </p>
+          </div>
+        </div>
+      </div>
 
-            <!-- Coverage stats -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
+      <!-- RIGHT: Status panel + callouts -->
+      <div class="flex flex-col gap-5">
+
+        <!-- Live system readout -->
+        <div class="rounded-2xl overflow-hidden" style="border: 1px solid rgba(45,212,191,0.18); background: #060c17;">
+          <div
+            class="flex items-center gap-2 px-5 py-3"
+            style="background: rgba(45,212,191,0.05); border-bottom: 1px solid rgba(45,212,191,0.1);"
+            aria-hidden="true"
+          >
+            <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+            <span class="w-3 h-3 rounded-full bg-[#2dd4bf]/60"></span>
+            <span class="font-mono text-[10px] text-slate-600 ml-3 tracking-wider">dispatch.sys — live status</span>
+          </div>
+
+          <div class="p-5 font-mono text-xs space-y-2">
+            <p class="text-slate-600">&gt; query --region "Phoenix Metro" --crew-status active</p>
+            <p class="text-[#2dd4bf]">Scanning crew availability...</p>
+            <div class="mt-4 space-y-1.5">
               {[
-                { value: '16', label: 'cities covered' },
-                { value: '~50mi', label: 'service radius' },
-                { value: '< 24h', label: 'dispatch time' },
-                { value: '7 days', label: 'scheduling' },
-              ].map(stat => (
-                <div class="p-3 rounded-lg" style="background: #080e1a; border: 1px solid rgba(45,212,191,0.1);">
-                  <div class="text-[#2dd4bf] text-lg font-bold leading-none mb-1">{stat.value}</div>
-                  <div class="text-slate-500 text-[11px] tracking-wider uppercase">{stat.label}</div>
+                ['CREW_STATUS', 'ALL ONLINE'],
+                ['NEXT_SLOT', 'THIS WEEK'],
+                ['EMERGENCY', '24/7 ACTIVE'],
+                ['COVERAGE', 'METRO + 50MI'],
+              ].map(([key, val]) => (
+                <div class="flex items-center gap-4">
+                  <span class="text-slate-600 w-28 flex-shrink-0 text-[10px] tracking-wider">{key}</span>
+                  <span class="text-[#2dd4bf]">=&gt;</span>
+                  <span class="text-white font-semibold tracking-wider text-[10px]">{val}</span>
                 </div>
               ))}
             </div>
-
-            <!-- Status line -->
-            <div class="flex items-center gap-2 text-xs">
-              <span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></span>
-              <span class="text-[#2dd4bf]/70">All crews online · Same-week availability confirmed</span>
+            <div class="flex items-center gap-2 mt-4 pt-3" style="border-top: 1px solid rgba(45,212,191,0.1);">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></span>
+              <span class="text-[#2dd4bf]/60 text-[10px] tracking-widest">All crews online · Same-week availability confirmed</span>
             </div>
           </div>
         </div>
 
-        <!-- Coverage callout -->
-        <div class="rounded-2xl p-6" style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.2);">
-          <h3 class="font-sora font-bold text-white mb-2">Don't see your city?</h3>
-          <p class="font-sora text-slate-400 text-sm mb-5 leading-relaxed">
+        <!-- Don't see your city callout -->
+        <div class="rounded-2xl p-6" style="background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.18);">
+          <h3 class="font-sora font-bold text-white text-base mb-2">Don't see your city?</h3>
+          <p class="font-sora text-slate-500 text-sm mb-5 leading-relaxed">
             We frequently serve surrounding areas. Give us a call — if we can get there this week, we will.
           </p>
-          <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex flex-col sm:flex-row gap-2.5">
             <a
               href={business.phoneHref}
-              class="flex items-center justify-center gap-2 font-mono font-bold text-[#080e1a] text-sm px-5 py-3 rounded-lg transition-all hover:shadow-[0_0_16px_rgba(45,212,191,0.4)] hover:scale-[1.02]"
+              class="flex items-center justify-center gap-2 font-mono font-bold text-[10px] tracking-widest uppercase text-[#060c17] px-5 py-3 rounded-full transition-all hover:shadow-[0_0_18px_rgba(45,212,191,0.45)] hover:scale-[1.01]"
               style="background: #2dd4bf;"
               aria-label={`Call us at ${business.phone}`}
             >
@@ -137,26 +155,36 @@ const col2 = cities.slice(half);
             </a>
             <a
               href="#quote"
-              class="flex items-center justify-center gap-2 font-sora font-semibold text-[#2dd4bf] text-sm px-5 py-3 rounded-lg transition-all hover:bg-[#2dd4bf]/10"
-              style="border: 1px solid rgba(45,212,191,0.3);"
+              class="flex items-center justify-center gap-2 font-sora font-semibold text-[#2dd4bf] text-sm px-5 py-3 rounded-full transition-all hover:bg-[#2dd4bf]/10"
+              style="border: 1px solid rgba(45,212,191,0.28);"
             >
-              Request Availability Check
+              Check Availability
             </a>
           </div>
         </div>
 
         <!-- Emergency note -->
-        <div class="flex items-center gap-3 px-5 py-4 rounded-xl" style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);">
-          <svg class="w-5 h-5 text-[#3b82f6] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="flex items-start gap-4 px-5 py-4 rounded-xl" style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.18);">
+          <svg class="w-5 h-5 text-[#3b82f6] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
           </svg>
           <div>
-            <p class="font-sora font-semibold text-white text-sm">{business.emergencyNote}</p>
-            <p class="font-mono text-[#3b82f6]/70 text-[11px] tracking-wider mt-0.5">Emergency dispatch available throughout metro area</p>
+            <p class="font-sora font-bold text-white text-sm mb-0.5">{business.emergencyNote}</p>
+            <p class="font-mono text-[#3b82f6]/60 text-[10px] tracking-widest">Emergency dispatch throughout metro area · 24/7/365</p>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .city-tag:hover {
+    background: rgba(45,212,191,0.08) !important;
+    border-color: rgba(45,212,191,0.3) !important;
+  }
+  .city-tag:hover span.font-sora {
+    color: #e2e8f0;
+  }
+</style>

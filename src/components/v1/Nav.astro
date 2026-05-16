@@ -2,111 +2,128 @@
 import { business } from '../../data/v1';
 ---
 
-<!-- Mobile sticky phone bar (bottom) -->
+<!-- Mobile: sticky orange call strip at TOP (replaces bottom bar) -->
 <div
-  class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-orange-500 shadow-[0_-4px_24px_rgba(0,0,0,0.4)]"
+  class="md:hidden fixed top-0 left-0 right-0 z-50"
+  style="background:#f97316;"
   role="banner"
   aria-label="Quick call banner"
 >
   <a
     href={business.phoneHref}
-    class="flex items-center justify-center gap-3 py-4 font-body font-bold text-xl text-white active:bg-orange-600 transition-colors"
+    class="flex items-center justify-center gap-3 py-3 font-display font-black uppercase text-white text-xl tracking-wide active:opacity-80"
     aria-label={`Call us now at ${business.phone}`}
   >
-    <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
     </svg>
-    Tap to Call — {business.phone}
+    TAP TO CALL — {business.phone}
   </a>
 </div>
 
-<!-- Main navigation -->
-<header
-  id="site-nav"
-  class="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
-  style="background: transparent;"
->
-  <nav
-    class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between gap-4"
-    aria-label="Main navigation"
-  >
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 flex-shrink-0 group" aria-label={`${business.name} home`}>
-      <div class="w-9 h-9 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-400 transition-colors" aria-hidden="true">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
-        </svg>
-      </div>
-      <div class="hidden sm:block">
-        <span class="block font-display font-black text-white text-lg leading-none tracking-wide uppercase">
-          {business.shortName}
-        </span>
-        <span class="block text-orange-400 text-xs font-body font-semibold leading-none mt-0.5">
-          {business.tagline}
-        </span>
-      </div>
-    </a>
+<!-- Desktop two-bar header -->
+<header id="site-nav" class="hidden md:block fixed top-0 left-0 right-0 z-40">
 
-    <!-- Desktop nav links -->
-    <ul class="hidden lg:flex items-center gap-1 list-none m-0 p-0" role="list">
-      {[
-        { label: 'Services', href: '#services' },
-        { label: 'Service Area', href: '#service-area' },
-        { label: 'Why Us', href: '#why-us' },
-        { label: 'Reviews', href: '#reviews' },
-      ].map(link => (
-        <li>
-          <a
-            href={link.href}
-            class="px-4 py-2 text-slate-300 hover:text-white font-body font-medium text-sm rounded-lg hover:bg-white/10 transition-all"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+  <!-- TOP BAR: orange trust ticker -->
+  <div style="background:#f97316;" class="w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-10 flex items-center justify-between gap-4">
+      <!-- Trust badges ticker -->
+      <div class="flex items-center gap-6 overflow-hidden">
+        {[
+          { icon: `<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`, text: 'BBB ACCREDITED A+' },
+          { icon: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>`, text: 'LIC C-36 #987654' },
+          { icon: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, text: '60-MIN RESPONSE' },
+          { icon: `<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`, text: '4.9★ GOOGLE RATED' },
+        ].map(item => (
+          <div class="flex items-center gap-1.5 text-white font-body font-bold text-xs whitespace-nowrap flex-shrink-0">
+            <span set:html={item.icon} aria-hidden="true" />
+            {item.text}
+          </div>
+        ))}
+      </div>
 
-    <!-- Desktop CTA group -->
-    <div class="flex items-center gap-3 flex-shrink-0">
+      <!-- Phone in top bar -->
       <a
         href={business.phoneHref}
-        class="hidden md:flex items-center gap-2 text-white font-display font-bold text-xl uppercase tracking-wide hover:text-orange-400 transition-colors"
+        class="flex items-center gap-2 text-white font-display font-black text-base uppercase tracking-widest hover:opacity-80 transition-opacity flex-shrink-0"
         aria-label={`Call ${business.phone}`}
       >
-        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
         </svg>
         {business.phone}
       </a>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR: navy logo + nav -->
+  <nav
+    class="w-full"
+    style="background:#0f2855;"
+    aria-label="Main navigation"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
+
+      <!-- Logo: bold name block -->
+      <a
+        href="/"
+        class="flex items-center gap-3 flex-shrink-0 group"
+        aria-label={`${business.name} home`}
+      >
+        <!-- Wrench icon box — sharp corners -->
+        <div
+          class="w-10 h-10 flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-opacity"
+          style="background:#f97316;"
+          aria-hidden="true"
+        >
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+          </svg>
+        </div>
+        <div class="leading-none">
+          <span class="block font-display font-black text-white text-xl uppercase tracking-wide leading-none">
+            {business.shortName}
+          </span>
+          <span class="block font-body text-xs font-semibold uppercase tracking-widest mt-0.5" style="color:#f97316;">
+            {business.tagline}
+          </span>
+        </div>
+      </a>
+
+      <!-- Nav links -->
+      <ul class="hidden lg:flex items-center gap-0 list-none m-0 p--0" role="list">
+        {[
+          { label: 'Services', href: '#services' },
+          { label: 'Service Area', href: '#service-area' },
+          { label: 'Why Us', href: '#why-us' },
+          { label: 'Reviews', href: '#reviews' },
+          { label: 'Projects', href: '#projects' },
+        ].map(link => (
+          <li>
+            <a
+              href={link.href}
+              class="block px-4 py-5 font-display font-black text-sm uppercase tracking-widest transition-colors hover:text-orange-400"
+              style="color:rgba(255,255,255,0.75);"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA button — square, all caps -->
       <a
         href="#quote"
-        class="hidden sm:block bg-orange-500 hover:bg-orange-600 text-white font-body font-bold text-sm px-5 py-2.5 rounded-lg transition-all hover:scale-[1.02] active:scale-100"
+        class="hidden lg:block font-display font-black uppercase text-white text-sm tracking-widest px-6 py-3 transition-all hover:opacity-90 flex-shrink-0"
+        style="background:#f97316; border-radius:0;"
       >
-        Request Service
+        GET A FREE QUOTE
       </a>
     </div>
   </nav>
 </header>
 
-<script>
-  const nav = document.getElementById('site-nav');
-  let lastScroll = 0;
-
-  function updateNav() {
-    const scrolled = window.scrollY > 40;
-    if (scrolled) {
-      nav?.style.setProperty('background', 'rgba(9,22,41,0.97)');
-      nav?.style.setProperty('box-shadow', '0 2px 32px rgba(0,0,0,0.4)');
-      nav?.style.setProperty('backdrop-filter', 'blur(12px)');
-    } else {
-      nav?.style.setProperty('background', 'transparent');
-      nav?.style.setProperty('box-shadow', 'none');
-      nav?.style.setProperty('backdrop-filter', 'none');
-    }
-    lastScroll = window.scrollY;
-  }
-
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-</script>
+<!-- Spacer so content doesn't hide under fixed header -->
+<div class="md:hidden h-[52px]" aria-hidden="true"></div>
+<div class="hidden md:block h-[104px]" aria-hidden="true"></div>

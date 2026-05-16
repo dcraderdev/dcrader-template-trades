@@ -1,71 +1,110 @@
 ---
 import { business } from '../../data/v4';
+
+// Fake dispatch numbers and timestamps for log format
+const dispatchMeta = [
+  { id: "0042", time: "2:17 AM", date: "DEC 14" },
+  { id: "0089", time: "11:52 PM", date: "JAN 03" },
+  { id: "0127", time: "12:08 AM", date: "DEC 25" },
+  { id: "0201", time: "8:43 PM", date: "NOV 29" },
+  { id: "0318", time: "10:31 PM", date: "FEB 07" },
+  { id: "0444", time: "3:02 AM", date: "MAR 12" },
+];
 ---
 
 <section
   id="reviews"
-  class="py-20 bg-emergency-gray-dark border-t border-white/5"
+  class="bg-[#080808] border-t border-white/10"
   aria-labelledby="reviews-heading"
 >
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
-    <!-- Header -->
-    <div class="mb-12 text-center">
+  <!-- Header -->
+  <div class="border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <p class="font-body font-black text-emergency-red text-xs uppercase tracking-[0.3em] mb-2">
+        CLOSED DISPATCH LOG — VERIFIED CALLS
+      </p>
       <h2
         id="reviews-heading"
-        class="font-anton text-white uppercase tracking-wider"
-        style="font-size: clamp(2rem, 6vw, 4rem);"
+        class="font-anton text-white uppercase tracking-wider leading-none"
+        style="font-size: clamp(2.5rem, 7vw, 5rem);"
       >
-        REAL CUSTOMERS. REAL EMERGENCIES.
+        REAL CUSTOMERS.<br/>REAL EMERGENCIES.
       </h2>
-      <div class="h-1 w-24 bg-emergency-red mx-auto mt-4 mb-5" aria-hidden="true"></div>
-      <p class="font-body text-gray-500 text-sm uppercase tracking-widest">
-        What Atlanta says when the water won't stop
-      </p>
     </div>
+  </div>
 
-    <!-- Testimonials grid -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-      role="list"
-      aria-label="Customer reviews"
-    >
-      {business.testimonials.map(t => (
+  <!-- Dispatch log entries -->
+  <div
+    class="max-w-6xl mx-auto px-4 sm:px-6 py-0 divide-y divide-white/5"
+    role="list"
+    aria-label="Customer dispatch log reviews"
+  >
+    {business.testimonials.map((t, i) => {
+      const meta = dispatchMeta[i] ?? { id: String(i + 100).padStart(4, '0'), time: "11:59 PM", date: "JAN 01" };
+      return (
         <article
-          class="bg-emergency-black border border-white/8 hover:border-emergency-red/30 transition-colors p-5 flex flex-col"
+          class="group py-8 hover:bg-emergency-red/5 transition-colors -mx-4 sm:-mx-6 px-4 sm:px-6"
           role="listitem"
         >
-          <!-- Stars -->
-          <div class="flex gap-1 mb-3" aria-label={`${t.rating} out of 5 stars`}>
-            {Array.from({ length: t.rating }).map(() => (
-              <svg class="w-4 h-4 text-emergency-red flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            ))}
+          <!-- Dispatch header row -->
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
+            <span class="font-body font-black text-emergency-red text-xs uppercase tracking-[0.2em]">
+              DISPATCH #{meta.id}
+            </span>
+            <span class="text-white/20 font-body text-xs" aria-hidden="true">·</span>
+            <span class="font-body font-bold text-gray-500 text-xs uppercase tracking-widest">
+              {t.neighborhood.toUpperCase()}, GA
+            </span>
+            <span class="text-white/20 font-body text-xs" aria-hidden="true">·</span>
+            <span class="font-body font-bold text-gray-500 text-xs uppercase tracking-widest">
+              {meta.date} @ {meta.time}
+            </span>
+            <span class="text-white/20 font-body text-xs" aria-hidden="true">·</span>
+            <span class="inline-flex items-center gap-1 font-body font-black text-emergency-red text-xs uppercase tracking-widest">
+              <span class="w-1.5 h-1.5 bg-emergency-red inline-block" aria-hidden="true"></span>
+              RESOLVED
+            </span>
           </div>
 
-          <!-- Review text -->
-          <blockquote class="font-body text-gray-300 text-sm leading-relaxed flex-1 mb-4">
+          <!-- Quote -->
+          <blockquote class="font-body text-gray-200 leading-relaxed mb-4" style="font-size: clamp(0.9rem, 1.5vw, 1.05rem);">
             "{t.text}"
           </blockquote>
 
-          <!-- Attribution -->
-          <footer class="flex items-center justify-between border-t border-white/5 pt-4 mt-auto">
-            <span class="font-body font-bold text-white text-sm">{t.name}</span>
-            <span class="font-body text-gray-600 text-xs uppercase tracking-wider">{t.neighborhood}</span>
+          <!-- Attribution + stars -->
+          <footer class="flex items-center justify-between gap-4">
+            <span class="font-anton text-white uppercase tracking-wider text-sm">
+              — {t.name.toUpperCase()}
+            </span>
+            <div class="flex gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
+              {Array.from({ length: t.rating }).map(() => (
+                <svg class="w-4 h-4 text-emergency-red flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
           </footer>
         </article>
-      ))}
-    </div>
+      );
+    })}
+  </div>
 
-    <!-- Bottom CTA -->
-    <div class="mt-12 text-center">
-      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mb-6">
-        Join thousands of Atlanta homeowners who call us first
-      </p>
+  <!-- Bottom CTA bar -->
+  <div class="border-t-2 border-emergency-red bg-emergency-red/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-anton text-white uppercase tracking-wider leading-none" style="font-size: clamp(1.25rem, 3vw, 2rem);">
+          JOIN THOUSANDS OF ATLANTA HOMEOWNERS
+        </p>
+        <p class="font-body text-gray-500 text-xs uppercase tracking-widest mt-2">
+          Who call us first when it matters most
+        </p>
+      </div>
       <a
         href={business.phoneHref}
-        class="inline-flex items-center gap-3 bg-emergency-red hover:bg-emergency-red-dark text-white font-anton text-xl tracking-wider uppercase px-10 py-4 transition-colors"
+        class="flex-shrink-0 flex items-center gap-3 bg-emergency-red hover:bg-red-700 text-white font-anton tracking-widest uppercase px-10 py-5 transition-colors"
+        style="font-size: clamp(1rem, 2vw, 1.25rem);"
         aria-label={`Call now at ${business.phone}`}
       >
         <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -75,4 +114,5 @@ import { business } from '../../data/v4';
       </a>
     </div>
   </div>
+
 </section>

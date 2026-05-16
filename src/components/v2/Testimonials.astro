@@ -1,120 +1,165 @@
 ---
 import { business } from '../../data/v2';
+
+// Assign fake timestamps and avatar colors for visual variety
+const chatMeta = [
+  { time: '2:14 PM', color: '#2dd4bf', align: 'left' },
+  { time: '3:47 PM', color: '#3b82f6', align: 'right' },
+  { time: 'Yesterday', color: '#2dd4bf', align: 'left' },
+  { time: 'Mon 11:22 AM', color: '#8b5cf6', align: 'right' },
+  { time: 'Fri 9:08 AM', color: '#2dd4bf', align: 'left' },
+  { time: 'Wed 4:33 PM', color: '#3b82f6', align: 'right' },
+];
 ---
 
 <section id="reviews" class="relative py-24 lg:py-32" style="background: #080e1a;" aria-labelledby="reviews-heading">
-  <!-- Top accent -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2dd4bf]/15 to-transparent" aria-hidden="true"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2dd4bf]/12 to-transparent" aria-hidden="true"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <!-- Header row -->
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-14">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[#2dd4bf] text-xs tracking-[0.2em] uppercase">// customer_logs</span>
-          <div class="h-px w-16 bg-[#2dd4bf]/15"></div>
-        </div>
-        <h2
-          id="reviews-heading"
-          class="font-sora font-extrabold text-white"
-          style="font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1;"
-        >
+        <p class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase mb-3">// customer_messages</p>
+        <h2 id="reviews-heading" class="font-sora font-black text-white" style="font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1;">
           What Phoenix Homeowners Say
         </h2>
       </div>
 
-      <!-- Google rating badge — glass style -->
+      <!-- Rating chip -->
       <div
-        class="flex-shrink-0 flex items-center gap-4 px-5 py-4 rounded-xl"
-        style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.15); backdrop-filter: blur(8px);"
+        class="flex-shrink-0 flex items-center gap-3 px-4 py-3 rounded-2xl"
+        style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.15);"
+        aria-label="Google rating: 4.9 out of 5, over 200 reviews"
       >
-        <!-- Google G -->
-        <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-        </svg>
-        <div>
-          <div class="font-mono font-bold text-[#2dd4bf] text-lg leading-none">4.9 / 5.0</div>
-          <div class="font-sora text-slate-500 text-xs mt-0.5">200+ Verified Reviews</div>
+        <div class="text-center">
+          <div class="font-mono font-black text-[#2dd4bf] text-2xl leading-none">4.9</div>
+          <div class="font-mono text-[9px] text-slate-600 tracking-widest uppercase mt-0.5">/ 5.0</div>
         </div>
-        <div class="flex gap-0.5" aria-label="4.9 out of 5 stars">
-          {[1,2,3,4,5].map(() => (
-            <svg class="w-4 h-4 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          ))}
+        <div>
+          <div class="flex gap-0.5 mb-1" aria-hidden="true">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-3.5 h-3.5 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="font-sora text-slate-600 text-xs">200+ Google Reviews</p>
         </div>
       </div>
     </div>
 
-    <!-- Testimonial grid -->
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" role="list" aria-label="Customer testimonials">
-      {business.testimonials.map((review) => (
-        <li>
-          <article
-            class="h-full flex flex-col p-6 rounded-2xl transition-all duration-300 hover:border-[#2dd4bf]/25 group"
-            style="background: rgba(13,21,39,0.8); backdrop-filter: blur(8px); border: 1px solid rgba(45,212,191,0.1);"
-          >
-            <!-- Stars in teal -->
-            <div class="flex gap-1 mb-4" role="img" aria-label={`${review.rating} out of 5 stars`}>
-              {Array.from({ length: review.rating }).map(() => (
-                <svg class="w-4 h-4 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                </svg>
-              ))}
-            </div>
+    <!-- Chat-app frame -->
+    <div
+      class="rounded-2xl overflow-hidden"
+      style="background: #06101a; border: 1px solid rgba(45,212,191,0.14);"
+      role="list"
+      aria-label="Customer testimonials displayed as chat messages"
+    >
+      <!-- App header bar -->
+      <div
+        class="flex items-center gap-3 px-5 py-3.5"
+        style="background: rgba(45,212,191,0.04); border-bottom: 1px solid rgba(45,212,191,0.1);"
+        aria-hidden="true"
+      >
+        <div class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0"></div>
+        <span class="font-mono text-[10px] text-slate-600 tracking-widest">BrightWatt Customer Reviews · {business.testimonials.length} messages</span>
+      </div>
 
-            <!-- Quote -->
-            <blockquote class="flex-1 mb-5">
-              <p class="font-sora text-slate-300 text-sm leading-relaxed group-hover:text-slate-200 transition-colors">
-                "{review.text}"
-              </p>
-            </blockquote>
-
-            <!-- Author footer -->
-            <footer class="flex items-center gap-3 pt-4" style="border-top: 1px solid rgba(45,212,191,0.08);">
-              <!-- Avatar: monogram with teal ring -->
+      <!-- Messages -->
+      <div class="p-5 sm:p-8 space-y-6" role="list">
+        {business.testimonials.map((review, i) => {
+          const meta = chatMeta[i % chatMeta.length];
+          const isRight = meta.align === 'right';
+          return (
+            <article
+              class={`flex gap-3 items-end ${isRight ? 'flex-row-reverse' : ''}`}
+              role="listitem"
+              aria-label={`Review by ${review.name} from ${review.neighborhood}`}
+            >
+              <!-- Avatar -->
               <div
-                class="w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-[#2dd4bf] text-sm flex-shrink-0"
-                style="background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3);"
+                class="w-9 h-9 rounded-full flex items-center justify-center font-mono font-black text-sm flex-shrink-0"
+                style={`background: ${meta.color}18; border: 1.5px solid ${meta.color}50; color: ${meta.color};`}
                 aria-hidden="true"
               >
                 {review.name.charAt(0)}
               </div>
-              <div class="flex-1">
-                <cite class="not-italic font-sora font-semibold text-white text-sm leading-none">{review.name}</cite>
-                <p class="font-mono text-[10px] text-slate-500 tracking-wider mt-0.5 uppercase">{review.neighborhood}, AZ</p>
-              </div>
-              <!-- Verified chip -->
-              <span
-                class="flex-shrink-0 font-mono text-[9px] tracking-widest uppercase px-2 py-1 rounded"
-                style="color: #2dd4bf; background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.2);"
-                aria-label="Verified review"
-              >
-                verified
-              </span>
-            </footer>
-          </article>
-        </li>
-      ))}
-    </ul>
 
-    <!-- Leave a review CTA -->
-    <div class="text-center mt-12">
-      <a
-        href={business.social.google}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 font-sora font-semibold text-sm text-slate-400 hover:text-[#2dd4bf] transition-colors"
-        aria-label="Leave a Google review for BrightWatt Electric"
+              <!-- Bubble + meta -->
+              <div class={`flex flex-col gap-1.5 max-w-[78%] ${isRight ? 'items-end' : 'items-start'}`}>
+                <!-- Name + time -->
+                <div class={`flex items-baseline gap-2 ${isRight ? 'flex-row-reverse' : ''}`} aria-hidden="true">
+                  <span class="font-sora font-semibold text-slate-300 text-xs">{review.name}</span>
+                  <span class="font-mono text-[9px] text-slate-700 tracking-wide">{meta.time}</span>
+                  <span
+                    class="font-mono text-[9px] tracking-widest px-1.5 py-0.5 rounded"
+                    style={`background: ${meta.color}12; color: ${meta.color}90; border: 1px solid ${meta.color}25;`}
+                  >
+                    {review.neighborhood}, AZ
+                  </span>
+                </div>
+
+                <!-- Bubble -->
+                <div
+                  class="chat-bubble rounded-2xl px-4 py-3 relative"
+                  style={isRight
+                    ? `background: rgba(45,212,191,0.09); border: 1px solid rgba(45,212,191,0.2); border-bottom-right-radius: 4px;`
+                    : `background: #0d1a2e; border: 1px solid rgba(255,255,255,0.06); border-bottom-left-radius: 4px;`
+                  }
+                >
+                  <blockquote>
+                    <p class="font-sora text-slate-300 text-sm leading-relaxed">
+                      {review.text}
+                    </p>
+                  </blockquote>
+                </div>
+
+                <!-- Stars row -->
+                <div class={`flex items-center gap-1 ${isRight ? 'flex-row-reverse' : ''}`} aria-label={`${review.rating} out of 5 stars`}>
+                  {Array.from({ length: review.rating }).map(() => (
+                    <svg class="w-3 h-3 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                  <span
+                    class="font-mono text-[9px] tracking-widest ml-1"
+                    style="color: rgba(45,212,191,0.5);"
+                    aria-hidden="true"
+                  >
+                    verified
+                  </span>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- Input bar (decorative) -->
+      <div
+        class="flex items-center gap-3 px-5 py-4"
+        style="background: rgba(45,212,191,0.03); border-top: 1px solid rgba(45,212,191,0.08);"
+        aria-hidden="true"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/>
-        </svg>
-        Leave a review on Google
-      </a>
+        <div class="flex-1 rounded-full px-4 py-2.5 font-mono text-xs text-slate-700 tracking-wide"
+          style="background: #080e1a; border: 1px solid rgba(45,212,191,0.1);">
+          Share your experience...
+        </div>
+        <a
+          href={business.social.google}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-1.5 font-mono text-[10px] font-bold text-[#080e1a] px-4 py-2.5 rounded-full transition-all hover:shadow-[0_0_14px_rgba(45,212,191,0.4)] flex-shrink-0"
+          style="background: #2dd4bf;"
+          aria-label="Leave a Google review for BrightWatt Electric (opens new tab)"
+        >
+          Leave a Review
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>

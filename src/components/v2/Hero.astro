@@ -4,292 +4,311 @@ import { business } from '../../data/v2';
 
 <section
   class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
+  style="background: #080e1a;"
   aria-labelledby="hero-heading"
 >
-  <!-- Dot-grid background -->
-  <div class="absolute inset-0 hero-bg" aria-hidden="true"></div>
+  <!-- Dot-grid overlay -->
+  <div class="absolute inset-0 hero-dot-grid" aria-hidden="true"></div>
 
-  <!-- Teal radial glow top-right -->
+  <!-- Teal ambient glow, top right -->
   <div
-    class="absolute top-0 right-0 w-[60vw] h-[60vh] pointer-events-none"
-    style="background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(45,212,191,0.07) 0%, transparent 70%);"
+    class="absolute top-0 right-0 w-[55vw] h-[65vh] pointer-events-none"
+    style="background: radial-gradient(ellipse 60% 55% at 100% 0%, rgba(45,212,191,0.09) 0%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+  <!-- Blue glow, bottom left -->
+  <div
+    class="absolute bottom-0 left-0 w-[45vw] h-[50vh] pointer-events-none"
+    style="background: radial-gradient(ellipse 55% 50% at 0% 100%, rgba(59,130,246,0.06) 0%, transparent 70%);"
     aria-hidden="true"
   ></div>
 
-  <!-- Blue radial glow bottom-left -->
-  <div
-    class="absolute bottom-0 left-0 w-[40vw] h-[50vh] pointer-events-none"
-    style="background: radial-gradient(ellipse 60% 50% at 0% 100%, rgba(59,130,246,0.05) 0%, transparent 70%);"
-    aria-hidden="true"
-  ></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-32 pb-20">
+    <div class="grid lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 pb-20">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-
-      <!-- ── Left: content ──────────────────────────────────────────────── -->
+      <!-- ── LEFT: Content + animated EV charger SVG ──────────────────── -->
       <div>
-        <!-- Eyebrow -->
-        <div class="inline-flex items-center gap-2.5 mb-8 rounded-full px-4 py-1.5"
-          style="background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.25);">
-          <span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></span>
-          <span class="font-mono text-[#2dd4bf] text-xs tracking-widest uppercase">{business.hero.eyebrow}</span>
+        <!-- Eyebrow pill -->
+        <div
+          class="inline-flex items-center gap-2 mb-7 px-3.5 py-1.5 rounded-full"
+          style="background: rgba(45,212,191,0.07); border: 1px solid rgba(45,212,191,0.22);"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></span>
+          <span class="font-mono text-[#2dd4bf] text-[10px] tracking-[0.22em] uppercase">{business.hero.eyebrow}</span>
         </div>
 
         <!-- Headline -->
-        <h1 id="hero-heading" class="font-sora font-extrabold leading-[1.0] mb-5">
-          <span class="block text-white" style="font-size: clamp(2.75rem, 7vw, 5.5rem);">
+        <h1 id="hero-heading" class="font-sora font-black leading-[1.0] mb-4">
+          <span class="block text-white" style="font-size: clamp(3rem, 7.5vw, 5.75rem);">
             {business.hero.headlineLine1}
           </span>
-          <span class="block" style="font-size: clamp(2.75rem, 7vw, 5.5rem); background: linear-gradient(135deg, #2dd4bf 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          <span
+            class="block"
+            style="font-size: clamp(3rem, 7.5vw, 5.75rem); background: linear-gradient(125deg, #2dd4bf 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+          >
             {business.hero.headlineLine2}
           </span>
         </h1>
 
-        <!-- Subheadline -->
-        <p class="font-mono text-[#2dd4bf]/70 text-sm tracking-widest uppercase mb-4">
-          {business.hero.subheadline}
-        </p>
-        <p class="font-sora text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
-          {business.hero.description}
-        </p>
+        <!-- Mono subline -->
+        <p class="font-mono text-[#2dd4bf]/60 text-xs tracking-[0.22em] uppercase mb-3">{business.hero.subheadline}</p>
+        <p class="font-sora text-slate-400 text-lg leading-relaxed mb-9 max-w-lg">{business.hero.description}</p>
 
-        <!-- Phone — terminal style -->
+        <!-- Phone — large terminal style -->
         <a
           href={business.phoneHref}
-          class="group inline-flex items-center gap-3 mb-10 p-1 -m-1 rounded-xl hover:bg-[#2dd4bf]/5 transition-colors"
+          class="group inline-flex items-center gap-3 mb-9 rounded-xl hover:bg-[#2dd4bf]/5 p-1 -m-1 transition-colors"
           aria-label={`Call us at ${business.phone}`}
         >
-          <span
-            class="font-mono font-bold text-[#2dd4bf] group-hover:text-white transition-colors"
-            style="font-size: clamp(1.75rem, 4.5vw, 3rem);"
-          >
+          <span class="font-mono font-black text-[#2dd4bf] group-hover:text-white transition-colors hero-phone-size">
             &gt;_ {business.phone}
           </span>
           <span class="terminal-cursor" aria-hidden="true"></span>
         </a>
 
-        <!-- CTA buttons -->
-        <div class="flex flex-wrap gap-4 mb-12">
+        <!-- CTA row -->
+        <div class="flex flex-wrap gap-3 mb-10">
           <a
             href="#quote"
-            class="inline-flex items-center gap-2 font-sora font-semibold rounded-xl transition-all hover:scale-[1.02] active:scale-100"
-            style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); padding: 0.875rem 2rem; background: #2dd4bf; color: #080e1a; box-shadow: 0 8px 32px rgba(45,212,191,0.3);"
+            class="inline-flex items-center gap-2 font-sora font-bold text-[#080e1a] rounded-full transition-all hover:shadow-[0_0_28px_rgba(45,212,191,0.4)] hover:scale-[1.02] active:scale-100"
+            style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); padding: 0.85rem 1.75rem; background: #2dd4bf;"
           >
             {business.hero.cta}
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
             </svg>
           </a>
           <a
             href="#services"
-            class="inline-flex items-center gap-2 font-sora font-semibold text-slate-300 hover:text-[#2dd4bf] rounded-xl transition-all"
-            style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); padding: 0.875rem 2rem; border: 1px solid rgba(45,212,191,0.25); hover:border-color: rgba(45,212,191,0.5);"
+            class="inline-flex items-center gap-2 font-sora font-semibold text-slate-300 hover:text-[#2dd4bf] rounded-full transition-all hover:bg-[#2dd4bf]/8"
+            style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); padding: 0.85rem 1.75rem; border: 1px solid rgba(45,212,191,0.2);"
           >
             {business.hero.ctaSecondary}
           </a>
         </div>
 
-        <!-- Stat line -->
-        <p class="font-mono text-xs text-slate-500 tracking-widest uppercase border-l-2 border-[#2dd4bf]/30 pl-4">
-          {business.hero.statLine}
-        </p>
+        <!-- Animated EV charger SVG -->
+        <div class="flex items-center gap-8 mt-2" aria-hidden="true">
+          <svg
+            viewBox="0 0 180 200"
+            class="w-28 h-32 flex-shrink-0 ev-charger-svg"
+            fill="none"
+            role="img"
+            aria-label="Animated EV charger graphic"
+          >
+            <defs>
+              <filter id="ev-glow">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="ev-glow-strong">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Animated gradient along cable -->
+              <linearGradient id="cable-flow" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0">
+                  <animate attributeName="offset" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="30%" stop-color="#2dd4bf" stop-opacity="1">
+                  <animate attributeName="offset" values="0.3;1.3;0.3" dur="2s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.6">
+                  <animate attributeName="offset" values="0.6;1.6;0.6" dur="2s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0">
+                  <animate attributeName="offset" values="1;2;1" dur="2s" repeatCount="indefinite"/>
+                </stop>
+              </linearGradient>
+            </defs>
 
-        <!-- Trust badges -->
-        <div class="flex flex-wrap gap-3 mt-8" role="list" aria-label="Trust certifications">
-          {business.badges.map((badge) => (
-            <div
-              class="flex items-center gap-2.5 rounded-lg px-3.5 py-2.5"
-              style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.15);"
-              role="listitem"
-            >
-              <svg class="w-3.5 h-3.5 text-[#2dd4bf] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-              </svg>
-              <div>
-                <div class="font-sora font-semibold text-white text-xs leading-none">{badge.label}</div>
-                <div class="font-mono text-[10px] text-slate-500 leading-none mt-0.5 tracking-wider">{badge.sublabel}</div>
-              </div>
+            <!-- Charger station body -->
+            <rect x="50" y="10" width="80" height="100" rx="10" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5" filter="url(#ev-glow)"/>
+            <!-- Screen area -->
+            <rect x="62" y="22" width="56" height="36" rx="5" fill="#080e1a" stroke="rgba(45,212,191,0.4)" stroke-width="1"/>
+            <!-- Bolt on screen -->
+            <path d="M82 30l8-10h5l-4 7h8l-9 14h-5l4-7h-7z" fill="#2dd4bf" filter="url(#ev-glow)" class="bolt-pulse"/>
+            <!-- Screen status dots -->
+            <circle cx="68" cy="52" r="2.5" fill="#2dd4bf" class="status-dot-1"/>
+            <circle cx="77" cy="52" r="2.5" fill="#3b82f6" class="status-dot-2"/>
+            <circle cx="86" cy="52" r="2.5" fill="#2dd4bf" class="status-dot-3"/>
+            <!-- Charger handle port -->
+            <rect x="78" y="95" width="24" height="16" rx="4" fill="#0a1222" stroke="#2dd4bf" stroke-width="1.25"/>
+            <!-- Port pins -->
+            <line x1="84" y1="99" x2="84" y2="107" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="90" y1="99" x2="90" y2="107" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="96" y1="99" x2="96" y2="107" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Cable coming down from port -->
+            <path
+              d="M90 111 C90 130, 70 140, 70 160 C70 175, 75 185, 82 190"
+              stroke="#1e3a5f"
+              stroke-width="5"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <!-- Animated energy flow on cable -->
+            <path
+              d="M90 111 C90 130, 70 140, 70 160 C70 175, 75 185, 82 190"
+              stroke="url(#cable-flow)"
+              stroke-width="3"
+              stroke-linecap="round"
+              fill="none"
+              filter="url(#ev-glow)"
+            />
+            <!-- Connector plug at end -->
+            <rect x="76" y="187" width="18" height="12" rx="3" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5" filter="url(#ev-glow-strong)"/>
+            <rect x="79" y="190" width="4" height="6" rx="1" fill="#2dd4bf"/>
+            <rect x="85" y="190" width="4" height="6" rx="1" fill="#2dd4bf"/>
+
+            <!-- Pulse rings from connector -->
+            <circle cx="85" cy="193" r="12" fill="none" stroke="#2dd4bf" stroke-width="0.8" class="connector-ring-1"/>
+            <circle cx="85" cy="193" r="20" fill="none" stroke="#2dd4bf" stroke-width="0.5" class="connector-ring-2"/>
+          </svg>
+
+          <!-- Stat line next to charger -->
+          <div class="flex flex-col gap-2">
+            <p class="font-mono text-[10px] text-slate-600 tracking-[0.2em] uppercase border-l-2 border-[#2dd4bf]/30 pl-3">
+              {business.hero.statLine}
+            </p>
+            <div class="flex flex-wrap gap-2 mt-1" role="list" aria-label="Trust certifications">
+              {business.badges.map((badge) => (
+                <div
+                  class="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
+                  style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.13);"
+                  role="listitem"
+                >
+                  <svg class="w-3 h-3 text-[#2dd4bf] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                  </svg>
+                  <span class="font-mono text-[9px] text-slate-400 tracking-wide">{badge.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
-      <!-- ── Right: circuit SVG decoration ─────────────────────────────── -->
-      <div class="hidden lg:flex items-center justify-center relative" aria-hidden="true">
-        <!-- Outer glow ring -->
+      <!-- ── RIGHT: Instant Quote Estimator widget ──────────────────────── -->
+      <div
+        class="w-full rounded-2xl overflow-hidden"
+        style="background: #0a1222; border: 1px solid rgba(45,212,191,0.22); box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(45,212,191,0.05);"
+        aria-label="Instant Quote Estimator"
+      >
+        <!-- Widget title bar -->
         <div
-          class="absolute w-[420px] h-[420px] rounded-full"
-          style="background: radial-gradient(circle, rgba(45,212,191,0.06) 0%, transparent 70%); border: 1px solid rgba(45,212,191,0.06);"
-        ></div>
-
-        <svg
-          viewBox="0 0 480 480"
-          class="w-[440px] h-[440px] relative z-10"
-          role="img"
-          aria-label="Circuit board diagram representing smart home technology"
-          fill="none"
-          stroke="#2dd4bf"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          class="px-5 py-3.5 flex items-center justify-between"
+          style="background: rgba(45,212,191,0.06); border-bottom: 1px solid rgba(45,212,191,0.14);"
+          aria-hidden="true"
         >
-          <!-- Background subtle grid -->
-          <defs>
-            <pattern id="microgrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="1" fill="rgba(45,212,191,0.12)"/>
-            </pattern>
-            <filter id="glow-filter">
-              <feGaussianBlur stdDeviation="2" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glow-strong">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500/50 flex-shrink-0"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/50 flex-shrink-0"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#2dd4bf]/60 flex-shrink-0"></span>
+          </div>
+          <span class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-widest uppercase">estimate.exe</span>
+          <span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0"></span>
+        </div>
 
-          <rect width="480" height="480" fill="url(#microgrid)" stroke="none"/>
+        <!-- Widget content -->
+        <div class="p-6">
+          <div class="mb-5">
+            <p class="font-mono text-[#2dd4bf] text-xs tracking-widest uppercase mb-1">&gt; INSTANT QUOTE ESTIMATOR</p>
+            <p class="font-sora text-slate-500 text-xs">Select your options to get a ballpark range.</p>
+          </div>
 
-          <!-- ── Main circuit traces ─────────────────────────────────── -->
+          <!-- Dropdowns -->
+          <div class="space-y-4 mb-6">
+            <!-- Service Type -->
+            <div>
+              <label for="eq-service" class="block font-mono text-[10px] text-[#2dd4bf]/60 tracking-widest uppercase mb-1.5">
+                -- service_type
+              </label>
+              <select
+                id="eq-service"
+                class="eq-select w-full rounded-lg px-3.5 py-2.5 font-mono text-xs text-slate-300 outline-none transition-all duration-200 appearance-none"
+                style="background: #080e1a; border: 1px solid rgba(45,212,191,0.2); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 0.9rem; padding-right: 2.25rem;"
+                aria-label="Select service type"
+              >
+                <option value="">-- select service --</option>
+                <option value="ev-l2" data-low="600" data-high="1400">EV Charger (Level 2)</option>
+                <option value="ev-dcfc" data-low="3000" data-high="7000">EV Charger (DC Fast Charge)</option>
+                <option value="smart-home" data-low="2500" data-high="8000">Smart Home Wiring</option>
+                <option value="panel-200" data-low="1800" data-high="3200">Panel Upgrade (200A)</option>
+                <option value="panel-400" data-low="4000" data-high="7500">Panel Upgrade (400A)</option>
+                <option value="generator" data-low="3500" data-high="9000">Generator Install</option>
+                <option value="solar-prep" data-low="1200" data-high="2800">Solar Prep Wiring</option>
+                <option value="led-lighting" data-low="800" data-high="3000">LED & Lighting Design</option>
+              </select>
+            </div>
 
-          <!-- Horizontal backbone, upper -->
-          <line x1="60" y1="120" x2="420" y2="120" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3"/>
-          <!-- Vertical left spine -->
-          <line x1="60" y1="80" x2="60" y2="400" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3"/>
-          <!-- Vertical right spine -->
-          <line x1="420" y1="80" x2="420" y2="400" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3"/>
-          <!-- Horizontal backbone, lower -->
-          <line x1="60" y1="360" x2="420" y2="360" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3"/>
+            <!-- Home Size -->
+            <div>
+              <label for="eq-size" class="block font-mono text-[10px] text-[#2dd4bf]/60 tracking-widest uppercase mb-1.5">
+                -- home_sqft
+              </label>
+              <select
+                id="eq-size"
+                class="eq-select w-full rounded-lg px-3.5 py-2.5 font-mono text-xs text-slate-300 outline-none transition-all duration-200 appearance-none"
+                style="background: #080e1a; border: 1px solid rgba(45,212,191,0.2); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 0.9rem; padding-right: 2.25rem;"
+                aria-label="Select home size"
+              >
+                <option value="">-- select size --</option>
+                <option value="sm" data-mult="0.85">Under 1,500 sq ft</option>
+                <option value="md" data-mult="1.0">1,500 – 2,500 sq ft</option>
+                <option value="lg" data-mult="1.2">2,500 – 4,000 sq ft</option>
+                <option value="xl" data-mult="1.45">4,000+ sq ft</option>
+              </select>
+            </div>
 
-          <!-- ── Bright active traces ─────────────────────────────── -->
+            <!-- Timeline -->
+            <div>
+              <label for="eq-timeline" class="block font-mono text-[10px] text-[#2dd4bf]/60 tracking-widest uppercase mb-1.5">
+                -- timeline
+              </label>
+              <select
+                id="eq-timeline"
+                class="eq-select w-full rounded-lg px-3.5 py-2.5 font-mono text-xs text-slate-300 outline-none transition-all duration-200 appearance-none"
+                style="background: #080e1a; border: 1px solid rgba(45,212,191,0.2); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 0.9rem; padding-right: 2.25rem;"
+                aria-label="Select timeline"
+              >
+                <option value="">-- select timeline --</option>
+                <option value="asap" data-note="Rush: +10%">ASAP (this week)</option>
+                <option value="soon" data-note="Standard scheduling">Within 2–4 weeks</option>
+                <option value="planning" data-note="Planning discount: -5%">Planning stage (1–3 months)</option>
+              </select>
+            </div>
+          </div>
 
-          <!-- Top-left L-trace -->
-          <polyline points="60,120 60,80 140,80" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-filter)"/>
+          <!-- Estimate output panel -->
+          <div
+            id="eq-output"
+            class="rounded-xl p-4 mb-5 transition-all duration-300"
+            style="background: #060c17; border: 1px solid rgba(45,212,191,0.1);"
+            aria-live="polite"
+            aria-label="Estimated price range"
+          >
+            <p class="font-mono text-[10px] text-slate-600 tracking-widest uppercase mb-2">// estimated range</p>
+            <div id="eq-price" class="font-mono font-black text-[#2dd4bf] text-2xl leading-none mb-1">
+              <span class="text-slate-600 text-base font-normal">select options above</span>
+            </div>
+            <p id="eq-note" class="font-mono text-[10px] text-slate-600 tracking-wide mt-2"></p>
+          </div>
 
-          <!-- Right L-trace upper -->
-          <polyline points="420,120 420,80 340,80" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-filter)"/>
-
-          <!-- Center horizontal through core -->
-          <line x1="140" y1="240" x2="340" y2="240" stroke="#2dd4bf" stroke-width="2.5" stroke-opacity="0.9" filter="url(#glow-filter)"/>
-
-          <!-- Left side vertical to center -->
-          <polyline points="60,200 100,200 100,240" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.7"/>
-          <!-- Left side branch down -->
-          <polyline points="60,280 100,280 100,240" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.7"/>
-
-          <!-- Right side vertical to center -->
-          <polyline points="420,200 380,200 380,240" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.7"/>
-          <!-- Right side branch down -->
-          <polyline points="420,280 380,280 380,240" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.7"/>
-
-          <!-- Diagonal data paths upper -->
-          <polyline points="160,80 160,160 240,160 240,240" stroke="#3b82f6" stroke-width="1.75" stroke-opacity="0.7" filter="url(#glow-filter)"/>
-          <polyline points="320,80 320,160 240,160" stroke="#3b82f6" stroke-width="1.75" stroke-opacity="0.7" filter="url(#glow-filter)"/>
-
-          <!-- Diagonal data paths lower -->
-          <polyline points="160,400 160,320 240,320 240,240" stroke="#3b82f6" stroke-width="1.75" stroke-opacity="0.6" filter="url(#glow-filter)"/>
-          <polyline points="320,400 320,320 240,320" stroke="#3b82f6" stroke-width="1.75" stroke-opacity="0.6" filter="url(#glow-filter)"/>
-
-          <!-- Bottom left L -->
-          <polyline points="60,360 60,400 140,400" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-filter)"/>
-          <!-- Bottom right L -->
-          <polyline points="420,360 420,400 340,400" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-filter)"/>
-
-          <!-- Mid-horizontal branches -->
-          <line x1="60" y1="200" x2="60" y2="280" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.4"/>
-          <line x1="420" y1="200" x2="420" y2="280" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.4"/>
-
-          <!-- Smaller internal traces -->
-          <polyline points="180,160 180,200 140,200 140,240" stroke="#2dd4bf" stroke-width="1.25" stroke-opacity="0.4"/>
-          <polyline points="300,160 300,200 340,200 340,240" stroke="#2dd4bf" stroke-width="1.25" stroke-opacity="0.4"/>
-          <polyline points="180,320 180,280 140,280 140,240" stroke="#2dd4bf" stroke-width="1.25" stroke-opacity="0.4"/>
-          <polyline points="300,320 300,280 340,280 340,240" stroke="#2dd4bf" stroke-width="1.25" stroke-opacity="0.4"/>
-
-          <!-- Tick marks on backbone lines (resistor-like) -->
-          <line x1="200" y1="114" x2="200" y2="126" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="280" y1="114" x2="280" y2="126" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="200" y1="354" x2="200" y2="366" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.5"/>
-          <line x1="280" y1="354" x2="280" y2="366" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.5"/>
-
-          <!-- ── Node circles ─────────────────────────────────────── -->
-
-          <!-- Corner nodes -->
-          <circle cx="60" cy="80" r="5" fill="#0d1527" stroke="#2dd4bf" stroke-width="2" filter="url(#glow-filter)"/>
-          <circle cx="420" cy="80" r="5" fill="#0d1527" stroke="#2dd4bf" stroke-width="2" filter="url(#glow-filter)"/>
-          <circle cx="60" cy="400" r="5" fill="#0d1527" stroke="#2dd4bf" stroke-width="2" filter="url(#glow-filter)"/>
-          <circle cx="420" cy="400" r="5" fill="#0d1527" stroke="#2dd4bf" stroke-width="2" filter="url(#glow-filter)"/>
-
-          <!-- Intersection nodes on backbone -->
-          <circle cx="60" cy="120" r="3.5" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="420" cy="120" r="3.5" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="60" cy="360" r="3.5" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="420" cy="360" r="3.5" fill="#2dd4bf" stroke-opacity="0"/>
-
-          <!-- Mid-spine nodes -->
-          <circle cx="60" cy="200" r="3" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="60" cy="280" r="3" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="420" cy="200" r="3" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="420" cy="280" r="3" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-
-          <!-- Junction nodes on data paths -->
-          <circle cx="160" cy="80" r="3.5" fill="#3b82f6" stroke-opacity="0" filter="url(#glow-filter)"/>
-          <circle cx="320" cy="80" r="3.5" fill="#3b82f6" stroke-opacity="0" filter="url(#glow-filter)"/>
-          <circle cx="160" cy="400" r="3.5" fill="#3b82f6" stroke-opacity="0"/>
-          <circle cx="320" cy="400" r="3.5" fill="#3b82f6" stroke-opacity="0"/>
-          <circle cx="240" cy="160" r="4" fill="#0d1527" stroke="#3b82f6" stroke-width="1.5" filter="url(#glow-filter)"/>
-          <circle cx="240" cy="320" r="4" fill="#0d1527" stroke="#3b82f6" stroke-width="1.5"/>
-          <circle cx="140" cy="80" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="340" cy="80" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="140" cy="400" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="340" cy="400" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-
-          <!-- Bus junction nodes on H/V -->
-          <circle cx="100" cy="240" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="380" cy="240" r="3" fill="#2dd4bf" stroke-opacity="0"/>
-          <circle cx="140" cy="240" r="3.5" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="340" cy="240" r="3.5" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-
-          <!-- ── Central core (main chip) ────────────────────────── -->
-          <rect x="196" y="196" width="88" height="88" rx="8" fill="#0d1527" stroke="#2dd4bf" stroke-width="2" filter="url(#glow-strong)"/>
-
-          <!-- Chip pin marks -->
-          <line x1="215" y1="196" x2="215" y2="188" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="240" y1="196" x2="240" y2="188" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="265" y1="196" x2="265" y2="188" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="215" y1="284" x2="215" y2="292" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="240" y1="284" x2="240" y2="292" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="265" y1="284" x2="265" y2="292" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="196" y1="215" x2="188" y2="215" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="196" y1="240" x2="188" y2="240" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="196" y1="265" x2="188" y2="265" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="284" y1="215" x2="292" y2="215" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="284" y1="240" x2="292" y2="240" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-          <line x1="284" y1="265" x2="292" y2="265" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.7"/>
-
-          <!-- Chip center bolt icon -->
-          <path d="M232 228l8-12h6l-4 8h8l-10 16h-6l4-8h-6z" fill="#2dd4bf" stroke="none" opacity="0.9"/>
-
-          <!-- Corner chip marks -->
-          <path d="M200 200 l8 0 l0 8" fill="none" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.5"/>
-          <path d="M280 200 l-8 0 l0 8" fill="none" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.5"/>
-          <path d="M200 280 l8 0 l0 -8" fill="none" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.5"/>
-          <path d="M280 280 l-8 0 l0 -8" fill="none" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.5"/>
-
-          <!-- ── Animated pulse rings (CSS animation) ──────────────── -->
-          <circle cx="240" cy="240" r="60" fill="none" stroke="#2dd4bf" stroke-width="0.75" stroke-opacity="0.15" class="pulse-ring-1"/>
-          <circle cx="240" cy="240" r="90" fill="none" stroke="#2dd4bf" stroke-width="0.5" stroke-opacity="0.08" class="pulse-ring-2"/>
-
-          <!-- Small satellite nodes -->
-          <circle cx="160" cy="200" r="4" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="160" cy="280" r="4" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="320" cy="200" r="4" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-          <circle cx="320" cy="280" r="4" fill="#0d1527" stroke="#2dd4bf" stroke-width="1.5"/>
-        </svg>
-
-        <!-- Status indicators overlaid -->
-        <div class="absolute top-10 right-8 flex flex-col gap-2 font-mono text-[10px] text-[#2dd4bf]/60 tracking-widest" aria-hidden="true">
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse"></span>SYS ONLINE</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] animate-pulse" style="animation-delay:0.5s"></span>EV NET ACTIVE</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse" style="animation-delay:1s"></span>GRID SYNC</span>
+          <!-- CTA button -->
+          <a
+            href="#quote"
+            class="flex items-center justify-center gap-2 w-full font-mono font-bold text-[#080e1a] text-xs tracking-widest uppercase rounded-full py-3.5 transition-all hover:shadow-[0_0_24px_rgba(45,212,191,0.45)] hover:scale-[1.01] active:scale-100"
+            style="background: #2dd4bf;"
+          >
+            Get Exact Estimate
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <p class="text-center font-mono text-[9px] text-slate-700 tracking-wider mt-3">
+            Estimates are ballpark only. Final price confirmed after site assessment.
+          </p>
         </div>
       </div>
 
@@ -298,45 +317,115 @@ import { business } from '../../data/v2';
 
   <!-- Bottom fade -->
   <div
-    class="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+    class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
     style="background: linear-gradient(to bottom, transparent, #080e1a);"
     aria-hidden="true"
   ></div>
 </section>
 
 <style>
-  .hero-bg {
+  .hero-dot-grid {
     background-color: #080e1a;
-    background-image:
-      radial-gradient(circle at 30px 30px, rgba(45,212,191,0.04) 1px, transparent 0),
-      radial-gradient(circle at 30px 30px, rgba(59,130,246,0.02) 1px, transparent 0);
-    background-size: 60px 60px, 30px 30px;
+    background-image: radial-gradient(circle, rgba(45,212,191,0.05) 1px, transparent 0);
+    background-size: 36px 36px;
+  }
+
+  .hero-phone-size {
+    font-size: clamp(1.6rem, 4vw, 2.75rem);
   }
 
   .terminal-cursor {
     display: inline-block;
     width: 3px;
-    height: 1.2em;
+    height: 1.1em;
     background: #2dd4bf;
     border-radius: 1px;
-    animation: blink 1.1s step-end infinite;
+    animation: cursor-blink 1.1s step-end infinite;
     vertical-align: text-bottom;
+    margin-left: 2px;
   }
 
-  @keyframes blink {
+  @keyframes cursor-blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
 
-  .pulse-ring-1 {
-    animation: ringExpand 3s ease-out infinite;
+  .bolt-pulse {
+    animation: bolt-glow 2s ease-in-out infinite alternate;
   }
-  .pulse-ring-2 {
-    animation: ringExpand 3s ease-out infinite 1.5s;
+  @keyframes bolt-glow {
+    from { opacity: 0.7; }
+    to { opacity: 1; filter: drop-shadow(0 0 6px #2dd4bf); }
   }
 
-  @keyframes ringExpand {
-    0% { stroke-opacity: 0.2; transform-origin: center; transform: scale(0.85); }
-    100% { stroke-opacity: 0; transform-origin: center; transform: scale(1.2); }
+  .status-dot-1 { animation: dot-fade 1.8s ease-in-out infinite; }
+  .status-dot-2 { animation: dot-fade 1.8s ease-in-out infinite 0.6s; }
+  .status-dot-3 { animation: dot-fade 1.8s ease-in-out infinite 1.2s; }
+  @keyframes dot-fade {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+
+  .connector-ring-1 {
+    animation: ring-out 2.2s ease-out infinite;
+  }
+  .connector-ring-2 {
+    animation: ring-out 2.2s ease-out infinite 1.1s;
+  }
+  @keyframes ring-out {
+    0% { opacity: 0.5; transform: scale(0.8); transform-origin: 85px 193px; }
+    100% { opacity: 0; transform: scale(1.3); transform-origin: 85px 193px; }
+  }
+
+  .eq-select option {
+    background: #0d1527;
+    color: #e2e8f0;
+  }
+  .eq-select:focus {
+    border-color: #2dd4bf !important;
+    box-shadow: 0 0 0 3px rgba(45,212,191,0.12);
   }
 </style>
+
+<script>
+  const serviceEl = document.getElementById('eq-service') as HTMLSelectElement | null;
+  const sizeEl = document.getElementById('eq-size') as HTMLSelectElement | null;
+  const timelineEl = document.getElementById('eq-timeline') as HTMLSelectElement | null;
+  const priceEl = document.getElementById('eq-price');
+  const noteEl = document.getElementById('eq-note');
+  const outputEl = document.getElementById('eq-output');
+
+  function fmt(n: number) {
+    return '$' + Math.round(n / 100) * 100 + (n >= 1000 ? '' : '');
+  }
+
+  function calc() {
+    const sOpt = serviceEl?.options[serviceEl.selectedIndex];
+    const szOpt = sizeEl?.options[sizeEl.selectedIndex];
+    const tlOpt = timelineEl?.options[timelineEl.selectedIndex];
+
+    if (!sOpt?.dataset.low || !szOpt?.dataset.mult) {
+      if (priceEl) priceEl.innerHTML = '<span class="text-slate-600 text-base font-normal">select options above</span>';
+      if (noteEl) noteEl.textContent = '';
+      if (outputEl) outputEl.style.borderColor = 'rgba(45,212,191,0.1)';
+      return;
+    }
+
+    let low = parseFloat(sOpt.dataset.low || '0');
+    let high = parseFloat(sOpt.dataset.high || '0');
+    const mult = parseFloat(szOpt.dataset.mult || '1');
+    const note = tlOpt?.dataset.note || '';
+
+    if (tlOpt?.value === 'asap') { low *= 1.1; high *= 1.1; }
+    if (tlOpt?.value === 'planning') { low *= 0.95; high *= 0.95; }
+
+    low = Math.round(low * mult);
+    high = Math.round(high * mult);
+
+    if (priceEl) priceEl.textContent = `${fmt(low)} – ${fmt(high)}`;
+    if (noteEl) noteEl.textContent = note ? `// ${note}` : '// Estimate before site visit. Final price locked in writing.';
+    if (outputEl) outputEl.style.borderColor = 'rgba(45,212,191,0.35)';
+  }
+
+  [serviceEl, sizeEl, timelineEl].forEach(el => el?.addEventListener('change', calc));
+</script>

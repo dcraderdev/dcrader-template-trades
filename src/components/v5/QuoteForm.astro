@@ -1,0 +1,253 @@
+---
+import { business } from '../../data/v5';
+---
+
+<section
+  id="quote"
+  class="bg-luxury-cream py-24 lg:py-36"
+  aria-labelledby="quote-heading"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+
+      <!-- LEFT: Context / editorial callout -->
+      <div class="lg:col-span-4">
+        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
+          06 / Begin Here
+        </p>
+        <h2
+          id="quote-heading"
+          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95] mb-8"
+          style="font-size: clamp(2.5rem, 4vw, 3.5rem);"
+        >
+          {business.form.headline}
+        </h2>
+
+        <div class="w-10 h-px bg-luxury-gold/60 mb-8" aria-hidden="true"></div>
+
+        <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed mb-10">
+          {business.form.subheadline}. {business.form.note}
+        </p>
+
+        <!-- Callout stat: editorial treatment -->
+        <div class="border border-luxury-gold/30 p-8 mb-10 relative">
+          <!-- Corner accent -->
+          <div class="absolute top-0 right-0 w-8 h-8 border-t border-r border-luxury-gold/30" aria-hidden="true"></div>
+
+          <p
+            class="font-cormorant font-bold text-luxury-sage leading-none mb-2"
+            style="font-size: 3.5rem;"
+          >
+            {business.form.calloutStat}
+          </p>
+          <p class="font-outfit font-light text-luxury-charcoal/60 text-sm">
+            {business.form.calloutLabel}
+          </p>
+        </div>
+
+        <!-- Contact info, discreet -->
+        <div class="flex flex-col gap-5">
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
+            <div>
+              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Phone</p>
+              <a href={business.phoneHref} class="font-outfit font-medium text-luxury-charcoal/70 hover:text-luxury-sage transition-colors text-sm">
+                {business.phone}
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
+            <div>
+              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Email</p>
+              <a href={business.emailHref} class="font-outfit font-medium text-luxury-charcoal/70 hover:text-luxury-sage transition-colors text-sm">
+                {business.email}
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 rounded-full bg-luxury-gold/60 mt-2 flex-shrink-0" aria-hidden="true"></div>
+            <div>
+              <p class="font-outfit font-light text-[10px] tracking-[0.15em] uppercase text-luxury-charcoal/35 mb-1">Office Hours</p>
+              {business.hours.map(h => (
+                <p class="font-outfit font-light text-luxury-charcoal/60 text-xs leading-relaxed">
+                  {h.day}: {h.hours}
+                </p>
+              ))}
+              <p class="font-outfit font-light text-luxury-sage text-xs mt-1">{business.emergencyNote}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="lg:col-span-8">
+        <form
+          action="#"
+          method="post"
+          class="bg-luxury-parchment p-10 lg:p-14"
+          novalidate
+          aria-labelledby="quote-heading"
+        >
+          <!-- Top border accent -->
+          <div class="w-full h-px bg-gradient-to-r from-luxury-gold/60 via-luxury-gold/20 to-transparent mb-10" aria-hidden="true"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+            <!-- Name -->
+            <div class="form-field">
+              <label
+                for="v5-name"
+                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+              >
+                Full Name <span class="text-luxury-sage" aria-label="required">*</span>
+              </label>
+              <input
+                id="v5-name"
+                type="text"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Your name"
+                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div class="form-field">
+              <label
+                for="v5-phone"
+                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+              >
+                Phone <span class="text-luxury-sage" aria-label="required">*</span>
+              </label>
+              <input
+                id="v5-phone"
+                type="tel"
+                name="phone"
+                required
+                autocomplete="tel"
+                placeholder="(___) ___-____"
+                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="form-field">
+              <label
+                for="v5-email"
+                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+              >
+                Email Address <span class="text-luxury-sage" aria-label="required">*</span>
+              </label>
+              <input
+                id="v5-email"
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="your@email.com"
+                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+              />
+            </div>
+
+            <!-- Location / Property -->
+            <div class="form-field">
+              <label
+                for="v5-location"
+                class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+              >
+                Property Location
+              </label>
+              <input
+                id="v5-location"
+                type="text"
+                name="location"
+                autocomplete="address-level2"
+                placeholder="Neighborhood or city"
+                class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors"
+              />
+            </div>
+
+            <!-- Extra field: Project Type -->
+            {business.form.extraFields.map(field => (
+              <div class="form-field">
+                <label
+                  for={`v5-${field.id}`}
+                  class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+                >
+                  {field.label}
+                </label>
+                <div class="relative">
+                  <select
+                    id={`v5-${field.id}`}
+                    name={field.id}
+                    class="w-full appearance-none bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm outline-none transition-colors cursor-pointer pr-6"
+                  >
+                    <option value="" class="bg-luxury-parchment text-luxury-charcoal/50">Select…</option>
+                    {field.options.map(opt => (
+                      <option value={opt} class="bg-luxury-parchment text-luxury-charcoal">{opt}</option>
+                    ))}
+                  </select>
+                  <svg
+                    class="absolute right-0 top-1 w-3.5 h-3.5 text-luxury-charcoal/30 pointer-events-none"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Project description -->
+          <div class="form-field mb-10">
+            <label
+              for="v5-message"
+              class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-charcoal/50 mb-2 block"
+            >
+              Project Description <span class="text-luxury-sage" aria-label="required">*</span>
+            </label>
+            <textarea
+              id="v5-message"
+              name="message"
+              required
+              rows="5"
+              placeholder="Please describe your project, home size, and any architect or designer involvement…"
+              class="w-full bg-transparent border-0 border-b border-luxury-gold/30 focus:border-luxury-sage pb-3 text-luxury-charcoal font-outfit font-light text-sm placeholder:text-luxury-charcoal/25 outline-none transition-colors resize-none leading-relaxed"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <button
+              type="submit"
+              class="inline-flex items-center gap-4 font-outfit font-light text-sm tracking-[0.12em] uppercase text-luxury-dark bg-luxury-gold hover:bg-luxury-gold-light transition-colors duration-300 px-10 py-4 group"
+            >
+              {business.form.submitLabel}
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0"
+                fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+              </svg>
+            </button>
+            <p class="font-outfit font-light text-luxury-charcoal/35 text-xs max-w-[200px]">
+              We respond within one business day.
+            </p>
+          </div>
+
+          <!-- License note -->
+          <div class="mt-8 pt-8 border-t border-luxury-gold/20">
+            <p class="font-outfit font-light text-luxury-charcoal/30 text-[10px] tracking-wide uppercase">
+              {business.license} · Licensed, bonded &amp; insured in Arizona
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>

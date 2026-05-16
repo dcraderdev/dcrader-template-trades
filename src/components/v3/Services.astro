@@ -1,0 +1,88 @@
+---
+import { business } from '../../data/v3';
+
+// Organic HVAC service icons — hand-drawn SVG style
+const serviceIcons: Record<string, string> = {
+  'furnace-repair': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8M7 7l2 2M15 7l-2 2M7 17l2-2M15 17l-2-2"/></svg>`,
+  'ac-install': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M7 7V5a2 2 0 0 1 4 0v2M13 7V5a2 2 0 0 1 4 0v2"/><circle cx="12" cy="12" r="2"/><path d="M9 12H6M15 12h3"/></svg>`,
+  'heat-pump': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 6 5 10c0 5 7 12 7 12s7-7 7-12c0-4-3-8-7-8z"/><circle cx="12" cy="10" r="3"/><path d="M12 13v3M9 15h6"/></svg>`,
+  'duct-cleaning': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="4" rx="1"/><path d="M6 12v6M10 12v4M14 12v6M18 12v4M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2"/></svg>`,
+  'boiler': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="14" rx="3"/><circle cx="9" cy="11" r="2.5"/><circle cx="15" cy="11" r="2.5"/><path d="M4 18v2M20 18v2M8 4V2M16 4V2"/></svg>`,
+  'air-quality': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 4-3.5 7-7 10C9 16 5 13 5 9a7 7 0 0 1 7-7z"/><path d="M12 6v6l3 3"/><path d="M9 12c0-1.657 1.343-3 3-3"/></svg>`,
+  'thermostat': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="4"/><circle cx="12" cy="16" r="2"/><path d="M12 6v6M9 8h2M9 10h2"/></svg>`,
+  'maintenance': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+};
+---
+
+<section id="services" class="py-20 lg:py-28" style="background:#f5ead8;" aria-labelledby="services-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span class="inline-block font-nunito font-semibold text-sm uppercase tracking-widest mb-3" style="color:#c4622d;">
+        What We Do
+      </span>
+      <h2
+        id="services-heading"
+        class="font-playfair font-bold mb-4 leading-tight"
+        style="font-size: clamp(2rem, 4.5vw, 3.25rem); color:#2d5a27;"
+      >
+        Heating & Cooling Services
+      </h2>
+      <p class="font-nunito max-w-xl mx-auto text-lg" style="color:#8b7355;">
+        Whatever your HVAC need — repair, install, or tune-up — our family has handled it for generations.
+      </p>
+    </div>
+
+    <!-- Services grid -->
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+      role="list"
+      aria-label="HVAC services we offer"
+    >
+      {business.services.map((service) => (
+        <li>
+          <div class="service-card group h-full rounded-2xl p-6 border-t-4 transition-all duration-300 cursor-default"
+            style="background:#fef8f0; border-top-color:#2d5a27; border-left: 1px solid #e8d5b8; border-right: 1px solid #e8d5b8; border-bottom: 1px solid #e8d5b8;"
+          >
+            <!-- Organic icon -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors" style="background:#f0e6d3; color:#2d5a27;">
+              <span class="w-6 h-6 block" set:html={serviceIcons[service.slug]} aria-hidden="true" />
+            </div>
+            <!-- Content -->
+            <h3 class="font-playfair font-bold text-xl mb-2 leading-tight" style="color:#2c2318;">
+              {service.title}
+            </h3>
+            <p class="font-nunito text-sm leading-relaxed" style="color:#8b7355;">
+              {service.description}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-12">
+      <p class="font-playfair italic mb-5" style="color:#8b7355; font-size:1.05rem;">
+        Not sure what you need? Give us a call — we'll talk it through, no pressure.
+      </p>
+      <a
+        href="#quote"
+        class="inline-flex items-center gap-2 text-white font-nunito font-bold text-lg px-8 py-4 rounded-xl transition-all hover:opacity-90"
+        style="background:#c4622d; box-shadow: 0 6px 24px rgba(196,98,45,0.25);"
+      >
+        Schedule a Visit
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(44, 35, 24, 0.10);
+    transform: translateY(-2px);
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import { business } from '../../data/v5';
+---
+
+<section
+  id="service-area"
+  class="bg-luxury-parchment py-24 lg:py-36 overflow-hidden"
+  aria-labelledby="area-heading"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+      <!-- LEFT: Section label + headline + description -->
+      <div class="lg:col-span-5">
+        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
+          03 / Where We Work
+        </p>
+
+        <h2
+          id="area-heading"
+          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95] mb-8"
+          style="font-size: clamp(2.75rem, 5vw, 4rem);"
+        >
+          {business.serviceArea.headline}
+        </h2>
+
+        <div class="w-12 h-px bg-luxury-gold/60 mb-8" aria-hidden="true"></div>
+
+        <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed mb-12">
+          {business.serviceArea.subheadline}. We are selective about the projects we take on — so that the projects we do take on receive our complete attention.
+        </p>
+
+        <!-- Decorative map-pin element -->
+        <div class="hidden lg:block">
+          <div class="inline-flex flex-col items-center gap-3">
+            <svg
+              class="w-8 h-8 text-luxury-gold/50"
+              fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+            </svg>
+            <span class="font-outfit font-light text-[10px] tracking-[0.18em] uppercase text-luxury-charcoal/35">
+              Scottsdale · Arizona
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Neighborhood names in elegant editorial grid -->
+      <div class="lg:col-span-7">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 divide-y divide-luxury-gold/20 sm:divide-y-0"
+          role="list"
+          aria-label="Service neighborhoods"
+        >
+          {business.serviceArea.neighborhoods.map((neighborhood, index) => (
+            <div
+              class="neighborhood-item group py-5 sm:py-6 px-0 sm:px-6 border-b border-luxury-gold/20 relative"
+              role="listitem"
+            >
+              <!-- Index dot -->
+              <div class="flex items-center gap-4">
+                <span
+                  class="font-outfit font-light text-[10px] text-luxury-charcoal/25 tabular-nums tracking-widest flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span
+                  class="font-cormorant font-bold text-luxury-charcoal group-hover:text-luxury-sage transition-colors duration-300 leading-snug"
+                  style="font-size: clamp(1.125rem, 2vw, 1.375rem);"
+                >
+                  {neighborhood}
+                </span>
+              </div>
+              <!-- Hover line indicator -->
+              <div
+                class="absolute bottom-0 left-0 h-px bg-luxury-sage/40 w-0 group-hover:w-full transition-all duration-500"
+                aria-hidden="true"
+              ></div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Footer note -->
+        <div class="mt-10 pt-8 border-t border-luxury-gold/20">
+          <p class="font-cormorant italic text-luxury-charcoal/45 text-lg leading-relaxed">
+            Projects considered beyond these areas on a case-by-case basis — please inquire.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,125 @@
+---
+import { business } from '../../data/v5';
+---
+
+<section
+  id="why-us"
+  class="bg-luxury-cream py-24 lg:py-36"
+  aria-labelledby="why-heading"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-20">
+      <div class="lg:col-span-5">
+        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
+          02 / Our Approach
+        </p>
+        <h2
+          id="why-heading"
+          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95]"
+          style="font-size: clamp(2.75rem, 5vw, 4rem);"
+        >
+          Why Architects<br/>
+          <span class="italic">Choose Us</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-7 flex items-end">
+        <p class="font-outfit font-light text-luxury-charcoal/55 text-base leading-relaxed max-w-lg">
+          We've spent fourteen years earning the trust of the design community by being the kind of trade contractor that enhances a project rather than complicating it.
+        </p>
+      </div>
+    </div>
+
+    <!-- Four pillars: large numerals, horizontal feel -->
+    <div class="relative">
+      <!-- Connecting horizontal line (desktop) -->
+      <div
+        class="hidden lg:block absolute top-[2.25rem] left-0 right-0 h-px bg-luxury-gold/20"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8"
+        role="list"
+        aria-label="Our approach pillars"
+      >
+        {business.whyUs.map((pillar, index) => (
+          <div
+            class="relative group pt-0 lg:pt-0"
+            role="listitem"
+          >
+            <!-- Large Cormorant numeral in gold — the editorial anchor -->
+            <div class="relative mb-8">
+              <!-- Circle that sits on the line (desktop) -->
+              <div
+                class="w-[4.5rem] h-[4.5rem] border border-luxury-gold/30 rounded-full flex items-center justify-center bg-luxury-cream group-hover:border-luxury-gold/60 transition-colors duration-400"
+                aria-hidden="true"
+              >
+                <span
+                  class="font-cormorant font-bold text-luxury-gold/70 leading-none group-hover:text-luxury-gold transition-colors duration-400"
+                  style="font-size: 1.75rem;"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
+
+            <!-- Pillar content -->
+            <div>
+              <!-- Subtitle in small caps -->
+              <p class="font-outfit font-light text-[10px] tracking-[0.2em] uppercase text-luxury-sage mb-3">
+                {pillar.subtitle}
+              </p>
+
+              <!-- Title: Cormorant -->
+              <h3
+                class="font-cormorant font-bold text-luxury-charcoal leading-tight mb-4 group-hover:text-luxury-sage transition-colors duration-300"
+                style="font-size: clamp(1.375rem, 2.5vw, 1.625rem);"
+              >
+                {pillar.title}
+              </h3>
+
+              <!-- Thin gold rule -->
+              <div class="w-8 h-px bg-luxury-gold/50 mb-4 group-hover:w-12 transition-all duration-400" aria-hidden="true"></div>
+
+              <!-- Description: Outfit light -->
+              <p class="font-outfit font-light text-luxury-charcoal/60 text-sm leading-relaxed">
+                {pillar.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Editorial pull-out stat -->
+    <div class="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-3 lg:col-start-1">
+        <hr class="border-luxury-gold/20" />
+      </div>
+      <div class="lg:col-span-6 text-center">
+        <blockquote class="font-cormorant italic text-luxury-charcoal/50 leading-relaxed" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem);">
+          "Our work enhances the design — it never compromises it."
+        </blockquote>
+      </div>
+      <div class="lg:col-span-3">
+        <hr class="border-luxury-gold/20" />
+      </div>
+    </div>
+
+    <!-- License / credential line -->
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-8">
+      {business.badges.map(badge => (
+        <div class="flex items-center gap-3">
+          <div class="w-1 h-1 rounded-full bg-luxury-gold/60" aria-hidden="true"></div>
+          <span class="font-outfit font-light text-xs text-luxury-charcoal/45 tracking-wide">
+            {badge.label} <span class="text-luxury-charcoal/25">·</span> {badge.sublabel}
+          </span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

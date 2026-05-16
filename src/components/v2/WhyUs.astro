@@ -1,0 +1,104 @@
+---
+import { business } from '../../data/v2';
+---
+
+<section id="why-us" class="relative py-24 lg:py-32" style="background: #0d1527;" aria-labelledby="why-us-heading">
+  <!-- Top accent -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2dd4bf]/20 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-mono text-[#2dd4bf] text-xs tracking-[0.2em] uppercase">// spec_sheet</span>
+          <div class="flex-1 h-px bg-[#2dd4bf]/15"></div>
+        </div>
+        <h2
+          id="why-us-heading"
+          class="font-sora font-extrabold text-white mb-6"
+          style="font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1;"
+        >
+          Why Phoenix Pros Call BrightWatt First
+        </h2>
+        <p class="font-sora text-slate-400 text-lg leading-relaxed mb-8">
+          We built this company for homeowners who do their homework. Every claim below is backed by our license, our reviews, and our work.
+        </p>
+
+        <!-- Metrics strip -->
+        <div class="grid grid-cols-3 gap-4">
+          {[
+            { stat: '450+', label: 'EV Chargers Installed' },
+            { stat: '1,200+', label: 'Smart Homes Wired' },
+            { stat: '4.9★', label: 'Google Average' },
+          ].map(item => (
+            <div class="text-center py-4 px-3 rounded-xl" style="background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.1);">
+              <div class="font-mono font-bold text-[#2dd4bf] leading-none mb-1.5"
+                style="font-size: clamp(1.25rem, 2.5vw, 1.75rem);">{item.stat}</div>
+              <div class="font-sora text-slate-500 text-xs leading-tight">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ── Feature spec list ──────────────────────────────────────────── -->
+      <div>
+        <!-- Terminal-style spec header -->
+        <div class="flex items-center gap-2 mb-6 pb-3 border-b border-[#111e3a]" aria-hidden="true">
+          <span class="font-mono text-[11px] text-slate-600 tracking-widest">FEATURE</span>
+          <div class="flex-1 border-b border-dashed border-[#111e3a]"></div>
+          <span class="font-mono text-[11px] text-[#2dd4bf]/60 tracking-widest">STATUS</span>
+        </div>
+
+        <ul class="space-y-0 list-none m-0 p-0" role="list" aria-label="Why choose BrightWatt">
+          {business.whyUs.map((item, i) => (
+            <li class="group py-6 border-b border-[#111e3a] last:border-b-0 hover:bg-[#2dd4bf]/3 transition-colors -mx-4 px-4 rounded-lg">
+              <div class="flex items-start gap-4">
+                <!-- Teal check + index -->
+                <div class="flex-shrink-0 flex flex-col items-center gap-1 pt-0.5">
+                  <span class="font-mono text-[#2dd4bf] font-bold text-base leading-none select-none" aria-hidden="true">[✓]</span>
+                  <span class="font-mono text-[10px] text-slate-700 leading-none select-none" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+                  <div class="flex items-start justify-between gap-4 mb-2">
+                    <h3 class="font-sora font-bold text-white text-base leading-tight group-hover:text-[#2dd4bf] transition-colors">
+                      {item.title}
+                    </h3>
+                    <span class="flex-shrink-0 font-mono text-[10px] text-[#2dd4bf]/60 tracking-wider bg-[#2dd4bf]/8 px-2 py-0.5 rounded border border-[#2dd4bf]/15 whitespace-nowrap">
+                      VERIFIED
+                    </span>
+                  </div>
+                  <p class="font-mono text-[#2dd4bf]/60 text-xs mb-2 tracking-wide">{item.subtitle}</p>
+                  <p class="font-sora text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTA at bottom of spec sheet -->
+        <div class="mt-8 flex items-center justify-between pt-6 border-t border-[#111e3a]">
+          <div class="font-mono text-xs text-slate-600 tracking-widest uppercase">
+            Ready to install?
+          </div>
+          <a
+            href="#quote"
+            class="inline-flex items-center gap-2 font-sora font-semibold text-[#080e1a] text-sm px-5 py-2.5 rounded-lg transition-all hover:shadow-[0_0_16px_rgba(45,212,191,0.4)] hover:scale-[1.02]"
+            style="background: #2dd4bf;"
+          >
+            Schedule This Week
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

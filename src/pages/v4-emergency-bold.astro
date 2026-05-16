@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v4/Nav.astro';
+import Hero from '../components/v4/Hero.astro';
+import Services from '../components/v4/Services.astro';
+import ServiceArea from '../components/v4/ServiceArea.astro';
+import WhyUs from '../components/v4/WhyUs.astro';
+import Testimonials from '../components/v4/Testimonials.astro';
+import Projects from '../components/v4/Projects.astro';
+import QuoteForm from '../components/v4/QuoteForm.astro';
+import Footer from '../components/v4/Footer.astro';
+import { business } from '../data/v4';
+---
+
+<Layout
+  title={`${business.name} | 24/7 Emergency Plumbing — Atlanta Metro`}
+  description={`Atlanta Metro's fastest emergency plumbing response. Burst pipes, sewer backups, flooding — guaranteed on-site in under 60 minutes. Call ${business.phone}.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap"
+  themeColor="#080808"
+  bodyStyle="background:#080808;color:#ffffff;font-family:'DM Sans',system-ui,sans-serif;"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <Services />
+    <ServiceArea />
+    <WhyUs />
+    <Testimonials />
+    <Projects />
+    <QuoteForm />
+  </main>
+  <Footer />
+</Layout>

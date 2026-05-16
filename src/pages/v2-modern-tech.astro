@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v2/Nav.astro';
+import Hero from '../components/v2/Hero.astro';
+import Services from '../components/v2/Services.astro';
+import ServiceArea from '../components/v2/ServiceArea.astro';
+import WhyUs from '../components/v2/WhyUs.astro';
+import Testimonials from '../components/v2/Testimonials.astro';
+import Projects from '../components/v2/Projects.astro';
+import QuoteForm from '../components/v2/QuoteForm.astro';
+import Footer from '../components/v2/Footer.astro';
+import { business } from '../data/v2';
+---
+
+<Layout
+  title={`${business.name} | Phoenix EV Charging & Smart Home Electrical`}
+  description={`${business.description} Call ${business.phone} for same-week appointments.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  themeColor="#080e1a"
+  bodyStyle="background:#080e1a;color:#e2e8f0;font-family:'Sora',system-ui,sans-serif;"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <Services />
+    <ServiceArea />
+    <WhyUs />
+    <Testimonials />
+    <Projects />
+    <QuoteForm />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v1/Nav.astro';
+import Hero from '../components/v1/Hero.astro';
+import Services from '../components/v1/Services.astro';
+import ServiceArea from '../components/v1/ServiceArea.astro';
+import WhyUs from '../components/v1/WhyUs.astro';
+import Testimonials from '../components/v1/Testimonials.astro';
+import Projects from '../components/v1/Projects.astro';
+import QuoteForm from '../components/v1/QuoteForm.astro';
+import Footer from '../components/v1/Footer.astro';
+import { business } from '../data/v1';
+---
+
+<Layout
+  title={`${business.name} | 24/7 Emergency Plumbing — San Diego County`}
+  description={`San Diego County's most trusted family-owned plumbers since ${business.founded}. Licensed, bonded, insured. We answer 24/7. Call ${business.phone}.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+  themeColor="#0f2855"
+  bodyStyle="background:#060d1c;color:#e2e8f0;font-family:'DM Sans',system-ui,sans-serif;"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <Services />
+    <ServiceArea />
+    <WhyUs />
+    <Testimonials />
+    <Projects />
+    <QuoteForm />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,168 @@
+---
+import { business } from '../../data/v2';
+---
+
+<footer class="relative" style="background: #04080f; border-top: 1px solid rgba(45,212,191,0.1);" aria-labelledby="v2-footer-heading">
+  <h2 id="v2-footer-heading" class="sr-only">Footer</h2>
+
+  <!-- Top teal line -->
+  <div class="h-[1px] bg-gradient-to-r from-transparent via-[#2dd4bf]/30 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+      <!-- Column 1: Brand -->
+      <div class="lg:col-span-1">
+        <!-- Logo -->
+        <a href="/" class="inline-flex items-center gap-3 mb-5 group" aria-label={`${business.name} home`}>
+          <div
+            class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover:shadow-[0_0_16px_rgba(45,212,191,0.4)]"
+            style="background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3);"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-[#2dd4bf]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-sora font-extrabold text-white text-base leading-none tracking-tight">{business.shortName}</p>
+            <p class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-widest mt-0.5 uppercase">Electric</p>
+          </div>
+        </a>
+
+        <p class="font-sora text-slate-500 text-sm leading-relaxed mb-6">{business.footer.description}</p>
+
+        <!-- License badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg mb-5"
+          style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.15);">
+          <svg class="w-3.5 h-3.5 text-[#2dd4bf] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+          </svg>
+          <span class="font-mono text-[11px] text-[#2dd4bf]/70 tracking-wider">{business.license}</span>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex gap-2" aria-label="Follow BrightWatt on social media">
+          {[
+            { href: business.social.facebook, label: 'Facebook', icon: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>` },
+            { href: business.social.instagram, label: 'Instagram', icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>` },
+            { href: business.social.yelp, label: 'Yelp', icon: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.16 12.74l-4.3 1.6c-.7.26-1.4-.38-1.14-1.08l1.67-4.28c.25-.66 1.12-.7 1.44-.07l2.6 5.07c.28.54-.1.9-.27.76zM14.93 9.1l-2.72-3.84c-.42-.6.07-1.36.77-1.28l4.6.53c.7.08.92.9.36 1.28l-1.88 3.3c-.37.65-1.2.5-1.13.01zM10.83 8.83l-4.1-1.03c-.66-.17-.8-1.03-.24-1.42l3.87-2.64c.57-.39 1.27.07 1.2.76l-.23 4.1c-.05.86-.95 1.06-1.5.23zm-3.76 4.3l4.12-1.12c.68-.18.68-1.1 0-1.28L6.9 9.74c-.65-.18-1.24.35-1.1 1.02l.35 3.5c.07.7.62 1.04 1.02.87zm5.27 3.77l-2.55-3.4c-.42-.56-1.22-.27-1.25.43l-.14 4.49c-.03.7.73 1.1 1.27.67l2.7-2.18c.46-.38.41-1.4-.03-1.01z"/></svg>` },
+            { href: business.social.google, label: 'Google Maps', icon: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>` },
+          ].map(link => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-500 hover:text-[#2dd4bf] transition-all hover:border-[#2dd4bf]/40"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+              aria-label={link.label}
+            >
+              <span set:html={link.icon} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Column 2: Contact -->
+      <div>
+        <h3 class="font-mono text-[11px] text-[#2dd4bf]/60 tracking-[0.2em] uppercase mb-5">Contact</h3>
+        <ul class="space-y-4 list-none m-0 p-0">
+          <li>
+            <a
+              href={business.phoneHref}
+              class="font-mono font-bold text-[#2dd4bf] hover:text-white transition-colors text-sm tracking-tight"
+              aria-label={`Call us at ${business.phone}`}
+            >
+              &gt;_ {business.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={business.emailHref}
+              class="flex items-center gap-2 font-sora text-slate-400 hover:text-[#2dd4bf] transition-colors text-sm"
+              aria-label={`Email us at ${business.email}`}
+            >
+              <svg class="w-3.5 h-3.5 flex-shrink-0 text-[#2dd4bf]/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+              </svg>
+              {business.email}
+            </a>
+          </li>
+          <li class="flex items-start gap-2 font-sora text-slate-500 text-sm">
+            <svg class="w-3.5 h-3.5 text-[#2dd4bf]/50 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+            </svg>
+            {business.address}
+          </li>
+          <!-- Emergency note -->
+          <li class="pt-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse flex-shrink-0" aria-hidden="true"></span>
+              <span class="font-sora font-semibold text-[#2dd4bf] text-sm">{business.emergencyNote}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Hours -->
+      <div>
+        <h3 class="font-mono text-[11px] text-[#2dd4bf]/60 tracking-[0.2em] uppercase mb-5">Hours</h3>
+        <ul class="space-y-0 list-none m-0 p-0">
+          {business.hours.map((h) => (
+            <li class="flex justify-between gap-4 py-2.5 border-b border-[#111e3a] last:border-b-0">
+              <span class="font-sora text-slate-500 text-sm">{h.day}</span>
+              <span class="font-mono text-[#2dd4bf]/80 text-sm font-medium">{h.hours}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Emergency CTA -->
+        <div class="mt-6 p-4 rounded-xl" style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.2);">
+          <p class="font-sora font-semibold text-white text-sm mb-1">Electrical Emergency?</p>
+          <p class="font-sora text-slate-500 text-xs mb-3">We dispatch 24/7 throughout Phoenix Metro.</p>
+          <a
+            href={business.phoneHref}
+            class="block text-center font-mono font-bold text-[#080e1a] text-sm py-2.5 px-4 rounded-lg transition-all hover:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+            style="background: #2dd4bf;"
+            aria-label={`Emergency: call ${business.phone}`}
+          >
+            &gt;_ {business.phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 4: Quick Links -->
+      <div>
+        <h3 class="font-mono text-[11px] text-[#2dd4bf]/60 tracking-[0.2em] uppercase mb-5">Navigation</h3>
+        <ul class="space-y-1 list-none m-0 p-0">
+          {business.footer.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="flex items-center gap-2.5 py-2 font-sora text-slate-500 hover:text-[#2dd4bf] text-sm transition-colors group"
+              >
+                <span class="font-mono text-[#2dd4bf]/25 text-xs group-hover:text-[#2dd4bf]/60 transition-colors">&gt;</span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Founded badge -->
+        <div class="mt-8 pt-6 border-t border-[#111e3a]">
+          <p class="font-mono text-[10px] text-slate-700 tracking-widest uppercase leading-loose">
+            Founded {business.founded}<br/>
+            Phoenix, Arizona<br/>
+            {business.license}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-[#111e3a] pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="font-sora text-slate-700 text-xs">{business.footer.copyright}</p>
+      <p class="font-mono text-slate-700 text-xs tracking-wider">{business.license} · Greater Phoenix, AZ</p>
+    </div>
+  </div>
+</footer>

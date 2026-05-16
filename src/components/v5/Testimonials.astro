@@ -1,0 +1,117 @@
+---
+import { business } from '../../data/v5';
+---
+
+<section
+  id="reviews"
+  class="bg-luxury-dark py-24 lg:py-36 overflow-hidden"
+  aria-labelledby="reviews-heading"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+      <div>
+        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
+          04 / Client Words
+        </p>
+        <h2
+          id="reviews-heading"
+          class="font-cormorant font-bold text-luxury-cream leading-[0.95]"
+          style="font-size: clamp(2.75rem, 5vw, 4rem);"
+        >
+          What Our Clients<br/>
+          <span class="italic">Say</span>
+        </h2>
+      </div>
+      <div>
+        <p class="font-outfit font-light text-luxury-cream/40 text-sm max-w-xs">
+          Verified clients across Scottsdale and Paradise Valley's finest neighborhoods.
+        </p>
+      </div>
+    </div>
+
+    <!-- Thin gold rule -->
+    <hr class="border-luxury-gold/20 mb-16" />
+
+    <!-- Pull-quote grid: editorial, asymmetric -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-luxury-gold/10"
+      role="list"
+      aria-label="Client testimonials"
+    >
+      {business.testimonials.map((testimonial, index) => (
+        <article
+          class="relative bg-luxury-dark p-10 lg:p-12 group hover:bg-luxury-charcoal/30 transition-colors duration-400"
+          role="listitem"
+          aria-label={`Testimonial from ${testimonial.name}`}
+        >
+          <!-- Large decorative opening quote mark -->
+          <div
+            class="font-cormorant text-luxury-gold/20 leading-none select-none pointer-events-none mb-4"
+            style="font-size: 6rem; line-height: 0.8; margin-top: -0.5rem;"
+            aria-hidden="true"
+          >
+            &ldquo;
+          </div>
+
+          <!-- Quote text -->
+          <blockquote class="mb-10">
+            <p
+              class="font-cormorant font-light text-luxury-cream/80 leading-relaxed italic group-hover:text-luxury-cream/95 transition-colors duration-300"
+              style="font-size: clamp(1.125rem, 1.8vw, 1.375rem);"
+            >
+              {testimonial.text}
+            </p>
+          </blockquote>
+
+          <!-- Attribution — small caps, no stars -->
+          <footer>
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-px bg-luxury-gold/40" aria-hidden="true"></div>
+              <div>
+                <p class="font-outfit font-medium text-luxury-cream/70 text-xs tracking-[0.15em] uppercase">
+                  {testimonial.name}
+                </p>
+                <p class="font-outfit font-light text-luxury-gold/60 text-[10px] tracking-[0.12em] uppercase mt-1">
+                  Verified Client · {testimonial.neighborhood}
+                </p>
+              </div>
+            </div>
+          </footer>
+
+          <!-- Subtle index -->
+          <div
+            class="absolute top-8 right-10 font-outfit font-light text-[10px] text-luxury-cream/15 tabular-nums tracking-widest"
+            aria-hidden="true"
+          >
+            {String(index + 1).padStart(2, '0')}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom: editorial stat row -->
+    <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 pt-12 border-t border-luxury-gold/15">
+      {[
+        { stat: '100%', label: 'Verified clients' },
+        { stat: '14', label: 'Years serving estates' },
+        { stat: '$2M+', label: 'Largest single project' },
+        { stat: '5.0', label: 'Google rating' },
+      ].map(item => (
+        <div class="text-center lg:text-left">
+          <p
+            class="font-cormorant font-bold text-luxury-gold leading-none mb-2"
+            style="font-size: clamp(2rem, 4vw, 3rem);"
+          >
+            {item.stat}
+          </p>
+          <p class="font-outfit font-light text-luxury-cream/35 text-xs tracking-wide uppercase">
+            {item.label}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

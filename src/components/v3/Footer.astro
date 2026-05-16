@@ -1,0 +1,201 @@
+---
+import { business } from '../../data/v3';
+---
+
+<footer style="background:#2d5a27; color:#fef8f0;" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+
+  <!-- Warm wave at top of footer -->
+  <div class="overflow-hidden leading-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 50" preserveAspectRatio="none" class="w-full h-[50px]" style="display:block;">
+      <path d="M0,0 Q360,50 720,20 Q1080,0 1440,40 L1440,0 Z" fill="#fef8f0"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Column 1: Brand / story -->
+      <div class="lg:col-span-1">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-5">
+          <div
+            class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background:rgba(254,248,240,0.15); border: 2px solid rgba(254,248,240,0.3);"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#fef8f0;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c0 0-7 5-7 11a7 7 0 0014 0c0-6-7-11-7-11z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M9 10c1.5 1.5 4.5 1.5 6 0"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-playfair font-bold leading-none" style="color:#fef8f0; font-size:1rem;">{business.shortName}</p>
+            <p class="font-nunito text-xs mt-0.5" style="color:rgba(254,248,240,0.6);">Est. {business.founded} · Columbus, OH</p>
+          </div>
+        </div>
+
+        <p class="font-nunito text-sm leading-relaxed mb-5" style="color:rgba(254,248,240,0.7);">
+          {business.footer.description}
+        </p>
+
+        <!-- License -->
+        <p class="font-nunito text-xs mb-5" style="color:rgba(254,248,240,0.5);">
+          {business.license}
+        </p>
+
+        <!-- Social links -->
+        <div class="flex gap-3" aria-label="Follow us on social media">
+          <a
+            href={business.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+            style="background:rgba(254,248,240,0.15); border: 1px solid rgba(254,248,240,0.2); color:#fef8f0;"
+            aria-label="Facebook"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a
+            href={business.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+            style="background:rgba(254,248,240,0.15); border: 1px solid rgba(254,248,240,0.2); color:#fef8f0;"
+            aria-label="Instagram"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a
+            href={business.social.yelp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+            style="background:rgba(254,248,240,0.15); border: 1px solid rgba(254,248,240,0.2); color:#fef8f0;"
+            aria-label="Yelp"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.16 12.74l-4.3 1.6c-.7.26-1.4-.38-1.14-1.08l1.67-4.28c.25-.66 1.12-.7 1.44-.07l2.6 5.07c.28.54-.1.9-.27.76zM14.93 9.1l-2.72-3.84c-.42-.6.07-1.36.77-1.28l4.6.53c.7.08.92.9.36 1.28l-1.88 3.3c-.37.65-1.2.5-1.13.01zM10.83 8.83l-4.1-1.03c-.66-.17-.8-1.03-.24-1.42l3.87-2.64c.57-.39 1.27.07 1.2.76l-.23 4.1c-.05.86-.95 1.06-1.5.23zm-3.76 4.3l4.12-1.12c.68-.18.68-1.1 0-1.28L6.9 9.74c-.65-.18-1.24.35-1.1 1.02l.35 3.5c.07.7.62 1.04 1.02.87zm5.27 3.77l-2.55-3.4c-.42-.56-1.22-.27-1.25.43l-.14 4.49c-.03.7.73 1.1 1.27.67l2.7-2.18c.46-.38.41-1.4-.03-1.01z"/>
+            </svg>
+          </a>
+          <a
+            href={business.social.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+            style="background:rgba(254,248,240,0.15); border: 1px solid rgba(254,248,240,0.2); color:#fef8f0;"
+            aria-label="Google Maps"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Contact -->
+      <div>
+        <h3 class="font-playfair font-bold text-base mb-5 pb-2 border-b" style="color:#fef8f0; border-color:rgba(254,248,240,0.2);">Contact Us</h3>
+        <ul class="space-y-4 list-none m-0 p-0">
+          <li>
+            <a
+              href={business.phoneHref}
+              class="flex items-center gap-3 transition-opacity hover:opacity-75 group"
+              style="color:#fef8f0;"
+              aria-label={`Call us at ${business.phone}`}
+            >
+              <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color:#c4622d;">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+              </svg>
+              <span class="font-nunito font-semibold">{business.phone}</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={business.emailHref}
+              class="flex items-center gap-3 transition-opacity hover:opacity-75"
+              style="color:rgba(254,248,240,0.8);"
+              aria-label={`Email us at ${business.email}`}
+            >
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="color:#c4622d;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+              </svg>
+              <span class="font-nunito text-sm">{business.email}</span>
+            </a>
+          </li>
+          <li class="flex items-start gap-3 font-nunito text-sm" style="color:rgba(254,248,240,0.7);">
+            <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="color:#c4622d;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+            </svg>
+            {business.address}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Hours -->
+      <div>
+        <h3 class="font-playfair font-bold text-base mb-5 pb-2 border-b" style="color:#fef8f0; border-color:rgba(254,248,240,0.2);">Service Hours</h3>
+        <ul class="space-y-3 list-none m-0 p-0">
+          {business.hours.map((h) => (
+            <li class="flex justify-between gap-4">
+              <span class="font-nunito text-sm" style="color:rgba(254,248,240,0.6);">{h.day}</span>
+              <span class="font-nunito font-semibold text-sm text-right" style="color:#fef8f0;">{h.hours}</span>
+            </li>
+          ))}
+        </ul>
+        <!-- Emergency indicator -->
+        <div class="mt-5 flex items-center gap-2 font-nunito font-semibold text-sm" style="color:#f5ead8;">
+          <span class="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style="background:#c4622d;" aria-hidden="true"></span>
+          {business.emergencyNote}
+        </div>
+      </div>
+
+      <!-- Column 4: Quick Links -->
+      <div>
+        <h3 class="font-playfair font-bold text-base mb-5 pb-2 border-b" style="color:#fef8f0; border-color:rgba(254,248,240,0.2);">Quick Links</h3>
+        <ul class="space-y-2.5 list-none m-0 p-0 mb-8">
+          {business.footer.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="font-nunito text-sm flex items-center gap-2 transition-opacity hover:opacity-75"
+                style="color:rgba(254,248,240,0.8);"
+              >
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true" style="color:rgba(196,98,45,0.7);">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                </svg>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Emergency heating/cooling callout -->
+        <div class="rounded-xl p-4" style="background:rgba(196,98,45,0.2); border: 1px solid rgba(196,98,45,0.4);">
+          <p class="font-playfair font-bold text-sm mb-1" style="color:#f5ead8;">HVAC Emergency?</p>
+          <p class="font-nunito text-xs mb-3" style="color:rgba(254,248,240,0.7);">We answer 24 hours for heat & cooling emergencies.</p>
+          <a
+            href={business.phoneHref}
+            class="block text-center font-nunito font-bold text-sm py-2 px-4 rounded-lg transition-all hover:opacity-90"
+            style="background:#c4622d; color:#fef8f0;"
+            aria-label={`Emergency: call ${business.phone}`}
+          >
+            Call Now: {business.phone}
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style="border-top: 1px solid rgba(254,248,240,0.15);">
+      <p class="font-nunito text-sm" style="color:rgba(254,248,240,0.45);">{business.footer.copyright}</p>
+      <p class="font-nunito text-sm" style="color:rgba(254,248,240,0.45);">{business.license} · Columbus, Ohio</p>
+    </div>
+  </div>
+</footer>

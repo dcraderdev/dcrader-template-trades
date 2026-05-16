@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v5/Nav.astro';
+import Hero from '../components/v5/Hero.astro';
+import Services from '../components/v5/Services.astro';
+import ServiceArea from '../components/v5/ServiceArea.astro';
+import WhyUs from '../components/v5/WhyUs.astro';
+import Testimonials from '../components/v5/Testimonials.astro';
+import Projects from '../components/v5/Projects.astro';
+import QuoteForm from '../components/v5/QuoteForm.astro';
+import Footer from '../components/v5/Footer.astro';
+import { business } from '../data/v5';
+---
+
+<Layout
+  title={`${business.name} | Premium Electrical · Scottsdale & Paradise Valley`}
+  description={`${business.description} ${business.license}. Call ${business.phone}.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+  themeColor="#4a7c59"
+  bodyStyle="background:#faf8f5;color:#2c2c2c;font-family:'Outfit',system-ui,sans-serif;"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <Services />
+    <WhyUs />
+    <ServiceArea />
+    <Testimonials />
+    <Projects />
+    <QuoteForm />
+  </main>
+  <Footer />
+</Layout>

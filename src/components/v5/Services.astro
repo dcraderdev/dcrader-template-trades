@@ -1,0 +1,113 @@
+---
+import { business } from '../../data/v5';
+
+// Group categories for the editorial layout
+const categoryColors: Record<string, string> = {
+  Technology: 'text-luxury-sage',
+  Aesthetics: 'text-luxury-gold',
+  Lifestyle: 'text-luxury-sage',
+  Reliability: 'text-luxury-gold',
+  Restoration: 'text-luxury-gold',
+};
+---
+
+<section
+  id="services"
+  class="bg-luxury-cream py-24 lg:py-36"
+  aria-labelledby="services-heading"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header: editorial, left-aligned -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
+      <div class="lg:col-span-4">
+        <p class="font-outfit uppercase tracking-[0.22em] text-xs text-luxury-sage mb-5 font-light">
+          01 / What We Do
+        </p>
+        <h2
+          id="services-heading"
+          class="font-cormorant font-bold text-luxury-charcoal leading-[0.95]"
+          style="font-size: clamp(2.75rem, 5vw, 4rem);"
+        >
+          Our<br/>
+          <span class="italic">Services</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-8 flex flex-col justify-end">
+        <hr class="border-luxury-gold/30 mb-8" />
+        <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed max-w-xl">
+          Each engagement begins with a detailed design consultation. We work from drawings, not guesswork — every conduit route, panel location, and lighting fixture is coordinated with your design team before a single wire is pulled.
+        </p>
+      </div>
+    </div>
+
+    <!-- Services: editorial two-column list, separated by thin gold rules -->
+    <div role="list" aria-label="Electrical services" class="divide-y divide-luxury-gold/20">
+      {business.services.map((service, index) => (
+        <div
+          class="service-row grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 py-8 group cursor-default"
+          role="listitem"
+        >
+          <!-- Index number + category -->
+          <div class="lg:col-span-1 flex lg:flex-col justify-between lg:justify-start items-start lg:items-start gap-4 lg:gap-2 pt-1">
+            <span class="font-outfit font-light text-luxury-charcoal/25 text-xs tabular-nums tracking-widest">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span class={`font-outfit font-light text-[10px] tracking-[0.15em] uppercase ${categoryColors[service.category] ?? 'text-luxury-sage'} hidden lg:block`}>
+              {service.category}
+            </span>
+          </div>
+
+          <!-- Service name: Cormorant bold italic on hover -->
+          <div class="lg:col-span-5">
+            <h3
+              class="font-cormorant font-bold text-luxury-charcoal group-hover:text-luxury-sage transition-colors duration-300 leading-tight"
+              style="font-size: clamp(1.5rem, 2.5vw, 2rem);"
+            >
+              {service.title}
+            </h3>
+            <!-- Mobile category -->
+            <span class={`lg:hidden font-outfit font-light text-[10px] tracking-[0.15em] uppercase mt-1 inline-block ${categoryColors[service.category] ?? 'text-luxury-sage'}`}>
+              {service.category}
+            </span>
+          </div>
+
+          <!-- Description: Outfit light -->
+          <div class="lg:col-span-5 flex items-center">
+            <p class="font-outfit font-light text-luxury-charcoal/60 text-base leading-relaxed group-hover:text-luxury-charcoal/80 transition-colors duration-300">
+              {service.description}
+            </p>
+          </div>
+
+          <!-- Arrow indicator -->
+          <div class="lg:col-span-1 hidden lg:flex items-center justify-end">
+            <svg
+              class="w-4 h-4 text-luxury-gold/30 group-hover:text-luxury-gold/70 transition-all duration-300 group-hover:translate-x-1"
+              fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom rule + consultation link -->
+    <div class="mt-16 pt-12 border-t border-luxury-gold/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <p class="font-cormorant italic text-luxury-charcoal/50 text-xl">
+        All services coordinated with your project team.
+      </p>
+      <a
+        href="#quote"
+        class="flex items-center gap-3 font-outfit font-light text-sm tracking-[0.12em] uppercase text-luxury-sage hover:text-luxury-sage-dark transition-colors group"
+      >
+        Begin a Conversation
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

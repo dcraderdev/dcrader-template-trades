@@ -1,0 +1,116 @@
+---
+import { business } from '../../data/v4';
+---
+
+<!-- Mobile sticky call bar -->
+<div
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden"
+  role="banner"
+  aria-label="Emergency call bar"
+>
+  <a
+    href={business.phoneHref}
+    class="flex items-center justify-center gap-3 py-4 bg-emergency-red hover:bg-emergency-red-dark transition-colors font-anton text-white text-2xl tracking-wider uppercase"
+    aria-label={`Call us now at ${business.phone}`}
+  >
+    <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+    </svg>
+    CALL NOW — {business.phone}
+  </a>
+</div>
+
+<!-- Main nav -->
+<header
+  id="v4-nav"
+  class="fixed top-0 left-0 right-0 z-40 transition-all duration-200"
+  style="background: #080808; border-bottom: 1px solid #1a1a1a;"
+>
+  <!-- Top red stripe -->
+  <div class="h-1 bg-emergency-red w-full" aria-hidden="true"></div>
+
+  <nav
+    class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4"
+    aria-label="Main navigation"
+  >
+    <!-- Logo -->
+    <a
+      href="/"
+      class="flex items-center gap-3 flex-shrink-0 group"
+      aria-label={`${business.name} home`}
+    >
+      <div
+        class="w-8 h-8 bg-emergency-red flex items-center justify-center flex-shrink-0"
+        aria-hidden="true"
+      >
+        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+      </div>
+      <div>
+        <span class="block font-anton text-white text-lg tracking-wider uppercase leading-none">
+          {business.shortName}
+        </span>
+        <span class="block text-gray-500 text-xs font-body leading-none mt-0.5">
+          {business.tagline}
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-1 list-none m-0 p-0" role="list">
+      {[
+        { label: 'Services', href: '#services' },
+        { label: 'Coverage', href: '#service-area' },
+        { label: 'Guarantees', href: '#why-us' },
+        { label: 'Reviews', href: '#reviews' },
+      ].map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="px-4 py-2 text-gray-400 hover:text-white font-body font-medium text-sm uppercase tracking-wide transition-colors hover:bg-white/5 rounded"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Phone on right -->
+    <div class="flex items-center gap-4 flex-shrink-0">
+      <a
+        href={business.phoneHref}
+        class="hidden md:flex items-center gap-2 font-anton text-emergency-red hover:text-red-400 transition-colors text-xl tracking-wider uppercase"
+        aria-label={`Call ${business.phone}`}
+      >
+        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+        {business.phone}
+      </a>
+      <a
+        href={business.phoneHref}
+        class="hidden sm:inline-flex bg-emergency-red hover:bg-emergency-red-dark text-white font-body font-bold text-sm px-5 py-2.5 uppercase tracking-wider transition-colors"
+        aria-label={`Call now at ${business.phone}`}
+      >
+        CALL NOW
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const nav = document.getElementById('v4-nav');
+
+  function updateNav() {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.style.setProperty('box-shadow', '0 2px 24px rgba(0,0,0,0.8)');
+    } else {
+      nav.style.setProperty('box-shadow', 'none');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>

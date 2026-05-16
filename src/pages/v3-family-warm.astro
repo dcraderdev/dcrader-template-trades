@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v3/Nav.astro';
+import Hero from '../components/v3/Hero.astro';
+import Services from '../components/v3/Services.astro';
+import ServiceArea from '../components/v3/ServiceArea.astro';
+import WhyUs from '../components/v3/WhyUs.astro';
+import Testimonials from '../components/v3/Testimonials.astro';
+import Projects from '../components/v3/Projects.astro';
+import QuoteForm from '../components/v3/QuoteForm.astro';
+import Footer from '../components/v3/Footer.astro';
+import { business } from '../data/v3';
+---
+
+<Layout
+  title={`${business.name} | Family-Owned Columbus HVAC Since ${business.founded}`}
+  description={`${business.description} Call ${business.phone} for same-day service.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap"
+  themeColor="#2d5a27"
+  bodyStyle="background:#fef8f0;color:#2c2318;font-family:'Nunito Sans',system-ui,sans-serif;"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <Services />
+    <ServiceArea />
+    <WhyUs />
+    <Testimonials />
+    <Projects />
+    <QuoteForm />
+  </main>
+  <Footer />
+</Layout>

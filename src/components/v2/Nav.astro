@@ -1,0 +1,122 @@
+---
+import { business } from '../../data/v2';
+---
+
+<!-- Mobile sticky call bar -->
+<div
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-[#2dd4bf]/20"
+  style="background: rgba(8,14,26,0.97); backdrop-filter: blur(12px);"
+  role="banner"
+  aria-label="Quick call banner"
+>
+  <a
+    href={business.phoneHref}
+    class="flex items-center justify-center gap-3 py-4 active:bg-[#2dd4bf]/10 transition-colors"
+    aria-label={`Call us at ${business.phone}`}
+  >
+    <span class="font-mono font-bold text-[#2dd4bf] text-lg tracking-tight">&gt;_ {business.phone}</span>
+  </a>
+</div>
+
+<!-- Main nav -->
+<header
+  id="v2-nav"
+  class="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+  style="background: transparent;"
+  role="banner"
+>
+  <!-- Teal top accent line -->
+  <div class="h-[2px] bg-gradient-to-r from-transparent via-[#2dd4bf]/60 to-transparent" aria-hidden="true"></div>
+
+  <nav
+    class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-4"
+    aria-label="Main navigation"
+  >
+    <!-- Logo -->
+    <a
+      href="/"
+      class="flex items-center gap-3 flex-shrink-0 group"
+      aria-label={`${business.name} home`}
+    >
+      <!-- Bolt icon -->
+      <div
+        class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:shadow-[0_0_16px_rgba(45,212,191,0.4)]"
+        style="background: linear-gradient(135deg, #2dd4bf22, #3b82f622); border: 1px solid rgba(45,212,191,0.35);"
+        aria-hidden="true"
+      >
+        <svg class="w-5 h-5 text-[#2dd4bf]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+        </svg>
+      </div>
+      <div class="hidden sm:block">
+        <span class="block font-sora font-extrabold text-white text-base leading-none tracking-tight">
+          {business.shortName}
+        </span>
+        <span class="block font-mono text-[10px] text-[#2dd4bf]/70 leading-none mt-0.5 tracking-widest uppercase">
+          Electric
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-1 list-none m-0 p-0" role="list">
+      {[
+        { label: 'Services', href: '#services' },
+        { label: 'Service Area', href: '#service-area' },
+        { label: 'Why Us', href: '#why-us' },
+        { label: 'Reviews', href: '#reviews' },
+        { label: 'Projects', href: '#projects' },
+      ].map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="px-4 py-2 text-slate-400 hover:text-[#2dd4bf] font-sora font-medium text-sm rounded-lg hover:bg-[#2dd4bf]/8 transition-all duration-200"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Desktop CTA group -->
+    <div class="flex items-center gap-4 flex-shrink-0">
+      <a
+        href={business.phoneHref}
+        class="hidden md:block font-mono font-bold text-[#2dd4bf] text-sm hover:text-white transition-colors tracking-tight"
+        aria-label={`Call ${business.phone}`}
+      >
+        &gt;_ {business.phone}
+      </a>
+      <a
+        href="#quote"
+        class="hidden sm:inline-flex items-center gap-2 font-sora font-semibold text-sm text-[#080e1a] px-5 py-2.5 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] hover:scale-[1.02] active:scale-100"
+        style="background: #2dd4bf;"
+      >
+        Schedule Install
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const nav = document.getElementById('v2-nav');
+
+  function updateNav() {
+    const scrolled = window.scrollY > 40;
+    if (scrolled) {
+      nav?.style.setProperty('background', 'rgba(8,14,26,0.96)');
+      nav?.style.setProperty('box-shadow', '0 1px 0 rgba(45,212,191,0.1), 0 8px 32px rgba(0,0,0,0.5)');
+      nav?.style.setProperty('backdrop-filter', 'blur(16px)');
+    } else {
+      nav?.style.setProperty('background', 'transparent');
+      nav?.style.setProperty('box-shadow', 'none');
+      nav?.style.setProperty('backdrop-filter', 'none');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>

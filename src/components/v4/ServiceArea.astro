@@ -1,0 +1,63 @@
+---
+import { business } from '../../data/v4';
+---
+
+<section
+  id="service-area"
+  class="py-20 bg-emergency-gray-dark border-t border-white/5"
+  aria-labelledby="service-area-heading"
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h2
+        id="service-area-heading"
+        class="font-anton text-white uppercase tracking-wider"
+        style="font-size: clamp(2rem, 6vw, 4rem);"
+      >
+        {business.serviceArea.headline}
+      </h2>
+      <div class="h-1 w-24 bg-emergency-red mx-auto mt-4 mb-5" aria-hidden="true"></div>
+      <p class="font-body text-gray-400 text-sm uppercase tracking-widest max-w-xl mx-auto">
+        {business.serviceArea.subheadline}
+      </p>
+    </div>
+
+    <!-- City grid -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-12"
+      role="list"
+      aria-label="Cities we serve"
+    >
+      {business.serviceArea.cities.map(city => (
+        <div
+          class="group flex items-center gap-2 border border-emergency-red/25 hover:border-emergency-red hover:bg-emergency-red/5 px-4 py-3 transition-all cursor-default"
+          role="listitem"
+        >
+          <span class="w-1.5 h-1.5 bg-emergency-red flex-shrink-0" aria-hidden="true"></span>
+          <span class="font-body font-semibold text-white text-sm group-hover:text-emergency-red transition-colors">
+            {city}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Stat bar -->
+    <div class="border border-white/10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+      <div class="flex flex-col items-center py-8 px-6">
+        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">&lt; 60</span>
+        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Minutes — Our Guarantee</span>
+      </div>
+      <div class="flex flex-col items-center py-8 px-6">
+        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">24/7</span>
+        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Live Dispatch, Always</span>
+      </div>
+      <div class="flex flex-col items-center py-8 px-6">
+        <span class="font-anton text-emergency-red tracking-wider" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">16+</span>
+        <span class="font-body text-gray-400 text-xs uppercase tracking-widest mt-1">Cities Covered</span>
+      </div>
+    </div>
+
+  </div>
+</section>

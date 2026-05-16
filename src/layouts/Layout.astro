@@ -1,14 +1,21 @@
 ---
-import { business } from '../data/business';
-
 interface Props {
   title?: string;
   description?: string;
+  /** Full Google Fonts href — each variant provides its own */
+  fontUrl?: string;
+  /** <meta name="theme-color"> */
+  themeColor?: string;
+  /** Inline style applied to <body> — set bg + color per variant */
+  bodyStyle?: string;
 }
 
 const {
-  title = `${business.name} | 24/7 Emergency Plumbing — San Diego County`,
-  description = `San Diego County's most trusted family-owned plumbers since ${business.founded}. Licensed, bonded, insured. We answer 24/7. Call ${business.phone}.`,
+  title = 'Local Trade Business',
+  description = 'Professional trade services',
+  fontUrl,
+  themeColor = '#0f2855',
+  bodyStyle = 'background:#060d1c;color:#e2e8f0;',
 } = Astro.props;
 ---
 
@@ -18,72 +25,53 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0f2855" />
+    <meta name="theme-color" content={themeColor} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Google Fonts: Barlow Condensed (display) + DM Sans (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-      rel="stylesheet"
-    />
-
-    <style is:global>
-      :root {
-        --navy:        #0f2855;
-        --navy-dark:   #0c1d38;
-        --navy-darker: #091629;
-        --navy-black:  #060d1c;
-        --orange:      #f97316;
-        --orange-dark: #ea6800;
-      }
-
-      *, *::before, *::after { box-sizing: border-box; }
-
-      html {
-        scroll-behavior: smooth;
-        font-family: 'DM Sans', system-ui, sans-serif;
-      }
-
-      body {
-        margin: 0;
-        background: var(--navy-black);
-        color: #e2e8f0;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      /* Skip link */
-      .skip-link {
-        position: absolute;
-        top: -100%;
-        left: 1rem;
-        background: var(--orange);
-        color: #fff;
-        font-weight: 700;
-        padding: 0.75rem 1.25rem;
-        border-radius: 0 0 8px 8px;
-        z-index: 9999;
-        transition: top 0.2s;
-        text-decoration: none;
-      }
-      .skip-link:focus { top: 0; }
-
-      /* Focus ring */
-      :focus-visible {
-        outline: 3px solid var(--orange);
-        outline-offset: 3px;
-        border-radius: 4px;
-      }
-
-      /* Section scroll targets get offset for sticky nav */
-      [id] { scroll-margin-top: 80px; }
-    </style>
+    {fontUrl && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href={fontUrl} rel="stylesheet" />
+      </>
+    )}
   </head>
-  <body>
+
+  <body style={bodyStyle}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  /* Offset sticky nav for anchor links */
+  [id] { scroll-margin-top: 80px; }
+
+  /* Skip link — each variant can override color */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 8px 8px;
+    z-index: 9999;
+    text-decoration: none;
+    font-weight: 700;
+    background: #f97316;
+    color: #fff;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* Accessible focus ring */
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+</style>

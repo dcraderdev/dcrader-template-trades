@@ -1,0 +1,78 @@
+---
+import { business } from '../../data/v4';
+---
+
+<section
+  id="reviews"
+  class="py-20 bg-emergency-gray-dark border-t border-white/5"
+  aria-labelledby="reviews-heading"
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h2
+        id="reviews-heading"
+        class="font-anton text-white uppercase tracking-wider"
+        style="font-size: clamp(2rem, 6vw, 4rem);"
+      >
+        REAL CUSTOMERS. REAL EMERGENCIES.
+      </h2>
+      <div class="h-1 w-24 bg-emergency-red mx-auto mt-4 mb-5" aria-hidden="true"></div>
+      <p class="font-body text-gray-500 text-sm uppercase tracking-widest">
+        What Atlanta says when the water won't stop
+      </p>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      role="list"
+      aria-label="Customer reviews"
+    >
+      {business.testimonials.map(t => (
+        <article
+          class="bg-emergency-black border border-white/8 hover:border-emergency-red/30 transition-colors p-5 flex flex-col"
+          role="listitem"
+        >
+          <!-- Stars -->
+          <div class="flex gap-1 mb-3" aria-label={`${t.rating} out of 5 stars`}>
+            {Array.from({ length: t.rating }).map(() => (
+              <svg class="w-4 h-4 text-emergency-red flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Review text -->
+          <blockquote class="font-body text-gray-300 text-sm leading-relaxed flex-1 mb-4">
+            "{t.text}"
+          </blockquote>
+
+          <!-- Attribution -->
+          <footer class="flex items-center justify-between border-t border-white/5 pt-4 mt-auto">
+            <span class="font-body font-bold text-white text-sm">{t.name}</span>
+            <span class="font-body text-gray-600 text-xs uppercase tracking-wider">{t.neighborhood}</span>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-12 text-center">
+      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mb-6">
+        Join thousands of Atlanta homeowners who call us first
+      </p>
+      <a
+        href={business.phoneHref}
+        class="inline-flex items-center gap-3 bg-emergency-red hover:bg-emergency-red-dark text-white font-anton text-xl tracking-wider uppercase px-10 py-4 transition-colors"
+        aria-label={`Call now at ${business.phone}`}
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+        CALL {business.phone}
+      </a>
+    </div>
+  </div>
+</section>

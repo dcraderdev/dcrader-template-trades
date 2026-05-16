@@ -1,0 +1,74 @@
+---
+import { business } from '../../data/v4';
+---
+
+<section
+  id="why-us"
+  class="py-20 bg-emergency-black border-t border-white/5"
+  aria-labelledby="why-us-heading"
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <div class="inline-flex items-center gap-3 border border-emergency-red/40 px-5 py-2 mb-6">
+        <span class="font-body text-emergency-red text-xs font-bold uppercase tracking-[0.2em]">OUR GUARANTEES</span>
+      </div>
+      <h2
+        id="why-us-heading"
+        class="font-anton text-white uppercase tracking-wider"
+        style="font-size: clamp(2rem, 6vw, 4rem);"
+      >
+        WE BACK EVERY PROMISE
+      </h2>
+    </div>
+
+    <!-- Guarantee cards grid -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+      role="list"
+      aria-label="Our service guarantees"
+    >
+      {business.whyUs.map(item => (
+        <div
+          class="border border-emergency-red/30 hover:border-emergency-red bg-emergency-gray-dark hover:bg-emergency-gray transition-all p-6"
+          role="listitem"
+        >
+          <!-- Warning label style title -->
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-1 self-stretch bg-emergency-red flex-shrink-0" aria-hidden="true"></div>
+            <div>
+              <h3 class="font-anton text-white uppercase tracking-wider leading-tight" style="font-size: clamp(1.25rem, 3vw, 1.75rem);">
+                {item.title}
+              </h3>
+              <p class="font-body text-emergency-red text-xs font-bold uppercase tracking-widest mt-1">
+                {item.subtitle}
+              </p>
+            </div>
+          </div>
+          <!-- Red rule -->
+          <div class="h-px bg-emergency-red/20 mb-4" aria-hidden="true"></div>
+          <!-- Description -->
+          <p class="font-body text-gray-400 text-sm leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- License callout -->
+    <div class="mt-8 border border-white/5 bg-emergency-gray-dark flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-emergency-red flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+        </svg>
+        <span class="font-body text-white font-semibold text-sm">
+          State Licensed Master Plumbers — {business.license}
+        </span>
+      </div>
+      <span class="font-body text-gray-500 text-xs uppercase tracking-widest">
+        $2M liability insurance on every call
+      </span>
+    </div>
+  </div>
+</section>

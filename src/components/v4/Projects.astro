@@ -1,0 +1,85 @@
+---
+import { business } from '../../data/v4';
+---
+
+<section
+  id="projects"
+  class="py-20 bg-emergency-black border-t border-white/5"
+  aria-labelledby="projects-heading"
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="h-px flex-1 bg-emergency-red/30" aria-hidden="true"></div>
+        <span class="font-body text-emergency-red text-xs font-bold uppercase tracking-[0.2em]">RECENT CALLS</span>
+        <div class="h-px flex-1 bg-emergency-red/30" aria-hidden="true"></div>
+      </div>
+      <h2
+        id="projects-heading"
+        class="font-anton text-white uppercase tracking-wider"
+        style="font-size: clamp(2rem, 6vw, 4rem);"
+      >
+        EMERGENCIES WE STOPPED
+      </h2>
+    </div>
+
+    <!-- Projects list -->
+    <div class="space-y-8" role="list" aria-label="Recent emergency jobs">
+      {business.projects.map(project => (
+        <article
+          class="border border-white/8 hover:border-emergency-red/30 transition-colors overflow-hidden"
+          role="listitem"
+        >
+          <!-- Before / After images -->
+          <div class="grid grid-cols-2 gap-0">
+            <div class="relative overflow-hidden">
+              <img
+                src={project.beforeImg}
+                alt={`Before: ${project.title}`}
+                class="w-full h-48 sm:h-64 object-cover grayscale opacity-60"
+                loading="lazy"
+                width="800"
+                height="500"
+              />
+              <div class="absolute top-3 left-3 bg-emergency-black/90 px-3 py-1">
+                <span class="font-body text-white text-xs font-bold uppercase tracking-widest">BEFORE</span>
+              </div>
+            </div>
+            <div class="relative overflow-hidden">
+              <img
+                src={project.afterImg}
+                alt={`After: ${project.title}`}
+                class="w-full h-48 sm:h-64 object-cover"
+                loading="lazy"
+                width="800"
+                height="500"
+              />
+              <div class="absolute top-3 right-3 bg-emergency-red px-3 py-1">
+                <span class="font-body text-white text-xs font-bold uppercase tracking-widest">FIXED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project info -->
+          <div class="p-6 bg-emergency-gray-dark flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-anton text-white uppercase tracking-wider leading-tight mb-1" style="font-size: clamp(1.1rem, 2.5vw, 1.5rem);">
+                {project.title}
+              </h3>
+              <p class="font-body text-gray-400 text-sm">{project.description}</p>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <svg class="w-4 h-4 text-emergency-red flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+              </svg>
+              <span class="font-body text-gray-500 text-sm uppercase tracking-wider">{project.location}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

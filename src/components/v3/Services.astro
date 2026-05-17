@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v3';
+import { getProjectImage } from '../../assets/projects';
 
-// Picsum image seeds for each service
 const serviceImages: Record<string, string> = {
   'furnace-repair':  'heating-service',
   'ac-install':      'cooling-service',
@@ -12,8 +13,6 @@ const serviceImages: Record<string, string> = {
   'thermostat':      'smart-thermostat',
   'maintenance':     'hvac-tune-up',
 };
-
-// For alternating layout: odd index = image left + text right, even = text left + image right
 ---
 
 <section id="services" class="py-24 lg:py-32" style="background:#fef8f0;" aria-labelledby="services-heading">
@@ -51,12 +50,15 @@ const serviceImages: Record<string, string> = {
             <>
               <!-- Image left -->
               <div class="w-full lg:w-2/5 overflow-hidden" style="min-height:320px;">
-                <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                <Image
+                  src={getProjectImage(seed)}
                   alt={`${service.title} — Three Generations Heating & Cooling`}
+                  widths={[400, 600, 800]}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <!-- Text right -->
@@ -108,12 +110,15 @@ const serviceImages: Record<string, string> = {
               </div>
               <!-- Image right -->
               <div class="w-full lg:w-2/5 overflow-hidden order-1 lg:order-2" style="min-height:320px;">
-                <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                <Image
+                  src={getProjectImage(seed)}
                   alt={`${service.title} — Three Generations Heating & Cooling`}
+                  widths={[400, 600, 800]}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </>

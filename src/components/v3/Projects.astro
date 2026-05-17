@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v3';
+import { getProjectImage } from '../../assets/projects';
 ---
 
 <section id="projects" class="py-20 lg:py-28" style="background:#f5ead8;" aria-labelledby="projects-heading">
@@ -46,20 +48,26 @@ import { business } from '../../data/v3';
               <!-- Before/After image comparison -->
               <div class="relative overflow-hidden lg:w-3/5" style="aspect-ratio:4/3; background:#e8d5b8; min-height:280px;">
                 <!-- Before image -->
-                <img
-                  src={project.beforeImg}
+                <Image
+                  src={getProjectImage(project.beforeImg)}
                   alt={`Before: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 720px, 100vw"
                   class="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                   style="filter:sepia(8%) saturate(80%);"
                 />
                 <!-- After image clipped -->
-                <img
-                  src={project.afterImg}
+                <Image
+                  src={getProjectImage(project.afterImg)}
                   alt={`After: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 720px, 100vw"
                   class="v3-after-img absolute inset-0 w-full h-full object-cover"
                   style="clip-path: inset(0 50% 0 0); filter:sepia(4%) saturate(95%);"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
                 <!-- Range slider -->
                 <input

@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v3';
+import { getProjectImage } from '../../assets/projects';
 ---
 
 <section
@@ -102,12 +104,15 @@ import { business } from '../../data/v3';
     >
       <!-- Full-height image -->
       <div class="absolute inset-0 overflow-hidden">
-        <img
-          src="https://picsum.photos/seed/warm-family-home-cozy/900/1200"
+        <Image
+          src={getProjectImage('warm-family-home-cozy')}
           alt="A warm, cozy home interior — the kind of home Three Generations keeps comfortable"
+          widths={[480, 720, 900]}
+          sizes="(min-width: 1024px) 45vw, 100vw"
           class="w-full h-full object-cover"
           style="filter: sepia(12%) saturate(90%) brightness(0.97);"
           loading="eager"
+          decoding="async"
           fetchpriority="high"
         />
         <!-- Soft left gradient blend -->
@@ -149,12 +154,15 @@ import { business } from '../../data/v3';
 
   <!-- Mobile: show image below text block -->
   <div class="lg:hidden relative overflow-hidden" style="height:300px;">
-    <img
-      src="https://picsum.photos/seed/warm-family-home-cozy/900/600"
+    <Image
+      src={getProjectImage('warm-family-home-cozy')}
       alt="A warm, cozy home interior"
+      widths={[480, 720, 900]}
+      sizes="100vw"
       class="w-full h-full object-cover"
       style="filter: sepia(12%) saturate(90%);"
       loading="lazy"
+      decoding="async"
     />
     <div class="absolute inset-0" style="background:linear-gradient(to top, #fef8f0 0%, transparent 60%);"></div>
     <!-- Badge -->

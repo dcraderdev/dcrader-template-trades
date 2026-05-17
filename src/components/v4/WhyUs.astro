@@ -1,11 +1,38 @@
 ---
 import { business } from '../../data/v4';
 
-const metrics = [
-  { stat: "60 MIN", label: "OR WE DISCOUNT\nYOUR BILL", detail: "Guaranteed on-site. Late = we pay.", border: true },
-  { stat: "3 RINGS", label: "WE ANSWER.\nEVERY CALL.", detail: "No voicemail. No phone tree. Ever.", border: true },
-  { stat: "24/7", label: "LIVE DISPATCH.\nALL YEAR.", detail: "365 days. Midnight. Christmas. Us.", border: true },
-  { stat: "$0", label: "HIDDEN FEES.\nFLAT RATE.", detail: "Same price at 3am as 3pm.", border: false },
+// The questions panicked Atlanta homeowners actually call us at 2am asking
+const faq = [
+  {
+    q: "Am I going to pay 3x because it's after midnight?",
+    a: "No. Our rate at 2am is the same as our rate at 2pm — flat-rate, written in the quote before any work starts. You'll see the number before we touch a tool.",
+    tag: "PRICING",
+  },
+  {
+    q: "How fast can a tech actually be at my door?",
+    a: "Inside I-285 we average 38 minutes from the call to the doorbell. Outside the perimeter, under 60. If we're late beyond 60 minutes, we discount the bill — and we tell you that on the phone.",
+    tag: "RESPONSE",
+  },
+  {
+    q: "Will I get someone qualified, or a junior at 3am?",
+    a: "Every after-hours dispatch is a state-licensed master plumber. We do not run trainees on emergency calls — full stop. Your tech's license # is on the truck and on your invoice.",
+    tag: "STAFFING",
+  },
+  {
+    q: "What if you make the leak worse?",
+    a: "We carry $2M general liability on every truck. If we damage anything in your home, you call our office and we settle it — not your insurance, not a fight.",
+    tag: "INSURANCE",
+  },
+  {
+    q: "Do you take card / Apple Pay at 3am?",
+    a: "Yes. Every tech has a tap-to-pay reader in the truck. Card, Apple Pay, Google Pay, or check. We don't do cash-only.",
+    tag: "PAYMENT",
+  },
+  {
+    q: "What's actually covered by the warranty?",
+    a: "Parts and labor for 12 months on every repair, 5 years on every replacement. If the same issue comes back inside that window, we fix it for $0.",
+    tag: "WARRANTY",
+  },
 ];
 ---
 
@@ -19,52 +46,69 @@ const metrics = [
   <div class="border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
       <p class="font-body font-black text-emergency-red text-xs uppercase tracking-[0.3em] mb-2">
-        PERFORMANCE GUARANTEES — NOT SUGGESTIONS
+        WHAT YOU'RE ACTUALLY THINKING AT 2 AM
       </p>
       <h2
         id="why-us-heading"
         class="font-anton text-white uppercase tracking-wider leading-none"
         style="font-size: clamp(2.5rem, 7vw, 5rem);"
       >
-        WE BACK EVERY PROMISE
+        ASK THE HARD QUESTIONS FIRST
       </h2>
+      <p class="font-body text-gray-500 text-sm uppercase tracking-widest mt-4">
+        Six straight answers — no asterisks.
+      </p>
     </div>
   </div>
 
-  <!-- 4 giant metric panels — full-width bands -->
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-white/10"
-    role="list"
-    aria-label="Service guarantees"
-  >
-    {metrics.map((m, i) => (
-      <div
-        class={`group flex flex-col items-center justify-center text-center py-16 px-8 hover:bg-emergency-red/8 transition-colors border-b sm:border-b-0 border-white/10 ${i < 3 ? 'lg:border-r' : ''} ${i < 2 ? 'sm:border-r' : ''}`}
-        role="listitem"
-      >
-        <!-- Giant stat number -->
-        <div
-          class="font-anton text-emergency-red leading-none tracking-wide group-hover:scale-105 transition-transform"
-          style="font-size: clamp(3.5rem, 8vw, 6rem);"
-          aria-label={m.stat}
-        >
-          {m.stat}
-        </div>
+  <!-- Emergency FAQ accordion -->
+  <div class="border-b border-white/10">
+    <ul class="max-w-6xl mx-auto px-4 sm:px-6 py-2" role="list" aria-label="Frequently asked questions">
+      {faq.map((item, i) => (
+        <li class={`border-b border-white/8 ${i === faq.length - 1 ? 'border-b-0' : ''}`} role="listitem">
+          <details class="group emergency-faq">
+            <summary
+              class="cursor-pointer list-none flex items-start gap-5 py-6 outline-none focus-visible:bg-emergency-red/5"
+              aria-label={`${item.tag}: ${item.q}`}
+            >
+              <!-- Index -->
+              <span
+                class="font-anton text-emergency-red leading-none flex-shrink-0 select-none"
+                style="font-size: clamp(2rem, 4vw, 3rem);"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
 
-        <!-- Label -->
-        <div class="mt-4 font-anton text-white uppercase tracking-wider leading-tight text-center whitespace-pre-line" style="font-size: clamp(0.9rem, 1.5vw, 1.1rem);">
-          {m.label}
-        </div>
+              <div class="flex-1 min-w-0">
+                <span class="block font-body font-black text-emergency-red text-[10px] uppercase tracking-[0.3em] mb-2">
+                  {item.tag}
+                </span>
+                <span class="block font-anton text-white uppercase tracking-wide leading-tight" style="font-size: clamp(1.05rem, 2vw, 1.5rem);">
+                  {item.q}
+                </span>
+              </div>
 
-        <!-- Red rule -->
-        <div class="w-12 h-0.5 bg-emergency-red my-4" aria-hidden="true"></div>
-
-        <!-- Detail text -->
-        <p class="font-body text-gray-500 text-xs uppercase tracking-wider leading-relaxed">
-          {m.detail}
-        </p>
-      </div>
-    ))}
+              <!-- Plus / minus indicator -->
+              <span
+                class="font-anton text-emergency-red leading-none flex-shrink-0 self-center select-none transition-transform group-open:rotate-45"
+                style="font-size: 2rem;"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </summary>
+            <div class="pl-[clamp(2rem,4vw,3rem)] pr-12 pb-7 -mt-1">
+              <div class="border-l-2 border-emergency-red/40 pl-5">
+                <p class="font-body text-gray-300 leading-relaxed text-sm sm:text-base max-w-3xl">
+                  {item.a}
+                </p>
+              </div>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
   </div>
 
   <!-- License/insurance bar -->

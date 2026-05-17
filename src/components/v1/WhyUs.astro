@@ -1,11 +1,44 @@
 ---
 import { business } from '../../data/v1';
 
-const stats = [
-  { stat: '4,200+', label: 'JOBS COMPLETED', sub: 'Since 2008' },
-  { stat: '17 YRS', label: 'IN BUSINESS', sub: 'Family owned' },
-  { stat: '100%', label: 'GUARANTEE', sub: 'We make it right' },
-  { stat: '<60 MIN', label: 'RESPONSE TIME', sub: 'Emergency calls' },
+// Credentials — what a licensed San Diego plumber actually carries
+const credentials = [
+  {
+    title: 'CA Contractors License',
+    code: 'C-36 #1018442',
+    note: 'Plumbing classification · active & verified',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M3 7h18v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7l2-4h14l2 4"/><path d="M9 12h6"/></svg>`,
+  },
+  {
+    title: 'BBB Accredited · A+',
+    code: 'Accredited 2011',
+    note: 'San Diego chapter — zero unresolved complaints',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  },
+  {
+    title: '$2M General Liability',
+    code: 'Hartford · Policy 88142-CA',
+    note: 'Plus $1M auto · proof faxed before any job',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+  },
+  {
+    title: 'IAPMO Certified',
+    code: 'Member since 2009',
+    note: 'Backflow prevention · gas piping endorsed',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 2l3 5 5 1-4 4 1 5-5-3-5 3 1-5-4-4 5-1 3-5z"/></svg>`,
+  },
+  {
+    title: 'Workers\' Comp on File',
+    code: 'State Fund · current',
+    note: 'Every tech covered · zero pass-through liability for you',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 11V7a4 4 0 0 0-8 0v4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>`,
+  },
+  {
+    title: 'CSLB Verified',
+    code: 'cslb.ca.gov · lookup #1018442',
+    note: 'License lookup is public — please check before you hire anyone',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>`,
+  },
 ];
 
 const pillarIcons = [
@@ -44,36 +77,61 @@ const pillarIcons = [
       <span style="color:#f97316;">CHOOSES US</span>
     </h2>
 
-    <!-- GIANT STAT BLOCKS — 4 in a row, full-bleed -->
-    <div
-      class="grid grid-cols-2 lg:grid-cols-4 mb-16"
-      style="border:1px solid rgba(249,115,22,0.25);"
-      role="list"
-      aria-label="Key statistics"
-    >
-      {stats.map((item, i) => (
-        <div
-          class="relative py-10 px-6 text-center"
-          style={`border-right: ${i < 3 ? '1px solid rgba(249,115,22,0.25)' : 'none'}; border-bottom: ${i < 2 ? '1px solid rgba(249,115,22,0.25)' : 'none'};`}
-          role="listitem"
+    <!-- CREDENTIAL & LICENSE BOARD — what you can verify before we ever touch a pipe -->
+    <div class="mb-16">
+      <!-- Eyebrow row -->
+      <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+        <p
+          class="font-display font-black uppercase text-white tracking-wide"
+          style="font-size:1.35rem; letter-spacing:0.04em;"
         >
-          <!-- Stat number — enormous -->
-          <div
-            class="font-display font-black leading-none mb-1 uppercase"
-            style="font-size: clamp(2.75rem, 5vw, 4rem); color:#f97316; letter-spacing:-0.03em;"
+          Paperwork before the wrench
+        </p>
+        <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.45); letter-spacing:0.18em;">
+          Every credential below is verifiable by phone or web
+        </p>
+      </div>
+
+      <ul
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        style="border:1px solid rgba(249,115,22,0.25);"
+        role="list"
+        aria-label="Licenses, insurance, and credentials"
+      >
+        {credentials.map((c, i) => (
+          <li
+            class="relative flex gap-4 p-6"
+            style={`
+              border-right: ${(i % 3) !== 2 ? '1px solid rgba(249,115,22,0.15)' : 'none'};
+              border-bottom: ${i < credentials.length - 3 ? '1px solid rgba(249,115,22,0.15)' : 'none'};
+            `}
+            role="listitem"
           >
-            {item.stat}
-          </div>
-          <div
-            class="font-display font-black uppercase text-white text-sm tracking-widest leading-tight mb-0.5"
-          >
-            {item.label}
-          </div>
-          <div class="font-body text-xs" style="color:rgba(255,255,255,0.4);">
-            {item.sub}
-          </div>
-        </div>
-      ))}
+            <!-- Credential icon stamp -->
+            <div
+              class="w-11 h-11 flex items-center justify-center flex-shrink-0 text-orange-400"
+              style="background:rgba(249,115,22,0.10); border:1px solid rgba(249,115,22,0.35);"
+            >
+              <span set:html={c.svg} aria-hidden="true" />
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <p
+                class="font-display font-black uppercase text-white leading-tight"
+                style="font-size:0.95rem; letter-spacing:0.04em;"
+              >
+                {c.title}
+              </p>
+              <p class="font-body font-bold text-xs tracking-widest mt-1" style="color:#f97316; letter-spacing:0.15em;">
+                {c.code}
+              </p>
+              <p class="font-body text-xs leading-relaxed mt-2" style="color:rgba(255,255,255,0.55);">
+                {c.note}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
 
     <!-- 4 Pillars — left-aligned horizontal layout, each with a left orange border -->

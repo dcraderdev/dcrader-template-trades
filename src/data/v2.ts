@@ -74,9 +74,9 @@ export const business = {
     { name: "Amanda C.", neighborhood: "Peoria", rating: 5, text: "Installed a Powerwall backup system and whole-home generator. They handled all the permits, utility coordination, everything. Could not have been easier." },
   ],
   projects: [
-    { title: "4-Car EV Garage Build-Out", location: "Scottsdale", beforeImg: "https://picsum.photos/seed/garage-before/800/500", afterImg: "https://picsum.photos/seed/garage-after/800/500", description: "Full 4-bay EV station with dedicated 100A sub-panel. Completed in one day." },
-    { title: "Smart Home Control4 Install", location: "Paradise Valley", beforeImg: "https://picsum.photos/seed/smart-before/800/500", afterImg: "https://picsum.photos/seed/smart-after/800/500", description: "Whole-home automation: lighting, climate, audio, security — one app." },
-    { title: "400A Panel Upgrade", location: "Chandler", beforeImg: "https://picsum.photos/seed/panel-before/800/500", afterImg: "https://picsum.photos/seed/panel-after/800/500", description: "60A to 400A upgrade, solar and EV-ready, passed inspection same week." },
+    { title: "4-Car EV Garage Build-Out", location: "Scottsdale", beforeImg: "/images/garage-before.webp", afterImg: "/images/garage-after.webp", description: "Full 4-bay EV station with dedicated 100A sub-panel. Completed in one day." },
+    { title: "Smart Home Control4 Install", location: "Paradise Valley", beforeImg: "/images/smart-before.webp", afterImg: "/images/smart-after.webp", description: "Whole-home automation: lighting, climate, audio, security — one app." },
+    { title: "400A Panel Upgrade", location: "Chandler", beforeImg: "/images/panel-before.webp", afterImg: "/images/panel-after.webp", description: "60A to 400A upgrade, solar and EV-ready, passed inspection same week." },
   ],
   form: {
     headline: "Schedule Your Install",

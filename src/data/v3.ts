@@ -74,9 +74,9 @@ export const business = {
     { name: "Linda F.", neighborhood: "Bexley", rating: 5, text: "Dale installed our new AC and was patient enough to explain everything. He even called the next day to make sure we were cool. Old-school service. I love it." },
   ],
   projects: [
-    { title: "Full HVAC System Replacement", location: "Dublin", beforeImg: "https://picsum.photos/seed/hvac-before-1/800/500", afterImg: "https://picsum.photos/seed/hvac-after-1/800/500", description: "Complete system replacement: new Carrier furnace, AC, and coil in one day." },
-    { title: "Boiler Restoration", location: "Bexley", beforeImg: "https://picsum.photos/seed/boiler-before/800/500", afterImg: "https://picsum.photos/seed/boiler-after/800/500", description: "1960s cast iron boiler serviced and extended another 10 years. No replacement needed." },
-    { title: "Duct Cleaning & Seal", location: "Westerville", beforeImg: "https://picsum.photos/seed/duct-before/800/500", afterImg: "https://picsum.photos/seed/duct-after/800/500", description: "Full duct cleaning and sealing dropped heating bills by 22%." },
+    { title: "Full HVAC System Replacement", location: "Dublin", beforeImg: "/images/hvac-before-1.webp", afterImg: "/images/hvac-after-1.webp", description: "Complete system replacement: new Carrier furnace, AC, and coil in one day." },
+    { title: "Boiler Restoration", location: "Bexley", beforeImg: "/images/boiler-before.webp", afterImg: "/images/boiler-after.webp", description: "1960s cast iron boiler serviced and extended another 10 years. No replacement needed." },
+    { title: "Duct Cleaning & Seal", location: "Westerville", beforeImg: "/images/duct-before.webp", afterImg: "/images/duct-after.webp", description: "Full duct cleaning and sealing dropped heating bills by 22%." },
   ],
   form: {
     headline: "Schedule a Visit",

@@ -90,18 +90,24 @@ import { business } from '../../data/v1';
                 <!-- BEFORE image -->
                 <img
                   src={project.beforeImg}
+                  width="800"
+                  height="500"
                   alt={`Before: ${project.title} in ${project.location}`}
                   class="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
                 />
 
                 <!-- AFTER image (clipped by slider) -->
                 <img
                   src={project.afterImg}
+                  width="800"
+                  height="500"
                   alt={`After: ${project.title} in ${project.location}`}
                   class="after-img absolute inset-0 w-full h-full object-cover"
                   style="clip-path: inset(0 50% 0 0);"
                   loading="lazy"
+                  decoding="async"
                 />
 
                 <!-- Range input transparent overlay -->

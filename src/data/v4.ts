@@ -71,9 +71,9 @@ export const business = {
     { name: "Marcus J.", neighborhood: "Dunwoody", rating: 5, text: "Water heater failed on a Sunday. They had a tech here in 45 minutes and replaced it same day. No wait until Monday. Absolute legends." },
   ],
   projects: [
-    { title: "Main Line Burst — Stopped in 40 Minutes", location: "Marietta", beforeImg: "https://picsum.photos/seed/emergency-1/800/500", afterImg: "https://picsum.photos/seed/fix-1/800/500", description: "Water flooding through subfloor. Main shut off and repaired before additional damage spread." },
-    { title: "Sewer Ejector Failure", location: "Smyrna", beforeImg: "https://picsum.photos/seed/emergency-2/800/500", afterImg: "https://picsum.photos/seed/fix-2/800/500", description: "Complete sewer backup cleared and ejector pump replaced in one visit." },
-    { title: "Gas Line Emergency", location: "Sandy Springs", beforeImg: "https://picsum.photos/seed/emergency-3/800/500", afterImg: "https://picsum.photos/seed/fix-3/800/500", description: "Gas odor diagnosed, cracked line section replaced, pressure tested, back online in 3 hours." },
+    { title: "Main Line Burst — Stopped in 40 Minutes", location: "Marietta", beforeImg: "/images/emergency-1.webp", afterImg: "/images/fix-1.webp", description: "Water flooding through subfloor. Main shut off and repaired before additional damage spread." },
+    { title: "Sewer Ejector Failure", location: "Smyrna", beforeImg: "/images/emergency-2.webp", afterImg: "/images/fix-2.webp", description: "Complete sewer backup cleared and ejector pump replaced in one visit." },
+    { title: "Gas Line Emergency", location: "Sandy Springs", beforeImg: "/images/emergency-3.webp", afterImg: "/images/fix-3.webp", description: "Gas odor diagnosed, cracked line section replaced, pressure tested, back online in 3 hours." },
   ],
   form: {
     headline: "NON-EMERGENCY REQUEST",

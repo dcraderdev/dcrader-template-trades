@@ -72,9 +72,9 @@ export const business = {
     { name: "Margot & Jean-Paul D.", neighborhood: "Gainey Ranch", rating: 5, text: "Our French designer was very particular. Cedar Hill's crew communicated beautifully with his team and delivered exactly what the drawings showed. Impeccable." },
   ],
   projects: [
-    { title: "10,000 sq ft New Build", location: "Paradise Valley", beforeImg: "https://picsum.photos/seed/luxury-before-1/800/600", afterImg: "https://picsum.photos/seed/luxury-after-1/800/600", description: "Full electrical, Savant automation, and designer lighting package for new construction estate." },
-    { title: "Historic Estate Rewire", location: "Arcadia", beforeImg: "https://picsum.photos/seed/estate-before/800/600", afterImg: "https://picsum.photos/seed/estate-after/800/600", description: "Complete rewire of 1940s estate preserving original plaster and period details." },
-    { title: "Outdoor Entertainment Complex", location: "Desert Mountain", beforeImg: "https://picsum.photos/seed/outdoor-before/800/600", afterImg: "https://picsum.photos/seed/outdoor-after/800/600", description: "Pool deck, casita, outdoor kitchen — audio, lighting, and power in a seamless system." },
+    { title: "10,000 sq ft New Build", location: "Paradise Valley", beforeImg: "/images/luxury-before-1.webp", afterImg: "/images/luxury-after-1.webp", description: "Full electrical, Savant automation, and designer lighting package for new construction estate." },
+    { title: "Historic Estate Rewire", location: "Arcadia", beforeImg: "/images/estate-before.webp", afterImg: "/images/estate-after.webp", description: "Complete rewire of 1940s estate preserving original plaster and period details." },
+    { title: "Outdoor Entertainment Complex", location: "Desert Mountain", beforeImg: "/images/outdoor-before.webp", afterImg: "/images/outdoor-after.webp", description: "Pool deck, casita, outdoor kitchen — audio, lighting, and power in a seamless system." },
   ],
   form: {
     headline: "Schedule a Consultation",

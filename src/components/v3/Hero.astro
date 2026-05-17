@@ -103,12 +103,15 @@ import { business } from '../../data/v3';
       <!-- Full-height image -->
       <div class="absolute inset-0 overflow-hidden">
         <img
-          src="https://picsum.photos/seed/warm-family-home-cozy/900/1200"
+          src="/images/warm-family-home-cozy-1200.webp"
           alt="A warm, cozy home interior — the kind of home Three Generations keeps comfortable"
+          width="900"
+          height="1200"
           class="w-full h-full object-cover"
           style="filter: sepia(12%) saturate(90%) brightness(0.97);"
           loading="eager"
           fetchpriority="high"
+          decoding="async"
         />
         <!-- Soft left gradient blend -->
         <div
@@ -150,11 +153,14 @@ import { business } from '../../data/v3';
   <!-- Mobile: show image below text block -->
   <div class="lg:hidden relative overflow-hidden" style="height:300px;">
     <img
-      src="https://picsum.photos/seed/warm-family-home-cozy/900/600"
+      src="/images/warm-family-home-cozy-600.webp"
       alt="A warm, cozy home interior"
+      width="900"
+      height="600"
       class="w-full h-full object-cover"
       style="filter: sepia(12%) saturate(90%);"
       loading="lazy"
+                  decoding="async"
     />
     <div class="absolute inset-0" style="background:linear-gradient(to top, #fef8f0 0%, transparent 60%);"></div>
     <!-- Badge -->

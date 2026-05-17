@@ -52,11 +52,14 @@ const serviceImages: Record<string, string> = {
               <!-- Image left -->
               <div class="w-full lg:w-2/5 overflow-hidden" style="min-height:320px;">
                 <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                  src={`/images/.webp`}
+                  width="700"
+                  height="480"
                   alt={`${service.title} — Three Generations Heating & Cooling`}
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <!-- Text right -->
@@ -109,11 +112,14 @@ const serviceImages: Record<string, string> = {
               <!-- Image right -->
               <div class="w-full lg:w-2/5 overflow-hidden order-1 lg:order-2" style="min-height:320px;">
                 <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                  src={`/images/.webp`}
+                  width="700"
+                  height="480"
                   alt={`${service.title} — Three Generations Heating & Cooling`}
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </>

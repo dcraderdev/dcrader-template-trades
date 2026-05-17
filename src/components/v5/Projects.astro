@@ -4,37 +4,37 @@ import { business } from '../../data/v5';
 // Gallery images with luxury seeds and editorial captions
 const galleryItems = [
   {
-    src: "https://picsum.photos/seed/luxury-kitchen-estate/800/600",
+    src: "/images/luxury-kitchen-estate.webp",
     alt: "Custom estate kitchen — Paradise Valley",
     caption: "Paradise Valley Estate · 2024 · $285,000 project",
     size: "tall", // spans 2 rows in masonry
   },
   {
-    src: "https://picsum.photos/seed/luxury-living-room-v5/800/500",
+    src: "/images/luxury-living-room-v5.webp",
     alt: "Grand living room lighting — Silverleaf",
     caption: "Silverleaf Residence · 2024 · $195,000 project",
     size: "normal",
   },
   {
-    src: "https://picsum.photos/seed/estate-exterior-night/800/500",
+    src: "/images/estate-exterior-night.webp",
     alt: "Exterior architectural lighting — Desert Mountain",
     caption: "Desert Mountain Estate · 2023 · $165,000 project",
     size: "normal",
   },
   {
-    src: "https://picsum.photos/seed/luxury-primary-suite/800/600",
+    src: "/images/luxury-primary-suite.webp",
     alt: "Primary suite lighting design — DC Ranch",
     caption: "DC Ranch Villa · 2024 · $145,000 project",
     size: "tall",
   },
   {
-    src: "https://picsum.photos/seed/outdoor-pool-estate-v5/800/500",
+    src: "/images/outdoor-pool-estate-v5.webp",
     alt: "Pool and casita outdoor system — Gainey Ranch",
     caption: "Gainey Ranch Estate · 2023 · $220,000 project",
     size: "normal",
   },
   {
-    src: "https://picsum.photos/seed/luxury-wine-cellar-v5/800/500",
+    src: "/images/luxury-wine-cellar-v5.webp",
     alt: "Wine cellar and gallery lighting — Old Town Scottsdale",
     caption: "Old Town Residence · 2024 · $110,000 project",
     size: "normal",
@@ -95,6 +95,8 @@ const galleryItems = [
             alt={item.alt}
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading={index < 2 ? 'eager' : 'lazy'}
+            fetchpriority={index < 2 ? 'high' : 'auto'}
+            decoding="async"
             width="800"
             height={item.size === 'tall' ? '1067' : '600'}
             style="display: block;"

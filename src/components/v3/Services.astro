@@ -13,6 +13,14 @@ const serviceImages: Record<string, string> = {
   'maintenance':     'hvac-tune-up',
 };
 
+// Real photo overrides for services where the picsum seed produced
+// off-topic / broken-looking imagery. These point to bundled local assets
+// in /public/images/v3 so they are guaranteed to load.
+const serviceImageOverrides: Record<string, string> = {
+  'air-quality': '/images/v3/air-quality.jpg',
+  'thermostat':  '/images/v3/thermostat.jpg',
+};
+
 // For alternating layout: odd index = image left + text right, even = text left + image right
 ---
 
@@ -41,6 +49,8 @@ const serviceImages: Record<string, string> = {
     {business.services.map((service, i) => {
       const imageLeft = i % 2 !== 0; // odd = image left; even = text left
       const seed = serviceImages[service.slug] || service.slug;
+      const imgSrc = serviceImageOverrides[service.slug] ||
+                     `https://picsum.photos/seed/${seed}/700/480`;
       return (
         <article
           class="flex flex-col lg:flex-row items-stretch border-b"
@@ -52,7 +62,7 @@ const serviceImages: Record<string, string> = {
               <!-- Image left -->
               <div class="w-full lg:w-2/5 overflow-hidden" style="min-height:320px;">
                 <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                  src={imgSrc}
                   alt={`${service.title} — Three Generations Heating & Cooling`}
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"
@@ -109,7 +119,7 @@ const serviceImages: Record<string, string> = {
               <!-- Image right -->
               <div class="w-full lg:w-2/5 overflow-hidden order-1 lg:order-2" style="min-height:320px;">
                 <img
-                  src={`https://picsum.photos/seed/${seed}/700/480`}
+                  src={imgSrc}
                   alt={`${service.title} — Three Generations Heating & Cooling`}
                   class="w-full h-full object-cover editorial-img"
                   style="filter:sepia(8%) saturate(85%) brightness(0.98); display:block;"

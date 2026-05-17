@@ -1,11 +1,48 @@
 ---
 import { business } from '../../data/v2';
 
-const metrics = [
-  { value: '450+', unit: 'installs', label: 'EV Chargers Installed', delta: '+62 YTD' },
-  { value: '1.2k+', unit: 'homes', label: 'Smart Homes Wired', delta: '+188 YTD' },
-  { value: '4.9', unit: '/ 5.0', label: 'Google Rating', delta: '200+ reviews' },
-  { value: '98%', unit: 'rate', label: 'First-Visit Completion', delta: 'No callbacks' },
+// Signature install pipeline — the actual sequence BrightWatt runs on every smart-home / EV job
+const pipeline = [
+  {
+    step: '01',
+    handle: 'site_survey',
+    title: 'Site survey + load study',
+    detail: 'A licensed master electrician walks the home, photographs the panel, and runs a NEC 220 load calc before quoting. No drive-by estimates.',
+    duration: '~ 45 min',
+    badge: 'on-site',
+  },
+  {
+    step: '02',
+    handle: 'quote_review',
+    title: 'Line-itemized quote',
+    detail: 'You get a PDF with material part numbers, breaker amperage, and labor hours broken out. Sign electronically — no pressure.',
+    duration: '< 24 hrs',
+    badge: 'emailed',
+  },
+  {
+    step: '03',
+    handle: 'permit_pull',
+    title: 'We pull the permits',
+    detail: 'Phoenix / Scottsdale / Tempe permits filed under our license — never yours. Inspector coordination is on us.',
+    duration: '2–4 days',
+    badge: 'filed',
+  },
+  {
+    step: '04',
+    handle: 'install_day',
+    title: 'Install + smart commissioning',
+    detail: 'Wall Connector, Powerwall, Lutron, panel — installed, labeled, and commissioned in the app while the crew is still on site.',
+    duration: 'same day',
+    badge: 'live',
+  },
+  {
+    step: '05',
+    handle: 'cloud_monitor',
+    title: 'We watch it for 90 days',
+    detail: 'Every panel we install is monitored from our shop. If a breaker trips at 2am, we see it before you do.',
+    duration: '24/7',
+    badge: 'monitored',
+  },
 ];
 ---
 
@@ -16,55 +53,64 @@ const metrics = [
 
     <!-- Section label -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase">// perf_metrics --source verified</span>
+      <span class="font-mono text-[10px] text-[#2dd4bf]/50 tracking-[0.22em] uppercase">// install_pipeline --trace verbose</span>
       <div class="flex-1 h-px bg-[#2dd4bf]/8 max-w-[120px]" aria-hidden="true"></div>
     </div>
     <h2 id="why-us-heading" class="font-sora font-black text-white mb-3" style="font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1;">
-      Why Phoenix Pros Call BrightWatt First
+      The BrightWatt install pipeline
     </h2>
     <p class="font-sora text-slate-500 text-base mb-14 max-w-lg">
-      Every metric below is live-verified from our job logs and Google reviews.
+      Every Phoenix job runs through the same five stages — surveyed, quoted, permitted, installed, monitored.
     </p>
 
-    <!-- Stats dashboard grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-14" role="list" aria-label="Performance metrics">
-      {metrics.map((m, i) => (
-        <div
-          class="metric-panel relative rounded-2xl p-5 overflow-hidden group cursor-default transition-all duration-300 hover:border-[#2dd4bf]/30"
-          style="background: #08111f; border: 1px solid rgba(45,212,191,0.12);"
-          role="listitem"
+    <!-- Signature 5-step pipeline -->
+    <ol
+      class="relative grid gap-3 mb-16"
+      style="grid-template-columns: 1fr;"
+      role="list"
+      aria-label="Our install pipeline"
+    >
+      {pipeline.map((p, i) => (
+        <li
+          class="pipeline-row relative grid items-start gap-5 rounded-2xl p-5 sm:p-6 overflow-hidden"
+          style="grid-template-columns: 3.25rem 1fr auto; background: #08111f; border: 1px solid rgba(45,212,191,0.12);"
         >
-          <!-- Corner accent -->
-          <div class="absolute top-0 right-0 w-12 h-12 pointer-events-none" aria-hidden="true"
-            style="background: radial-gradient(ellipse at 100% 0%, rgba(45,212,191,0.08), transparent 70%);">
+          <!-- Step ring -->
+          <div class="relative flex items-center justify-center w-12 h-12 rounded-full" style="border: 1px solid rgba(45,212,191,0.35); background: rgba(45,212,191,0.06);">
+            <span class="font-mono font-black text-[#2dd4bf] text-sm" aria-hidden="true">{p.step}</span>
+            <!-- Pulse dot -->
+            <span class="absolute -right-0.5 -top-0.5 w-2 h-2 rounded-full bg-[#2dd4bf]" style="animation: pulse 2s ease-in-out infinite;" aria-hidden="true"></span>
           </div>
 
-          <!-- Channel label -->
-          <p class="font-mono text-[9px] text-slate-700 tracking-[0.2em] uppercase mb-3 group-hover:text-[#2dd4bf]/40 transition-colors" aria-hidden="true">
-            CH.{String(i).padStart(2,'0')}
-          </p>
+          <!-- Title + handle + detail -->
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1.5">
+              <h3 class="font-sora font-bold text-white text-base sm:text-lg leading-tight">{p.title}</h3>
+              <span class="font-mono text-[10px] text-[#2dd4bf]/60 tracking-wider lowercase">// {p.handle}</span>
+            </div>
+            <p class="font-sora text-slate-400 text-xs sm:text-sm leading-relaxed max-w-2xl">{p.detail}</p>
+          </div>
 
-          <!-- Big number -->
-          <div class="flex items-baseline gap-1 mb-1">
-            <span class="font-mono font-black text-[#2dd4bf] leading-none" style="font-size: clamp(2rem, 4vw, 2.75rem);">
-              {m.value}
+          <!-- Duration + status -->
+          <div class="hidden sm:flex flex-col items-end gap-1.5 flex-shrink-0 pt-1">
+            <span class="font-mono text-[10px] text-slate-500 tracking-widest uppercase">{p.duration}</span>
+            <span class="inline-flex items-center gap-1 font-mono text-[9px] text-[#2dd4bf]/70 tracking-wider px-2 py-0.5 rounded"
+              style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.18);">
+              {p.badge}
             </span>
-            <span class="font-mono text-[10px] text-slate-600 tracking-widest uppercase">{m.unit}</span>
           </div>
 
-          <!-- Label -->
-          <p class="font-sora font-semibold text-slate-300 text-sm leading-tight mb-2 group-hover:text-white transition-colors">
-            {m.label}
-          </p>
-
-          <!-- Delta chip -->
-          <span class="inline-flex items-center gap-1 font-mono text-[9px] text-[#2dd4bf]/60 tracking-wider px-2 py-0.5 rounded"
-            style="background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.12);">
-            <span aria-hidden="true">↑</span> {m.delta}
-          </span>
-        </div>
+          <!-- Connector line between rows (decorative) -->
+          {i < pipeline.length - 1 && (
+            <span
+              class="hidden sm:block absolute left-[2.25rem] -bottom-3 w-px h-3"
+              style="background: linear-gradient(to bottom, rgba(45,212,191,0.5), transparent); z-index:1;"
+              aria-hidden="true"
+            ></span>
+          )}
+        </li>
       ))}
-    </div>
+    </ol>
 
     <!-- Feature spec table -->
     <div class="rounded-2xl overflow-hidden" style="border: 1px solid rgba(45,212,191,0.12);">

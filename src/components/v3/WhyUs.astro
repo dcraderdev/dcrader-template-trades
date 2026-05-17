@@ -7,6 +7,15 @@ const timeline = [
   { year: '2014', label: 'Tyler joins', detail: "Mike's son Tyler comes on board, completing the three-generation circle." },
   { year: '2023', label: 'Today', detail: 'Three generations, one standard. Still the same promise Earl made in 1981.' },
 ];
+
+// The faces who show up at your door — initials shown as soft monogram tiles, no headshot dependency
+const crew = [
+  { initials: 'EK', name: 'Earl Kowalczyk', role: 'Founder · Master HVAC', years: 'On the trucks since 1981', tone: '#2d5a27' },
+  { initials: 'MK', name: 'Mike Kowalczyk', role: 'Owner · NATE-certified', years: 'On the trucks since 1998', tone: '#c4622d' },
+  { initials: 'TK', name: 'Tyler Kowalczyk', role: 'Lead Tech · Carrier-trained', years: 'On the trucks since 2014', tone: '#7a5d2e' },
+  { initials: 'DA', name: 'Dale Aviles', role: 'Service Manager', years: 'With us since 2009', tone: '#5a4a38' },
+  { initials: 'RH', name: 'Renee Hostetler', role: 'Dispatch & Scheduling', years: 'Answers your call', tone: '#a85a2f' },
+];
 ---
 
 <!-- OUR HISTORY TIMELINE -->
@@ -123,22 +132,33 @@ const timeline = [
           </footer>
         </blockquote>
 
-        <!-- Stat strip -->
-        <div class="flex items-center gap-8 pt-8" style="border-top: 1px solid #d4b896;">
-          <div class="text-center">
-            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">44</p>
-            <p class="font-nunito text-xs" style="color:#a08060;">years serving Columbus</p>
-          </div>
-          <div class="w-px h-12" style="background:#d4b896;"></div>
-          <div class="text-center">
-            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">3rd</p>
-            <p class="font-nunito text-xs" style="color:#a08060;">generation family</p>
-          </div>
-          <div class="w-px h-12" style="background:#d4b896;"></div>
-          <div class="text-center">
-            <p class="font-playfair font-bold leading-none mb-1" style="font-size:2.5rem; color:#2d5a27; font-style:italic;">A+</p>
-            <p class="font-nunito text-xs" style="color:#a08060;">BBB rating</p>
-          </div>
+        <!-- Crew portrait row — the actual faces who answer the call -->
+        <div class="pt-8" style="border-top: 1px solid #d4b896;">
+          <p class="font-nunito text-xs mb-5" style="color:#a08060; letter-spacing:0.12em;">— the people who show up —</p>
+          <ul class="flex flex-wrap gap-x-5 gap-y-6" role="list" aria-label="Our crew">
+            {crew.map((p) => (
+              <li class="flex items-center gap-3" role="listitem">
+                <!-- Hand-drawn-feel monogram tile -->
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={`background:#fef8f0; border: 2px solid ${p.tone}; box-shadow: inset 0 0 0 4px rgba(254,248,240,1), 0 0 0 1px ${p.tone};`}
+                  aria-hidden="true"
+                >
+                  <span
+                    class="font-playfair italic font-bold"
+                    style={`font-size:1.05rem; color:${p.tone};`}
+                  >
+                    {p.initials}
+                  </span>
+                </div>
+                <div class="leading-tight">
+                  <p class="font-playfair italic font-semibold" style="font-size:0.95rem; color:#2c2318;">{p.name}</p>
+                  <p class="font-nunito text-[11px]" style="color:#a08060;">{p.role}</p>
+                  <p class="font-nunito text-[10px] mt-0.5" style="color:#c4622d;">{p.years}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 

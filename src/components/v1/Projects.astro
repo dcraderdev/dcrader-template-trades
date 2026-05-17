@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v1';
+import { getProjectImage } from '../../assets/projects';
 ---
 
 <section
@@ -88,20 +90,27 @@ import { business } from '../../data/v1';
                 </div>
 
                 <!-- BEFORE image -->
-                <img
-                  src={project.beforeImg}
+                <Image
+                  src={getProjectImage(project.beforeImg)}
                   alt={`Before: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 1024px, 100vw"
                   class="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  {...(i === 0 ? { fetchpriority: 'high' as any } : {})}
                 />
 
                 <!-- AFTER image (clipped by slider) -->
-                <img
-                  src={project.afterImg}
+                <Image
+                  src={getProjectImage(project.afterImg)}
                   alt={`After: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 1024px, 100vw"
                   class="after-img absolute inset-0 w-full h-full object-cover"
                   style="clip-path: inset(0 50% 0 0);"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
 
                 <!-- Range input transparent overlay -->

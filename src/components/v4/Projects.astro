@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v4';
+import { getProjectImage } from '../../assets/projects';
 
 // Case file numbers for the dispatch-file look
 const caseNums = ["CF-2024-0891", "CF-2024-1204", "CF-2025-0033"];
@@ -69,14 +71,15 @@ const durations = ["40 MIN", "55 MIN", "3 HRS"];
           <!-- Before / After image pair -->
           <div class="grid grid-cols-2 gap-0">
             <div class="relative overflow-hidden border-r border-white/10">
-              <img
-                src={project.beforeImg}
+              <Image
+                src={getProjectImage(project.beforeImg)}
                 alt={`Before: ${project.title}`}
+                widths={[400, 600, 900]}
+                sizes="(min-width: 1024px) 480px, 50vw"
                 class="w-full object-cover grayscale"
                 style="height: clamp(180px, 25vw, 280px);"
-                loading="lazy"
-                width="800"
-                height="500"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
               />
               <!-- Before overlay -->
               <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
@@ -88,14 +91,15 @@ const durations = ["40 MIN", "55 MIN", "3 HRS"];
               </div>
             </div>
             <div class="relative overflow-hidden">
-              <img
-                src={project.afterImg}
+              <Image
+                src={getProjectImage(project.afterImg)}
                 alt={`After: ${project.title}`}
+                widths={[400, 600, 900]}
+                sizes="(min-width: 1024px) 480px, 50vw"
                 class="w-full object-cover"
                 style="height: clamp(180px, 25vw, 280px);"
-                loading="lazy"
-                width="800"
-                height="500"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
               />
               <div class="absolute top-3 right-3 bg-emergency-red px-3 py-1.5">
                 <span class="font-body font-black text-white text-xs uppercase tracking-widest">SCENE: CLEARED</span>

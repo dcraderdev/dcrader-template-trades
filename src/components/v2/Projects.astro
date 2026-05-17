@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v2';
+import { getProjectImage } from '../../assets/projects';
 ---
 
 <section id="projects" class="relative py-24 lg:py-32" style="background: #06101a;" aria-labelledby="projects-heading">
@@ -46,18 +48,24 @@ import { business } from '../../data/v2';
             >
               <!-- Image BA slot -->
               <div class="relative overflow-hidden" style="aspect-ratio: 16/9; background: #08111f;">
-                <img
-                  src={project.beforeImg}
+                <Image
+                  src={getProjectImage(project.beforeImg)}
                   alt={`Before: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 1024px, 100vw"
                   class="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
-                <img
-                  src={project.afterImg}
+                <Image
+                  src={getProjectImage(project.afterImg)}
                   alt={`After: ${project.title} in ${project.location}`}
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 1024px) 1024px, 100vw"
                   class="v2-after-img absolute inset-0 w-full h-full object-cover"
                   style="clip-path: inset(0 50% 0 0);"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
 
                 <!-- Invisible range overlay -->

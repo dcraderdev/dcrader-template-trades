@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { business } from '../../data/v5';
+import { getProjectImage } from '../../assets/projects';
 ---
 
 <section
@@ -214,13 +216,14 @@ import { business } from '../../data/v5';
 
       <!-- RIGHT: Editorial image panel -->
       <div class="lg:col-span-5 relative hidden lg:block">
-        <img
-          src="https://picsum.photos/seed/luxury-consult-interior/700/900"
+        <Image
+          src={getProjectImage('luxury-consult-interior')}
           alt="Luxury estate interior — Cedar Hill project"
+          widths={[400, 600, 800]}
+          sizes="(min-width: 1024px) 40vw, 0px"
           class="w-full h-full object-cover"
           loading="lazy"
-          width="700"
-          height="900"
+          decoding="async"
           style="display: block; min-height: 560px;"
         />
         <!-- Overlay with contact details -->

@@ -26,25 +26,23 @@ const chatMeta = [
         </h2>
       </div>
 
-      <!-- Rating chip -->
+      <!-- Stats panel — terminal readout style, no star pile -->
       <div
-        class="flex-shrink-0 flex items-center gap-3 px-4 py-3 rounded-2xl"
+        class="flex-shrink-0 flex items-stretch divide-x divide-[#2dd4bf]/15 rounded-xl overflow-hidden"
         style="background: rgba(13,21,39,0.8); border: 1px solid rgba(45,212,191,0.15);"
-        aria-label="Google rating: 4.9 out of 5, over 200 reviews"
+        aria-label="Service metrics"
       >
-        <div class="text-center">
-          <div class="font-mono font-black text-[#2dd4bf] text-2xl leading-none">4.9</div>
-          <div class="font-mono text-[9px] text-slate-600 tracking-widest uppercase mt-0.5">/ 5.0</div>
+        <div class="px-4 py-3 text-center">
+          <div class="font-mono font-black text-[#2dd4bf] text-2xl leading-none">237</div>
+          <div class="font-mono text-[9px] text-slate-600 tracking-widest uppercase mt-1">reviews_count</div>
         </div>
-        <div>
-          <div class="flex gap-0.5 mb-1" aria-hidden="true">
-            {[1,2,3,4,5].map(() => (
-              <svg class="w-3.5 h-3.5 text-[#2dd4bf]" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
-          </div>
-          <p class="font-sora text-slate-600 text-xs">200+ Google Reviews</p>
+        <div class="px-4 py-3 text-center">
+          <div class="font-mono font-black text-[#2dd4bf] text-2xl leading-none">99.8%</div>
+          <div class="font-mono text-[9px] text-slate-600 tracking-widest uppercase mt-1">recommend_rate</div>
+        </div>
+        <div class="px-4 py-3 text-center hidden sm:block">
+          <div class="font-mono font-black text-[#2dd4bf] text-2xl leading-none">&lt;2h</div>
+          <div class="font-mono text-[9px] text-slate-600 tracking-widest uppercase mt-1">avg_callback</div>
         </div>
       </div>
     </div>

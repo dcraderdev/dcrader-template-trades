@@ -32,7 +32,7 @@ import { business } from '../../data/v1';
     "
   ></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <div class="grid lg:grid-cols-[60%_40%] gap-0 items-center" style="min-height:calc(100vh - 104px);">
 
       <!-- LEFT: Content -->
@@ -54,16 +54,16 @@ import { business } from '../../data/v1';
         </div>
 
         <!-- HEADLINE: massive condensed -->
-        <h1 id="hero-heading" class="font-display font-black uppercase leading-none mb-6">
+        <h1 id="hero-heading" class="font-display font-black uppercase leading-none mb-6 break-words">
           <span
             class="block text-white"
-            style="font-size: clamp(3.75rem, 10vw, 8rem); letter-spacing:-0.02em;"
+            style="font-size: clamp(2.25rem, 10vw, 8rem); letter-spacing:-0.02em;"
           >
             {business.hero.headlineLine1}
           </span>
           <span
             class="block"
-            style="font-size: clamp(3.75rem, 10vw, 8rem); letter-spacing:-0.02em; color:#f97316;"
+            style="font-size: clamp(2.25rem, 10vw, 8rem); letter-spacing:-0.02em; color:#f97316;"
           >
             {business.hero.headlineLine2}
           </span>
@@ -102,8 +102,8 @@ import { business } from '../../data/v1';
             </svg>
           </div>
           <span
-            class="font-display font-black text-white group-hover:text-orange-400 transition-colors leading-none"
-            style="font-size: clamp(2.25rem, 6vw, 4.5rem);"
+            class="font-display font-black text-white group-hover:text-orange-400 transition-colors leading-none break-words"
+            style="font-size: clamp(1.5rem, 6vw, 4.5rem);"
           >
             {business.phone}
           </span>

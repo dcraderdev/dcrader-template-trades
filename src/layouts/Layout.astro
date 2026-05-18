@@ -66,6 +66,19 @@ const {
   /* Offset sticky nav for anchor links */
   [id] { scroll-margin-top: 80px; }
 
+  /* Portfolio top header (template-topheader.js, 34px tall, fixed top:0, z=2147483600)
+     injects above page content. Any fixed/sticky element pinned to top:0 collides
+     with it. Push such elements down by 34px when the bar is mounted, and grow
+     the layout spacers below the nav so the hero isn't hidden. */
+  html.dt-th-spaced .fixed.top-0 { top: 34px !important; }
+  /* Wrappers that use pt-* to position a child (e.g. v2 floating pill nav) need
+     additional offset rather than overriding their top. */
+  html.dt-th-spaced .fixed.top-0.pt-4 { top: 0 !important; padding-top: calc(1rem + 34px) !important; }
+  /* Push hero/main content down: the spacer divs under each Nav use h-[…] in px. */
+  html.dt-th-spaced body { padding-top: 34px; }
+  /* Anchor scroll offset accounts for the portfolio bar too */
+  html.dt-th-spaced [id] { scroll-margin-top: 114px; }
+
   /* Skip link — each variant can override color */
   .skip-link {
     position: absolute;

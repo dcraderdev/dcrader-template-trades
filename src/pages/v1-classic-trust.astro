@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/v1/Nav.astro';
-import Hero from '../components/v1/Hero.astro';
+import WordmarkHero from '../components/trades/WordmarkHero.astro';
 import Services from '../components/v1/Services.astro';
 import ServiceArea from '../components/v1/ServiceArea.astro';
 import WhyUs from '../components/v1/WhyUs.astro';
@@ -21,12 +21,13 @@ import { business } from '../data/v1';
 >
   <Nav />
   <main id="main-content">
-    <Hero />
+    <!-- v1 treatment: typographic wordmark hero, then trust-led classic order -->
+    <WordmarkHero business={business} accent="#f97316" bg="#0f2855" ink="#ffffff" />
+    <WhyUs />
     <Services />
     <ServiceArea />
-    <WhyUs />
-    <Testimonials />
     <Projects />
+    <Testimonials />
     <QuoteForm />
   </main>
   <Footer />

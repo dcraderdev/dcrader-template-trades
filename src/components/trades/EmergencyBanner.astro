@@ -1,0 +1,110 @@
+---
+// EmergencyBanner — used by v2: huge 24/7 EMERGENCY call-to-action bar + phone-first hero
+interface Props {
+  business: any;
+  accent?: string;
+  bgDark?: string;
+}
+const { business, accent = '#ef4444', bgDark = '#080808' } = Astro.props;
+---
+
+<section
+  class="relative"
+  aria-labelledby="emergency-hero-heading"
+  style={`background:${bgDark};`}
+>
+  <!-- TOP EMERGENCY BAR — siren-style -->
+  <div
+    class="relative overflow-hidden"
+    style={`background:${accent};`}
+    role="banner"
+    aria-label="24/7 Emergency Service Banner"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none opacity-30"
+      aria-hidden="true"
+      style={`background:repeating-linear-gradient(45deg,${accent},${accent} 22px,rgba(0,0,0,0.18) 22px,rgba(0,0,0,0.18) 44px);`}
+    ></div>
+    <div class="relative max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-white">
+      <div class="flex items-center gap-3 font-bold uppercase tracking-widest text-xs sm:text-sm">
+        <span class="w-3 h-3 rounded-full bg-white animate-pulse" aria-hidden="true"></span>
+        24 / 7 EMERGENCY DISPATCH ACTIVE — ANSWERING NOW
+      </div>
+      <a
+        href={business.phoneHref}
+        class="font-display font-black text-white text-base sm:text-lg tracking-wide hover:underline"
+        aria-label={`Emergency line: ${business.phone}`}
+      >
+        ☎ {business.phone}
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO BODY — phone-first -->
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
+    <p
+      class="inline-block font-mono uppercase tracking-[0.3em] text-xs px-3 py-1 mb-6"
+      style={`color:${accent}; border:1px solid ${accent}40;`}
+    >
+      {business.hero.eyebrow}
+    </p>
+
+    <h1
+      id="emergency-hero-heading"
+      class="font-display font-black uppercase leading-[0.9] text-white mb-6"
+      style="font-size:clamp(2.5rem, 9vw, 7rem); letter-spacing:-0.02em;"
+    >
+      {business.hero.headlineLine1}
+      <span class="block" style={`color:${accent};`}>{business.hero.headlineLine2}</span>
+    </h1>
+
+    <p class="font-body text-lg sm:text-xl max-w-2xl mx-auto mb-10" style="color:rgba(255,255,255,0.75);">
+      {business.hero.description}
+    </p>
+
+    <!-- GIANT click-to-call number -->
+    <a
+      href={business.phoneHref}
+      class="group inline-flex flex-col items-center justify-center mb-8 px-8 py-6 rounded-md transition-transform hover:scale-105"
+      style={`background:${accent}; color:white; box-shadow:0 12px 40px ${accent}80;`}
+      aria-label={`Call ${business.phone} now`}
+    >
+      <span class="font-mono uppercase tracking-[0.3em] text-xs opacity-90 mb-1">Tap to call now</span>
+      <span class="font-display font-black leading-none" style="font-size:clamp(2rem,8vw,4.5rem);">
+        {business.phone}
+      </span>
+      <span class="font-body text-sm mt-1 opacity-90">Avg dispatch under 60 minutes</span>
+    </a>
+
+    <div class="flex flex-wrap justify-center gap-3">
+      <a
+        href="#quote"
+        class="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm border-2 text-white hover:bg-white hover:text-black transition"
+        style="border-color:rgba(255,255,255,0.4);"
+      >
+        {business.hero.cta}
+      </a>
+      <a
+        href="#services"
+        class="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm text-white opacity-80 hover:opacity-100 transition"
+      >
+        {business.hero.ctaSecondary} →
+      </a>
+    </div>
+
+    <!-- Sub-strip of pillar stats -->
+    <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-px max-w-3xl mx-auto" style="background:rgba(255,255,255,0.06);">
+      {[
+        { stat: '< 60', label: 'MIN ARRIVAL' },
+        { stat: '24 / 7', label: 'PHONES LIVE' },
+        { stat: '100%', label: 'GUARANTEED' },
+        { stat: business.yearsInBusiness + '+', label: 'YEARS' },
+      ].map(item => (
+        <div class="text-center py-5 px-2" style={`background:${bgDark};`}>
+          <div class="font-display font-black text-xl sm:text-2xl" style={`color:${accent};`}>{item.stat}</div>
+          <div class="text-[10px] uppercase tracking-widest opacity-50 text-white mt-1">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

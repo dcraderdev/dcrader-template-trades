@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/v3/Nav.astro';
-import Hero from '../components/v3/Hero.astro';
+import ServiceTileGrid from '../components/trades/ServiceTileGrid.astro';
 import Services from '../components/v3/Services.astro';
 import ServiceArea from '../components/v3/ServiceArea.astro';
 import WhyUs from '../components/v3/WhyUs.astro';
@@ -21,11 +21,12 @@ import { business } from '../data/v3';
 >
   <Nav />
   <main id="main-content">
-    <Hero />
-    <WhyUs />
-    <Services />
+    <!-- v3 treatment: service tile grid hero, then story-led warm order -->
+    <ServiceTileGrid business={business} accent="#2d5a27" surface="#fef8f0" ink="#2c2318" />
     <Testimonials />
+    <WhyUs />
     <Projects />
+    <Services />
     <ServiceArea />
     <QuoteForm />
   </main>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/v2/Nav.astro';
-import Hero from '../components/v2/Hero.astro';
+import EmergencyBanner from '../components/trades/EmergencyBanner.astro';
 import Services from '../components/v2/Services.astro';
 import ServiceArea from '../components/v2/ServiceArea.astro';
 import WhyUs from '../components/v2/WhyUs.astro';
@@ -21,13 +21,14 @@ import { business } from '../data/v2';
 >
   <Nav />
   <main id="main-content">
-    <Hero />
-    <Projects />
+    <!-- v2 treatment: emergency-CTA banner hero, then conversion-led order -->
+    <EmergencyBanner business={business} accent="#2dd4bf" bgDark="#080e1a" />
+    <QuoteForm />
     <Services />
+    <Projects />
     <WhyUs />
     <Testimonials />
     <ServiceArea />
-    <QuoteForm />
   </main>
   <Footer />
 </Layout>

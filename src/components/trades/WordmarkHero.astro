@@ -1,0 +1,124 @@
+---
+// WordmarkHero — used by v1: typographic brand mark dominates the hero
+interface Props {
+  business: any;
+  accent?: string;
+  bg?: string;
+  ink?: string;
+}
+const { business, accent = '#f97316', bg = '#0f2855', ink = '#ffffff' } = Astro.props;
+
+// Split business shortName into chunks for typographic stacking
+const words = (business.shortName ?? business.name).split(' ').filter(Boolean);
+const monogram = words.map((w: string) => w[0]).join('').slice(0, 3).toUpperCase();
+const foundedTxt = String(business.founded ?? '');
+---
+
+<section
+  class="relative overflow-hidden"
+  aria-labelledby="wordmark-hero-heading"
+  style={`background:${bg}; color:${ink}; min-height:calc(100vh - 88px);`}
+>
+  <!-- Faint baseline grid -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.06]"
+    aria-hidden="true"
+    style={`background-image:linear-gradient(${ink} 1px, transparent 1px); background-size:100% 84px;`}
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex flex-col" style="min-height:calc(100vh - 88px);">
+    <!-- Top meta row -->
+    <header class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b" style="border-color:rgba(255,255,255,0.08);">
+      <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] opacity-70">
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-sm font-display font-black text-sm"
+          style={`background:${accent}; color:${bg};`}
+          aria-hidden="true"
+        >{monogram}</span>
+        <span>Est. {foundedTxt}</span>
+        <span class="hidden sm:inline">·</span>
+        <span class="hidden sm:inline">{business.license}</span>
+      </div>
+      <a
+        href={business.phoneHref}
+        class="text-xs uppercase tracking-[0.3em] font-bold hover:underline"
+        style={`color:${accent};`}
+      >
+        ☎ {business.phone}
+      </a>
+    </header>
+
+    <!-- THE WORDMARK -->
+    <div class="flex-1 flex flex-col justify-center py-12">
+      <p
+        class="font-mono uppercase tracking-[0.4em] text-xs mb-6 opacity-70"
+      >{business.hero.eyebrow}</p>
+
+      <h1
+        id="wordmark-hero-heading"
+        class="font-display font-black uppercase leading-[0.85] break-words mb-8"
+        style="letter-spacing:-0.04em;"
+      >
+        {words.map((w: string, i: number) => (
+          <span
+            class="block"
+            style={`font-size:clamp(2.75rem, ${Math.max(8, 18 - i * 2)}vw, ${Math.max(5, 11 - i)}rem); color:${i === words.length - 1 ? accent : ink};`}
+          >{w}</span>
+        ))}
+      </h1>
+
+      <div class="flex items-center gap-6 max-w-2xl">
+        <div class="h-px flex-1" style={`background:${accent}50;`} aria-hidden="true"></div>
+        <p
+          class="font-body italic text-base sm:text-lg opacity-80 whitespace-nowrap"
+        >{business.tagline}</p>
+        <div class="h-px flex-1" style={`background:${accent}50;`} aria-hidden="true"></div>
+      </div>
+
+      <p class="font-body text-base sm:text-lg max-w-xl mt-8 opacity-75">
+        {business.hero.description}
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-10">
+        <a
+          href="#quote"
+          class="inline-flex items-center gap-2 px-7 py-3 font-display font-bold uppercase tracking-widest text-sm"
+          style={`background:${accent}; color:${bg};`}
+        >
+          {business.hero.cta} →
+        </a>
+        <a
+          href="#services"
+          class="inline-flex items-center gap-2 px-7 py-3 font-display font-bold uppercase tracking-widest text-sm"
+          style={`border:1px solid ${ink}40; color:${ink};`}
+        >
+          {business.hero.ctaSecondary}
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom meta strip — letterhead style -->
+    <footer
+      class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 mt-8 border-t text-[10px] uppercase tracking-[0.25em] opacity-70"
+      style="border-color:rgba(255,255,255,0.08);"
+      aria-label="Service summary"
+    >
+      <div>
+        <div class="font-display font-bold mb-1" style={`color:${accent};`}>VOLUME</div>
+        <div>4,200+ Jobs / yr</div>
+      </div>
+      <div>
+        <div class="font-display font-bold mb-1" style={`color:${accent};`}>RESPONSE</div>
+        <div>&lt; 60 min on-site</div>
+      </div>
+      <div>
+        <div class="font-display font-bold mb-1" style={`color:${accent};`}>COVERAGE</div>
+        <div>{business.address}</div>
+      </div>
+      <div>
+        <div class="font-display font-bold mb-1" style={`color:${accent};`}>GUARANTEE</div>
+        <div>Written, 100%</div>
+      </div>
+    </footer>
+  </div>
+</section>

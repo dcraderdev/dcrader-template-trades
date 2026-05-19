@@ -1,0 +1,203 @@
+---
+// BeforeAfterCarousel — used by v4: slider showing project transformations as the hero
+interface Props {
+  business: any;
+  accent?: string;
+  bgDark?: string;
+}
+const { business, accent = '#fb923c', bgDark = '#080808' } = Astro.props;
+const projects = business.projects ?? [];
+---
+
+<section
+  class="relative overflow-hidden"
+  aria-labelledby="ba-hero-heading"
+  style={`background:${bgDark}; color:white;`}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- LEFT: framing copy -->
+      <div>
+        <p
+          class="inline-block font-mono uppercase tracking-[0.3em] text-xs px-3 py-1 mb-6"
+          style={`color:${accent}; border:1px solid ${accent}50;`}
+        >
+          PROOF · NOT PROMISES
+        </p>
+        <h1
+          id="ba-hero-heading"
+          class="font-display font-black uppercase leading-none mb-6"
+          style="font-size:clamp(2.25rem,7vw,5.5rem); letter-spacing:-0.02em;"
+        >
+          {business.hero.headlineLine1}
+          <span class="block" style={`color:${accent};`}>{business.hero.headlineLine2}</span>
+        </h1>
+        <p class="font-body text-lg max-w-md mb-8" style="color:rgba(255,255,255,0.7);">
+          {business.hero.description}
+        </p>
+        <div class="flex flex-wrap gap-3 mb-8">
+          <a
+            href="#quote"
+            class="inline-flex items-center gap-2 px-6 py-3 font-display font-bold uppercase tracking-wider text-sm rounded-sm transition-all hover:translate-y-[-2px]"
+            style={`background:${accent}; color:${bgDark}; box-shadow:0 8px 30px ${accent}55;`}
+          >
+            {business.hero.cta}
+          </a>
+          <a
+            href={business.phoneHref}
+            class="inline-flex items-center gap-2 px-6 py-3 font-bold tracking-wide text-sm text-white"
+            style="border:2px solid rgba(255,255,255,0.25); border-radius:2px;"
+          >
+            ☎ {business.phone}
+          </a>
+        </div>
+        <ul class="grid grid-cols-3 gap-4 pt-6 border-t" style="border-color:rgba(255,255,255,0.1);">
+          {[
+            { stat: projects.length + '+', label: 'JOBS LAST WEEK' },
+            { stat: '4.9★', label: 'AVG RATING' },
+            { stat: '100%', label: 'WORK GUARANTEED' },
+          ].map(item => (
+            <li class="text-center sm:text-left">
+              <div class="font-display font-black text-xl sm:text-2xl" style={`color:${accent};`}>{item.stat}</div>
+              <div class="text-[10px] uppercase tracking-widest opacity-50 mt-1">{item.label}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- RIGHT: before/after carousel -->
+      <div
+        class="relative rounded-lg overflow-hidden shadow-2xl"
+        style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);"
+      >
+        <div
+          id="ba-carousel"
+          class="relative aspect-[4/3] w-full"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Before-and-after project transformations"
+        >
+          {projects.map((p: any, i: number) => (
+            <div
+              class="ba-slide absolute inset-0 transition-opacity duration-500"
+              data-index={i}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${projects.length}: ${p.title}`}
+              style={i === 0 ? 'opacity:1;' : 'opacity:0; pointer-events:none;'}
+            >
+              <div class="grid grid-cols-2 h-full">
+                <figure class="relative h-full overflow-hidden" style="background:#222;">
+                  <img
+                    src={p.beforeImg}
+                    alt={`Before: ${p.title}`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'"
+                  />
+                  <figcaption
+                    class="absolute top-3 left-3 px-2 py-1 text-[10px] font-bold uppercase tracking-widest rounded-sm"
+                    style="background:rgba(0,0,0,0.7); color:white;"
+                  >Before</figcaption>
+                </figure>
+                <figure class="relative h-full overflow-hidden" style="background:#333;">
+                  <img
+                    src={p.afterImg}
+                    alt={`After: ${p.title}`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'"
+                  />
+                  <figcaption
+                    class="absolute top-3 right-3 px-2 py-1 text-[10px] font-bold uppercase tracking-widest rounded-sm"
+                    style={`background:${accent}; color:${bgDark};`}
+                  >After</figcaption>
+                </figure>
+              </div>
+              <div
+                class="absolute left-0 right-0 bottom-0 px-4 py-3 text-sm"
+                style="background:linear-gradient(0deg,rgba(0,0,0,0.85),transparent);"
+              >
+                <div class="font-display font-bold text-white">{p.title}</div>
+                <div class="text-xs opacity-75">{p.location} · {p.description}</div>
+              </div>
+            </div>
+          ))}
+
+          <!-- Carousel controls -->
+          <button
+            type="button"
+            data-ba-prev
+            class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white"
+            style="background:rgba(0,0,0,0.55); backdrop-filter:blur(4px);"
+            aria-label="Previous transformation"
+          >‹</button>
+          <button
+            type="button"
+            data-ba-next
+            class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white"
+            style="background:rgba(0,0,0,0.55); backdrop-filter:blur(4px);"
+            aria-label="Next transformation"
+          >›</button>
+
+          <!-- Indicators -->
+          <div
+            class="absolute bottom-14 left-0 right-0 flex justify-center gap-2"
+            role="tablist"
+            aria-label="Carousel slide indicators"
+          >
+            {projects.map((_p: any, i: number) => (
+              <button
+                type="button"
+                data-ba-dot={i}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-label={`Go to slide ${i + 1}`}
+                class="ba-dot w-2 h-2 rounded-full transition"
+                style={i === 0 ? `background:${accent};` : 'background:rgba(255,255,255,0.4);'}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ accent }}>
+  (function () {
+    const carousel = document.getElementById('ba-carousel');
+    if (!carousel) return;
+    const slides = carousel.querySelectorAll('.ba-slide');
+    const dots = carousel.querySelectorAll('.ba-dot');
+    let idx = 0;
+    let timer;
+
+    function show(n) {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const active = i === idx;
+        s.style.opacity = active ? '1' : '0';
+        s.style.pointerEvents = active ? 'auto' : 'none';
+      });
+      dots.forEach((d, i) => {
+        const active = i === idx;
+        d.style.background = active ? accent : 'rgba(255,255,255,0.4)';
+        d.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    function next() { show(idx + 1); }
+    function prev() { show(idx - 1); }
+
+    carousel.querySelector('[data-ba-next]')?.addEventListener('click', () => { next(); reset(); });
+    carousel.querySelector('[data-ba-prev]')?.addEventListener('click', () => { prev(); reset(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { show(i); reset(); }));
+
+    function reset() {
+      clearInterval(timer);
+      timer = setInterval(next, 5500);
+    }
+    reset();
+  })();
+</script>

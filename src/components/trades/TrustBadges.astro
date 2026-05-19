@@ -1,0 +1,118 @@
+---
+// TrustBadges — used by v5: BBB / licensed / insured medallions + giant click-to-call
+interface Props {
+  business: any;
+  accent?: string;
+  surface?: string;
+  ink?: string;
+}
+const { business, accent = '#4a7c59', surface = '#faf8f5', ink = '#2c2c2c' } = Astro.props;
+
+const medallions = [
+  { label: 'BBB', sublabel: 'A+ Accredited' },
+  { label: 'Licensed', sublabel: business.license ?? 'State Certified' },
+  { label: 'Insured', sublabel: 'Fully Bonded' },
+  { label: business.yearsInBusiness + ' yrs', sublabel: 'Established ' + business.founded },
+];
+---
+
+<section
+  class="relative"
+  aria-labelledby="trust-hero-heading"
+  style={`background:${surface}; color:${ink};`}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <span
+          class="h-px w-8"
+          style={`background:${accent};`}
+          aria-hidden="true"
+        ></span>
+        <span
+          class="font-mono uppercase tracking-[0.3em] text-xs"
+          style={`color:${accent};`}
+        >Trusted · Verified · Insured</span>
+        <span
+          class="h-px w-8"
+          style={`background:${accent};`}
+          aria-hidden="true"
+        ></span>
+      </div>
+
+      <h1
+        id="trust-hero-heading"
+        class="font-display font-light leading-[1.05] mb-6"
+        style={`font-size:clamp(2.5rem,6vw,4.5rem); color:${ink};`}
+      >
+        {business.hero.headlineLine1}
+        <span class="block italic font-normal" style={`color:${accent};`}>{business.hero.headlineLine2}</span>
+      </h1>
+
+      <p class="font-body text-lg max-w-2xl mx-auto mb-10 opacity-80">
+        {business.hero.description}
+      </p>
+
+      <!-- GIANT click-to-call -->
+      <a
+        href={business.phoneHref}
+        class="group inline-flex flex-col items-center justify-center px-10 py-8 rounded-2xl mb-6 transition-transform hover:scale-[1.02]"
+        style={`background:${ink}; color:${surface}; box-shadow:0 20px 60px rgba(0,0,0,0.18);`}
+        aria-label={`Call ${business.phone}`}
+      >
+        <span class="font-mono uppercase tracking-[0.4em] text-[10px] opacity-70 mb-2">Speak with a specialist</span>
+        <span class="font-display font-light leading-none" style={`font-size:clamp(2.5rem,8vw,5rem); color:${accent};`}>
+          {business.phone}
+        </span>
+        <span class="font-body text-sm mt-2 opacity-70">By-appointment service · Mon – Sat</span>
+      </a>
+
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
+        <a
+          href="#quote"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition hover:opacity-90"
+          style={`background:${accent};`}
+        >
+          {business.hero.cta}
+        </a>
+        <a
+          href="#services"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium"
+          style={`color:${ink}; border:1px solid ${ink}30;`}
+        >
+          {business.hero.ctaSecondary}
+        </a>
+      </div>
+    </div>
+
+    <!-- TRUST BADGE MEDALLIONS -->
+    <ul
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+      role="list"
+      aria-label="Credentials and certifications"
+    >
+      {medallions.map((m) => (
+        <li
+          class="relative flex flex-col items-center text-center p-6 rounded-xl bg-white"
+          style="border:1px solid rgba(0,0,0,0.08); box-shadow:0 4px 20px rgba(0,0,0,0.04);"
+        >
+          <div
+            class="w-16 h-16 rounded-full flex items-center justify-center mb-3"
+            style={`background:${accent}15;`}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8" style={`color:${accent};`}>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+            </svg>
+          </div>
+          <div class="font-display font-semibold text-lg" style={`color:${ink};`}>{m.label}</div>
+          <div class="text-xs uppercase tracking-widest opacity-60 mt-1">{m.sublabel}</div>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-center text-xs mt-8 opacity-60 max-w-2xl mx-auto">
+      All technicians background-checked. Every job covered by our written craftsmanship warranty.
+    </p>
+  </div>
+</section>

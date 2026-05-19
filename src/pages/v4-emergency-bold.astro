@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/v4/Nav.astro';
-import Hero from '../components/v4/Hero.astro';
+import BeforeAfterCarousel from '../components/trades/BeforeAfterCarousel.astro';
 import Services from '../components/v4/Services.astro';
 import ServiceArea from '../components/v4/ServiceArea.astro';
 import WhyUs from '../components/v4/WhyUs.astro';
@@ -21,11 +21,12 @@ import { business } from '../data/v4';
 >
   <Nav />
   <main id="main-content">
-    <Hero />
-    <WhyUs />
+    <!-- v4 treatment: before/after carousel hero, then proof-led order -->
+    <BeforeAfterCarousel business={business} accent="#fb923c" bgDark="#080808" />
     <Projects />
-    <Services />
     <Testimonials />
+    <Services />
+    <WhyUs />
     <ServiceArea />
     <QuoteForm />
   </main>

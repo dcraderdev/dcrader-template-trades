@@ -1,0 +1,117 @@
+---
+// Branded 404 — mirrors index.astro's inline-style pattern
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page not found — Trade Business Templates by dcrader." />
+    <title>404 — Page Not Found · dcrader / trade-templates</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#060d1c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: #060d1c; color: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+      :focus-visible { outline: 3px solid #f97316; outline-offset: 3px; border-radius: 4px; }
+      a { text-decoration: none; }
+
+      .nf-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 1.5rem;
+      }
+      .nf-card {
+        max-width: 640px;
+        width: 100%;
+        text-align: center;
+      }
+      .nf-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(249,115,22,0.1);
+        border: 1px solid rgba(249,115,22,0.25);
+        border-radius: 100px;
+        padding: 0.375rem 1rem;
+        margin-bottom: 1.5rem;
+        color: #fb923c;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .nf-badge-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        background: #f97316;
+        border-radius: 50%;
+      }
+      .nf-headline {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: clamp(6rem, 18vw, 11rem);
+        color: #f97316;
+        line-height: 0.9;
+        margin: 0 0 1rem;
+        letter-spacing: 0.02em;
+      }
+      .nf-sub {
+        font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 1rem;
+        line-height: 1.2;
+      }
+      .nf-body {
+        color: #94a3b8;
+        font-size: clamp(1rem, 1.8vw, 1.125rem);
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 2.25rem;
+      }
+      .nf-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #f97316;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        padding: 0.85rem 1.5rem;
+        border-radius: 8px;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      .nf-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+    <script src="/template-topheader.js" defer></script>
+  </head>
+
+  <body>
+    <main class="nf-wrap" id="main-content">
+      <div class="nf-card">
+        <div class="nf-badge">
+          <span class="nf-badge-dot"></span>
+          <span>No template at this address</span>
+        </div>
+        <h1 class="nf-headline">404</h1>
+        <p class="nf-sub">Page Not Found</p>
+        <p class="nf-body">
+          Looks like this wire is disconnected. The page you're looking for isn't part of the trade-templates gallery — head back to the front and pick a variant.
+        </p>
+        <a href="/" class="nf-cta" aria-label="Back to home">
+          Back to Home
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+      </div>
+    </main>
+    <script src="/back-pill.js" defer></script>
+  </body>
+</html>

@@ -92,11 +92,11 @@ export const business = {
     description: "Premium electrical for Scottsdale and Paradise Valley's finest homes. Discreet, precise, and impeccably finished since 2011.",
     copyright: `© ${new Date().getFullYear()} Cedar Hill Custom Electric. All rights reserved.`,
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Where We Work", href: "#service-area" },
-      { label: "Our Approach", href: "#why-us" },
-      { label: "Testimonials", href: "#reviews" },
-      { label: "Consultation", href: "#quote" },
+      { label: "Services", href: "/v5-luxury-trade#services" },
+      { label: "Where We Work", href: "/v5-luxury-trade#service-area" },
+      { label: "Credentials", href: "/v5-credentials" },
+      { label: "Testimonials", href: "/v5-luxury-trade#reviews" },
+      { label: "Consultation", href: "/v5-luxury-trade#quote" },
     ],
   },
 } as const;

@@ -90,11 +90,11 @@ export const business = {
     description: "Family-owned HVAC service in Columbus, Ohio since 1981. Three generations of honest, expert work.",
     copyright: `© ${new Date().getFullYear()} Three Generations Heating & Cooling. All rights reserved.`,
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Service Area", href: "#service-area" },
-      { label: "Our Promise", href: "#why-us" },
-      { label: "Reviews", href: "#reviews" },
-      { label: "Schedule Service", href: "#quote" },
+      { label: "Services", href: "/v3-family-warm#services" },
+      { label: "Service Area", href: "/v3-family-warm#service-area" },
+      { label: "Case Studies", href: "/v3-case-studies" },
+      { label: "Reviews", href: "/v3-family-warm#reviews" },
+      { label: "Schedule Service", href: "/v3-family-warm#quote" },
     ],
   },
 } as const;

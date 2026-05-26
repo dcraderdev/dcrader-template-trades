@@ -183,8 +183,11 @@ import { business } from '../../data/v4';
     const bar = document.getElementById('v4-phone-bar');
     const nav = document.getElementById('v4-nav');
     if (bar && nav) {
-      const portfolioOffset = document.documentElement.classList.contains('dt-th-spaced') ? 34 : 0;
-      nav.style.top = (bar.offsetHeight + portfolioOffset) + 'px';
+      // The portfolio topheader sets html.dt-th-mounted and exposes --dt-th-h.
+      // The phone bar (fixed top:0) is auto-shifted via [data-dt-shifted], so its
+      // getBoundingClientRect already reflects the actual on-screen position.
+      const barRect = bar.getBoundingClientRect();
+      nav.style.top = (barRect.bottom) + 'px';
     }
   }
   window.addEventListener('resize', syncNavTop, { passive: true });
@@ -192,4 +195,5 @@ import { business } from '../../data/v4';
   syncNavTop();
   setTimeout(syncNavTop, 50);
   setTimeout(syncNavTop, 300);
+  setTimeout(syncNavTop, 800);
 </script>

@@ -87,11 +87,11 @@ export const business = {
     description: "Atlanta Metro's 24/7 emergency plumbing response. We answer every call, every hour, every day.",
     copyright: `© ${new Date().getFullYear()} Rapid Response Plumbing. All rights reserved.`,
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Coverage Area", href: "#service-area" },
-      { label: "Our Guarantees", href: "#why-us" },
-      { label: "Reviews", href: "#reviews" },
-      { label: "Contact", href: "#quote" },
+      { label: "Services", href: "/v4-emergency-bold#services" },
+      { label: "Coverage Area", href: "/v4-emergency-bold#service-area" },
+      { label: "Our Process", href: "/v4-emergency-process" },
+      { label: "Reviews", href: "/v4-emergency-bold#reviews" },
+      { label: "Contact", href: "/v4-emergency-bold#quote" },
     ],
   },
 } as const;

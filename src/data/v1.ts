@@ -238,11 +238,11 @@ export const business = {
       "Family-owned and operated since 2008. Serving San Diego County with honesty, expertise, and pride.",
     copyright: `© ${new Date().getFullYear()} Crader Plumbing & Drain. All rights reserved.`,
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Service Area", href: "#service-area" },
-      { label: "Why Us", href: "#why-us" },
-      { label: "Reviews", href: "#reviews" },
-      { label: "Get a Quote", href: "#quote" },
+      { label: "Services", href: "/v1-classic-trust#services" },
+      { label: "Coverage Detail", href: "/v1-service-areas" },
+      { label: "Why Us", href: "/v1-classic-trust#why-us" },
+      { label: "Reviews", href: "/v1-classic-trust#reviews" },
+      { label: "Get a Quote", href: "/v1-classic-trust#quote" },
     ],
   },
 } as const;

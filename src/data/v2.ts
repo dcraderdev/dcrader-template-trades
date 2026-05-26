@@ -90,11 +90,11 @@ export const business = {
     description: "Phoenix's tech-forward electrical contractor. EV charging, smart home, and panel experts since 2019.",
     copyright: `© ${new Date().getFullYear()} BrightWatt Electric. All rights reserved.`,
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Service Area", href: "#service-area" },
-      { label: "Why Us", href: "#why-us" },
-      { label: "Reviews", href: "#reviews" },
-      { label: "Schedule Install", href: "#quote" },
+      { label: "Services", href: "/v2-modern-tech#services" },
+      { label: "Service Area", href: "/v2-modern-tech#service-area" },
+      { label: "Financing", href: "/v2-financing" },
+      { label: "Reviews", href: "/v2-modern-tech#reviews" },
+      { label: "Schedule Install", href: "/v2-modern-tech#quote" },
     ],
   },
 } as const;

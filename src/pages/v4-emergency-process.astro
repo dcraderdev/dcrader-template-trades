@@ -1,0 +1,337 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v4/Nav.astro';
+import Footer from '../components/v4/Footer.astro';
+import { business } from '../data/v4';
+
+const palette = { bg: '#080808', card: '#111111', cardDeep: '#1a1a1a', red: '#ef4444', redDeep: '#dc2626', ink: '#ffffff', muted: '#a3a3a3' };
+
+// Step-by-step dispatch flow — what literally happens when you dial
+const steps = [
+  {
+    n: '01',
+    when: 'Seconds 0–9',
+    title: 'Your call. Three rings. Live human.',
+    body:
+      'No menu. No "for emergencies, press 1." A dispatcher in our Atlanta call center picks up by ring three, 24 hours a day. If we miss your call, the dispatcher who picked up next gets it flagged and a manager calls back inside five minutes.',
+  },
+  {
+    n: '02',
+    when: 'Seconds 10–90',
+    title: 'We triage while you talk.',
+    body:
+      'The dispatcher pulls up your address on the live truck map, identifies the closest available master plumber, and stays on the line walking you through the immediate shut-off — main water valve, gas meter, breaker — while the truck rolls. You keep talking until the plumber pulls into your driveway if you want.',
+  },
+  {
+    n: '03',
+    when: 'Minutes 2–8',
+    title: 'Truck dispatched. ETA texted.',
+    body:
+      'You get an SMS the moment the truck is moving with the technician\'s name, photo, license number, and live ETA. Same software fleet companies use for last-mile delivery. You can watch the truck approach your house on a map link.',
+  },
+  {
+    n: '04',
+    when: 'Under 60 minutes',
+    title: 'Master plumber on-site.',
+    body:
+      'Inside the metro footprint we guarantee arrival in under an hour. If we\'re late — even by a minute — your invoice gets a 15% discount, no asking, no fine print. The tech walks in with his license card visible on his shirt and shoe covers in his hand.',
+  },
+  {
+    n: '05',
+    when: 'On-site, first 15 min',
+    title: 'Diagnose. Photograph. Quote.',
+    body:
+      'Camera scope down the line if needed. Moisture meter on the walls. Pressure test the gas. Then he hands you a one-page flat-rate quote on his tablet before he picks up a single tool. Same price 2 AM or 2 PM. No overtime. No surprises.',
+  },
+  {
+    n: '06',
+    when: 'On-site, 1–4 hours',
+    title: 'Fix the emergency. Then the cause.',
+    body:
+      'We stop the active emergency first — water off, sewage contained, gas isolated. Then we fix the underlying cause in the same visit when parts are on the truck (which is 91% of the time). You sign once, on completion, after we walk the repair with you.',
+  },
+  {
+    n: '07',
+    when: 'Same day + 30 days',
+    title: 'Photos, invoice, follow-up.',
+    body:
+      'You receive a photo report (before, during, after) by email within an hour of completion. We text you 24 hours later to confirm the repair is holding, and at the 30-day mark we call to walk the job one more time. Workmanship guaranteed for 12 months minimum.',
+  },
+];
+
+const guarantees = [
+  { v: '60 MIN', l: 'On-site or your invoice is discounted 15%.' },
+  { v: '3 RINGS', l: 'Live human dispatcher answers every call.' },
+  { v: '24/7/365', l: 'Same flat-rate pricing at midnight as at noon.' },
+  { v: '$2M', l: 'Liability insurance carried on every truck.' },
+];
+
+const commonCalls = [
+  { type: 'Burst Pipe', avg: '38 min avg arrival', note: 'Most common winter call. We carry SharkBite, PEX, copper, and CPVC in every truck.' },
+  { type: 'Sewer Backup', avg: '52 min avg arrival', note: 'Hydro-jetter and 100ft camera roll on every backup call. Containment plastic too.' },
+  { type: 'Gas Leak', avg: '28 min avg arrival', note: 'Top priority dispatch. We walk you through shut-off and evacuation while the truck rolls.' },
+  { type: 'Water Heater Fail', avg: '44 min avg arrival', note: 'Tank and tankless replacements stocked on the lead truck. Often same-visit swap.' },
+  { type: 'Toilet Overflow', avg: '41 min avg arrival', note: 'Auger, wax rings, and supply lines on every truck. Floor cleanup included.' },
+  { type: 'Slab Leak', avg: '49 min avg arrival', note: 'Acoustic + thermal pinpoint location. Spot repair before tearing up your floor.' },
+];
+---
+
+<Layout
+  title={`What Happens When You Call | ${business.name} — Atlanta`}
+  description={`Step-by-step look at our 24/7 emergency plumbing dispatch process. Three rings to a live human. Under 60 minutes to your door. Or your invoice is discounted. ${business.phone}.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+  themeColor="#080808"
+  bodyStyle="background:#080808;color:#e4e4e7;font-family:'DM Sans',system-ui,sans-serif;"
+>
+  <Nav />
+
+  <main id="main-content">
+
+    <!-- ───── HERO ───── -->
+    <section
+      class="relative pt-20 pb-20 lg:pt-28 lg:pb-24 overflow-hidden"
+      style={`background:${palette.bg};`}
+      aria-labelledby="hero-h1"
+    >
+      <!-- diagonal stripe pattern -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background-image: repeating-linear-gradient(-45deg, transparent, transparent 24px, rgba(239,68,68,0.04) 24px, rgba(239,68,68,0.04) 48px);"
+        aria-hidden="true"
+      ></div>
+      <!-- red top accent -->
+      <div
+        class="absolute top-0 left-0 right-0 h-1"
+        style={`background:${palette.red};`}
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="block w-2 h-2 rounded-full animate-pulse" style={`background:${palette.red};`} aria-hidden="true"></span>
+          <span class="text-xs uppercase tracking-[0.3em] font-bold" style={`color:${palette.red};`}>
+            EMERGENCY DISPATCH PROCESS · LIVE 24/7
+          </span>
+        </div>
+        <h1
+          id="hero-h1"
+          class="leading-[0.95] uppercase mb-6 text-white"
+          style={`font-family:'Anton',sans-serif; font-size:clamp(3rem, 9vw, 7rem); letter-spacing:0.01em;`}
+        >
+          What happens<br/>
+          <span style={`color:${palette.red};`}>when you call us.</span>
+        </h1>
+        <p class="text-lg lg:text-xl max-w-3xl leading-relaxed mb-10" style={`color:${palette.muted};`}>
+          Most plumbing companies hide their process. We publish ours — every minute, every step, every guarantee — so you know exactly what to expect at 2 AM when your basement is filling up.
+          This is the playbook the dispatcher follows the second your call rings in.
+        </p>
+
+        <a
+          href={business.phoneHref}
+          class="inline-flex items-center gap-3 px-10 py-5 text-2xl uppercase tracking-[0.15em] font-bold transition-opacity hover:opacity-90"
+          style={`background:${palette.red}; color:${palette.ink}; font-family:'Anton',sans-serif;`}
+        >
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          CALL {business.phone}
+        </a>
+      </div>
+    </section>
+
+    <!-- ───── GUARANTEES STRIP ───── -->
+    <section
+      class="py-10"
+      style={`background:${palette.red};`}
+      aria-label="Service guarantees"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {guarantees.map((g) => (
+          <div class="text-center">
+            <p
+              class="leading-none text-white mb-2"
+              style="font-family:'Anton',sans-serif; font-size:clamp(1.75rem, 3.5vw, 2.75rem); letter-spacing:0.02em;"
+            >
+              {g.v}
+            </p>
+            <p class="text-xs font-bold uppercase tracking-widest text-white" style="opacity:0.92;">{g.l}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ───── STEP-BY-STEP TIMELINE ───── -->
+    <section
+      id="timeline"
+      class="py-20 lg:py-28"
+      style={`background:${palette.bg};`}
+      aria-labelledby="timeline-h2"
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <p class="text-xs uppercase tracking-[0.3em] font-bold mb-4" style={`color:${palette.red};`}>
+          Dispatch Playbook
+        </p>
+        <h2
+          id="timeline-h2"
+          class="leading-none uppercase text-white mb-12"
+          style={`font-family:'Anton',sans-serif; font-size:clamp(2.5rem, 6vw, 5rem); letter-spacing:0.01em;`}
+        >
+          Seven steps. Zero guesswork.
+        </h2>
+
+        <ol class="space-y-4 list-none p-0" role="list">
+          {steps.map((s) => (
+            <li
+              class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-8 p-7 md:p-9"
+              style={`background:${palette.card}; border-left:6px solid ${palette.red};`}
+            >
+              <div class="md:col-span-3">
+                <p
+                  class="leading-none mb-2"
+                  style={`font-family:'Anton',sans-serif; font-size:3.25rem; color:${palette.red};`}
+                >
+                  {s.n}
+                </p>
+                <p class="text-xs font-bold uppercase tracking-widest" style={`color:${palette.muted};`}>
+                  {s.when}
+                </p>
+              </div>
+              <div class="md:col-span-9">
+                <h3
+                  class="text-white text-xl md:text-2xl mb-3 uppercase leading-tight"
+                  style="font-family:'Anton',sans-serif; letter-spacing:0.02em;"
+                >
+                  {s.title}
+                </h3>
+                <p class="text-base leading-relaxed" style="color:rgba(228,228,231,0.78);">
+                  {s.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───── COMMON CALLS GRID ───── -->
+    <section
+      id="common"
+      class="py-20"
+      style={`background:${palette.card};`}
+      aria-labelledby="common-h2"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <p class="text-xs uppercase tracking-[0.3em] font-bold mb-4" style={`color:${palette.red};`}>
+          By the numbers
+        </p>
+        <h2
+          id="common-h2"
+          class="leading-none uppercase text-white mb-4"
+          style={`font-family:'Anton',sans-serif; font-size:clamp(2.25rem, 5vw, 4rem); letter-spacing:0.01em;`}
+        >
+          Most common emergency calls.
+        </h2>
+        <p class="text-base lg:text-lg max-w-3xl leading-relaxed mb-10" style={`color:${palette.muted};`}>
+          Average arrival times across 2,400+ Atlanta Metro emergency calls in the last twelve months. Real data, pulled from our dispatch logs.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={`background:${palette.red};`}>
+          {commonCalls.map((c) => (
+            <div class="p-7" style={`background:${palette.bg};`}>
+              <p
+                class="text-white mb-2 uppercase leading-none"
+                style={`font-family:'Anton',sans-serif; font-size:1.75rem; letter-spacing:0.02em;`}
+              >
+                {c.type}
+              </p>
+              <p class="text-sm font-bold uppercase tracking-widest mb-4" style={`color:${palette.red};`}>
+                {c.avg}
+              </p>
+              <p class="text-sm leading-relaxed" style="color:rgba(228,228,231,0.75);">
+                {c.note}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── WHAT TO DO BEFORE WE ARRIVE ───── -->
+    <section
+      class="py-20"
+      style={`background:${palette.bg};`}
+      aria-labelledby="prep-h2"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <p class="text-xs uppercase tracking-[0.3em] font-bold mb-4" style={`color:${palette.red};`}>
+          Before we get there
+        </p>
+        <h2
+          id="prep-h2"
+          class="leading-none uppercase text-white mb-10"
+          style={`font-family:'Anton',sans-serif; font-size:clamp(2rem, 4.5vw, 3.5rem); letter-spacing:0.01em;`}
+        >
+          What to do in the first 90 seconds.
+        </h2>
+
+        <div class="space-y-6 text-base lg:text-lg leading-relaxed" style="color:rgba(228,228,231,0.85);">
+          <p>
+            <strong style={`color:${palette.red};`}>Water flooding?</strong> Shut the main water valve. It's usually on the front-yard side of your house, in a green or metal box near the curb, or in the basement / garage where the line enters.
+            Turn the handle clockwise until it stops. If you can't find it, our dispatcher will walk you through it on the call.
+          </p>
+          <p>
+            <strong style={`color:${palette.red};`}>Sewage backup?</strong> Don't step in it. Close the door to the affected bathroom, turn off any toilet or sink supply valves on the wall behind the fixture, and stay out of the room until we arrive with containment plastic and PPE.
+          </p>
+          <p>
+            <strong style={`color:${palette.red};`}>Gas smell?</strong> Get everyone out of the house immediately — including pets. Don't flip light switches, don't use cell phones inside, don't even close the front door behind you. Call us from the neighbor's yard. We'll have a tech rolling in under three minutes.
+          </p>
+          <p>
+            <strong style={`color:${palette.red};`}>No hot water?</strong> Not technically an emergency — but we treat it like one if it's the only system in the house. Unplug or shut off the water heater (gas valve to "off," electrical breaker tripped) and leave the rest for us.
+          </p>
+          <p>
+            Whatever the situation, the most important call is the first one. Once you've dialed us, the playbook above takes over. The dispatcher will stay on the line for as long as you need.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── BOTTOM CTA ───── -->
+    <section
+      class="py-20 relative overflow-hidden"
+      style={`background:${palette.cardDeep};`}
+      aria-labelledby="cta-h2"
+    >
+      <div
+        class="absolute top-0 left-0 right-0 h-1"
+        style={`background:${palette.red};`}
+        aria-hidden="true"
+      ></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-xs uppercase tracking-[0.4em] font-bold mb-5" style={`color:${palette.red};`}>
+          // active emergency? //
+        </p>
+        <h2
+          id="cta-h2"
+          class="leading-[0.95] uppercase text-white mb-8"
+          style={`font-family:'Anton',sans-serif; font-size:clamp(2.75rem, 7vw, 5.5rem); letter-spacing:0.01em;`}
+        >
+          Don't read.<br/>
+          <span style={`color:${palette.red};`}>Call.</span>
+        </h2>
+        <a
+          href={business.phoneHref}
+          class="inline-flex items-center gap-3 px-12 py-6 uppercase tracking-[0.15em] font-bold transition-opacity hover:opacity-90"
+          style={`background:${palette.red}; color:${palette.ink}; font-family:'Anton',sans-serif; font-size:clamp(1.5rem, 3vw, 2.25rem);`}
+        >
+          {business.phone}
+        </a>
+        <p class="text-sm mt-5 uppercase tracking-widest font-bold" style={`color:${palette.muted};`}>
+          Three rings · Live dispatcher · 24/7 · 365
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

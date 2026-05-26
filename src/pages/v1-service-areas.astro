@@ -1,0 +1,375 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v1/Nav.astro';
+import Footer from '../components/v1/Footer.astro';
+import { business } from '../data/v1';
+
+// Coverage zones — three distinct response tiers across San Diego County
+const zones = [
+  {
+    tier: 'Zone 1',
+    label: 'Core Coverage',
+    response: 'Under 45 minutes',
+    description:
+      'Our two-truck rapid-response zone. Most calls dispatched the same hour, with a master plumber on-site before the first commercial break.',
+    cities: ['San Diego (Downtown, Mission Valley, North Park, Hillcrest, Kensington)', 'Chula Vista', 'La Mesa', 'National City', 'Spring Valley', 'Lemon Grove', 'Bonita'],
+  },
+  {
+    tier: 'Zone 2',
+    label: 'Standard Coverage',
+    response: '60–75 minutes',
+    description:
+      'Our second response tier. Same-day service guaranteed Monday through Saturday with one of our four field trucks rerouted from the closest job.',
+    cities: ['El Cajon', 'Santee', 'Lakeside', 'Coronado', 'Imperial Beach', 'Poway'],
+  },
+  {
+    tier: 'Zone 3',
+    label: 'Extended Coverage',
+    response: '90–120 minutes',
+    description:
+      "Outer county coverage. We don't subcontract — every job, even the long-haul ones, is handled by a Crader-licensed plumber in a Crader-marked truck.",
+    cities: ['Escondido', 'San Marcos', 'Carlsbad', 'Encinitas', 'Oceanside', 'Alpine', 'Ramona'],
+  },
+];
+
+// Neighborhood-specific expertise — what we see most in each pocket
+const neighborhoods = [
+  {
+    name: 'North Park & Kensington',
+    era: '1920s–1940s craftsman bungalows',
+    challenge: 'Cast iron drains failing at 80+ years. Galvanized supply lines clogging with mineral build-up.',
+    fix: "We've trenchless-relined more North Park sewer laterals than we can count. No tearing up your hardscape.",
+  },
+  {
+    name: 'Mission Hills & Hillcrest',
+    era: '1910s–1930s historic district',
+    challenge: 'Lead supply lines, knob-and-tube adjacent plumbing, and the city permit dance that comes with both.',
+    fix: 'We carry the historic-district paperwork in our trucks. Permits pulled the same day we diagnose.',
+  },
+  {
+    name: 'Chula Vista, Eastlake & Otay Ranch',
+    era: '1990s–2010s tract developments',
+    challenge: 'Polybutylene pipe failures (still common in homes built 1995–2005). Slab leaks in PEX-A installs.',
+    fix: 'Same-day pinpoint leak detection with non-invasive acoustic and thermal scanning. No jackhammers unless we prove we need them.',
+  },
+  {
+    name: 'La Mesa & Mt. Helix',
+    era: '1950s–1970s ranch homes on hillsides',
+    challenge: 'Pressure-zone issues, hillside sewer line breaks from root intrusion, and tank water heaters past their warranty.',
+    fix: 'We size pressure-reducing valves correctly the first time. Camera inspections included on every sewer call.',
+  },
+  {
+    name: 'Carlsbad, Encinitas & Coastal North County',
+    era: '1980s–present coastal builds',
+    challenge: 'Salt-air corrosion on copper, premature water-heater anode failure, irrigation backflow assemblies needing recertification.',
+    fix: 'We carry stainless and brass alternatives in stock. Annual backflow testing scheduled before your county notice hits the mailbox.',
+  },
+  {
+    name: 'El Cajon, Santee & East County',
+    era: 'Mixed 1960s–2000s residential',
+    challenge: 'Hard water (some of the worst in the county). Tank heaters scaled and failing 2–3 years early.',
+    fix: 'Whole-home softener installs that pay for themselves in two water-heater lifecycles. We can show you the math.',
+  },
+];
+
+const palette = { bg: '#060d1c', card: '#0c1d38', deep: '#0f2855', orange: '#f97316' };
+---
+
+<Layout
+  title={`Service Area Coverage | ${business.name} — San Diego County`}
+  description={`Where ${business.shortName} works and how fast we get there. Three response zones across San Diego County: 45-minute core coverage, 75-minute standard, 2-hour extended. Master plumbers in every truck.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+  themeColor="#0f2855"
+  bodyStyle="background:#060d1c;color:#e2e8f0;font-family:'DM Sans',system-ui,sans-serif;"
+>
+  <Nav />
+
+  <main id="main-content">
+
+    <!-- ───── HERO ───── -->
+    <section
+      class="relative py-20 lg:py-28 overflow-hidden"
+      style={`background:${palette.deep};`}
+      aria-labelledby="hero-heading"
+    >
+      <div
+        class="absolute left-0 top-0 bottom-0 w-1"
+        style={`background:${palette.orange};`}
+        aria-hidden="true"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
+        <div class="flex items-center gap-3 mb-4" aria-hidden="true">
+          <div class="h-px w-12" style={`background:${palette.orange};`}></div>
+          <span class="font-body font-bold text-xs uppercase tracking-widest" style={`color:${palette.orange};`}>
+            Service Area Detail
+          </span>
+        </div>
+        <h1
+          id="hero-heading"
+          class="font-display font-black uppercase text-white leading-none mb-6"
+          style="font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing:-0.02em;"
+        >
+          Every Pipe.<br/>
+          <span style={`color:${palette.orange};`}>Every ZIP code.</span>
+        </h1>
+        <p class="font-body text-lg lg:text-xl max-w-3xl leading-relaxed mb-8" style="color:rgba(255,255,255,0.75);">
+          For {business.yearsInBusiness} years we've worked every neighborhood in San Diego County — from the cast-iron drains of North Park bungalows to the polybutylene failures haunting Eastlake. We don't subcontract.
+          We don't farm out the long drives. If you live in one of the twenty-plus cities below, the truck rolling to your house has the Crader name on the side and a licensed master plumber behind the wheel.
+        </p>
+        <div class="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t" style="border-color:rgba(255,255,255,0.1);">
+          <div>
+            <p class="font-display font-black text-4xl" style={`color:${palette.orange};`}>20+</p>
+            <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Cities Served</p>
+          </div>
+          <div>
+            <p class="font-display font-black text-4xl" style={`color:${palette.orange};`}>45 min</p>
+            <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Avg Core-Zone Arrival</p>
+          </div>
+          <div>
+            <p class="font-display font-black text-4xl" style={`color:${palette.orange};`}>4</p>
+            <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Field Trucks, 7 Days/Week</p>
+          </div>
+          <div>
+            <p class="font-display font-black text-4xl" style={`color:${palette.orange};`}>0</p>
+            <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Subcontractors. Ever.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── COVERAGE ZONES ───── -->
+    <section
+      id="zones"
+      class="py-20 lg:py-24"
+      style={`background:${palette.card};`}
+      aria-labelledby="zones-heading"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="mb-14">
+          <div class="flex items-center gap-3 mb-3" aria-hidden="true">
+            <div class="h-px w-12" style={`background:${palette.orange};`}></div>
+            <span class="font-body font-bold text-xs uppercase tracking-widest" style={`color:${palette.orange};`}>
+              Response Tiers
+            </span>
+          </div>
+          <h2
+            id="zones-heading"
+            class="font-display font-black uppercase text-white leading-none"
+            style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing:-0.02em;"
+          >
+            Three Zones. One Promise.
+          </h2>
+          <p class="font-body text-base max-w-3xl leading-relaxed mt-6" style="color:rgba(255,255,255,0.6);">
+            We've grouped the county into three response tiers — not to charge you differently, but to be honest about how long the drive takes. Same flat-rate pricing applies in all three.
+            Pick your tier, pick up the phone.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t" style="border-color:rgba(255,255,255,0.1);">
+          {zones.map((z) => (
+            <div class="border-r border-b p-7" style="border-color:rgba(255,255,255,0.1);">
+              <div class="flex items-baseline justify-between gap-4 mb-4">
+                <span class="font-display font-black uppercase text-white text-2xl" style="letter-spacing:0.02em;">
+                  {z.tier}
+                </span>
+                <span class="font-body font-bold text-xs uppercase tracking-widest" style={`color:${palette.orange};`}>
+                  {z.label}
+                </span>
+              </div>
+              <p class="font-display font-black text-3xl mb-4" style={`color:${palette.orange};`}>
+                {z.response}
+              </p>
+              <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.65);">
+                {z.description}
+              </p>
+              <ul class="space-y-2" role="list">
+                {z.cities.map((c) => (
+                  <li class="flex items-start gap-2 font-body text-sm" style="color:rgba(255,255,255,0.8);">
+                    <span style={`color:${palette.orange};`} aria-hidden="true">▸</span>
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div
+          class="mt-10 px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          style={`background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.25);`}
+        >
+          <p class="font-body text-sm" style="color:rgba(255,255,255,0.75);">
+            Don't see your city? We've worked Julian, Borrego Springs, Pine Valley and beyond on referral. Call dispatch and ask — the answer is almost always yes.
+          </p>
+          <a
+            href={business.phoneHref}
+            class="inline-flex items-center gap-2 font-display font-black uppercase text-white text-sm tracking-widest px-6 py-3 flex-shrink-0 transition-opacity hover:opacity-90"
+            style={`background:${palette.orange}; border-radius:0;`}
+          >
+            CALL DISPATCH NOW
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── NEIGHBORHOOD EXPERTISE ───── -->
+    <section
+      id="neighborhoods"
+      class="py-20 lg:py-24"
+      style={`background:${palette.deep};`}
+      aria-labelledby="neighborhood-heading"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <div>
+            <div class="flex items-center gap-3 mb-3" aria-hidden="true">
+              <div class="h-px w-12" style={`background:${palette.orange};`}></div>
+              <span class="font-body font-bold text-xs uppercase tracking-widest" style={`color:${palette.orange};`}>
+                Neighborhood Expertise
+              </span>
+            </div>
+            <h2
+              id="neighborhood-heading"
+              class="font-display font-black uppercase text-white leading-none"
+              style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing:-0.02em;"
+            >
+              Your Block.<br/>Our Playbook.
+            </h2>
+          </div>
+          <p class="font-body text-base max-w-sm leading-relaxed pb-1" style="color:rgba(255,255,255,0.55);">
+            Plumbing problems aren't random. They cluster by build year, soil type, and water chemistry. Here's what we see — and how we fix it — neighborhood by neighborhood.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-l border-t" style="border-color:rgba(255,255,255,0.1);">
+          {neighborhoods.map((n) => (
+            <article class="border-r border-b p-7" style="border-color:rgba(255,255,255,0.1);">
+              <h3 class="font-display font-black uppercase text-white text-xl mb-1" style="letter-spacing:0.02em;">
+                {n.name}
+              </h3>
+              <p class="font-body font-semibold text-xs uppercase tracking-widest mb-5" style={`color:${palette.orange};`}>
+                {n.era}
+              </p>
+              <p class="font-body text-sm leading-relaxed mb-3" style="color:rgba(255,255,255,0.7);">
+                <span class="font-bold" style="color:rgba(255,255,255,0.9);">What we see: </span>{n.challenge}
+              </p>
+              <p class="font-body text-sm leading-relaxed" style="color:rgba(255,255,255,0.7);">
+                <span class="font-bold" style={`color:${palette.orange};`}>How we fix it: </span>{n.fix}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── WHY ZONES MATTER ───── -->
+    <section
+      class="py-20 lg:py-24"
+      style={`background:${palette.card};`}
+      aria-labelledby="why-zones-heading"
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-3" aria-hidden="true">
+            <div class="h-px w-12" style={`background:${palette.orange};`}></div>
+            <span class="font-body font-bold text-xs uppercase tracking-widest" style={`color:${palette.orange};`}>
+              The Real Talk
+            </span>
+          </div>
+          <h2
+            id="why-zones-heading"
+            class="font-display font-black uppercase text-white leading-none"
+            style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); letter-spacing:-0.02em;"
+          >
+            Why Coverage Zones Matter
+          </h2>
+        </div>
+
+        <div class="space-y-6 font-body text-base lg:text-lg leading-relaxed" style="color:rgba(255,255,255,0.75);">
+          <p>
+            When a competitor tells you "we serve all of San Diego County," ask them how many trucks they have in the field and where they're parked at 9 a.m. on a Tuesday.
+            Most one-or-two-truck operations are an hour from your driveway before they even get the call. By the time they show up, your kitchen has another two inches of water in it.
+          </p>
+          <p>
+            We've structured our entire dispatch model around drive-time honesty. Our four trucks start every morning at staggered depots — one in central San Diego, one in East County,
+            one in South Bay, and a swing truck that floats based on the day's bookings. That's why we can promise sub-45-minute arrival in Zone 1 and back it up in writing.
+          </p>
+          <p>
+            Outside the core zone, we don't pretend the drive is shorter than it is. We tell you the truth — 90 minutes to Encinitas, two hours to Ramona — and then we show up
+            inside that window every single time. Same fixed-price quote, same Crader master plumber, same guarantee. The drive is on us.
+          </p>
+          <p class="pt-2">
+            <strong style={`color:${palette.orange};`}>One more thing:</strong> we do not pay third-party referral services. Every dollar you spend goes to the licensed plumber on the job,
+            the parts on your truck, and the warranty we stand behind. That's how a family business runs in its third decade.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── CITY GRID (full coverage) ───── -->
+    <section
+      class="py-16 lg:py-20"
+      style={`background:${palette.deep};`}
+      aria-labelledby="city-grid-heading"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2
+          id="city-grid-heading"
+          class="font-display font-black uppercase text-white leading-none mb-3"
+          style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing:-0.02em;"
+        >
+          Full County Coverage
+        </h2>
+        <p class="font-body text-sm uppercase tracking-widest mb-8" style={`color:${palette.orange};`}>
+          {business.serviceArea.cities.length} cities · One number to call
+        </p>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0 border-l border-t" style="border-color:rgba(255,255,255,0.1);" role="list">
+          {business.serviceArea.cities.map((c) => (
+            <li
+              class="border-r border-b px-4 py-4 font-body font-semibold text-sm flex items-center gap-2"
+              style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85);"
+            >
+              <span aria-hidden="true" style={`color:${palette.orange};`}>●</span>
+              {c}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───── BOTTOM CTA ───── -->
+    <section
+      class="py-16"
+      style={`background:${palette.orange};`}
+      aria-labelledby="cta-heading"
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <h2
+            id="cta-heading"
+            class="font-display font-black uppercase text-white leading-none mb-2"
+            style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing:-0.01em;"
+          >
+            Your ZIP is on our list.
+          </h2>
+          <p class="font-body text-white text-base" style="opacity:0.92;">
+            Call dispatch. We'll have a master plumber rolling within the hour.
+          </p>
+        </div>
+        <a
+          href={business.phoneHref}
+          class="inline-flex items-center gap-3 font-display font-black uppercase text-sm tracking-widest px-8 py-4 flex-shrink-0 transition-opacity hover:opacity-90"
+          style={`background:${palette.deep}; color:#ffffff; border-radius:0;`}
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C9.61 21 3 14.39 3 6c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          {business.phone}
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

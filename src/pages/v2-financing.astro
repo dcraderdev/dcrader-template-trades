@@ -1,0 +1,354 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/v2/Nav.astro';
+import Footer from '../components/v2/Footer.astro';
+import { business } from '../data/v2';
+
+const palette = { bg: '#080e1a', card: '#0d1527', deep: '#0a1322', teal: '#2dd4bf', blue: '#3b82f6' };
+
+// Three financing partners — typical rates BrightWatt-style EV/smart-home shops offer
+const partners = [
+  {
+    name: 'GreenSky® Project Finance',
+    headline: '0% APR · 12 / 18 / 24 months',
+    description:
+      'No-interest financing on installs from $1,000 to $55,000 — perfect for EV chargers, panel upgrades, and smart-home retrofits. Approval in under 60 seconds at the kitchen table.',
+    fitFor: ['Tesla Wall Connector installs', 'Single-zone smart lighting', '200A panel upgrades'],
+    rate: '0% APR',
+  },
+  {
+    name: 'Synchrony HOME™',
+    headline: '6.99–14.99% APR · 60-month plans',
+    description:
+      'Long-term financing for whole-home automation projects, Powerwall + solar-ready installs, and four-EV garage build-outs. Fixed monthly payments with no prepayment penalty.',
+    fitFor: ['Whole-home Lutron / Control4', 'Powerwall + generator combos', '400A service upgrades'],
+    rate: '6.99% APR',
+  },
+  {
+    name: 'Service Finance Company',
+    headline: 'Same-as-cash · 18 months',
+    description:
+      'Pay it off inside 18 months and the interest disappears — retroactively. Designed for the homeowner waiting on a tax return, year-end bonus, or rental-property income event.',
+    fitFor: ['Time-shift purchases', 'Rebate-funded projects', 'Solar-prep wiring'],
+    rate: 'Deferred',
+  },
+];
+
+// Sample monthly payment scenarios across common BrightWatt installs
+const scenarios = [
+  { project: 'Tesla Wall Connector + dedicated 60A circuit', total: 2400, term: '12 mo · 0% APR', monthly: 200 },
+  { project: 'EV charger + 200A panel upgrade', total: 6800, term: '18 mo · 0% APR', monthly: 378 },
+  { project: 'Lutron RA3 whole-home lighting (8 rooms)', total: 14500, term: '60 mo · 6.99% APR', monthly: 287 },
+  { project: 'Powerwall 3 + solar-ready transfer switch', total: 19800, term: '60 mo · 6.99% APR', monthly: 392 },
+  { project: '4-bay EV garage + 400A service', total: 34000, term: '60 mo · 9.99% APR', monthly: 722 },
+];
+
+// Process steps
+const steps = [
+  { n: '01', title: 'Free in-home quote', body: 'A tech-forward estimator walks the property, scopes the install, and prices it on the spot. No bait-and-switch, no callbacks.' },
+  { n: '02', title: 'Soft-pull pre-approval', body: 'We run a soft credit check at the table — no hit to your score. You see your rate and term options before signing anything.' },
+  { n: '03', title: 'E-sign at the kitchen table', body: 'Approved offer in hand, you e-sign on our tablet. Funds are reserved against the project the same hour.' },
+  { n: '04', title: 'We install, then bill the lender', body: "You don't write us a check. Once the install passes Maricopa County inspection, the lender pays us directly and your first payment is 30 days out." },
+];
+---
+
+<Layout
+  title={`Financing for EV Charging & Smart Home Installs | ${business.name}`}
+  description={`0% APR financing on Tesla Wall Connectors, panel upgrades, and smart home installs across Greater Phoenix. Same-day soft-pull approval. ${business.phone}.`}
+  fontUrl="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  themeColor="#080e1a"
+  bodyStyle="background:#080e1a;color:#e2e8f0;font-family:'Sora',system-ui,sans-serif;"
+>
+  <Nav />
+
+  <main id="main-content">
+
+    <!-- ───── HERO ───── -->
+    <section
+      class="relative pt-24 lg:pt-36 pb-20 overflow-hidden"
+      style={`background:${palette.bg};`}
+      aria-labelledby="hero-h1"
+    >
+      <!-- ambient grid -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style={`background-image: radial-gradient(circle at 24px 24px, rgba(45,212,191,0.06) 1px, transparent 0); background-size: 48px 48px;`}
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-5" style={`color:${palette.teal};`}>
+          &gt;_ /financing &middot; 0% apr available
+        </p>
+        <h1
+          id="hero-h1"
+          class="font-display font-extrabold text-white leading-[1.04] tracking-tight mb-6"
+          style="font-size: clamp(2.75rem, 7vw, 5.5rem);"
+        >
+          Power your home.<br/>
+          <span style={`color:${palette.teal};`}>Pay for it on your terms.</span>
+        </h1>
+        <p class="text-lg lg:text-xl max-w-3xl leading-relaxed mb-8" style="color:rgba(226,232,240,0.78);">
+          Tesla Wall Connectors. 200-amp service upgrades. Powerwall installs. Whole-home Lutron. None of it is cheap — and almost none of it
+          should come out of one month's checking account. We've built financing partnerships with three top-tier project lenders so you can install today and pay it down at your pace.
+          <strong style={`color:${palette.teal};`}> Soft-pull approval at the kitchen table — zero impact on your credit.</strong>
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t" style="border-color:rgba(45,212,191,0.18);">
+          <div>
+            <p class="font-mono text-2xl font-bold" style={`color:${palette.teal};`}>0% APR</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest mt-1" style="color:rgba(226,232,240,0.5);">on qualifying installs</p>
+          </div>
+          <div>
+            <p class="font-mono text-2xl font-bold" style={`color:${palette.teal};`}>60 sec</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest mt-1" style="color:rgba(226,232,240,0.5);">soft-pull approval</p>
+          </div>
+          <div>
+            <p class="font-mono text-2xl font-bold" style={`color:${palette.teal};`}>$1k–$55k</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest mt-1" style="color:rgba(226,232,240,0.5);">financing range</p>
+          </div>
+          <div>
+            <p class="font-mono text-2xl font-bold" style={`color:${palette.teal};`}>0 down</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest mt-1" style="color:rgba(226,232,240,0.5);">on most projects</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── FINANCING PARTNERS ───── -->
+    <section
+      id="partners"
+      class="py-20"
+      style={`background:${palette.card};`}
+      aria-labelledby="partners-h2"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style={`color:${palette.teal};`}>// lender stack</p>
+        <h2
+          id="partners-h2"
+          class="font-display font-extrabold text-white text-3xl md:text-5xl tracking-tight mb-4"
+        >
+          Three lenders. One install.
+        </h2>
+        <p class="text-base md:text-lg max-w-3xl leading-relaxed mb-12" style="color:rgba(226,232,240,0.65);">
+          We don't make money on financing — your interest goes to the lender, not to us.
+          We picked these three partners because they cover the full project spectrum, from a $1,200 EV charger to a $50,000 whole-home automation build.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {partners.map((p) => (
+            <article
+              class="p-7 flex flex-col"
+              style={`background:${palette.bg}; border:1px solid rgba(45,212,191,0.18); border-radius:14px;`}
+            >
+              <div class="flex items-baseline justify-between mb-4">
+                <h3 class="font-display font-bold text-white text-lg">{p.name}</h3>
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] px-2 py-1" style={`color:${palette.teal}; background:rgba(45,212,191,0.1); border-radius:4px;`}>
+                  {p.rate}
+                </span>
+              </div>
+              <p class="font-mono text-sm font-semibold mb-4" style={`color:${palette.teal};`}>
+                {p.headline}
+              </p>
+              <p class="text-sm leading-relaxed mb-5" style="color:rgba(226,232,240,0.7);">
+                {p.description}
+              </p>
+              <p class="font-mono text-[11px] uppercase tracking-widest mb-3" style="color:rgba(226,232,240,0.5);">Best fit for</p>
+              <ul class="space-y-2" role="list">
+                {p.fitFor.map((f) => (
+                  <li class="flex items-start gap-2 text-sm" style="color:rgba(226,232,240,0.85);">
+                    <span class="font-mono" style={`color:${palette.teal};`} aria-hidden="true">▸</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── SAMPLE MONTHLY PAYMENTS ───── -->
+    <section
+      id="scenarios"
+      class="py-20"
+      style={`background:${palette.bg};`}
+      aria-labelledby="scenarios-h2"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style={`color:${palette.teal};`}>// real numbers</p>
+        <h2
+          id="scenarios-h2"
+          class="font-display font-extrabold text-white text-3xl md:text-5xl tracking-tight mb-4"
+        >
+          What it actually costs per month.
+        </h2>
+        <p class="text-base md:text-lg max-w-3xl leading-relaxed mb-10" style="color:rgba(226,232,240,0.65);">
+          Five common BrightWatt installs and the monthly payment if you finance them through our standard plans.
+          These are sample APRs for a 720+ credit profile — your actual rate will vary based on the soft-pull result.
+        </p>
+
+        <div
+          class="overflow-hidden"
+          style={`background:${palette.card}; border:1px solid rgba(45,212,191,0.18); border-radius:14px;`}
+        >
+          <div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4" style="background:rgba(45,212,191,0.06); border-bottom:1px solid rgba(45,212,191,0.18);">
+            <span class="col-span-6 font-mono text-[11px] uppercase tracking-widest" style="color:rgba(226,232,240,0.55);">Install</span>
+            <span class="col-span-2 font-mono text-[11px] uppercase tracking-widest text-right" style="color:rgba(226,232,240,0.55);">Total</span>
+            <span class="col-span-2 font-mono text-[11px] uppercase tracking-widest text-center" style="color:rgba(226,232,240,0.55);">Term</span>
+            <span class="col-span-2 font-mono text-[11px] uppercase tracking-widest text-right" style="color:rgba(226,232,240,0.55);">Monthly</span>
+          </div>
+          {scenarios.map((s) => (
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 px-6 py-5 border-b last:border-b-0" style="border-color:rgba(45,212,191,0.1);">
+              <span class="md:col-span-6 font-display text-white text-base font-semibold">{s.project}</span>
+              <span class="md:col-span-2 font-mono text-sm md:text-right" style="color:rgba(226,232,240,0.7);">${s.total.toLocaleString()}</span>
+              <span class="md:col-span-2 font-mono text-sm md:text-center" style={`color:${palette.teal};`}>{s.term}</span>
+              <span class="md:col-span-2 font-mono text-lg font-bold md:text-right" style="color:#ffffff;">${s.monthly}/mo</span>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-xs mt-5 max-w-3xl leading-relaxed" style="color:rgba(226,232,240,0.45);">
+          Sample APRs only. All financing subject to credit approval through partner lenders. Actual payment, term length, and APR depend on your credit profile and the lender's underwriting at time of application.
+          BrightWatt Electric does not originate, fund, or service these loans — we provide access to them as a no-cost convenience to our customers.
+        </p>
+      </div>
+    </section>
+
+    <!-- ───── PROCESS ───── -->
+    <section
+      id="process"
+      class="py-20"
+      style={`background:${palette.card};`}
+      aria-labelledby="process-h2"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style={`color:${palette.teal};`}>// kitchen-table workflow</p>
+        <h2
+          id="process-h2"
+          class="font-display font-extrabold text-white text-3xl md:text-5xl tracking-tight mb-4"
+        >
+          From quote to install in 24 hours.
+        </h2>
+        <p class="text-base md:text-lg max-w-3xl leading-relaxed mb-12" style="color:rgba(226,232,240,0.65);">
+          Approved financing rarely takes more than one site visit. Here's the four-step flow we run on every project.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {steps.map((s) => (
+            <div
+              class="p-7"
+              style={`background:${palette.bg}; border:1px solid rgba(45,212,191,0.18); border-radius:14px;`}
+            >
+              <p class="font-mono text-3xl font-bold mb-4" style={`color:${palette.teal};`}>{s.n}</p>
+              <h3 class="font-display font-bold text-white text-lg mb-2">{s.title}</h3>
+              <p class="text-sm leading-relaxed" style="color:rgba(226,232,240,0.65);">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── FAQ ───── -->
+    <section
+      id="faq"
+      class="py-20"
+      style={`background:${palette.bg};`}
+      aria-labelledby="faq-h2"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style={`color:${palette.teal};`}>// honest answers</p>
+        <h2
+          id="faq-h2"
+          class="font-display font-extrabold text-white text-3xl md:text-5xl tracking-tight mb-10"
+        >
+          Financing, demystified.
+        </h2>
+
+        <div class="space-y-5">
+          <details class="group p-6" style={`background:${palette.card}; border:1px solid rgba(45,212,191,0.18); border-radius:12px;`}>
+            <summary class="font-display font-bold text-white text-lg cursor-pointer list-none flex justify-between items-center">
+              Will applying hurt my credit score?
+              <span class="font-mono text-2xl ml-3" style={`color:${palette.teal};`} aria-hidden="true">+</span>
+            </summary>
+            <p class="text-sm leading-relaxed mt-4" style="color:rgba(226,232,240,0.7);">
+              No. All three of our lenders use a soft-pull pre-approval at the in-home estimate. A soft pull does not affect your FICO score. A hard pull only happens when you sign and accept the loan offer — and at that point you already know your rate and term.
+            </p>
+          </details>
+
+          <details class="group p-6" style={`background:${palette.card}; border:1px solid rgba(45,212,191,0.18); border-radius:12px;`}>
+            <summary class="font-display font-bold text-white text-lg cursor-pointer list-none flex justify-between items-center">
+              Do you mark up the price for financed projects?
+              <span class="font-mono text-2xl ml-3" style={`color:${palette.teal};`} aria-hidden="true">+</span>
+            </summary>
+            <p class="text-sm leading-relaxed mt-4" style="color:rgba(226,232,240,0.7);">
+              Same flat-rate price whether you write us a check or finance. We're paid by you, not by the lender, so there's no incentive to push one over the other. Some shops pad the cash price 12–18% to "absorb" lender fees. We don't.
+            </p>
+          </details>
+
+          <details class="group p-6" style={`background:${palette.card}; border:1px solid rgba(45,212,191,0.18); border-radius:12px;`}>
+            <summary class="font-display font-bold text-white text-lg cursor-pointer list-none flex justify-between items-center">
+              What if I want to pay off early?
+              <span class="font-mono text-2xl ml-3" style={`color:${palette.teal};`} aria-hidden="true">+</span>
+            </summary>
+            <p class="text-sm leading-relaxed mt-4" style="color:rgba(226,232,240,0.7);">
+              All three partners allow penalty-free prepayment. The 0% APR plans actually reward early payoff — finish inside the promotional window and you've borrowed the install cost interest-free.
+            </p>
+          </details>
+
+          <details class="group p-6" style={`background:${palette.card}; border:1px solid rgba(45,212,191,0.18); border-radius:12px;`}>
+            <summary class="font-display font-bold text-white text-lg cursor-pointer list-none flex justify-between items-center">
+              Does financing change the install timeline?
+              <span class="font-mono text-2xl ml-3" style={`color:${palette.teal};`} aria-hidden="true">+</span>
+            </summary>
+            <p class="text-sm leading-relaxed mt-4" style="color:rgba(226,232,240,0.7);">
+              No. Once your loan is approved at the table, we schedule the install on our standard same-week calendar. The lender pays us after the inspection passes — that's between us and them, and it never holds up your project.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── CTA ───── -->
+    <section
+      class="py-16"
+      style={`background:linear-gradient(135deg, ${palette.teal} 0%, ${palette.blue} 100%);`}
+      aria-labelledby="cta-h2"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <p class="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style="color:rgba(8,14,26,0.7);">
+          // ready to install?
+        </p>
+        <h2
+          id="cta-h2"
+          class="font-display font-extrabold text-3xl md:text-5xl tracking-tight mb-5"
+          style={`color:${palette.bg};`}
+        >
+          Get pre-approved at the kitchen table.
+        </h2>
+        <p class="text-base md:text-lg mb-8 max-w-2xl mx-auto" style="color:rgba(8,14,26,0.78);">
+          Book the free in-home estimate. You'll know your install price and your monthly payment options before we leave.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/v2-modern-tech#quote"
+            class="inline-flex items-center gap-2 font-mono font-bold text-sm uppercase tracking-widest px-7 py-4"
+            style={`background:${palette.bg}; color:${palette.teal}; border-radius:999px;`}
+          >
+            Schedule Estimate
+          </a>
+          <a
+            href={business.phoneHref}
+            class="inline-flex items-center gap-2 font-mono font-bold text-sm uppercase tracking-widest px-7 py-4"
+            style={`background:rgba(8,14,26,0.18); color:${palette.bg}; border-radius:999px; border:1.5px solid rgba(8,14,26,0.4);`}
+          >
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

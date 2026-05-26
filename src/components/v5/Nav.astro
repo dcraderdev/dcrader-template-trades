@@ -44,14 +44,21 @@ import { business } from '../../data/v5';
       <div class="flex-1 h-px nav-rule"></div>
       <div class="flex items-center gap-8 pl-10">
         <a
-          href="#portfolio"
+          href="/v5-luxury-trade#portfolio"
           class="nav-link-muted font-outfit font-light transition-colors duration-300"
           style="font-size: 0.75rem; letter-spacing: 0.1em;"
         >
           Portfolio
         </a>
         <a
-          href="#quote"
+          href="/v5-credentials"
+          class="nav-link-muted font-outfit font-light transition-colors duration-300"
+          style="font-size: 0.75rem; letter-spacing: 0.1em;"
+        >
+          Credentials
+        </a>
+        <a
+          href="/v5-luxury-trade#quote"
           class="nav-link-accent font-outfit font-light transition-colors duration-300 border-b pb-px"
           style="font-size: 0.75rem; letter-spacing: 0.1em;"
         >
@@ -99,11 +106,12 @@ import { business } from '../../data/v5';
     <div class="px-6 pt-4 pb-10 flex flex-col gap-8">
       <div class="w-full h-px bg-luxury-gold/20"></div>
       {[
-        { label: 'Services', href: '#services' },
-        { label: 'Selected Work', href: '#portfolio' },
-        { label: 'Our Approach', href: '#why-us' },
-        { label: 'Where We Work', href: '#service-area' },
-        { label: 'Inquire', href: '#quote' },
+        { label: 'Services', href: '/v5-luxury-trade#services' },
+        { label: 'Selected Work', href: '/v5-luxury-trade#portfolio' },
+        { label: 'Credentials', href: '/v5-credentials' },
+        { label: 'Our Approach', href: '/v5-luxury-trade#why-us' },
+        { label: 'Where We Work', href: '/v5-luxury-trade#service-area' },
+        { label: 'Inquire', href: '/v5-luxury-trade#quote' },
       ].map(link => (
         <a
           href={link.href}
